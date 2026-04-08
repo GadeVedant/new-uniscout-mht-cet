@@ -12,11 +12,23 @@ class DataService {
 
   async loadData(): Promise<void> {
     if (config.dataDir && fs.existsSync(config.dataDir)) {
-      const files = fs.readdirSync(config.dataDir)
+      let files = fs.readdirSync(config.dataDir)
         .filter(f => /\.(xlsx|xls|csv)$/i.test(f) && f.startsWith('cap'))
         .sort();
 
       if (files.length === 0) throw new Error(`No data files found in DATA_DIR: ${config.dataDir}`);
+
+      // Memory optimisation: in production, load only the 2 most recent years.
+      // Older years are still present for cutoff history via the same records.
+      // Set LOAD_ALL_YEARS=true to override.
+      if (process.env.NODE_ENV === 'production' && process.env.LOAD_ALL_YEARS !== 'true') {
+        // Keep files whose name contains 2024 or 2025 (adjust as new data arrives)
+        const recentFiles = files.filter(f => /202[45]/.test(f));
+        if (recentFiles.length > 0) {
+          logger.info(`Production mode: loading ${recentFiles.length}/${files.length} files (2024-25 only). Set LOAD_ALL_YEARS=true to load all.`);
+          files = recentFiles;
+        }
+      }
 
       logger.info(`Loading ${files.length} data file(s) from: ${config.dataDir}`);
       let totalRows = 0;
@@ -25,7 +37,6 @@ class DataService {
         const t0 = Date.now();
         let parsed: CollegeData[];
         if (file.endsWith('.csv')) {
-          // Direct parse — no intermediate ExcelRow array
           parsed = this.parseCsvToCollegeData(filePath, this.collegeData.length);
         } else {
           const rows = this.readExcelFile(filePath);
@@ -35,7 +46,7 @@ class DataService {
         totalRows += parsed.length;
         logger.info(`  → ${file}: ${parsed.length} records (${Date.now() - t0}ms)`);
       }
-      logger.info(`Total: ${totalRows} raw rows → ${this.collegeData.length} college records`);
+      logger.info(`Total: ${totalRows} rows → ${this.collegeData.length} college records`);
     } else {
       const filePath = config.dataFilePath;
       logger.info(`Loading MHT-CET data from: ${filePath}`);
