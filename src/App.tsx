@@ -22,11 +22,31 @@ export interface MhtCetFormData {
 
 export default function App() {
   const [portalType, setPortalType] = useState<'mht-cet' | 'jee'>('mht-cet');
-  
-  // Lifted state that persists across routing transitions
-  const [colleges, setColleges] = useState<CollegeRecommendation[]>([]);
-  const [lastQuery, setLastQuery] = useState<RecommendationRequest | null>(null);
+
+  // Restore colleges from sessionStorage on hard reload (e.g. direct /college/:id navigation)
+  const [colleges, setColleges] = useState<CollegeRecommendation[]>(() => {
+    try {
+      const saved = sessionStorage.getItem('uniscout_colleges');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
+  const [lastQuery, setLastQuery] = useState<RecommendationRequest | null>(() => {
+    try {
+      const saved = sessionStorage.getItem('uniscout_query');
+      return saved ? JSON.parse(saved) : null;
+    } catch { return null; }
+  });
   const [comparisonSelection, setComparisonSelection] = useState<CollegeRecommendation[]>([]);
+
+  // Persist colleges to sessionStorage whenever they change
+  const setCollegesAndPersist = (results: CollegeRecommendation[]) => {
+    setColleges(results);
+    try { sessionStorage.setItem('uniscout_colleges', JSON.stringify(results)); } catch {}
+  };
+  const setLastQueryAndPersist = (query: RecommendationRequest | null) => {
+    setLastQuery(query);
+    try { sessionStorage.setItem('uniscout_query', JSON.stringify(query)); } catch {}
+  };
 
   return (
     <BrowserRouter>
@@ -49,8 +69,8 @@ export default function App() {
             <MhtCetPortal 
               onBack={() => {}} // Now handled by useNavigate in component
               onRecommendationsReady={(results, query) => {
-                setColleges(results);
-                setLastQuery(query);
+                setCollegesAndPersist(results);
+                setLastQueryAndPersist(query);
               }}
             />
           } />
