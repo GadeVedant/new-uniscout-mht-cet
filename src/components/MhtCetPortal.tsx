@@ -26,7 +26,7 @@ const CATEGORIES = [
   { label: 'VJ/DT', value: 'GVJS' },
 ];
 const CAP_ROUNDS = ['I', 'III'];
-const YEARS = ['2024-25', '2023-24', '2022-23'];
+const CURRENT_YEAR = '2025-26'; // Always predict for the current admission cycle
 const BRANCHES = [
   'artificial intelligence and data science',
   'artificial intelligence and machine learning',
@@ -60,7 +60,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   });
   const [formData, setFormData] = useState<MhtCetFormData>({
     percentile: '',
-    year: '2024-25',
+    year: CURRENT_YEAR,
     capRound: 'I',
     category: 'GOPENS',
     branchPreference: '',
@@ -204,19 +204,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
                 </select>
               </div>
 
-              {/* Year */}
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-200">Academic Year</label>
-                <select
-                  required
-                  value={formData.year}
-                  onChange={(e) => setFormData(p => ({...p, year: e.target.value}))}
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
-                  disabled={isLoading}
-                >
-                  {YEARS.map(y => <option key={y} value={y} className="bg-slate-900">{y}</option>)}
-                </select>
-              </div>
+              {/* Year is automatically set to current cycle — no user input needed */}
 
               {/* Branch */}
               <div className="space-y-2">

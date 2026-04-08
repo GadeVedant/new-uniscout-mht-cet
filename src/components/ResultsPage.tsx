@@ -261,7 +261,7 @@ function ResultsContent({
                   delay={Math.min(i * 0.05, 0.3)}
                   isExpanded={expandedCard === college.id}
                   onToggle={() => setExpandedCard(expandedCard === college.id ? null : college.id)}
-                  onViewDetails={() => navigate(`/college/${college.code}`)}
+                  onViewDetails={() => navigate(`/college/${college.id}`)}
                   isCompared={comparisonSelection.some((c: any) => c.id === college.id)}
                   onCompareToggle={(checked) => handleCompareToggle(college, checked)}
                   compareDisabled={comparisonSelection.length >= 3}

@@ -157,14 +157,13 @@ class Trainer:
                 f"Trainer.train requires at least 2 distinct years; got {years}"
             )
 
-        # ---- Fixed validation year: 2024 (complete R1+R2+R3 available) ----
-        # Train on 2022-2023, validate on 2024.
-        # 2025 is used only for a secondary real-world check (R1 only).
-        PRIMARY_VAL_YEAR = 2024
+        # ---- Validation year: 2025 (complete R1+R2+R3 now available) ----
+        # Train on 2022-2024, validate on 2025.
+        PRIMARY_VAL_YEAR = 2025
         if PRIMARY_VAL_YEAR not in years:
-            # Fallback: use second-to-last year if 2024 not present
+            # Fallback: use second-to-last year
             PRIMARY_VAL_YEAR = sorted([y for y in years if y < max(years)])[-1]
-            logger.warning("2024 not in data, falling back to val_year=%s", PRIMARY_VAL_YEAR)
+            logger.warning("2025 not in data, falling back to val_year=%s", PRIMARY_VAL_YEAR)
 
         df_train_full = df[df["year"] < PRIMARY_VAL_YEAR].copy()
         df_val        = df[df["year"] == PRIMARY_VAL_YEAR].copy()
