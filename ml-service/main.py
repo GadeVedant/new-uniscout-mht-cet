@@ -63,6 +63,11 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="UniScout ML Service", version="1.0.0", lifespan=lifespan)
 
 
+@app.get("/")
+def root():
+    return {"service": "UniScout ML Service", "status": "running", "docs": "/docs", "health": "/health"}
+
+
 # ---------------------------------------------------------------------------
 # Health
 # ---------------------------------------------------------------------------
