@@ -28,7 +28,7 @@ The backend depends on the ML service URL, so deploy this first.
 2. Connect your GitHub repo: `Vedant040201/new-uniscout-mht-cet`
 3. Settings:
    - **Name:** `uniscout-ml`
-   - **Root Directory:** `new-uniscout-mht-cet/ml-service`
+   - **Root Directory:** `ml-service`
    - **Runtime:** Python 3
    - **Build Command:** `pip install -r requirements.txt`
    - **Start Command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
@@ -52,7 +52,7 @@ The backend depends on the ML service URL, so deploy this first.
 2. Same repo
 3. Settings:
    - **Name:** `uniscout-backend`
-   - **Root Directory:** `new-uniscout-mht-cet/backend-mhtcet`
+   - **Root Directory:** `backend-mhtcet`
    - **Runtime:** Node
    - **Build Command:** `npm install && npm run build`
    - **Start Command:** `node dist/server.js`
@@ -78,7 +78,7 @@ The backend depends on the ML service URL, so deploy this first.
 2. Same repo
 3. Settings:
    - **Name:** `uniscout-frontend`
-   - **Root Directory:** `new-uniscout-mht-cet`
+   - **Root Directory:** (leave blank)
    - **Build Command:** `npm install && npm run build`
    - **Publish Directory:** `build`
 4. Environment Variables:
