@@ -10,10 +10,10 @@ const config = {
   port: parseInt(process.env.PORT || '5001', 10),
   nodeEnv: process.env.NODE_ENV || 'development',
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-  // Single file (legacy) — used if DATA_FILE_PATH is set
+  // Single file (legacy) — kept for local dev only, not used in production
   dataFilePath: process.env.DATA_FILE_PATH
     ? path.resolve(__dirname, '../../..', process.env.DATA_FILE_PATH)
-    : path.resolve(__dirname, '../../..', 'MHTCET_CAP_DATA.xlsx'),
+    : path.resolve(__dirname, '..', 'data', 'cap1_2024.csv'), // fallback to a real CSV
   // Folder of multiple files — used if DATA_DIR is set (takes priority over dataFilePath)
   dataDir: (() => {
     if (process.env.DATA_DIR) {
