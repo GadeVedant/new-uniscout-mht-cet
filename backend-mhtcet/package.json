@@ -6,7 +6,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx src/server.ts",
-    "build": "tsc && node -e \"const fs=require('fs');const path=require('path');if(fs.existsSync('data')){fs.mkdirSync('dist/data',{recursive:true});fs.readdirSync('data').forEach(f=>{fs.copyFileSync('data/'+f,'dist/data/'+f);console.log('Copied data/'+f);})}\"",
+    "build": "rm -rf dist && tsc && node -e \"const fs=require('fs');const path=require('path');if(fs.existsSync('data')){fs.mkdirSync('dist/data',{recursive:true});fs.readdirSync('data').forEach(f=>{fs.copyFileSync('data/'+f,'dist/data/'+f);console.log('Copied data/'+f);})}\"",
     "start": "node --max-old-space-size=450 dist/server.js",
     "start:fast": "npm run build && node dist/server.js",
     "test": "vitest run"
