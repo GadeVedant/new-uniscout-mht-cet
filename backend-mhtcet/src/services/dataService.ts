@@ -18,6 +18,9 @@ class DataService {
 
       if (files.length === 0) throw new Error(`No data files found in DATA_DIR: ${config.dataDir}`);
 
+      // Load fees lookup first
+      const feesMap = this.loadFeesMap(config.dataDir);
+
       // Memory optimisation: in production, load only the 2 most recent years.
       // Older years are still present for cutoff history via the same records.
       // Set LOAD_ALL_YEARS=true to override.
@@ -37,7 +40,7 @@ class DataService {
         const t0 = Date.now();
         let parsed: CollegeData[];
         if (file.endsWith('.csv')) {
-          parsed = this.parseCsvToCollegeData(filePath, this.collegeData.length);
+          parsed = this.parseCsvToCollegeData(filePath, this.collegeData.length, feesMap);
         } else {
           const rows = this.readExcelFile(filePath);
           parsed = this.parseExcelData(rows, this.collegeData.length);
@@ -52,7 +55,7 @@ class DataService {
       logger.info(`Loading MHT-CET data from: ${filePath}`);
       if (!fs.existsSync(filePath)) throw new Error(`Data file not found: ${filePath}`);
       this.collegeData = filePath.endsWith('.csv')
-        ? this.parseCsvToCollegeData(filePath, 0)
+        ? this.parseCsvToCollegeData(filePath, 0, new Map())
         : this.parseExcelData(this.readExcelFile(filePath), 0);
     }
 
@@ -66,8 +69,31 @@ class DataService {
     return XLSX.utils.sheet_to_json<ExcelRow>(workbook.Sheets[workbook.SheetNames[0]]);
   }
 
+  /** Load fees from college_fees_*.csv into a Map<collegeCode, annualFees> */
+  private loadFeesMap(dataDir: string): Map<string, number> {
+    const map = new Map<string, number>();
+    const feesFiles = fs.readdirSync(dataDir).filter(f => f.startsWith('college_fees') && f.endsWith('.csv'));
+    for (const file of feesFiles) {
+      const content = fs.readFileSync(path.join(dataDir, file), 'utf8');
+      const lines = content.split(/\r?\n/);
+      if (lines.length < 2) continue;
+      const headers = this.parseCsvLine(lines[0]);
+      const codeIdx = headers.indexOf('college_code');
+      const feesIdx = headers.indexOf('annual_fees');
+      if (codeIdx === -1 || feesIdx === -1) continue;
+      for (let i = 1; i < lines.length; i++) {
+        const vals = this.parseCsvLine(lines[i]);
+        const code = String(vals[codeIdx] ?? '').replace(/^0+/, '').trim();
+        const fees = parseFloat(vals[feesIdx] ?? '');
+        if (code && !isNaN(fees)) map.set(code, fees);
+      }
+      logger.info(`  → ${file}: ${map.size} fees entries`);
+    }
+    return map;
+  }
+
   /** Parse CSV directly into CollegeData — no intermediate ExcelRow array */
-  private parseCsvToCollegeData(filePath: string, offset: number): CollegeData[] {
+  private parseCsvToCollegeData(filePath: string, offset: number, feesMap: Map<string, number> = new Map()): CollegeData[] {
     const content = fs.readFileSync(filePath, 'utf8');
     const lines = content.split(/\r?\n/);
     if (lines.length < 2) return [];
@@ -109,7 +135,7 @@ class DataService {
         district: get(['District', 'Dist']),
         collegeType: get(['College_Type', 'Type', 'College Type', 'Institute Type', 'Autonomy Status']),
         status: get(['Status', 'Admission Status']),
-        fees: parseFloat(get(['Fees', 'Annual Fees', 'Tuition Fee', 'Fee'])) || undefined,
+        fees: parseFloat(get(['Fees', 'Annual Fees', 'Tuition Fee', 'Fee'])) || feesMap.get(rawCode.replace(/^0+/, '')) || undefined,
         intake: parseInt(get(['Intake', 'Seats', 'Sanctioned Intake'])) || undefined,
       });
     }
