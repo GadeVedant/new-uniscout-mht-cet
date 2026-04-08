@@ -76,10 +76,40 @@ If you need to redeploy:
 ## After Deploy Checklist
 
 - [ ] `https://uniscout-ml-production.up.railway.app/health` → `model_loaded: true` ✅
-- [ ] `https://api.uniscout.in/api/health` → `success: true, totalRecords: ~80000`
-- [ ] `https://uniscout.in` loads homepage
+- [ ] `https://uniscout-backend.onrender.com/api/health` → `success: true, totalRecords: ~80000`
+- [ ] `https://uniscout-frontend.onrender.com` loads homepage
 - [ ] MHT-CET predictor returns results with admission bands
-- [ ] Submit sitemap to Google Search Console
+- [ ] College detail page shows cutoff history chart
+- [ ] Smart Form Filling generates preference list
+- [ ] `https://uniscout-frontend.onrender.com/robots.txt` accessible
+- [ ] `https://uniscout-frontend.onrender.com/sitemap.xml` accessible
+
+## SEO & Analytics Setup
+
+- [ ] **Google Search Console** — [search.google.com/search-console](https://search.google.com/search-console)
+  1. Add property → enter `https://uniscout.in`
+  2. Verify ownership (HTML tag or DNS TXT record)
+  3. Sitemaps → submit `https://uniscout.in/sitemap.xml`
+
+- [ ] **Bing Webmaster Tools** — [bing.com/webmasters](https://www.bing.com/webmasters)
+  1. Add site → `https://uniscout.in`
+  2. Submit sitemap: `https://uniscout.in/sitemap.xml`
+
+- [ ] **Google Analytics (GA4)** — [analytics.google.com](https://analytics.google.com)
+  1. Create GA4 property for `uniscout.in`
+  2. Copy the `gtag.js` snippet and add it to `index.html` before `</head>`
+
+- [ ] **Rich Results Test** — [search.google.com/test/rich-results](https://search.google.com/test/rich-results)
+  - Test `https://uniscout.in/` → should detect FAQPage schema
+  - Test `https://uniscout.in/jee-college-predictor` → should detect WebPage schema
+
+- [ ] **PageSpeed Insights** — [pagespeed.web.dev](https://pagespeed.web.dev)
+  - Check Core Web Vitals for `https://uniscout.in`
+  - Target: LCP < 2.5s, CLS < 0.1, INP < 200ms
+
+- [ ] **Connect custom domain** (`uniscout.in`) to Render frontend
+- [ ] Update `CORS_ORIGIN` on backend to `https://uniscout.in`
+- [ ] Update `VITE_API_URL` on frontend to `https://api.uniscout.in/api`
 
 ---
 
