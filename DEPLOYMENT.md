@@ -49,8 +49,7 @@ Add a second service to the same Railway project:
    PORT=5001
    CORS_ORIGIN=https://uniscout.in
    DATA_DIR=../ml-service/data
-   ML_SERVICE_URL=https://uniscout-ml.up.railway.app
-   RATE_LIMIT_MAX_REQUESTS=200
+   ML_SERVICE_URL=https://uniscout-ml.up.railway.app   RATE_LIMIT_MAX_REQUESTS=200
    ```
 5. Deploy — backend loads ~80k records on startup (2024-25 data only in production)
 6. Test: `https://uniscout-backend.up.railway.app/api/health`
