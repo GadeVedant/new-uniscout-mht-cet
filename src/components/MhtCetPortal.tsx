@@ -1,378 +1,291 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Sparkles, MapPin, BookOpen, Calendar, Users, Award, Info, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Loader2, AlertCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { MhtCetFormData } from '../App';
+import { api, CollegeRecommendation } from '../services/api';
+import { Slider } from './ui/slider';
+import { useSEO } from '../seo/useSEO';
 
 interface MhtCetPortalProps {
-  onSubmit: (data: MhtCetFormData) => void;
-  onBack: () => void;
-  isLoading?: boolean;
-  error?: string | null;
+  onBack?: () => void;
+  onRecommendationsReady: (results: CollegeRecommendation[], query: any) => void;
 }
 
-const engineeringBranches = [
-  'Artificial Intelligence and Data Science',
-  'Artificial Intelligence and Machine Learning',
-  'Civil Engineering',
-  'Computer Engineering',
-  'Computer Science and Engineering',
-  'Electrical Engineering',
-  'Electronics and Telecommunication Engineering',
-  'Information Technology',
-  'Mechanical Engineering',
+const CATEGORIES = [
+  { label: 'Open (General)', value: 'GOPENS' },
+  { label: 'SC', value: 'GSCS' },
+  { label: 'ST', value: 'GSTS' },
+  { label: 'OBC', value: 'GOBCS' },
+  { label: 'SEBC (EBC)', value: 'GSEBCS' },
+  { label: 'EWS', value: 'EWS' },
+  { label: 'TFWS', value: 'TFWS' },
+  { label: 'NT1', value: 'GNT1S' },
+  { label: 'NT2', value: 'GNT2S' },
+  { label: 'NT3', value: 'GNT3S' },
+  { label: 'VJ/DT', value: 'GVJS' },
+];
+const CAP_ROUNDS = ['I', 'III'];
+const YEARS = ['2024-25', '2023-24', '2022-23'];
+const BRANCHES = [
+  'artificial intelligence and data science',
+  'artificial intelligence and machine learning',
+  'civil engineering',
+  'computer engineering',
+  'computer science and engineering',
+  'electrical engineering',
+  'electronics and telecommunication engg',
+  'information technology',
+  'mechanical engineering',
+];
+// All districts/locations present in the MHT-CET data
+const DISTRICTS = [
+  'Ahmednagar', 'Akola', 'Amravati', 'Aurangabad', 'Beed',
+  'Bhandara', 'Buldhana', 'Chandrapur', 'Dhule', 'Gadhinglaj',
+  'Jalgaon', 'Jalna', 'Kolhapur', 'Latur', 'Mumbai',
+  'Nagpur', 'Nanded', 'Nandurbar', 'Nashik', 'Navi Mumbai',
+  'Osmanabad', 'Palghar', 'Panvel', 'Parbhani', 'Pune',
+  'Raigad', 'Ratnagiri', 'Sangli', 'Satara', 'Sindhudurg',
+  'Solapur', 'Thane', 'Ulhasnagar', 'Vasai', 'Wardha',
+  'Washim', 'Yavatmal',
 ];
 
-const maharashtraDistricts = [
-  'Thane', 'Pune', 'Ahmednagar', 'Sangli', 'Mumbai', 'Kolhapur', 
-  'Aurangabad', 'Nagpur', 'Akola', 'Amravati', 'Chandrapur', 
-  'Dhule', 'Hingoli', 'Jalgaon', 'Satara', 'Latur', 'Nanded', 
-  'Nashik', 'Osmanabad', 'Ratnagiri', 'Solapur', 'Pandharpur'
-];
+export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
+  const navigate = useNavigate();
 
-export function MhtCetPortal({ onSubmit, onBack, isLoading = false, error = null }: MhtCetPortalProps) {
+  useSEO({
+    title: 'MHT CET College Predictor – Enter Your Percentile | UNISCOUT',
+    description: 'Enter your MHT CET percentile, category, and branch to get AI-powered college recommendations with cutoff trends and admission probability bands.',
+    canonical: 'https://uniscout.in/mht-cet',
+  });
   const [formData, setFormData] = useState<MhtCetFormData>({
     percentile: '',
-    year: '2025',
+    year: '2024-25',
     capRound: 'I',
-    category: 'Open',
+    category: 'GOPENS',
     branchPreference: '',
     location: '',
   });
 
-  const [focusedField, setFocusedField] = useState<string | null>(null);
-  const [completedFields, setCompletedFields] = useState<Set<string>>(new Set());
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(formData);
+  const calculateProgress = () => {
+    let completed = 0;
+    if (formData.percentile !== '') completed++;
+    if (formData.category) completed++;
+    if (formData.capRound) completed++;
+    if (formData.branchPreference) completed++;
+    return (completed / 4) * 100; // location and year are optional/defaulted
   };
 
-  const handleChange = (field: keyof MhtCetFormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (value) {
-      setCompletedFields(prev => new Set(prev).add(field));
+  const handlePredict = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const requestPayload = {
+        percentile: parseFloat(formData.percentile),
+        year: formData.year,
+        capRound: formData.capRound,
+        category: formData.category,
+        branchPreference: formData.branchPreference,
+        location: formData.location || '',
+      };
+      
+      const response = await api.getRecommendations(requestPayload);
+
+      if (response.success && response.data) {
+        onRecommendationsReady(response.data, requestPayload);
+        navigate('/results');
+      } else {
+        setError(response.error || 'Failed to get recommendations');
+      }
+    } catch (err) {
+      console.error('API Error:', err);
+      setError(err instanceof Error ? err.message : 'Failed to connect to server.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const progress = (completedFields.size / 6) * 100;
-
   return (
-    <div className="min-h-screen px-4 py-8 relative z-10">
-      <div className="max-w-5xl mx-auto">
-        {/* Header with Back Button */}
-        <div className="flex items-center justify-between mb-12">
-          <motion.button
-            onClick={onBack}
-            className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-blue-200 hover:text-blue-100 transition-all backdrop-blur-sm"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ x: -5, scale: 1.05 }}
+    <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center">
+      <div className="max-w-3xl w-full">
+        {/* Header */}
+        <header className="flex items-center justify-between mb-8">
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-slate-300 transition-all backdrop-blur-sm"
           >
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-semibold">Back</span>
-          </motion.button>
-
-          {/* Progress indicator */}
-          <motion.div
-            className="hidden md:flex items-center gap-3 px-6 py-3 bg-white/10 border border-white/20 rounded-xl backdrop-blur-sm"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-          >
-            <span className="text-blue-200 text-sm font-medium">Progress</span>
-            <div className="w-32 h-2 bg-white/20 rounded-full overflow-hidden">
+            <ArrowLeft className="w-4 h-4" />
+            <span>Home</span>
+          </button>
+          
+          <div className="hidden md:flex items-center gap-3">
+            <span className="text-slate-400 text-sm">Progress</span>
+            <div className="w-32 h-2 bg-white/10 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-cyan-400 to-blue-500"
+                className="h-full bg-cyan-500"
                 initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.5 }}
+                animate={{ width: `${calculateProgress()}%` }}
               />
             </div>
-            <span className="text-cyan-300 font-bold text-sm">{Math.round(progress)}%</span>
-          </motion.div>
+          </div>
+        </header>
+
+        {/* Title */}
+        <div className="mb-10 text-center">
+          <h1 className="text-4xl font-bold text-white mb-2">MHT-CET Predictor</h1>
+          <p className="text-slate-400">Enter your details to find best matching colleges</p>
         </div>
 
-        {/* Main Header */}
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -30 }}
+        {/* Form Container */}
+        <motion.div 
+          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-10 shadow-xl"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-4 mb-6 relative">
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="w-12 h-12 text-cyan-400" />
-            </motion.div>
-            <h1 className="text-6xl font-black bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              MHT CET Portal
-            </h1>
-            <motion.div
-              animate={{ rotate: [0, -360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="w-12 h-12 text-blue-400" />
-            </motion.div>
-          </div>
-          <p className="text-blue-100 text-xl">Find your perfect engineering college</p>
-          <motion.div
-            className="mt-6 inline-flex items-center gap-2 px-5 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-full text-cyan-300 text-sm"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            <Info className="w-4 h-4" />
-            <span>Fill in your details to get personalized recommendations</span>
-          </motion.div>
-        </motion.div>
-
-        {/* Error Alert */}
-        <AnimatePresence>
-          {error && (
-            <motion.div
-              className="mb-8 p-4 bg-red-500/20 border border-red-400/30 rounded-xl text-red-300"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-            >
-              <p className="font-semibold">Error:</p>
-              <p>{error}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Form */}
-        <motion.form
-          onSubmit={handleSubmit}
-          className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl p-10 shadow-2xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Percentile */}
-            <FormField
-              label="Enter Your Percentile"
-              icon={<Award className="w-5 h-5" />}
-              delay={0.3}
-              isFocused={focusedField === 'percentile'}
-              isCompleted={completedFields.has('percentile')}
-            >
-              <input
-                type="number"
-                value={formData.percentile}
-                onChange={(e) => handleChange('percentile', e.target.value)}
-                onFocus={() => setFocusedField('percentile')}
-                onBlur={() => setFocusedField(null)}
-                placeholder="e.g., 95.5"
-                className="w-full px-5 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400 transition-all text-lg"
-                required
-                min="0"
-                max="100"
-                step="0.01"
-                disabled={isLoading}
-              />
-            </FormField>
-
-            {/* Year */}
-            <FormField
-              label="Academic Year"
-              icon={<Calendar className="w-5 h-5" />}
-              delay={0.4}
-              isFocused={focusedField === 'year'}
-              isCompleted={completedFields.has('year')}
-            >
-              <select
-                value={formData.year}
-                onChange={(e) => handleChange('year', e.target.value)}
-                onFocus={() => setFocusedField('year')}
-                onBlur={() => setFocusedField(null)}
-                className="w-full px-5 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400 transition-all appearance-none cursor-pointer text-lg"
-                disabled={isLoading}
-              >
-                <option value="2025" className="bg-slate-900 text-white">2025</option>
-                <option value="2024" className="bg-slate-900 text-white">2024</option>
-              </select>
-            </FormField>
-
-            {/* CAP Round */}
-            <FormField
-              label="CAP Round Number"
-              icon={<BookOpen className="w-5 h-5" />}
-              delay={0.5}
-              isFocused={focusedField === 'capRound'}
-              isCompleted={completedFields.has('capRound')}
-            >
-              <div className="grid grid-cols-2 gap-3">
-                {['I', 'II'].map((round) => (
-                  <motion.button
-                    key={round}
-                    type="button"
-                    onClick={() => handleChange('capRound', round)}
-                    className={`px-5 py-4 rounded-xl font-bold text-lg transition-all border-2 ${
-                      formData.capRound === round
-                        ? 'bg-gradient-to-r from-cyan-600 to-blue-600 border-cyan-400 text-white shadow-lg shadow-cyan-500/30'
-                        : 'bg-white/10 border-white/20 text-blue-200 hover:bg-white/20'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    disabled={isLoading}
-                  >
-                    Round {round}
-                  </motion.button>
-                ))}
+          <form onSubmit={handlePredict} className="space-y-8">
+            
+            {/* Percentile row */}
+            <div className="space-y-4">
+              <label className="block text-sm font-medium text-slate-200">Percentile Check (0-100)</label>
+              <div className="flex gap-4 items-center">
+                <Slider 
+                  max={100} 
+                  step={0.01} 
+                  value={[parseFloat(formData.percentile) || 0]}
+                  onValueChange={(vals: number[]) => setFormData(p => ({...p, percentile: vals[0].toString()}))}
+                  className="flex-1"
+                />
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="0.01"
+                  required
+                  value={formData.percentile}
+                  onChange={(e) => setFormData(p => ({...p, percentile: e.target.value}))}
+                  className="w-24 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-500"
+                  placeholder="95.50"
+                  disabled={isLoading}
+                />
               </div>
-            </FormField>
+            </div>
 
-            {/* Category */}
-            <FormField
-              label="Category"
-              icon={<Users className="w-5 h-5" />}
-              delay={0.6}
-              isFocused={focusedField === 'category'}
-              isCompleted={completedFields.has('category')}
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Category */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-slate-200">Category</label>
+                <select
+                  required
+                  value={formData.category}
+                  onChange={(e) => setFormData(p => ({...p, category: e.target.value}))}
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
+                  disabled={isLoading}
+                >
+                  {CATEGORIES.map(c => <option key={c.value} value={c.value} className="bg-slate-900">{c.label}</option>)}
+                </select>
+              </div>
+
+              {/* CAP Round */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-slate-200">CAP Round</label>
+                <select
+                  required
+                  value={formData.capRound}
+                  onChange={(e) => setFormData(p => ({...p, capRound: e.target.value}))}
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
+                  disabled={isLoading}
+                >
+                  {CAP_ROUNDS.map(r => <option key={r} value={r} className="bg-slate-900">Round {r}</option>)}
+                </select>
+              </div>
+
+              {/* Year */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-slate-200">Academic Year</label>
+                <select
+                  required
+                  value={formData.year}
+                  onChange={(e) => setFormData(p => ({...p, year: e.target.value}))}
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
+                  disabled={isLoading}
+                >
+                  {YEARS.map(y => <option key={y} value={y} className="bg-slate-900">{y}</option>)}
+                </select>
+              </div>
+
+              {/* Branch */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-slate-200">Branch Preference</label>
+                <select
+                  required
+                  value={formData.branchPreference}
+                  onChange={(e) => setFormData(p => ({...p, branchPreference: e.target.value}))}
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
+                  disabled={isLoading}
+                >
+                  <option value="" className="bg-slate-900 text-slate-400">Select branch</option>
+                  {BRANCHES.map(b => <option key={b} value={b} className="bg-slate-900">{b.replace(/\b\w/g, c => c.toUpperCase())}</option>)}
+                </select>
+              </div>
+
+              {/* District */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-slate-200">District (Optional)</label>
+                <select
+                  value={formData.location}
+                  onChange={(e) => setFormData(p => ({...p, location: e.target.value}))}
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
+                  disabled={isLoading}
+                >
+                  <option value="" className="bg-slate-900 text-slate-400">Any District</option>
+                  {DISTRICTS.map(d => <option key={d} value={d} className="bg-slate-900">{d}</option>)}
+                </select>
+              </div>
+            </div>
+
+            {/* Error Message */}
+            <AnimatePresence>
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 flex flex-col items-center gap-2"
+                >
+                  <div className="flex items-center gap-2 text-red-400 text-sm">
+                    <AlertCircle className="w-4 h-4" />
+                    <p>{error}</p>
+                  </div>
+                  <button type="button" onClick={handlePredict} className="text-red-300 text-xs hover:text-red-200 underline">
+                    Try Again
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-semibold rounded-lg px-4 py-4 transition-all disabled:opacity-70 flex justify-center items-center gap-2 shadow-lg"
             >
-              <select
-                value={formData.category}
-                onChange={(e) => handleChange('category', e.target.value)}
-                onFocus={() => setFocusedField('category')}
-                onBlur={() => setFocusedField(null)}
-                className="w-full px-5 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400 transition-all appearance-none cursor-pointer text-lg"
-                disabled={isLoading}
-              >
-                <option value="Open" className="bg-slate-900 text-white">Open</option>
-                <option value="SC" className="bg-slate-900 text-white">SC</option>
-                <option value="ST" className="bg-slate-900 text-white">ST</option>
-                <option value="OBC" className="bg-slate-900 text-white">OBC</option>
-                <option value="NT" className="bg-slate-900 text-white">NT</option>
-              </select>
-            </FormField>
-
-            {/* Branch Preference */}
-            <FormField
-              label="Branch Preference"
-              icon={<BookOpen className="w-5 h-5" />}
-              delay={0.7}
-              fullWidth
-              isFocused={focusedField === 'branchPreference'}
-              isCompleted={completedFields.has('branchPreference')}
-            >
-              <select
-                value={formData.branchPreference}
-                onChange={(e) => handleChange('branchPreference', e.target.value)}
-                onFocus={() => setFocusedField('branchPreference')}
-                onBlur={() => setFocusedField(null)}
-                className="w-full px-5 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400 transition-all appearance-none cursor-pointer text-lg"
-                required
-                disabled={isLoading}
-              >
-                <option value="" className="bg-slate-900 text-white">Select your preferred branch</option>
-                {engineeringBranches.map(branch => (
-                  <option key={branch} value={branch} className="bg-slate-900 text-white">
-                    {branch}
-                  </option>
-                ))}
-              </select>
-            </FormField>
-
-            {/* Location */}
-            <FormField
-              label="Preferred Location"
-              icon={<MapPin className="w-5 h-5" />}
-              delay={0.8}
-              fullWidth
-              isFocused={focusedField === 'location'}
-              isCompleted={completedFields.has('location')}
-            >
-              <select
-                value={formData.location}
-                onChange={(e) => handleChange('location', e.target.value)}
-                onFocus={() => setFocusedField('location')}
-                onBlur={() => setFocusedField(null)}
-                className="w-full px-5 py-4 bg-white/10 border-2 border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400 transition-all appearance-none cursor-pointer text-lg"
-                required
-                disabled={isLoading}
-              >
-                <option value="" className="bg-slate-900 text-white">Select your preferred location</option>
-                {maharashtraDistricts.map(district => (
-                  <option key={district} value={district} className="bg-slate-900 text-white">
-                    {district}
-                  </option>
-                ))}
-              </select>
-            </FormField>
-          </div>
-
-          {/* Submit Button */}
-          <motion.button
-            type="submit"
-            className="w-full mt-10 py-5 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-size-200 bg-pos-0 hover:bg-pos-100 text-white font-black text-xl rounded-2xl shadow-2xl shadow-cyan-500/40 hover:shadow-3xl hover:shadow-cyan-500/50 transition-all duration-500 relative overflow-hidden group"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            disabled={isLoading}
-          >
-            <span className="relative z-10 flex items-center justify-center gap-3">
-              <Sparkles className="w-6 h-6" />
-              {isLoading ? 'Finding Your Perfect Colleges...' : 'Find My Perfect Colleges'}
-              <Sparkles className="w-6 h-6" />
-            </span>
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              initial={{ x: '-100%' }}
-              animate={{ x: '200%' }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-            />
-          </motion.button>
-        </motion.form>
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  Finding colleges for you...
+                </>
+              ) : (
+                'Predict Colleges'
+              )}
+            </button>
+          </form>
+        </motion.div>
       </div>
-    </div>
-  );
-}
-
-interface FormFieldProps {
-  label: string;
-  icon: React.ReactNode;
-  delay: number;
-  children: React.ReactNode;
-  fullWidth?: boolean;
-  isFocused?: boolean;
-  isCompleted?: boolean;
-}
-
-function FormField({ label, icon, delay, children, fullWidth, isFocused, isCompleted }: FormFieldProps) {
-  return (
-    <motion.div
-      className={fullWidth ? 'md:col-span-2' : ''}
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay, duration: 0.4 }}
-    >
-      <label className="block">
-        <div className="flex items-center justify-between mb-3">
-          <div className={`flex items-center gap-3 font-semibold transition-colors ${
-            isFocused ? 'text-cyan-300' : 'text-blue-100'
-          }`}>
-            {icon}
-            <span className="text-lg">{label}</span>
-          </div>
-          <AnimatePresence>
-            {isCompleted && (
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                exit={{ scale: 0, rotate: 180 }}
-              >
-                <CheckCircle2 className="w-5 h-5 text-green-400" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-        {children}
-      </label>
-    </motion.div>
+    </main>
   );
 }

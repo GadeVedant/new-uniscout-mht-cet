@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Allow: /mht-cet
+Allow: /results
+Allow: /college/
+Allow: /compare
+Allow: /smart-form
+Allow: /branches/
+Allow: /colleges/
+
+# Block non-content routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /jee
+
+# Block query-string duplicates
+Disallow: /*?*ref=
+Disallow: /*?*utm_
+
+Sitemap: https://uniscout.in/sitemap.xml

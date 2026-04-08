@@ -1,0 +1,7 @@
+# XLSX data files are local-only — never commit raw data
+*.xlsx
+*.csv
+*.xls
+# Keep the directory itself
+!.gitignore
+!.gitkeep

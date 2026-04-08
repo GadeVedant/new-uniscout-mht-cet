@@ -32,6 +32,28 @@ export interface CollegeRecommendation {
   admissionChance: 'High' | 'Medium' | 'Low';
   capRound: string;
   year: string;
+  // ML-enriched fields
+  p10?: number;
+  p50?: number;
+  p90?: number;
+  admissionProbabilityP10?: number;
+  admissionProbabilityP90?: number;
+  admissionProbability?: number;
+  admissionBand?: 'Safe' | 'Likely' | 'Moderate' | 'Risky';
+  confidenceLabel?: string;
+  topFactors?: string[];
+  cutoffTrend?: 'rising' | 'falling' | 'stable';
+  // Placement fields
+  avgPackage?: string | null;
+  highestPackage?: string | null;
+  // Round 2 strategy fields
+  round2Opportunity?: boolean;
+  round2Delta?: number | null;
+}
+
+export interface CutoffHistoryEntry {
+  year: number;
+  cutoffPercentile: number;
 }
 
 export interface ApiResponse<T> {
@@ -40,9 +62,12 @@ export interface ApiResponse<T> {
   message?: string;
   error?: string;
   metadata?: {
-    totalResults: number;
-    query: RecommendationRequest;
-    timestamp: string;
+    totalResults?: number;
+    query?: RecommendationRequest;
+    timestamp?: string;
+    ml_unavailable?: boolean;
+    dataVersion?: number;
+    warning?: string;
   };
 }
 
@@ -52,6 +77,76 @@ export interface FilterOptions {
   categories: string[];
   branches: string[];
   locations: string[];
+}
+
+export interface Round2StrategyRequest {
+  percentile: number;
+  category: string;
+  branch: string;
+  capRound: string;
+}
+
+export interface MissedCollege {
+  collegeCode: string;
+  collegeName: string;
+  branchName: string;
+  category: string;
+  round1Cutoff: number;
+  expectedRound2Cutoff: number;
+  expectedDrop: number;
+  round2Probability: number;
+}
+
+export interface FreezeOrFloatResult {
+  recommendation: 'Freeze' | 'Float';
+  reasoning: string;
+  betterOption?: MissedCollege;
+}
+
+export interface Round2Opportunity {
+  collegeCode: string;
+  collegeName: string;
+  branchName: string;
+  category: string;
+  round1Cutoff: number;
+  expectedRound2Cutoff: number;
+  expectedDrop: number;
+  round2Opportunity: true;
+}
+
+export interface Round2StrategyResponse {
+  missedColleges: MissedCollege[];
+  freezeOrFloat: FreezeOrFloatResult;
+  round2Opportunities: Round2Opportunity[];
+}
+
+export interface FormFillingRequest {
+  percentile: number;
+  category: string;
+  capRound: string;
+  branchPreferences: string[];
+  budget?: number; // max annual fees in LPA
+  preferredDistricts: string[]; // max 3
+  priorityMode: 'branch' | 'college';
+}
+
+export interface PreferenceEntry {
+  rank: number;
+  collegeName: string;
+  branchName: string;
+  entryReason: string;
+  cutoffPercentile: number;
+  admissionBand: 'Safe' | 'Likely' | 'Moderate' | 'Risky';
+  admissionProbability: number;
+  fees: string;
+}
+
+export interface FormFillingResponse {
+  safePicks: PreferenceEntry[];
+  targetPicks: PreferenceEntry[];
+  dreamPicks: PreferenceEntry[];
+  mlAvailable: boolean;
+  budgetWarning: boolean;
 }
 
 // API Functions
@@ -149,6 +244,69 @@ export const api = {
       return await response.json();
     } catch (error) {
       console.error('Error checking health:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Get cutoff history for a specific college-branch-category-capRound combination
+   */
+  async getCutoffHistory(
+    collegeCode: string,
+    branch: string,
+    category: string,
+    capRound: string,
+    signal?: AbortSignal,
+  ): Promise<ApiResponse<CutoffHistoryEntry[]>> {
+    const params = new URLSearchParams({ branch, category, capRound });
+    const response = await fetch(
+      `${API_BASE_URL}/colleges/${encodeURIComponent(collegeCode)}/cutoff-history?${params}`,
+      { signal },
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  },
+
+  /**
+   * Get CAP Round 2 Strategy
+   */
+  async getRound2Strategy(request: Round2StrategyRequest): Promise<ApiResponse<Round2StrategyResponse>> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/strategy/round2`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(request),
+      });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching round 2 strategy:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Generate Smart Form Filling List
+   */
+  async generateFormFillingList(request: FormFillingRequest): Promise<ApiResponse<FormFillingResponse>> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/form-filling/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(request),
+      });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error generating form filling list:', error);
       throw error;
     }
   },

@@ -42,10 +42,10 @@ export function SscPortal({ onSubmit, onBack }: SscPortalProps) {
   const progress = (completedFields.size / 6) * 100;
 
   return (
-    <div className="min-h-screen px-4 py-8 relative z-10">
+    <main className="min-h-screen px-4 py-8 relative z-10">
       <div className="max-w-5xl mx-auto">
         {/* Header with Back Button */}
-        <div className="flex items-center justify-between mb-12">
+        <header className="flex items-center justify-between mb-12">
           <motion.button
             onClick={onBack}
             className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-purple-200 hover:text-purple-100 transition-all backdrop-blur-sm"
@@ -72,17 +72,17 @@ export function SscPortal({ onSubmit, onBack }: SscPortalProps) {
                 transition={{ duration: 0.5 }}
               />
             </div>
-            <span className="text-pink-300 font-bold text-sm">{Math.round(progress)}%</span>
+            <span className="text-pink-300 font-bold text-sm" aria-live="polite">{Math.round(progress)}%</span>
           </motion.div>
-        </div>
+        </header>
 
         {/* Main Header */}
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <section className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
           <div className="inline-flex items-center gap-4 mb-6 relative">
             <motion.div
               animate={{ rotate: [0, 360] }}
@@ -107,10 +107,11 @@ export function SscPortal({ onSubmit, onBack }: SscPortalProps) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
           >
-            <Info className="w-4 h-4" />
-            <span>Fill in your details to get personalized recommendations</span>
+              <Info className="w-4 h-4" />
+              <span>Fill in your details to get personalized recommendations</span>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </section>
 
         {/* Form */}
         <motion.form
@@ -294,7 +295,7 @@ export function SscPortal({ onSubmit, onBack }: SscPortalProps) {
           </motion.button>
         </motion.form>
       </div>
-    </div>
+    </main>
   );
 }
 
