@@ -183,5 +183,6 @@ def _run_training(job_id: str) -> None:
 
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.getenv("ML_SERVICE_PORT", "8000"))
+    # Railway injects PORT; fall back to ML_SERVICE_PORT then 8000
+    port = int(os.getenv("PORT", os.getenv("ML_SERVICE_PORT", "8000")))
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
