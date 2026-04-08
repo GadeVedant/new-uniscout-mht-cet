@@ -1,204 +1,143 @@
-# UniScout Deployment Guide (Render)
+# UniScout Deployment Guide
 
 ## Architecture
 
 ```
-uniscout.in          → Render Static Site  (React/Vite frontend)
-api.uniscout.in      → Render Web Service  (Node.js/Express backend)  $7/mo
-ml.uniscout.in       → Render Web Service  (Python/FastAPI ML service) $7/mo
+uniscout.in                              → Render Static Site  (React/Vite frontend) — free
+api.uniscout.in                          → Railway             (Node.js backend)      — free tier
+YOUR-USERNAME-uniscout-ml.hf.space       → Hugging Face Spaces (Python ML service)   — free
 ```
 
-Data files (CSVs) are committed to the repo — no disk needed.
+---
+
+## Step 1 — Deploy ML Service on Hugging Face Spaces
+
+HF Spaces is perfect for FastAPI — free, no hour limits, no spin-down.
+
+1. Go to [huggingface.co](https://huggingface.co) → New Space
+2. Settings:
+   - **Space name:** `uniscout-ml`
+   - **SDK:** Docker
+   - **Visibility:** Public (required for free tier)
+3. In the Space, go to **Files** → connect your GitHub repo
+   - Or: clone the Space repo locally, copy `ml-service/` contents into it, push
+4. The `Dockerfile` and `README.md` are already set up in `ml-service/`
+5. HF Spaces will build and deploy automatically
+6. Your ML URL will be: `https://YOUR-USERNAME-uniscout-ml.hf.space`
+7. Test: `https://YOUR-USERNAME-uniscout-ml.hf.space/health`
+
+**Note:** HF Spaces free tier sleeps after inactivity. First request wakes it up (~30s).
 
 ---
 
-## Prerequisites
+## Step 2 — Deploy Backend on Railway
 
-- GitHub repo pushed (already done)
-- Render account at [render.com](https://render.com)
-- Domain purchased (uniscout.in)
-
----
-
-## Step 1 — Deploy ML Service first
-
-The backend depends on the ML service URL, so deploy this first.
-
-1. Render dashboard → **New → Web Service**
-2. Connect your GitHub repo: `Vedant040201/new-uniscout-mht-cet`
+1. Go to [railway.app](https://railway.app) → New Project → Deploy from GitHub
+2. Select repo: `Vedant040201/new-uniscout-mht-cet`
 3. Settings:
-   - **Name:** `uniscout-ml`
-   - **Root Directory:** `ml-service`
-   - **Runtime:** Python 3
-   - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
-   - **Plan:** $7/mo (Starter) — keeps it always-on
-4. Environment Variables:
-   ```
-   ML_DATA_DIR=./data
-   ML_MODEL_DIR=./models
-   TRAINING_ENABLED=false
-   DATA_VERSION=2024-25
-   ```
-5. Click **Deploy**
-6. Wait for deploy to finish, then copy the service URL e.g. `https://uniscout-ml.onrender.com`
-7. Test: `https://uniscout-ml.onrender.com/health` → should return `{"status":"ok",...}`
-
----
-
-## Step 2 — Deploy Backend
-
-1. Render dashboard → **New → Web Service**
-2. Same repo
-3. Settings:
-   - **Name:** `uniscout-backend`
    - **Root Directory:** `backend-mhtcet`
-   - **Runtime:** Node
-   - **Build Command:** `npm install && npm run build`
-   - **Start Command:** `node dist/server.js`
-   - **Plan:** $7/mo (Starter)
-4. Environment Variables:
+   - Railway auto-detects `railway.toml` for build/start commands
+4. Add environment variables (Settings → Variables):
    ```
    NODE_ENV=production
    PORT=5001
    CORS_ORIGIN=https://uniscout.in
    DATA_DIR=../ml-service/data
-   ML_SERVICE_URL=https://uniscout-ml.onrender.com
+   ML_SERVICE_URL=https://YOUR-USERNAME-uniscout-ml.hf.space
    RATE_LIMIT_MAX_REQUESTS=200
    ```
-5. Click **Deploy**
-6. Wait for deploy — backend loads 206k records on startup, takes ~30-60s
-7. Test: `https://uniscout-backend.onrender.com/api/health` → should return `{"success":true,"stats":{"totalRecords":206594,...}}`
+5. Railway assigns a URL like `https://uniscout-backend.up.railway.app`
+6. Test: `https://uniscout-backend.up.railway.app/api/health`
+
+**Custom domain:** Railway → your service → Settings → Custom Domain → add `api.uniscout.in`
 
 ---
 
-## Step 3 — Deploy Frontend
+## Step 3 — Deploy Frontend on Render
 
 1. Render dashboard → **New → Static Site**
-2. Same repo
+2. Connect repo: `Vedant040201/new-uniscout-mht-cet`
 3. Settings:
-   - **Name:** `uniscout-frontend`
    - **Root Directory:** (leave blank)
    - **Build Command:** `npm install && npm run build`
    - **Publish Directory:** `build`
-4. Environment Variables:
+4. Environment variable:
    ```
-   VITE_API_URL=https://uniscout-backend.onrender.com/api
+   VITE_API_URL=https://api.uniscout.in/api
    ```
-5. Click **Deploy**
-6. Test: visit the Render-provided URL, try the MHT-CET predictor
+   (or use the Railway URL before custom domain is set up)
+5. Custom domain: Render → Settings → Custom Domains → add `uniscout.in`
 
 ---
 
-## Step 4 — Connect Custom Domain
+## Step 4 — DNS Records
 
-### Frontend (uniscout.in)
-1. Render → `uniscout-frontend` → Settings → Custom Domains
-2. Add `uniscout.in` and `www.uniscout.in`
-3. Render gives you a CNAME value — add it in your domain registrar:
-   ```
-   Type: CNAME
-   Name: www
-   Value: <render-provided-value>
-   ```
-   For the apex domain (`uniscout.in`), use an A record or ALIAS record as Render instructs.
+Add in your domain registrar:
 
-### Backend subdomain (api.uniscout.in)
-1. Render → `uniscout-backend` → Settings → Custom Domains
-2. Add `api.uniscout.in`
-3. Add CNAME in registrar:
-   ```
-   Type: CNAME
-   Name: api
-   Value: <render-provided-value>
-   ```
-4. Update backend env var: `CORS_ORIGIN=https://uniscout.in`
-5. Update frontend env var: `VITE_API_URL=https://api.uniscout.in/api`
-6. Redeploy frontend after updating env var
+| Type | Name | Value |
+|------|------|-------|
+| CNAME | `www` | `cname.vercel-dns.com` (or Render-provided) |
+| A/CNAME | `@` | Render-provided for apex domain |
+| CNAME | `api` | your-service.up.railway.app |
 
 ---
 
-## Step 5 — After Deploy Checklist
+## After Deploy Checklist
 
+- [ ] `https://YOUR-USERNAME-uniscout-ml.hf.space/health` → `{"status":"ok","model_loaded":true}`
+- [ ] `https://api.uniscout.in/api/health` → `{"success":true,"stats":{"totalRecords":...}}`
 - [ ] `https://uniscout.in` loads the homepage
-- [ ] `https://api.uniscout.in/api/health` returns `{"success":true,...}`
-- [ ] MHT-CET predictor returns college results
-- [ ] College detail page loads cutoff history chart
-- [ ] Smart Form Filling generates preference list
-- [ ] `https://uniscout.in/robots.txt` is accessible
-- [ ] `https://uniscout.in/sitemap.xml` is accessible
-- [ ] Submit sitemap to [Google Search Console](https://search.google.com/search-console)
-- [ ] Submit sitemap to [Bing Webmaster Tools](https://www.bing.com/webmasters)
+- [ ] MHT-CET predictor returns college results with admission bands
+- [ ] Submit `https://uniscout.in/sitemap.xml` to Google Search Console
 
 ---
 
-## Adding New Exam Data (JEE, NEET, CAT)
-
-When you have data for a new exam:
-
-1. Add CSV files to `ml-service/data/` following the naming pattern:
-   ```
-   jee_main_2024.csv
-   neet_2024.csv
-   cat_2024.csv
-   ```
-2. `git add ml-service/data/ && git commit -m "data: add JEE 2024 data" && git push`
-3. Render auto-deploys — no manual steps needed
-
----
-
-## Cost Summary
-
-| Service | Plan | Cost |
-|---|---|---|
-| Frontend (Static Site) | Free | $0/mo |
-| Backend (Node.js) | Starter | $7/mo |
-| ML Service (Python) | Starter | $7/mo |
-| **Total** | | **$14/mo** |
-
-No disk needed — data is in the repo.
-
----
-
-## Environment Variables Quick Reference
+## Environment Variables Reference
 
 ### Frontend (Render Static Site)
 | Variable | Value |
 |---|---|
 | `VITE_API_URL` | `https://api.uniscout.in/api` |
 
-### Backend (Render Web Service)
+### Backend (Railway)
 | Variable | Value |
 |---|---|
 | `NODE_ENV` | `production` |
 | `PORT` | `5001` |
 | `CORS_ORIGIN` | `https://uniscout.in` |
 | `DATA_DIR` | `../ml-service/data` |
-| `ML_SERVICE_URL` | `https://uniscout-ml.onrender.com` |
+| `ML_SERVICE_URL` | `https://YOUR-USERNAME-uniscout-ml.hf.space` |
 | `RATE_LIMIT_MAX_REQUESTS` | `200` |
 
-### ML Service (Render Web Service)
+### ML Service (HF Spaces — set in Space Settings → Variables)
 | Variable | Value |
 |---|---|
-| `ML_DATA_DIR` | `./data` |
 | `ML_MODEL_DIR` | `./models` |
+| `ML_DATA_DIR` | `./data` |
 | `TRAINING_ENABLED` | `false` |
-| `DATA_VERSION` | `2024-25` |
+
+---
+
+## Cost Summary
+
+| Service | Platform | Cost |
+|---|---|---|
+| Frontend | Render Static Site | Free |
+| Backend | Railway | Free ($5 credit/mo) |
+| ML Service | Hugging Face Spaces | Free |
+| **Total** | | **$0/mo** |
 
 ---
 
 ## Local Development
-
-Run all three services simultaneously in separate terminals:
 
 **Terminal 1 — ML Service**
 ```bash
 cd new-uniscout-mht-cet/ml-service
 python -m uvicorn main:app --host 0.0.0.0 --port 8000
 ```
-Wait for: `Application startup complete.`
 
-**Terminal 2 — Backend** (takes ~30s to load data)
+**Terminal 2 — Backend**
 ```bash
 cd new-uniscout-mht-cet/backend-mhtcet
 node dist/server.js
@@ -211,3 +150,15 @@ cd new-uniscout-mht-cet
 npm run dev
 ```
 Open: `http://localhost:3000`
+
+---
+
+## Adding New Exam Data
+
+Drop CSV files into `ml-service/data/` and push:
+```bash
+git add ml-service/data/jee_main_2024.csv
+git commit -m "data: add JEE Main 2024"
+git push
+```
+Railway auto-redeploys. HF Spaces auto-redeploys if connected to GitHub.
