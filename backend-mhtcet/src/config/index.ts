@@ -18,10 +18,10 @@ const config = {
   dataDir: (() => {
     if (process.env.DATA_DIR) {
       const d = process.env.DATA_DIR;
-      return path.isAbsolute(d) ? d : path.resolve(__dirname, '../../..', d);
+      return path.isAbsolute(d) ? d : path.resolve(__dirname, '../..', d);
     }
-    // Default: ./data inside backend-mhtcet (works on Railway and locally)
-    return path.resolve(__dirname, '../../..', 'data');
+    // Default: dist/data (copied there during build)
+    return path.resolve(__dirname, '..', 'data');
   })(),
   rateLimit: {
     windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000', 10),
