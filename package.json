@@ -74,7 +74,6 @@
             "test:watch": "vitest"
       },
       "description": "A college-based recommendation system for engineering admissions in Maharashtra based on MHT CET marks and percentile.",
-      "main": "postcss.config.js",
       "repository": {
             "type": "git",
             "url": "git+https://github.com/Vedant040201/new-uniscout-mht-cet.git"
@@ -82,7 +81,6 @@
       "keywords": [],
       "author": "",
       "license": "ISC",
-      "type": "commonjs",
       "bugs": {
             "url": "https://github.com/Vedant040201/new-uniscout-mht-cet/issues"
       },
