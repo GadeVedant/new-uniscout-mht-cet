@@ -11,10 +11,7 @@ class DataService {
   private filterOptions: FilterOptions = { years: [], capRounds: [], categories: [], branches: [], locations: [] };
 
   async loadData(): Promise<void> {
-    const allRows: ExcelRow[] = [];
-
     if (config.dataDir && fs.existsSync(config.dataDir)) {
-      // Multi-file mode: load every .xlsx/.xls/.csv in the directory
       const files = fs.readdirSync(config.dataDir)
         .filter(f => /\.(xlsx|xls|csv)$/i.test(f) && f.startsWith('cap'))
         .sort();
@@ -22,28 +19,28 @@ class DataService {
       if (files.length === 0) throw new Error(`No data files found in DATA_DIR: ${config.dataDir}`);
 
       logger.info(`Loading ${files.length} data file(s) from: ${config.dataDir}`);
+      let totalRows = 0;
       for (const file of files) {
         const filePath = path.join(config.dataDir, file);
         const t0 = Date.now();
+        // Parse directly into CollegeData — avoids holding raw rows in memory
         const rows = file.endsWith('.csv')
           ? this.readCsvFile(filePath)
           : this.readExcelFile(filePath);
-        logger.info(`  → ${file}: ${rows.length} rows (${Date.now() - t0}ms)`);
-        allRows.push(...rows);
+        const parsed = this.parseExcelData(rows, this.collegeData.length);
+        this.collegeData.push(...parsed);
+        totalRows += rows.length;
+        logger.info(`  → ${file}: ${rows.length} rows → ${parsed.length} records (${Date.now() - t0}ms)`);
       }
+      logger.info(`Total: ${totalRows} raw rows → ${this.collegeData.length} college records`);
     } else {
-      // Single-file mode (legacy / default)
       const filePath = config.dataFilePath;
       logger.info(`Loading MHT-CET data from: ${filePath}`);
       if (!fs.existsSync(filePath)) throw new Error(`Data file not found: ${filePath}`);
-      const rows = filePath.endsWith('.csv')
-        ? this.readCsvFile(filePath)
-        : this.readExcelFile(filePath);
-      allRows.push(...rows);
+      const rows = filePath.endsWith('.csv') ? this.readCsvFile(filePath) : this.readExcelFile(filePath);
+      this.collegeData = this.parseExcelData(rows, 0);
     }
 
-    logger.info(`Total raw rows across all files: ${allRows.length}`);
-    this.collegeData = this.parseExcelData(allRows);
     this.extractFilterOptions();
     this.isDataLoaded = true;
     logger.info(`Loaded ${this.collegeData.length} college records`);
@@ -119,7 +116,7 @@ class DataService {
     return '';
   }
 
-  private parseExcelData(rawData: ExcelRow[]): CollegeData[] {
+  private parseExcelData(rawData: ExcelRow[], offset = 0): CollegeData[] {
     return rawData.reduce<CollegeData[]>((acc, row, i) => {
       const collegeName = this.getCol(row, [
         'College_Name', 'College Name', 'Institute Name', 'Inst Name', 'Name',
@@ -136,7 +133,7 @@ class DataService {
       const cutoffPercentile = parseFloat(cutoffRaw) || 0;
 
       acc.push({
-        collegeCode: String(this.getCol(row, ['College_Code', 'College Code', 'Inst Code', 'Institute Code']) || `COL${i}`).replace(/^0+/, '') || `COL${i}`,
+        collegeCode: String(this.getCol(row, ['College_Code', 'College Code', 'Inst Code', 'Institute Code']) || `COL${offset + i}`).replace(/^0+/, '') || `COL${offset + i}`,
         collegeName: collegeName.replace(/\s+/g, ' '),
         branchCode: this.getCol(row, ['Branch_Code', 'Branch Code', 'Course Code']),
         branchName: branchName.toLowerCase().trim(),
