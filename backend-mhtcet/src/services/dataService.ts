@@ -23,22 +23,26 @@ class DataService {
       for (const file of files) {
         const filePath = path.join(config.dataDir, file);
         const t0 = Date.now();
-        // Parse directly into CollegeData — avoids holding raw rows in memory
-        const rows = file.endsWith('.csv')
-          ? this.readCsvFile(filePath)
-          : this.readExcelFile(filePath);
-        const parsed = this.parseExcelData(rows, this.collegeData.length);
+        let parsed: CollegeData[];
+        if (file.endsWith('.csv')) {
+          // Direct parse — no intermediate ExcelRow array
+          parsed = this.parseCsvToCollegeData(filePath, this.collegeData.length);
+        } else {
+          const rows = this.readExcelFile(filePath);
+          parsed = this.parseExcelData(rows, this.collegeData.length);
+        }
         this.collegeData.push(...parsed);
-        totalRows += rows.length;
-        logger.info(`  → ${file}: ${rows.length} rows → ${parsed.length} records (${Date.now() - t0}ms)`);
+        totalRows += parsed.length;
+        logger.info(`  → ${file}: ${parsed.length} records (${Date.now() - t0}ms)`);
       }
       logger.info(`Total: ${totalRows} raw rows → ${this.collegeData.length} college records`);
     } else {
       const filePath = config.dataFilePath;
       logger.info(`Loading MHT-CET data from: ${filePath}`);
       if (!fs.existsSync(filePath)) throw new Error(`Data file not found: ${filePath}`);
-      const rows = filePath.endsWith('.csv') ? this.readCsvFile(filePath) : this.readExcelFile(filePath);
-      this.collegeData = this.parseExcelData(rows, 0);
+      this.collegeData = filePath.endsWith('.csv')
+        ? this.parseCsvToCollegeData(filePath, 0)
+        : this.parseExcelData(this.readExcelFile(filePath), 0);
     }
 
     this.extractFilterOptions();
@@ -51,26 +55,54 @@ class DataService {
     return XLSX.utils.sheet_to_json<ExcelRow>(workbook.Sheets[workbook.SheetNames[0]]);
   }
 
-  /** Fast native CSV parser — ~10x faster than XLSX for CSV files */
-  private readCsvFile(filePath: string): ExcelRow[] {
+  /** Parse CSV directly into CollegeData — no intermediate ExcelRow array */
+  private parseCsvToCollegeData(filePath: string, offset: number): CollegeData[] {
     const content = fs.readFileSync(filePath, 'utf8');
     const lines = content.split(/\r?\n/);
     if (lines.length < 2) return [];
 
     const headers = this.parseCsvLine(lines[0]);
-    const rows: ExcelRow[] = [];
+    const result: CollegeData[] = [];
 
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i];
       if (!line || !line.trim()) continue;
       const values = this.parseCsvLine(line);
-      const row: ExcelRow = {};
-      for (let j = 0; j < headers.length; j++) {
-        row[headers[j]] = values[j] ?? '';
-      }
-      rows.push(row);
+
+      // Build a minimal lookup without creating a full ExcelRow object
+      const get = (keys: string[]): string => {
+        for (const k of keys) {
+          const idx = headers.indexOf(k);
+          if (idx !== -1 && values[idx]) return values[idx].trim();
+        }
+        return '';
+      };
+
+      const collegeName = get(['College_Name', 'College Name', 'Institute Name', 'Inst Name', 'Name']);
+      const branchName = get(['Branch_Name', 'Branch Name', 'Course Name', 'Branch', 'Course']);
+      if (!collegeName || !branchName) continue;
+
+      const cutoffRaw = get(['Percentile', 'Cutoff', 'CutOff Percentile', 'Cutoff Percentile', 'Last Admitted Percentile']);
+      const rawCode = get(['College_Code', 'College Code', 'Inst Code', 'Institute Code']);
+
+      result.push({
+        collegeCode: String(rawCode || `COL${offset + i}`).replace(/^0+/, '') || `COL${offset + i}`,
+        collegeName: collegeName.replace(/\s+/g, ' '),
+        branchCode: get(['Branch_Code', 'Branch Code', 'Course Code']),
+        branchName: branchName.toLowerCase().trim(),
+        category: get(['Category', 'Seat_Type', 'Seat Type', 'SeatType', 'Caste']),
+        cutoffPercentile: parseFloat(cutoffRaw) || 0,
+        year: get(['Year', 'Academic Year', 'Admission Year']),
+        capRound: this.normalizeCapRound(get(['CAP_Round', 'CAP Round', 'Round', 'Round No', 'CAP Round No'])),
+        location: get(['Location', 'City', 'Place', 'Taluka']),
+        district: get(['District', 'Dist']),
+        collegeType: get(['College_Type', 'Type', 'College Type', 'Institute Type', 'Autonomy Status']),
+        status: get(['Status', 'Admission Status']),
+        fees: parseFloat(get(['Fees', 'Annual Fees', 'Tuition Fee', 'Fee'])) || undefined,
+        intake: parseInt(get(['Intake', 'Seats', 'Sanctioned Intake'])) || undefined,
+      });
     }
-    return rows;
+    return result;
   }
 
   /** Parse a single CSV line respecting quoted fields */
