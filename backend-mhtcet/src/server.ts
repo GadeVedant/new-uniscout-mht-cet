@@ -50,7 +50,7 @@ async function start() {
     logger.info(`Data dir: ${config.dataDir}`);
     logger.info(`Data dir exists: ${fs.existsSync(config.dataDir)}`);
     await dataService.loadData();
-    await placementLoader.load(process.env.PLACEMENT_DATA_PATH ?? './data/placements.csv');
+    await placementLoader.load(process.env.PLACEMENT_DATA_PATH ?? './data/placement_data_2025_26.csv');
     app.listen(config.port, () => {
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
       const msg = `MHT-CET backend running on port ${config.port} (started in ${elapsed}s)`;
