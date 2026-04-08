@@ -15,10 +15,10 @@ const config = {
     ? path.resolve(__dirname, '../../..', process.env.DATA_FILE_PATH)
     : path.resolve(__dirname, '../../..', 'MHTCET_CAP_DATA.xlsx'),
   // Folder of multiple files — used if DATA_DIR is set (takes priority over dataFilePath)
-  // Defaults to ml-service/data which contains the cap*.csv files
+  // Default: go up from dist/config/ → backend-mhtcet/ → repo root → ml-service/data
   dataDir: process.env.DATA_DIR
-    ? path.resolve(__dirname, '../../..', process.env.DATA_DIR)
-    : path.resolve(__dirname, '../../..', 'ml-service', 'data'),
+    ? path.resolve(process.env.DATA_DIR)  // absolute if provided, else resolve relative to cwd
+    : path.resolve(__dirname, '../../../..', 'ml-service', 'data'),
   rateLimit: {
     windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000', 10),
     maxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100', 10),

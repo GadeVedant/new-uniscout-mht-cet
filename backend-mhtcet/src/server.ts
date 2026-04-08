@@ -35,6 +35,7 @@ app.use(errorHandler);
 async function start() {
   const startTime = Date.now();
   try {
+    logger.info(`Data dir: ${config.dataDir}`);
     await dataService.loadData();
     await placementLoader.load(process.env.PLACEMENT_DATA_PATH ?? './data/placements.csv');
     app.listen(config.port, () => {
