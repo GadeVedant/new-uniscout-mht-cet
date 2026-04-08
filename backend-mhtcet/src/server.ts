@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
+import fs from 'fs';
 import config from './config/index.js';
 import logger from './utils/logger.js';
 import routes from './routes/index.js';
@@ -38,6 +39,7 @@ async function start() {
   const startTime = Date.now();
   try {
     logger.info(`Data dir: ${config.dataDir}`);
+    logger.info(`Data dir exists: ${fs.existsSync(config.dataDir)}`);
     await dataService.loadData();
     await placementLoader.load(process.env.PLACEMENT_DATA_PATH ?? './data/placements.csv');
     app.listen(config.port, () => {
