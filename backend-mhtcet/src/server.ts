@@ -15,13 +15,22 @@ const app = express();
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: [
-    config.corsOrigin,
-    'https://uniscout.in',
-    'https://www.uniscout.in',
-    'http://localhost:3000',
-    'http://localhost:3001',
-  ],
+  origin: (origin, callback) => {
+    // Allow requests with no origin (curl, Postman, server-to-server)
+    if (!origin) return callback(null, true);
+    const allowed = [
+      config.corsOrigin,
+      config.corsOrigin.replace(/\/$/, ''), // without trailing slash
+      config.corsOrigin + '/',              // with trailing slash
+      'https://uniscout-frontend.onrender.com',
+      'https://uniscout.in',
+      'https://www.uniscout.in',
+      'http://localhost:3000',
+      'http://localhost:3001',
+    ];
+    if (allowed.includes(origin)) return callback(null, true);
+    return callback(new Error(`CORS: origin ${origin} not allowed`));
+  },
   credentials: true,
 }));
 app.use(rateLimit({ windowMs: config.rateLimit.windowMs, max: config.rateLimit.maxRequests }));
