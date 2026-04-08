@@ -15,10 +15,14 @@ const config = {
     ? path.resolve(__dirname, '../../..', process.env.DATA_FILE_PATH)
     : path.resolve(__dirname, '../../..', 'MHTCET_CAP_DATA.xlsx'),
   // Folder of multiple files — used if DATA_DIR is set (takes priority over dataFilePath)
-  // Default: go up from dist/config/ → backend-mhtcet/ → repo root → ml-service/data
-  dataDir: process.env.DATA_DIR
-    ? path.resolve(process.env.DATA_DIR)  // absolute if provided, else resolve relative to cwd
-    : path.resolve(__dirname, '../../../..', 'ml-service', 'data'),
+  dataDir: (() => {
+    if (process.env.DATA_DIR) {
+      const d = process.env.DATA_DIR;
+      return path.isAbsolute(d) ? d : path.resolve(__dirname, '../../..', d);
+    }
+    // Default: ./data inside backend-mhtcet (works on Railway and locally)
+    return path.resolve(__dirname, '../../..', 'data');
+  })(),
   rateLimit: {
     windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000', 10),
     maxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100', 10),
