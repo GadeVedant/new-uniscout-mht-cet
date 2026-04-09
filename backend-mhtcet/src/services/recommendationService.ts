@@ -48,7 +48,7 @@ class RecommendationService {
   // ---------------------------------------------------------------------------
   async getRecommendations(
     request: RecommendationRequest,
-  ): Promise<{ recommendations: CollegeRecommendation[]; mlUnavailable: boolean }> {
+  ): Promise<{ recommendations: CollegeRecommendation[]; mlUnavailable: boolean; locationFallback: boolean }> {
     const requestId = randomUUID();
     const { percentile, year, capRound, category, branchPreference, location } = request;
     logger.info(`MHT-CET recommendation: percentile=${percentile}, year=${year}, capRound=${capRound}, category=${category}, requestId=${requestId}`);
@@ -75,11 +75,13 @@ class RecommendationService {
     });
 
     let filtered = applyFilters(true);
+    let locationFallback = false;
 
     // If location filter yields no results, fall back to all locations
     if (filtered.length === 0 && location) {
       logger.info(`No results for location="${location}", falling back to all locations`);
       filtered = applyFilters(false);
+      locationFallback = true;
     }
 
     logger.info(`Filtered to ${filtered.length} colleges`);
@@ -109,7 +111,7 @@ class RecommendationService {
       rec.highestPackage = placement.highestPackage;
     }
 
-    return { recommendations, mlUnavailable };
+    return { recommendations, mlUnavailable, locationFallback };
   }
 
   // ---------------------------------------------------------------------------

@@ -66,6 +66,7 @@ export interface ApiResponse<T> {
     query?: RecommendationRequest;
     timestamp?: string;
     ml_unavailable?: boolean;
+    location_fallback?: boolean;
     dataVersion?: number;
     warning?: string;
   };

@@ -24,7 +24,7 @@ export const getRecommendations = async (
       location: body.location,
     };
 
-    const { recommendations, mlUnavailable } = await recommendationService.getRecommendations(request);
+    const { recommendations, mlUnavailable, locationFallback } = await recommendationService.getRecommendations(request);
     res.json({
       success: true,
       data: recommendations,
@@ -33,6 +33,7 @@ export const getRecommendations = async (
         query: request,
         timestamp: new Date().toISOString(),
         ...(mlUnavailable ? { ml_unavailable: true } : {}),
+        ...(locationFallback ? { location_fallback: true } : {}),
       },
     });
   } catch (error) {

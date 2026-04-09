@@ -96,7 +96,10 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
       const response = await api.getRecommendations(requestPayload);
 
       if (response.success && response.data) {
-        onRecommendationsReady(response.data, requestPayload);
+        onRecommendationsReady(response.data, {
+          ...requestPayload,
+          locationFallback: response.metadata?.location_fallback ?? false,
+        });
         navigate('/results');
       } else {
         setError(response.error || 'Failed to get recommendations');
