@@ -24,18 +24,6 @@ class DataService {
       // Load seat matrix lookup: (collegeCode, branchName) -> intake
       const seatMap = this.loadSeatMap(config.dataDir);
 
-      // Memory optimisation: in production, load only the 2 most recent years.
-      // Older years are still present for cutoff history via the same records.
-      // Set LOAD_ALL_YEARS=true to override.
-      if (process.env.NODE_ENV === 'production' && process.env.LOAD_ALL_YEARS !== 'true') {
-        // Keep files whose name contains 2023, 2024 or 2025 (3 years of history)
-        const recentFiles = files.filter(f => /202[345]/.test(f));
-        if (recentFiles.length > 0) {
-          logger.info(`Production mode: loading ${recentFiles.length}/${files.length} files (2023-25). Set LOAD_ALL_YEARS=true to load all.`);
-          files = recentFiles;
-        }
-      }
-
       logger.info(`Loading ${files.length} data file(s) from: ${config.dataDir}`);
       let totalRows = 0;
       for (const file of files) {
@@ -52,7 +40,19 @@ class DataService {
         totalRows += parsed.length;
         logger.info(`  → ${file}: ${parsed.length} records (${Date.now() - t0}ms)`);
       }
-      logger.info(`Total: ${totalRows} rows → ${this.collegeData.length} college records`);
+      logger.info(`Total: ${totalRows} rows loaded`);
+
+      // Deduplicate: keep only the most recent year's record per college+branch+category+capRound
+      const best = new Map<string, CollegeData>();
+      for (const row of this.collegeData) {
+        const key = `${row.collegeCode}|${row.branchName}|${row.category}|${row.capRound}`;
+        const existing = best.get(key);
+        if (!existing || (row.year ?? '') > (existing.year ?? '')) {
+          best.set(key, row);
+        }
+      }
+      this.collegeData = [...best.values()];
+      logger.info(`After dedup (most recent year per college+branch): ${this.collegeData.length} records`);
     } else {
       const filePath = config.dataFilePath;
       logger.info(`Loading MHT-CET data from: ${filePath}`);
@@ -64,7 +64,7 @@ class DataService {
 
     this.extractFilterOptions();
     this.isDataLoaded = true;
-    logger.info(`Loaded ${this.collegeData.length} college records`);
+    logger.info(`Data ready: ${this.collegeData.length} records`);
   }
 
   private readExcelFile(filePath: string): ExcelRow[] {
@@ -101,10 +101,14 @@ class DataService {
     return { byCode, byName };
   }
 
-  /** Load seat intake from seatmatrix_*.csv: Map<"code|branch", intake> */
+  /** Load seat intake from all seat matrix CSVs: Map<"code|branch", intake> */
   private loadSeatMap(dataDir: string): Map<string, number> {
     const map = new Map<string, number>();
-    const files = fs.readdirSync(dataDir).filter(f => f.startsWith('seatmatrix') && f.endsWith('.csv'));
+    const PRIMARY_CATS = new Set(['state level', 'home university', 'other than home university']);
+    // Load all seat matrix files sorted ascending so newest overwrites older
+    const files = fs.readdirSync(dataDir)
+      .filter(f => (f.startsWith('seatmatrix') || f.startsWith('seat_matrix')) && f.endsWith('.csv'))
+      .sort();
     for (const file of files) {
       const content = fs.readFileSync(path.join(dataDir, file), 'utf8');
       const lines = content.split(/\r?\n/);
@@ -113,20 +117,40 @@ class DataService {
       const codeIdx = headers.indexOf('college_code');
       const branchIdx = headers.indexOf('branch_name');
       const intakeIdx = headers.indexOf('intake');
+      const catIdx = headers.indexOf('category');
       if (codeIdx === -1 || branchIdx === -1 || intakeIdx === -1) continue;
+
+      // Two passes: primary categories first, then fallback for colleges with no primary data
+      const primaryMap = new Map<string, number>();  // key -> intake (primary cats only)
+      const fallbackMap = new Map<string, number>(); // key -> max intake (any cat, for colleges missing primary)
+      const codesWithPrimary = new Set<string>();
+
       for (let i = 1; i < lines.length; i++) {
         const vals = this.parseCsvLine(lines[i]);
         const code = String(vals[codeIdx] ?? '').replace(/^0+/, '').trim();
         const branch = String(vals[branchIdx] ?? '').toLowerCase().trim();
         const intake = parseInt(vals[intakeIdx] ?? '');
-        if (code && branch && !isNaN(intake) && intake > 0) {
-          const key = `${code}|${branch}`;
-          const existing = map.get(key) ?? 0;
-          map.set(key, existing + intake); // sum across categories
+        const category = catIdx !== -1 ? String(vals[catIdx] ?? '').toLowerCase().trim() : '';
+        if (!code || !branch || isNaN(intake) || intake <= 0) continue;
+        const key = `${code}|${branch}`;
+        if (PRIMARY_CATS.has(category)) {
+          primaryMap.set(key, (primaryMap.get(key) ?? 0) + intake);
+          codesWithPrimary.add(code);
+        } else {
+          // Keep max intake across non-primary categories as fallback
+          if (intake > (fallbackMap.get(key) ?? 0)) fallbackMap.set(key, intake);
         }
       }
-      logger.info(`  → ${file}: ${map.size} seat entries`);
+
+      // Merge primary data
+      for (const [key, val] of primaryMap) map.set(key, val);
+      // Merge fallback only for colleges that have NO primary category data in this file
+      for (const [key, val] of fallbackMap) {
+        const code = key.split('|')[0];
+        if (!codesWithPrimary.has(code) && !map.has(key)) map.set(key, val);
+      }
     }
+    logger.info(`  Seat map: ${map.size} entries from ${files.length} seat matrix file(s)`);
     return map;
   }
 
