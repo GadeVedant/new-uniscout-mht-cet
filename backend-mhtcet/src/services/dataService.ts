@@ -21,6 +21,9 @@ class DataService {
       // Load fees lookup first
       const { byCode: feesMap, byName: feesByName } = this.loadFeesMap(config.dataDir);
 
+      // Load seat matrix lookup: (collegeCode, branchName) -> intake
+      const seatMap = this.loadSeatMap(config.dataDir);
+
       // Memory optimisation: in production, load only the 2 most recent years.
       // Older years are still present for cutoff history via the same records.
       // Set LOAD_ALL_YEARS=true to override.
@@ -40,7 +43,7 @@ class DataService {
         const t0 = Date.now();
         let parsed: CollegeData[];
         if (file.endsWith('.csv')) {
-          parsed = this.parseCsvToCollegeData(filePath, this.collegeData.length, feesMap, feesByName);
+          parsed = this.parseCsvToCollegeData(filePath, this.collegeData.length, feesMap, feesByName, seatMap);
         } else {
           const rows = this.readExcelFile(filePath);
           parsed = this.parseExcelData(rows, this.collegeData.length);
@@ -69,7 +72,7 @@ class DataService {
     return XLSX.utils.sheet_to_json<ExcelRow>(workbook.Sheets[workbook.SheetNames[0]]);
   }
 
-  /** Load fees from college_fees_*.csv into a Map<collegeCode, annualFees> and Map<collegeName, annualFees> */
+  /** Load fees from college_fees_*.csv into a Map<capCode, annualFees> and Map<collegeName, annualFees> */
   private loadFeesMap(dataDir: string): { byCode: Map<string, number>; byName: Map<string, number> } {
     const byCode = new Map<string, number>();
     const byName = new Map<string, number>();
@@ -79,27 +82,56 @@ class DataService {
       const lines = content.split(/\r?\n/);
       if (lines.length < 2) continue;
       const headers = this.parseCsvLine(lines[0]);
-      const codeIdx = headers.indexOf('college_code');
+      const capCodeIdx = headers.indexOf('cap_code');   // numeric CAP code
       const nameIdx = headers.indexOf('college_name');
       const feesIdx = headers.indexOf('annual_fees');
-      if (codeIdx === -1 || feesIdx === -1) continue;
+      if (feesIdx === -1) continue;
       for (let i = 1; i < lines.length; i++) {
         const vals = this.parseCsvLine(lines[i]);
-        const code = String(vals[codeIdx] ?? '').replace(/^0+/, '').trim();
+        const capCode = capCodeIdx !== -1 ? String(vals[capCodeIdx] ?? '').replace(/^0+/, '').trim() : '';
         const name = nameIdx !== -1 ? String(vals[nameIdx] ?? '').toLowerCase().trim() : '';
         const fees = parseFloat(vals[feesIdx] ?? '');
         if (!isNaN(fees)) {
-          if (code) byCode.set(code, fees);
+          if (capCode) byCode.set(capCode, fees);
           if (name) byName.set(name, fees);
         }
       }
-      logger.info(`  → ${file}: ${byCode.size} fees entries`);
+      logger.info(`  → ${file}: ${byCode.size} fees entries (by CAP code)`);
     }
     return { byCode, byName };
   }
 
+  /** Load seat intake from seatmatrix_*.csv: Map<"code|branch", intake> */
+  private loadSeatMap(dataDir: string): Map<string, number> {
+    const map = new Map<string, number>();
+    const files = fs.readdirSync(dataDir).filter(f => f.startsWith('seatmatrix') && f.endsWith('.csv'));
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(dataDir, file), 'utf8');
+      const lines = content.split(/\r?\n/);
+      if (lines.length < 2) continue;
+      const headers = this.parseCsvLine(lines[0]);
+      const codeIdx = headers.indexOf('college_code');
+      const branchIdx = headers.indexOf('branch_name');
+      const intakeIdx = headers.indexOf('intake');
+      if (codeIdx === -1 || branchIdx === -1 || intakeIdx === -1) continue;
+      for (let i = 1; i < lines.length; i++) {
+        const vals = this.parseCsvLine(lines[i]);
+        const code = String(vals[codeIdx] ?? '').replace(/^0+/, '').trim();
+        const branch = String(vals[branchIdx] ?? '').toLowerCase().trim();
+        const intake = parseInt(vals[intakeIdx] ?? '');
+        if (code && branch && !isNaN(intake) && intake > 0) {
+          const key = `${code}|${branch}`;
+          const existing = map.get(key) ?? 0;
+          map.set(key, existing + intake); // sum across categories
+        }
+      }
+      logger.info(`  → ${file}: ${map.size} seat entries`);
+    }
+    return map;
+  }
+
   /** Parse CSV directly into CollegeData — no intermediate ExcelRow array */
-  private parseCsvToCollegeData(filePath: string, offset: number, feesMap: Map<string, number> = new Map(), feesByName: Map<string, number> = new Map()): CollegeData[] {
+  private parseCsvToCollegeData(filePath: string, offset: number, feesMap: Map<string, number> = new Map(), feesByName: Map<string, number> = new Map(), seatMap: Map<string, number> = new Map()): CollegeData[] {
     const content = fs.readFileSync(filePath, 'utf8');
     const lines = content.split(/\r?\n/);
     if (lines.length < 2) return [];
@@ -142,7 +174,7 @@ class DataService {
         collegeType: get(['College_Type', 'Type', 'College Type', 'Institute Type', 'Autonomy Status']),
         status: get(['Status', 'Admission Status']),
         fees: parseFloat(get(['Fees', 'Annual Fees', 'Tuition Fee', 'Fee'])) || feesMap.get(rawCode.replace(/^0+/, '')) || feesByName.get(collegeName.toLowerCase().trim()) || undefined,
-        intake: parseInt(get(['Intake', 'Seats', 'Sanctioned Intake'])) || undefined,
+        intake: parseInt(get(['Intake', 'Seats', 'Sanctioned Intake'])) || seatMap.get(`${rawCode.replace(/^0+/, '')}|${branchName.toLowerCase().trim()}`) || undefined,
       });
     }
     return result;

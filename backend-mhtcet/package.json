@@ -6,12 +6,16 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx src/server.ts",
-    "build": "rm -rf dist && tsc && node -e \"const fs=require('fs');const path=require('path');if(fs.existsSync('data')){fs.mkdirSync('dist/data',{recursive:true});fs.readdirSync('data').forEach(f=>{fs.copyFileSync('data/'+f,'dist/data/'+f);console.log('Copied data/'+f);})}\"",
+    "build": "npx rimraf dist && tsc && node -e \"const fs=require('fs');const path=require('path');if(fs.existsSync('data')){fs.mkdirSync('dist/data',{recursive:true});fs.readdirSync('data').forEach(f=>{fs.copyFileSync('data/'+f,'dist/data/'+f);console.log('Copied data/'+f);})}\"",
     "start": "node --max-old-space-size=450 dist/server.js",
     "start:fast": "npm run build && node dist/server.js",
     "test": "vitest run"
   },
   "dependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.7.4",
     "axios": "^1.14.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -20,17 +24,14 @@
     "express-validator": "^7.2.0",
     "helmet": "^8.0.0",
     "morgan": "^1.10.0",
+    "typescript": "^5.6.2",
     "winston": "^3.14.2",
-    "xlsx": "^0.18.5",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
-    "@types/morgan": "^1.9.9",
-    "@types/node": "^22.7.4",
-    "typescript": "^5.6.2"
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.2",
     "fast-check": "^4.6.0",
+    "rimraf": "^6.1.3",
     "tsx": "^4.19.1",
     "vitest": "^4.1.2"
   }

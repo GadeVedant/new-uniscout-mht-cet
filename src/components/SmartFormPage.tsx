@@ -12,24 +12,50 @@ import { Slider } from './ui/slider';
 import { PreferenceList } from './PreferenceList';
 import { useSEO } from '../seo/useSEO';
 
-const CATEGORIES = ['Open', 'SC', 'ST', 'OBC', 'SEBC', 'EWS', 'TFWS', 'NT1', 'NT2', 'NT3', 'VJ'];
-const CAP_ROUNDS = ['I', 'II', 'III'];
-const BRANCHES = [
-  'Artificial Intelligence and Data Science',
-  'Artificial Intelligence and Machine Learning',
-  'Civil Engineering',
-  'Computer Engineering',
-  'Computer Science and Engineering',
-  'Electrical Engineering',
-  'Electronics and Telecommunication Engineering',
-  'Information Technology',
-  'Mechanical Engineering',
+const CATEGORIES = [
+  { label: 'Open (General)', value: 'GOPENS' },
+  { label: 'SC', value: 'GSCS' },
+  { label: 'ST', value: 'GSTS' },
+  { label: 'OBC', value: 'GOBCS' },
+  { label: 'SEBC (EBC)', value: 'GSEBCS' },
+  { label: 'EWS', value: 'EWS' },
+  { label: 'TFWS', value: 'TFWS' },
+  { label: 'NT1', value: 'GNT1S' },
+  { label: 'NT2', value: 'GNT2S' },
+  { label: 'NT3', value: 'GNT3S' },
+  { label: 'VJ/DT', value: 'GVJS' },
 ];
+const CAP_ROUNDS = ['I', 'III'];
+const BRANCHES = [
+  'artificial intelligence and data science',
+  'artificial intelligence and machine learning',
+  'civil engineering',
+  'computer engineering',
+  'computer science and engineering',
+  'electrical engineering',
+  'electronics and telecommunication engg',
+  'information technology',
+  'mechanical engineering',
+];
+const BRANCH_LABELS: Record<string, string> = {
+  'artificial intelligence and data science': 'AI & Data Science',
+  'artificial intelligence and machine learning': 'AI & Machine Learning',
+  'civil engineering': 'Civil Engineering',
+  'computer engineering': 'Computer Engineering',
+  'computer science and engineering': 'Computer Science & Engineering',
+  'electrical engineering': 'Electrical Engineering',
+  'electronics and telecommunication engg': 'Electronics & Telecom',
+  'information technology': 'Information Technology',
+  'mechanical engineering': 'Mechanical Engineering',
+};
 const DISTRICTS = [
-  'Thane', 'Pune', 'Ahmednagar', 'Sangli', 'Mumbai', 'Kolhapur',
-  'Aurangabad', 'Nagpur', 'Akola', 'Amravati', 'Chandrapur',
-  'Dhule', 'Hingoli', 'Jalgaon', 'Satara', 'Latur', 'Nanded',
-  'Nashik', 'Osmanabad', 'Ratnagiri', 'Solapur', 'Pandharpur',
+  'Ahmednagar', 'Akola', 'Amravati', 'Aurangabad', 'Beed',
+  'Bhandara', 'Buldhana', 'Chandrapur', 'Dhule', 'Jalgaon',
+  'Jalna', 'Kolhapur', 'Latur', 'Mumbai', 'Nagpur',
+  'Nanded', 'Nandurbar', 'Nashik', 'Navi Mumbai', 'Osmanabad',
+  'Palghar', 'Panvel', 'Parbhani', 'Pune', 'Raigad',
+  'Ratnagiri', 'Sangli', 'Satara', 'Solapur', 'Thane',
+  'Wardha', 'Washim', 'Yavatmal',
 ];
 
 interface FormState {
@@ -44,7 +70,7 @@ interface FormState {
 
 const INITIAL_FORM: FormState = {
   percentile: '',
-  category: 'Open',
+  category: 'GOPENS',
   capRound: 'I',
   branchPreferences: [],
   preferredDistricts: [],
@@ -285,7 +311,7 @@ export function SmartFormPage() {
                   className="w-full bg-slate-900 border border-white/20 rounded-lg px-4 py-2.5 focus:border-cyan-500 outline-none text-white disabled:opacity-50 appearance-none"
                   disabled={isLoading}
                 >
-                  {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+                  {CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.label}</option>)}
                 </select>
               </div>
 
@@ -334,7 +360,7 @@ export function SmartFormPage() {
                       {isSelected && (
                         <span className="mr-1.5 text-xs font-black text-cyan-400">#{rank + 1}</span>
                       )}
-                      {b}
+                      {BRANCH_LABELS[b] || b}
                     </button>
                   );
                 })}

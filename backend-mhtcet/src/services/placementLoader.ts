@@ -55,7 +55,7 @@ export class PlacementLoader {
         return undefined;
       };
 
-      const collegeCode = get(['college_code', 'code', 'inst_code']) ?? '';
+      const collegeCode = get(['cap_code', 'college_code', 'code', 'inst_code']) ?? '';
       const collegeName = get(['college_name', 'name', 'institute_name']) ?? '';
       const avgRaw = get(['avg_package', 'avg_package_lpa', 'average_package', 'avg_lpa']);
       const highRaw = get(['highest_package', 'highest_package_lpa', 'max_package', 'highest_lpa']);

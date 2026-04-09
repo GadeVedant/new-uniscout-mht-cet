@@ -27,22 +27,22 @@ export const getCutoffHistory = (req: Request, res: Response): void => {
 
   const colleges = dataService.getAllColleges();
 
-  // Filter by collegeCode, branchName, category, capRound
+  // Filter by collegeCode, branchName, category — ignore capRound for history
+  // (different years may have different round naming conventions)
   const matches = colleges.filter(
     (c) =>
       c.collegeCode === collegeCode &&
       c.branchName.toLowerCase() === (branch as string).toLowerCase() &&
-      c.category.toLowerCase() === (category as string).toLowerCase() &&
-      c.capRound === capRound,
+      c.category.toLowerCase() === (category as string).toLowerCase(),
   );
 
-  // Deduplicate by year — keep highest cutoffPercentile per year
+  // Deduplicate by year — keep lowest cutoffPercentile per year (most competitive/accurate)
   const byYear = new Map<number, number>();
   for (const c of matches) {
     const year = parseInt(c.year, 10);
     if (isNaN(year)) continue;
     const existing = byYear.get(year);
-    if (existing === undefined || c.cutoffPercentile > existing) {
+    if (existing === undefined || c.cutoffPercentile < existing) {
       byYear.set(year, c.cutoffPercentile);
     }
   }

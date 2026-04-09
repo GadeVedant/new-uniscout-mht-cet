@@ -19,7 +19,7 @@ const BRANCH_ALIASES: Record<string, string[]> = {
   'computer engineering': ['computer engineering', 'comp engg', 'comp engineering'],
   'computer science and engineering': ['computer science and engineering', 'computer science & engineering', 'cse', 'computer science'],
   'information technology': ['information technology', 'it'],
-  'electronics and telecommunication engineering': ['electronics and telecommunication engineering', 'electronics & telecommunication engineering', 'entc', 'e&tc', 'electronics and telecommunication'],
+  'electronics and telecommunication engineering': ['electronics and telecommunication engineering', 'electronics & telecommunication engineering', 'entc', 'e&tc', 'electronics and telecommunication', 'electronics and telecommunication engg', 'electronics & telecommunication engg'],
   'mechanical engineering': ['mechanical engineering', 'mech engineering', 'mech engg'],
   'civil engineering': ['civil engineering', 'civil engg'],
   'electrical engineering': ['electrical engineering', 'electrical engg'],
@@ -71,6 +71,24 @@ class FormFillingService {
       if (c.category.toLowerCase() !== catLower) return false;
       return branchPreferences.some((pref) => branchMatches(pref, c.branchName));
     });
+
+    // Fallback 1: if no results, try without capRound filter (different years may use different rounds)
+    if (candidates.length === 0) {
+      logger.info(`FormFilling: no results for capRound=${capRound}, trying without round filter`);
+      candidates = all.filter((c) => {
+        if (c.category.toLowerCase() !== catLower) return false;
+        return branchPreferences.some((pref) => branchMatches(pref, c.branchName));
+      });
+    }
+
+    // Fallback 2: if still no results, relax category to include open seats
+    if (candidates.length === 0) {
+      logger.info(`FormFilling: no results for category=${category}, trying GOPENS fallback`);
+      candidates = all.filter((c) => {
+        if (!['gopens', 'gopenh', 'gopeno'].includes(c.category.toLowerCase())) return false;
+        return branchPreferences.some((pref) => branchMatches(pref, c.branchName));
+      });
+    }
 
     // ── 2. Budget filter ──────────────────────────────────────────────────────
     let budgetWarning = false;
