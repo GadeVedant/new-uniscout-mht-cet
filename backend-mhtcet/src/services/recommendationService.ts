@@ -103,6 +103,7 @@ class RecommendationService {
         ...c,
         cutoffPercentile: Math.max(0, parseFloat((c.cutoffPercentile - discount).toFixed(2))),
         category: category, // tag with requested category so it shows correctly
+        estimatedCutoff: true, // flag so frontend can show "estimated" indicator
       }));
       if (supplemental.length > 0) {
         logger.info(`Category fallback: ${supplemental.length} colleges estimated with ${discount}pt discount for ${category}`);

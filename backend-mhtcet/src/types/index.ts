@@ -58,6 +58,8 @@ export interface CollegeRecommendation {
   // Placement
   avgPackage?: string | null;
   highestPackage?: string | null;
+  // Estimated cutoff (when no actual category data exists, derived from Open cutoff)
+  estimatedCutoff?: boolean;
 }
 
 export interface FilterOptions {

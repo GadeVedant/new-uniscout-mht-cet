@@ -111,8 +111,13 @@ export function CollegeCard({
           </div>
           <div className="bg-white/5 rounded-lg p-2.5 border border-white/5">
             <div className="text-xs text-slate-400 mb-0.5">Cutoff</div>
-            <div className="text-sm font-semibold text-white flex items-center">
+            <div className="text-sm font-semibold text-white flex items-center gap-1">
               {college.cutoffPercentile?.toFixed(2)} {renderTrend()}
+              {college.estimatedCutoff && (
+                <span className="text-xs text-amber-400/70 font-normal" title="Estimated from Open category — no SC/reserved data available">
+                  ~est.
+                </span>
+              )}
             </div>
           </div>
         </div>

@@ -46,6 +46,8 @@ export interface CollegeRecommendation {
   // Placement fields
   avgPackage?: string | null;
   highestPackage?: string | null;
+  // Estimated cutoff flag (no actual category data — derived from Open cutoff with discount)
+  estimatedCutoff?: boolean;
   // Round 2 strategy fields
   round2Opportunity?: boolean;
   round2Delta?: number | null;
