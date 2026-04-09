@@ -65,11 +65,11 @@ export function PreferenceList({ result, mlUnavailable, budgetWarning, onBack }:
         </motion.div>
       )}
 
-      {/* ML unavailable banner */}
+      {/* ML unavailable banner — subtle info, not alarming */}
       {(mlUnavailable || !result.mlAvailable) && (
-        <div className="flex items-center gap-3 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-300 text-sm mb-6">
-          <WifiOff className="w-5 h-5 shrink-0" />
-          <p>AI predictions are temporarily unavailable. Results are based on historical cutoff data.</p>
+        <div className="flex items-center gap-3 p-3 bg-slate-800/60 border border-white/10 rounded-xl text-slate-400 text-xs mb-6">
+          <WifiOff className="w-4 h-4 shrink-0 text-slate-500" />
+          <p>Results are based on historical cutoff data. Live AI predictions will be available soon.</p>
         </div>
       )}
 
