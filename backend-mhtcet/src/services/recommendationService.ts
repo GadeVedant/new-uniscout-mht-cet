@@ -10,7 +10,7 @@ import { mlServiceClient, type MLPredictionRequest } from './mlServiceClient.js'
 import { get as cacheGet, set as cacheSet } from './mlPredictionCache.js';
 import { cutoffTrendService } from './cutoffTrendService.js';
 import { placementLoader } from './placementLoader.js';
-import { categoryMatches } from '../utils/categoryMap.js';
+import { categoryMatches, getCategoryDiscount } from '../utils/categoryMap.js';
 import logger from '../utils/logger.js';
 import type { RecommendationRequest, CollegeRecommendation, CollegeData, ApiResponse } from '../types/index.js';
 
@@ -54,34 +54,62 @@ class RecommendationService {
     const { percentile, year, capRound, category, branchPreference, location } = request;
     logger.info(`MHT-CET recommendation: percentile=${percentile}, year=${year}, capRound=${capRound}, category=${category}, requestId=${requestId}`);
 
-    // ---- Rule-based filter ----
-    const applyFilters = (withLocation: boolean) => dataService.getAllColleges().filter(c => {
+    // ---- Rule-based filter (no location hard-filter) ----
+    const applyFilters = () => dataService.getAllColleges().filter(c => {
       // No year filter — dedup in dataService already keeps most recent year per college+branch+category
       if (capRound && c.capRound !== capRound) return false;
       if (category) {
         if (!categoryMatches(c.category, category)) return false;
       }
       if (branchPreference && !this.branchMatches(branchPreference, c.branchName)) return false;
-      if (withLocation && location) {
-        const loc = location.toLowerCase();
-        if (!c.location.toLowerCase().includes(loc) && !c.district.toLowerCase().includes(loc)) return false;
-      }
       return true;
     });
 
-    let filtered = applyFilters(true);
+    const filtered = applyFilters();
     let locationFallback = false;
 
-    // If location filter yields no results, fall back to all locations
-    if (filtered.length === 0 && location) {
-      logger.info(`No results for location="${location}", falling back to all locations`);
-      filtered = applyFilters(false);
+    // Check if any results match the requested location
+    const locLower = location?.toLowerCase() ?? '';
+    const inLocation = locLower
+      ? filtered.filter(c => c.location.toLowerCase().includes(locLower) || c.district.toLowerCase().includes(locLower))
+      : filtered;
+
+    // If no colleges in the requested location, flag it but still show all results
+    if (location && inLocation.length === 0) {
       locationFallback = true;
+      logger.info(`No results for location="${location}", showing all locations`);
     }
 
     logger.info(`Filtered to ${filtered.length} colleges`);
 
-    const allRecs = filtered
+    // ---- Category fallback: for colleges missing reserved-category data, estimate cutoff from Open ----
+    // Uses category-specific discount based on MHT CET hierarchy:
+    // Open > EWS (~0.5) > OBC (~3) > SEBC (~5) > VJ/NT (~8) > SC (~15) > ST (~20)
+    const OPEN_CATS = new Set(['gopens','gopenh','gopeno','lopens','lopenh','lopeno']);
+    const isReservedCategory = !OPEN_CATS.has(category.toLowerCase());
+    let supplemental: typeof filtered = [];
+    if (isReservedCategory && category) {
+      const discount = getCategoryDiscount(category);
+      const codesWithCategoryData = new Set(filtered.map(c => `${c.collegeCode}|${c.branchName}`));
+      // Get Open-category records for colleges that have NO reserved-category data
+      const openRecords = dataService.getAllColleges().filter(c => {
+        if (capRound && c.capRound !== capRound) return false;
+        if (!categoryMatches(c.category, 'GOPENS')) return false;
+        if (branchPreference && !this.branchMatches(branchPreference, c.branchName)) return false;
+        return !codesWithCategoryData.has(`${c.collegeCode}|${c.branchName}`);
+      });
+      // Apply discount to estimate reserved-category cutoff
+      supplemental = openRecords.map(c => ({
+        ...c,
+        cutoffPercentile: Math.max(0, parseFloat((c.cutoffPercentile - discount).toFixed(2))),
+        category: category, // tag with requested category so it shows correctly
+      }));
+      if (supplemental.length > 0) {
+        logger.info(`Category fallback: ${supplemental.length} colleges estimated with ${discount}pt discount for ${category}`);
+      }
+    }
+
+    const allRecs = [...filtered, ...supplemental]
       .map(c => this.buildRecommendation(c, percentile))
       .filter(r => r.percentileDifference >= -5);
 
@@ -99,6 +127,10 @@ class RecommendationService {
     const recommendations = [...bestPerCollegeBranch.values()]
       .sort((a, b) => {
         const order = { High: 0, Medium: 1, Low: 2 };
+        // Location-matching colleges come first
+        const aInLoc = locLower ? (a.location.toLowerCase().includes(locLower) || a.district.toLowerCase().includes(locLower)) : false;
+        const bInLoc = locLower ? (b.location.toLowerCase().includes(locLower) || b.district.toLowerCase().includes(locLower)) : false;
+        if (aInLoc !== bInLoc) return aInLoc ? -1 : 1;
         const diff = order[a.admissionChance] - order[b.admissionChance];
         return diff !== 0 ? diff : b.cutoffPercentile - a.cutoffPercentile;
       })

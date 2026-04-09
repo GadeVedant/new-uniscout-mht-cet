@@ -65,9 +65,43 @@ const CATEGORY_GROUPS: Record<string, string[]> = {
 };
 
 /**
- * Returns all CAP category codes that match the user-selected category.
- * Falls back to exact match if not in the map.
+ * Estimated percentile discount from Open category to reserved categories.
+ * Based on MHT CET historical cutoff hierarchy:
+ * Open > EWS (~0.5) > OBC (~3) > SEBC (~5) > VJ/NT (~8) > SC (~15) > ST (~20)
+ * These are approximate percentile point reductions applied to Open cutoff
+ * when no actual reserved-category data exists for a college.
  */
+export const CATEGORY_DISCOUNT: Record<string, number> = {
+  // Open — no discount
+  GOPENS: 0, GOPENH: 0, GOPENO: 0,
+  // EWS — very close to Open
+  EWS: 0.5,
+  // OBC
+  GOBCS: 3, GOBCH: 3, GOBCO: 3,
+  // SEBC
+  GSEBCS: 5, GSEBCH: 5, GSEBCO: 5,
+  // VJ/DT
+  GVJS: 8, GVJH: 8, GVJO: 8,
+  // NT1, NT2, NT3
+  GNT1S: 8, GNT1H: 8, GNT1O: 8,
+  GNT2S: 8, GNT2H: 8, GNT2O: 8,
+  GNT3S: 8, GNT3H: 8, GNT3O: 8,
+  // SC
+  GSCS: 15, GSCH: 15, GSCO: 15,
+  // ST
+  GSTS: 20, GSTH: 20, GSTO: 20,
+  // TFWS — similar to Open
+  TFWS: 0,
+};
+
+/**
+ * Returns the estimated percentile discount for a category vs Open.
+ * Used when no actual reserved-category cutoff data exists for a college.
+ */
+export function getCategoryDiscount(category: string): number {
+  const upper = category.trim().toUpperCase();
+  return CATEGORY_DISCOUNT[upper] ?? 0;
+}
 export function expandCategory(category: string): string[] {
   const upper = category.trim().toUpperCase();
   return CATEGORY_GROUPS[upper] ?? [upper];
