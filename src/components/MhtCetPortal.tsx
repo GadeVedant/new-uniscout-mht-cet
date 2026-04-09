@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Loader2, AlertCircle, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { MhtCetFormData } from '../App';
 import { api, CollegeRecommendation } from '../services/api';
 import { Slider } from './ui/slider';
-import { SingleBranchSearch } from './BranchSearch';
+import { MultiBranchSearch } from './BranchSearch';
 import { useSEO } from '../seo/useSEO';
 
 interface MhtCetPortalProps {
@@ -26,20 +26,9 @@ const CATEGORIES = [
   { label: 'NT3', value: 'GNT3S' },
   { label: 'VJ/DT', value: 'GVJS' },
 ];
-const CAP_ROUNDS = ['I', 'II', 'III'];
-const CURRENT_YEAR = '2025-26'; // Always predict for the current admission cycle
-const BRANCHES = [
-  'artificial intelligence and data science',
-  'artificial intelligence and machine learning',
-  'civil engineering',
-  'computer engineering',
-  'computer science and engineering',
-  'electrical engineering',
-  'electronics and telecommunication engg',
-  'information technology',
-  'mechanical engineering',
-];
-// All districts/locations present in the MHT-CET data
+
+const CURRENT_YEAR = '2025-26';
+
 const DISTRICTS = [
   'Ahmednagar', 'Akola', 'Amravati', 'Aurangabad', 'Beed',
   'Bhandara', 'Buldhana', 'Chandrapur', 'Dhule', 'Gadhinglaj',
@@ -59,13 +48,14 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     description: 'Enter your MHT CET percentile, category, and branch to get AI-powered college recommendations with cutoff trends and admission probability bands.',
     canonical: 'https://uniscout.in/mht-cet',
   });
+
   const [formData, setFormData] = useState<MhtCetFormData>({
     percentile: '',
     year: CURRENT_YEAR,
-    capRound: 'I', // always Round I — strategy tab shows Round II/III chances
+    capRound: 'I',
     category: 'GOPENS',
-    branchPreference: '',
-    location: '',
+    branchPreferences: [],
+    locations: [],
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -75,36 +65,67 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     let completed = 0;
     if (formData.percentile !== '') completed++;
     if (formData.category) completed++;
-    if (formData.branchPreference) completed++;
+    if (formData.branchPreferences.length > 0) completed++;
     return (completed / 3) * 100;
+  };
+
+  const toggleLocation = (loc: string) => {
+    setFormData(p => {
+      if (p.locations.includes(loc)) return { ...p, locations: p.locations.filter(l => l !== loc) };
+      if (p.locations.length >= 5) return p;
+      return { ...p, locations: [...p.locations, loc] };
+    });
   };
 
   const handlePredict = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formData.branchPreferences.length === 0) {
+      setError('Please select at least one branch.');
+      return;
+    }
     setIsLoading(true);
     setError(null);
 
     try {
-      const requestPayload = {
+      // Send one request per branch, merge results
+      const allResults: CollegeRecommendation[] = [];
+      const locationStr = formData.locations.join(',');
+
+      for (const branch of formData.branchPreferences) {
+        const requestPayload = {
+          percentile: parseFloat(formData.percentile),
+          year: formData.year,
+          capRound: formData.capRound,
+          category: formData.category,
+          branchPreference: branch,
+          location: locationStr,
+        };
+        const response = await api.getRecommendations(requestPayload);
+        if (response.success && response.data) {
+          allResults.push(...response.data);
+        }
+      }
+
+      // Dedup by id, keep unique
+      const seen = new Set<string>();
+      const unique = allResults.filter(r => {
+        if (seen.has(r.id)) return false;
+        seen.add(r.id);
+        return true;
+      });
+
+      const queryMeta = {
         percentile: parseFloat(formData.percentile),
         year: formData.year,
         capRound: formData.capRound,
         category: formData.category,
-        branchPreference: formData.branchPreference,
-        location: formData.location || '',
+        branchPreference: formData.branchPreferences.join(', '),
+        location: locationStr,
+        locationFallback: false,
       };
-      
-      const response = await api.getRecommendations(requestPayload);
 
-      if (response.success && response.data) {
-        onRecommendationsReady(response.data, {
-          ...requestPayload,
-          locationFallback: response.metadata?.location_fallback ?? false,
-        });
-        navigate('/results');
-      } else {
-        setError(response.error || 'Failed to get recommendations');
-      }
+      onRecommendationsReady(unique, queryMeta);
+      navigate('/results');
     } catch (err) {
       console.error('API Error:', err);
       setError(err instanceof Error ? err.message : 'Failed to connect to server.');
@@ -125,136 +146,136 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
             <ArrowLeft className="w-4 h-4" />
             <span>Home</span>
           </button>
-          
           <div className="hidden md:flex items-center gap-3">
             <span className="text-slate-400 text-sm">Progress</span>
             <div className="w-32 h-2 bg-white/10 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full bg-cyan-500"
-                initial={{ width: 0 }}
-                animate={{ width: `${calculateProgress()}%` }}
-              />
+              <motion.div className="h-full bg-cyan-500" initial={{ width: 0 }} animate={{ width: `${calculateProgress()}%` }} />
             </div>
           </div>
         </header>
 
-        {/* Title */}
         <div className="mb-10 text-center">
           <h1 className="text-4xl font-bold text-white mb-2">MHT-CET Predictor</h1>
           <p className="text-slate-400">Enter your details to find best matching colleges</p>
         </div>
 
-        {/* Form Container */}
-        <motion.div 
+        <motion.div
           className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-10 shadow-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
           <form onSubmit={handlePredict} className="space-y-8">
-            
-            {/* Percentile row */}
+
+            {/* Percentile */}
             <div className="space-y-4">
-              <label className="block text-sm font-medium text-slate-200">Percentile Check (0-100)</label>
+              <label className="block text-sm font-medium text-slate-200">Percentile (0–100) <span className="text-red-400">*</span></label>
               <div className="flex gap-4 items-center">
-                <Slider 
-                  max={100} 
-                  step={0.01} 
+                <Slider
+                  max={100} step={0.01}
                   value={[parseFloat(formData.percentile) || 0]}
-                  onValueChange={(vals: number[]) => setFormData(p => ({...p, percentile: vals[0].toString()}))}
+                  onValueChange={(vals: number[]) => setFormData(p => ({ ...p, percentile: vals[0].toString() }))}
                   className="flex-1"
                 />
                 <input
-                  type="number"
-                  min="0"
-                  max="100"
-                  step="0.01"
-                  required
+                  type="number" min="0" max="100" step="0.01" required
                   value={formData.percentile}
-                  onChange={(e) => setFormData(p => ({...p, percentile: e.target.value}))}
+                  onChange={(e) => setFormData(p => ({ ...p, percentile: e.target.value }))}
                   className="w-24 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-500"
-                  placeholder="95.50"
-                  disabled={isLoading}
+                  placeholder="95.50" disabled={isLoading}
                 />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Category */}
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-200">Category</label>
-                <select
-                  required
-                  value={formData.category}
-                  onChange={(e) => setFormData(p => ({...p, category: e.target.value}))}
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
-                  disabled={isLoading}
-                >
-                  {CATEGORIES.map(c => <option key={c.value} value={c.value} className="bg-slate-900">{c.label}</option>)}
-                </select>
+            {/* Category */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-slate-200">Category <span className="text-red-400">*</span></label>
+              <select
+                required value={formData.category}
+                onChange={(e) => setFormData(p => ({ ...p, category: e.target.value }))}
+                className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
+                disabled={isLoading}
+              >
+                {CATEGORIES.map(c => <option key={c.value} value={c.value} className="bg-slate-900">{c.label}</option>)}
+              </select>
+            </div>
+
+            {/* Branch Preferences — up to 5 */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-end">
+                <label className="block text-sm font-medium text-slate-200">Branch Preferences (up to 5) <span className="text-red-400">*</span></label>
+                <span className="text-xs text-slate-500">{formData.branchPreferences.length}/5</span>
               </div>
+              <MultiBranchSearch
+                selected={formData.branchPreferences}
+                onChange={(vals) => setFormData(p => ({ ...p, branchPreferences: vals }))}
+                max={5}
+                disabled={isLoading}
+              />
+            </div>
 
-              {/* CAP Round — always Round I; Cap 2/3 chances shown in Round 2 Strategy tab */}
-
-              {/* Branch */}
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-200">Branch Preference <span className="text-red-400">*</span></label>
-                <SingleBranchSearch
-                  value={formData.branchPreference}
-                  onChange={(val) => setFormData(p => ({...p, branchPreference: val}))}
-                  disabled={isLoading}
-                  required
-                />
+            {/* Locations — up to 5 */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-end">
+                <label className="block text-sm font-medium text-slate-200">Preferred Districts (optional, up to 5)</label>
+                <span className="text-xs text-slate-500">{formData.locations.length}/5</span>
               </div>
-
-              {/* District */}
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-200">District (Optional)</label>
-                <select
-                  value={formData.location}
-                  onChange={(e) => setFormData(p => ({...p, location: e.target.value}))}
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
-                  disabled={isLoading}
-                >
-                  <option value="" className="bg-slate-900 text-slate-400">Any District</option>
-                  {DISTRICTS.map(d => <option key={d} value={d} className="bg-slate-900">{d}</option>)}
-                </select>
+              {/* Selected tags */}
+              {formData.locations.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {formData.locations.map(loc => (
+                    <span key={loc} className="flex items-center gap-1.5 px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-full text-xs font-semibold">
+                      📍 {loc}
+                      <button type="button" onClick={() => toggleLocation(loc)} disabled={isLoading}>
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+              {/* District grid */}
+              <div className="flex flex-wrap gap-2">
+                {DISTRICTS.map(d => {
+                  const selected = formData.locations.includes(d);
+                  const disabled = isLoading || (!selected && formData.locations.length >= 5);
+                  return (
+                    <button
+                      key={d} type="button"
+                      onClick={() => toggleLocation(d)}
+                      disabled={disabled}
+                      className={`px-3 py-1.5 rounded-full text-sm transition-all border ${
+                        selected
+                          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                          : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 disabled:opacity-40'
+                      }`}
+                    >
+                      {d}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Error Message */}
+            {/* Error */}
             <AnimatePresence>
               {error && (
                 <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 flex flex-col items-center gap-2"
+                  initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                  className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 flex items-center gap-2 text-red-400 text-sm"
                 >
-                  <div className="flex items-center gap-2 text-red-400 text-sm">
-                    <AlertCircle className="w-4 h-4" />
-                    <p>{error}</p>
-                  </div>
-                  <button type="button" onClick={handlePredict} className="text-red-300 text-xs hover:text-red-200 underline">
-                    Try Again
-                  </button>
+                  <AlertCircle className="w-4 h-4" />
+                  <p>{error}</p>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <button
-              type="submit"
-              disabled={isLoading}
+              type="submit" disabled={isLoading}
               className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-semibold rounded-lg px-4 py-4 transition-all disabled:opacity-70 flex justify-center items-center gap-2 shadow-lg"
             >
               {isLoading ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  Finding colleges for you...
-                </>
-              ) : (
-                'Predict Colleges'
-              )}
+                <><Loader2 className="w-5 h-5 animate-spin" />Finding colleges for you...</>
+              ) : 'Predict Colleges'}
             </button>
           </form>
         </motion.div>

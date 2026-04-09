@@ -19,8 +19,8 @@ export interface MhtCetFormData {
   year: string;
   capRound: string;
   category: string;
-  branchPreference: string;
-  location: string;
+  branchPreferences: string[];  // up to 5
+  locations: string[];           // up to 5
 }
 
 export default function App() {

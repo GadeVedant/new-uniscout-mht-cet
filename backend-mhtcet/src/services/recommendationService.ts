@@ -54,31 +54,37 @@ class RecommendationService {
     const { percentile, year, capRound, category, branchPreference, location } = request;
     logger.info(`MHT-CET recommendation: percentile=${percentile}, year=${year}, capRound=${capRound}, category=${category}, requestId=${requestId}`);
 
-    // ---- Rule-based filter (no location hard-filter) ----
-    const applyFilters = () => dataService.getAllColleges().filter(c => {
-      // No year filter — dedup in dataService already keeps most recent year per college+branch+category
+    // ---- Rule-based filter ----
+    const applyFilters = (withLocation: boolean) => dataService.getAllColleges().filter(c => {
       if (capRound && c.capRound !== capRound) return false;
       if (category) {
         if (!categoryMatches(c.category, category)) return false;
       }
       if (branchPreference && !this.branchMatches(branchPreference, c.branchName)) return false;
+      if (withLocation && location) {
+        // Support comma-separated multiple locations
+        const locs = location.split(',').map(l => l.trim().toLowerCase()).filter(Boolean);
+        if (locs.length > 0) {
+          const cLoc = c.location.toLowerCase();
+          const cDist = c.district.toLowerCase();
+          if (!locs.some(l => cLoc.includes(l) || cDist.includes(l))) return false;
+        }
+      }
       return true;
     });
 
-    const filtered = applyFilters();
+    let filtered = applyFilters(true);
     let locationFallback = false;
 
-    // Check if any results match the requested location
-    const locLower = location?.toLowerCase() ?? '';
-    const inLocation = locLower
-      ? filtered.filter(c => c.location.toLowerCase().includes(locLower) || c.district.toLowerCase().includes(locLower))
-      : filtered;
-
-    // If no colleges in the requested location, flag it but still show all results
-    if (location && inLocation.length === 0) {
+    // If location filter yields no results, fall back to all locations
+    if (filtered.length === 0 && location) {
+      logger.info(`No results for location="${location}", falling back to all locations`);
+      filtered = applyFilters(false);
       locationFallback = true;
-      logger.info(`No results for location="${location}", showing all locations`);
     }
+
+    const locLower = location?.toLowerCase() ?? '';
+    const locList = locLower ? locLower.split(',').map(l => l.trim()).filter(Boolean) : [];
 
     logger.info(`Filtered to ${filtered.length} colleges`);
 
@@ -129,8 +135,8 @@ class RecommendationService {
       .sort((a, b) => {
         const order = { High: 0, Medium: 1, Low: 2 };
         // Location-matching colleges come first
-        const aInLoc = locLower ? (a.location.toLowerCase().includes(locLower) || a.district.toLowerCase().includes(locLower)) : false;
-        const bInLoc = locLower ? (b.location.toLowerCase().includes(locLower) || b.district.toLowerCase().includes(locLower)) : false;
+        const aInLoc = locList.length > 0 ? locList.some(l => a.location.toLowerCase().includes(l) || a.district.toLowerCase().includes(l)) : false;
+        const bInLoc = locList.length > 0 ? locList.some(l => b.location.toLowerCase().includes(l) || b.district.toLowerCase().includes(l)) : false;
         if (aInLoc !== bInLoc) return aInLoc ? -1 : 1;
         const diff = order[a.admissionChance] - order[b.admissionChance];
         return diff !== 0 ? diff : b.cutoffPercentile - a.cutoffPercentile;

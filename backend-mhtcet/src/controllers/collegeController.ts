@@ -26,7 +26,8 @@ export const getCutoffHistory = (req: Request, res: Response): void => {
     return;
   }
 
-  const colleges = dataService.getAllColleges();
+  // Use all-years data (not deduped) so history shows every year
+  const colleges = dataService.getAllYearsData();
 
   // Filter by collegeCode, branchName, category (expanded) — ignore capRound for history
   const matches = colleges.filter(

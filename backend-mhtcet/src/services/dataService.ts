@@ -7,6 +7,7 @@ import type { CollegeData, ExcelRow, FilterOptions } from '../types/index.js';
 
 class DataService {
   private collegeData: CollegeData[] = [];
+  private allYearsData: CollegeData[] = []; // undeduped — used for cutoff history
   private isDataLoaded = false;
   private filterOptions: FilterOptions = { years: [], capRounds: [], categories: [], branches: [], locations: [] };
 
@@ -41,6 +42,9 @@ class DataService {
         logger.info(`  → ${file}: ${parsed.length} records (${Date.now() - t0}ms)`);
       }
       logger.info(`Total: ${totalRows} rows loaded`);
+
+      // Save all years before dedup — needed for cutoff history
+      this.allYearsData = [...this.collegeData];
 
       // Deduplicate: keep only the most recent year's record per college+branch+category+capRound
       const best = new Map<string, CollegeData>();
@@ -313,6 +317,7 @@ class DataService {
   }
 
   getAllColleges(): CollegeData[] { return this.collegeData; }
+  getAllYearsData(): CollegeData[] { return this.allYearsData; }
   getFilterOptions(): FilterOptions { return this.filterOptions; }
   isLoaded(): boolean { return this.isDataLoaded; }
   getStats() {
