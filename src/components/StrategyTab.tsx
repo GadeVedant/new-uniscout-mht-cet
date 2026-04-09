@@ -135,6 +135,42 @@ export function StrategyTab({ percentile, category, branch, capRound }: Strategy
         />
       </div>
 
+      {/* 3. Round III note */}
+      {data.round2Opportunities.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-purple-500/10 border border-purple-500/20 rounded-2xl p-5"
+        >
+          <h3 className="text-purple-300 font-bold mb-2 flex items-center gap-2">
+            <span className="text-lg">🎯</span> CAP Round III Outlook
+          </h3>
+          <p className="text-slate-400 text-sm mb-3">
+            Round III typically sees a further 1–3 point drop from Round II cutoffs, but seat availability is limited. 
+            Colleges with high Round II probability are also good Round III targets.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {data.round2Opportunities.slice(0, 4).map((opp) => {
+              const r3Cutoff = parseFloat((opp.expectedRound2Cutoff - 1.5).toFixed(2));
+              const r3Margin = percentile - r3Cutoff;
+              const r3Prob = Math.round(Math.min(95, Math.max(5, 50 + r3Margin * 10)));
+              return (
+                <div key={`${opp.collegeCode}-r3`} className="bg-white/5 rounded-xl p-3 border border-white/10">
+                  <p className="text-white text-sm font-semibold leading-tight mb-1">{opp.collegeName}</p>
+                  <p className="text-xs text-slate-400 mb-2">{opp.branchName}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500">Est. R3 cutoff: <strong className="text-white">{r3Cutoff}</strong></span>
+                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${r3Prob >= 60 ? 'bg-emerald-500/20 text-emerald-400' : r3Prob >= 35 ? 'bg-amber-500/20 text-amber-400' : 'bg-red-500/20 text-red-400'}`}>
+                      {r3Prob}% chance
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+      )}
+
       {/* dataVersion footer */}
       {dataVersion != null && (
         <motion.p

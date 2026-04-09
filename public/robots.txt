@@ -1,18 +1,21 @@
 User-agent: *
 Allow: /
 Allow: /mht-cet
-Allow: /results
+Allow: /jee-college-predictor
+Allow: /neet-college-predictor
+Allow: /cat-college-predictor
 Allow: /college/
-Allow: /compare
 Allow: /smart-form
-Allow: /branches/
-Allow: /colleges/
+
+# Session-only pages — no value for crawlers
+Disallow: /results
+Disallow: /compare
 
 # Block non-content routes
 Disallow: /api/
 Disallow: /admin/
 Disallow: /*.json$
-Disallow: /jee
+Disallow: /jee$
 
 # Block query-string duplicates
 Disallow: /*?*ref=

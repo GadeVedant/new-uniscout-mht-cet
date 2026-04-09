@@ -42,13 +42,18 @@ export function SimilarColleges({ current, all }: SimilarCollegesProps) {
                 e.preventDefault();
                 navigate(`/college/${college.id}`);
               }}
-              className="block p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+              className="flex flex-col justify-between h-full p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
             >
-              <p className="text-sm font-semibold text-white leading-snug">{college.name}</p>
-              <p className="text-xs text-cyan-300 mt-0.5">{college.branch}</p>
-              <p className="text-xs text-white/50 mt-1">
-                Cutoff: {college.cutoffPercentile} · {college.location}
-              </p>
+              <div>
+                <p className="text-sm font-semibold text-white leading-snug">{college.name}</p>
+                <p className="text-xs text-cyan-300 mt-0.5">{college.branch}</p>
+                <p className="text-xs text-white/50 mt-1">
+                  Cutoff: {college.cutoffPercentile} · {college.location}
+                </p>
+              </div>
+              <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                View Details →
+              </span>
             </a>
           </li>
         ))}

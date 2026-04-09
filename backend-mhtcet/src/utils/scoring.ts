@@ -94,17 +94,22 @@ export function generateEntryReason(college: CollegeRecommendation, maxAvgPackag
   const pkg = parsePackageLPA(college.avgPackage ?? null);
   const placementScore = pkg != null && maxAvgPackage > 0 ? pkg / maxAvgPackage : 0;
   const prestige = prestigeScore(college.collegeType);
+  const diff = college.percentileDifference ?? 0; // student percentile - cutoff
 
+  // Tier-based reason using percentile difference (always reliable)
+  if (diff >= 10) return 'Well within your range — high admission confidence';
+  if (diff >= 5) return 'Comfortably above cutoff — strong admission chance';
+  if (diff >= 2) return 'Above cutoff — good admission chance';
+  if (diff >= 0) return 'At cutoff — moderate admission chance';
+  if (diff >= -3) return 'Slightly below cutoff — worth including as a stretch';
+
+  // For colleges further below cutoff, use prestige/placement as reason
   const factors: Array<{ label: string; score: number }> = [
     { label: 'admission probability', score: prob * SCORING_WEIGHT_PROB },
     { label: 'placement outcome', score: placementScore * SCORING_WEIGHT_PLACEMENT },
     { label: 'college prestige', score: prestige * SCORING_WEIGHT_PRESTIGE },
   ];
-
   factors.sort((a, b) => b.score - a.score);
-
-  if (prob < 0.20) return 'Best available option in your range';
-
   const top2 = factors.slice(0, 2).map((f) => f.label);
   return `Strong ${top2.join(' and ')}`;
 }

@@ -108,13 +108,66 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
           </motion.div>
         )}
 
-        {/* Comparison Table */}
+        {/* Comparison Table — desktop: table, mobile: stacked cards */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
         >
+          {/* Mobile: stacked cards */}
+          <div className="block md:hidden divide-y divide-white/10">
+            {colleges.map((col, idx) => (
+              <div key={idx} className="p-5 space-y-3">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <span className={`inline-block px-2 py-0.5 text-xs font-bold rounded-lg border mb-1 ${
+                      getAdmissionBand(col) === 'Safe' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
+                      getAdmissionBand(col) === 'Likely' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
+                      getAdmissionBand(col) === 'Moderate' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' :
+                      'bg-red-500/20 text-red-400 border-red-500/30'
+                    }`}>{getAdmissionBand(col)}</span>
+                    <h3 className="font-bold text-white text-base leading-tight">{col.name}</h3>
+                    <p className="text-xs text-slate-400 mt-0.5 flex items-center gap-1"><MapPin className="w-3 h-3" />{col.location}</p>
+                  </div>
+                  <span className="shrink-0 text-xs font-bold text-slate-500">#{idx + 1}</span>
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="bg-white/5 rounded-lg p-2">
+                    <p className="text-xs text-slate-500 mb-0.5">Branch</p>
+                    <p className="text-white font-medium text-xs">{col.branch}</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-2">
+                    <p className="text-xs text-slate-500 mb-0.5">Cutoff</p>
+                    <p className="text-white font-bold">{col.cutoffPercentile.toFixed(2)}</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-2">
+                    <p className="text-xs text-slate-500 mb-0.5">Fees</p>
+                    <p className="text-white">{fmt(col.fees)}</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-2">
+                    <p className="text-xs text-slate-500 mb-0.5">Seats</p>
+                    <p className="text-white">{col.seats || '—'}</p>
+                  </div>
+                  {col.admissionProbability != null && (
+                    <div className="bg-white/5 rounded-lg p-2">
+                      <p className="text-xs text-slate-500 mb-0.5">AI Probability</p>
+                      <p className="text-emerald-400 font-bold">{Math.round(col.admissionProbability)}%</p>
+                    </div>
+                  )}
+                  {col.avgPackage && (
+                    <div className="bg-white/5 rounded-lg p-2">
+                      <p className="text-xs text-slate-500 mb-0.5">Avg Package</p>
+                      <p className="text-cyan-400 font-medium">{col.avgPackage}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: table */}
+          <div className="hidden md:block overflow-x-auto">
           <Table className="w-full text-base">
             <TableHeader className="bg-slate-900/80 border-b border-white/10">
               <TableRow className="hover:bg-transparent">
@@ -122,7 +175,7 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
                   Parameters
                 </TableHead>
                 {colleges.map((col, idx) => (
-                  <TableHead key={idx} className="p-6 align-top border-r border-white/5 last:border-0 min-w-[250px]">
+                  <TableHead key={idx} className="p-6 align-top border-r border-white/5 last:border-0 min-w-[220px]">
                     <div className="flex flex-col h-full">
                       <span className={`inline-block px-2.5 py-1 text-xs font-bold rounded-lg border w-fit mb-3 ${
                         getAdmissionBand(col) === 'Safe' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
@@ -144,30 +197,23 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
             </TableHeader>
             
             <TableBody className="[&_tr:last-child]:border-0 text-slate-300">
-              {/* Branch */}
               <TableRow className="border-b border-white/5 hover:bg-white/[0.02]">
                 <TableCell className="pl-6 font-medium text-slate-400 border-r border-white/5">Branch</TableCell>
                 {colleges.map((col, idx) => (
-                  <TableCell key={idx} className="p-4 border-r border-white/5 last:border-0 whitespace-normal">
-                    {col.branch}
-                  </TableCell>
+                  <TableCell key={idx} className="p-4 border-r border-white/5 last:border-0 whitespace-normal">{col.branch}</TableCell>
                 ))}
               </TableRow>
-
-              {/* Cutoff */}
               <TableRow className="border-b border-white/5 hover:bg-white/[0.02]">
                 <TableCell className="pl-6 font-medium text-slate-400 border-r border-white/5">Cutoff %ile</TableCell>
                 {colleges.map((col, idx) => (
                   <TableCell key={idx} className={`p-4 border-r border-white/5 last:border-0 font-bold text-white ${hlClass(highlights.cutoffPercentile?.[idx])}`}>
                     {col.cutoffPercentile.toFixed(2)}
-                    {col.cutoffTrend === 'falling' && <span className="text-emerald-400 ml-1.5" title="Falling">↓</span>}
-                    {col.cutoffTrend === 'rising' && <span className="text-red-400 ml-1.5" title="Rising">↑</span>}
-                    {col.cutoffTrend === 'stable' && <span className="text-slate-400 ml-1.5" title="Stable">→</span>}
+                    {col.cutoffTrend === 'falling' && <span className="text-emerald-400 ml-1.5">↓</span>}
+                    {col.cutoffTrend === 'rising' && <span className="text-red-400 ml-1.5">↑</span>}
+                    {col.cutoffTrend === 'stable' && <span className="text-slate-400 ml-1.5">→</span>}
                   </TableCell>
                 ))}
               </TableRow>
-
-              {/* AI Probability */}
               {colleges.some(c => c.admissionProbability) && (
                 <TableRow className="border-b border-white/5 hover:bg-white/[0.02]">
                   <TableCell className="pl-6 font-medium text-slate-400 border-r border-white/5">AI Probability</TableCell>
@@ -178,28 +224,18 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
                   ))}
                 </TableRow>
               )}
-
-              {/* Fees */}
               <TableRow className="border-b border-white/5 hover:bg-white/[0.02]">
                 <TableCell className="pl-6 font-medium text-slate-400 border-r border-white/5">Fees (Est.)</TableCell>
                 {colleges.map((col, idx) => (
-                  <TableCell key={idx} className="p-4 border-r border-white/5 last:border-0">
-                    {fmt(col.fees)}
-                  </TableCell>
+                  <TableCell key={idx} className="p-4 border-r border-white/5 last:border-0">{fmt(col.fees)}</TableCell>
                 ))}
               </TableRow>
-
-              {/* Seats */}
               <TableRow className="border-b border-white/5 hover:bg-white/[0.02]">
                 <TableCell className="pl-6 font-medium text-slate-400 border-r border-white/5">Intake Seats</TableCell>
                 {colleges.map((col, idx) => (
-                  <TableCell key={idx} className="p-4 border-r border-white/5 last:border-0">
-                    {col.seats || '—'}
-                  </TableCell>
+                  <TableCell key={idx} className="p-4 border-r border-white/5 last:border-0">{col.seats || '—'}</TableCell>
                 ))}
               </TableRow>
-
-              {/* Avg Package */}
               <TableRow className="border-b border-white/5 hover:bg-white/[0.02]">
                 <TableCell className="pl-6 font-medium text-slate-400 border-r border-white/5">Avg Package</TableCell>
                 {colleges.map((col, idx) => (
@@ -208,8 +244,6 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
                   </TableCell>
                 ))}
               </TableRow>
-
-              {/* Highest Package */}
               <TableRow className="border-b border-white/5 hover:bg-white/[0.02]">
                 <TableCell className="pl-6 font-medium text-slate-400 border-r border-white/5">Highest Package</TableCell>
                 {colleges.map((col, idx) => (
@@ -218,21 +252,19 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
                   </TableCell>
                 ))}
               </TableRow>
-
-              {/* Round 2 Opportunity */}
               <TableRow className="hover:bg-white/[0.02]">
                 <TableCell className="pl-6 font-medium text-slate-400 border-r border-white/5">Round 2 Opp.</TableCell>
                 {colleges.map((col, idx) => (
                   <TableCell key={idx} className="p-4 border-r border-white/5 last:border-0">
                     {col.round2Opportunity
                       ? <span className="px-2 py-0.5 text-xs font-bold bg-teal-500/20 text-teal-400 border border-teal-500/30 rounded-lg">Yes</span>
-                      : <span className="text-slate-500 text-sm">No</span>
-                    }
+                      : <span className="text-slate-500 text-sm">No</span>}
                   </TableCell>
                 ))}
               </TableRow>
             </TableBody>
           </Table>
+          </div>
         </motion.div>
       </main>
     </div>

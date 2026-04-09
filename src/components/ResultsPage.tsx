@@ -143,6 +143,39 @@ export function ResultsPage({
           )}
         </motion.div>
 
+        {/* Query summary */}
+        {lastQuery && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-wrap justify-center gap-2 mb-8"
+          >
+            <span className="px-3 py-1.5 bg-cyan-500/15 border border-cyan-500/30 rounded-full text-cyan-300 text-sm font-semibold">
+              {lastQuery.percentile} %ile
+            </span>
+            <span className="px-3 py-1.5 bg-purple-500/15 border border-purple-500/30 rounded-full text-purple-300 text-sm font-semibold">
+              {lastQuery.category}
+            </span>
+            <span className="px-3 py-1.5 bg-blue-500/15 border border-blue-500/30 rounded-full text-blue-300 text-sm font-semibold">
+              {lastQuery.branchPreference}
+            </span>
+            <span className="px-3 py-1.5 bg-slate-500/20 border border-slate-500/30 rounded-full text-slate-300 text-sm font-semibold">
+              CAP Round {lastQuery.capRound}
+            </span>
+            {lastQuery.location && (
+              <span className="px-3 py-1.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full text-emerald-300 text-sm font-semibold">
+                📍 {lastQuery.location}
+              </span>
+            )}
+            <button
+              onClick={() => navigate('/')}
+              className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-slate-400 text-sm hover:bg-white/10 transition-colors"
+            >
+              ✏️ Edit
+            </button>
+          </motion.div>
+        )}
+
         {isRound1 && lastQuery ? (
           <Tabs defaultValue="results" className="w-full">
             <div className="flex justify-center mb-8">

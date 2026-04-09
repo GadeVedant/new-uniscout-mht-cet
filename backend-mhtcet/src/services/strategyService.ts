@@ -16,7 +16,7 @@ class StrategyService {
   /**
    * Computes the historical average cutoff drop from Round I → Round II
    * for a given college + branch + category combination.
-   * Returns null when fewer than 2 years of paired data exist.
+   * Returns null when no paired data exists (falls back to category-wide average).
    */
   computeHistoricalAvgDelta(
     collegeCode: string,
@@ -27,8 +27,8 @@ class StrategyService {
     const branchLower = branchName.toLowerCase();
     const catLower = category.toLowerCase();
 
-    const r1ByYear = new Map<number, number>();
-    const r2ByYear = new Map<number, number>();
+    const r1ByYear = new Map<string, number>();
+    const r2ByYear = new Map<string, number>();
 
     for (const c of all) {
       if (
@@ -37,8 +37,8 @@ class StrategyService {
         c.category.toLowerCase() !== catLower
       ) continue;
 
-      const yr = parseInt(c.year, 10);
-      if (isNaN(yr)) continue;
+      const yr = c.year ?? '';
+      if (!yr) continue;
 
       if (c.capRound === 'I') r1ByYear.set(yr, c.cutoffPercentile);
       else if (c.capRound === 'II') r2ByYear.set(yr, c.cutoffPercentile);
@@ -47,16 +47,54 @@ class StrategyService {
     const deltas: number[] = [];
     for (const [yr, r1] of r1ByYear) {
       const r2 = r2ByYear.get(yr);
-      if (r2 !== undefined) deltas.push(r1 - r2);
+      if (r2 !== undefined && r1 > r2) deltas.push(r1 - r2); // only count actual drops
     }
 
-    if (deltas.length < 2) return null;
+    if (deltas.length >= 1) {
+      return deltas.reduce((s, d) => s + d, 0) / deltas.length;
+    }
+
+    // Fallback: compute category-wide average delta for this branch
+    return this.computeCategoryAvgDelta(branchName, category);
+  }
+
+  /**
+   * Category-wide average Round I → Round II drop for a branch+category.
+   * Used as fallback when a specific college has no paired data.
+   */
+  private computeCategoryAvgDelta(branchName: string, category: string): number | null {
+    const all = dataService.getAllColleges();
+    const branchLower = branchName.toLowerCase();
+    const catLower = category.toLowerCase();
+
+    // Group by college+year
+    type Pair = { r1: number; r2: number };
+    const pairs = new Map<string, Pair>();
+
+    for (const c of all) {
+      if (c.branchName.toLowerCase() !== branchLower) continue;
+      if (c.category.toLowerCase() !== catLower) continue;
+      const yr = c.year ?? '';
+      if (!yr) continue;
+      const key = `${c.collegeCode}||${yr}`;
+      const pair = pairs.get(key) ?? { r1: -1, r2: -1 };
+      if (c.capRound === 'I') pair.r1 = c.cutoffPercentile;
+      else if (c.capRound === 'II') pair.r2 = c.cutoffPercentile;
+      pairs.set(key, pair);
+    }
+
+    const deltas: number[] = [];
+    for (const { r1, r2 } of pairs.values()) {
+      if (r1 > 0 && r2 > 0 && r1 > r2) deltas.push(r1 - r2);
+    }
+
+    if (deltas.length === 0) return 2.5; // sensible default: 2.5 pt drop
     return deltas.reduce((s, d) => s + d, 0) / deltas.length;
   }
 
   /**
    * Colleges where Round 1 cutoff exceeds student percentile by (0, 8] pts
-   * AND historical avg delta >= 3.0.
+   * AND historical avg delta >= 1.5.
    */
   computeMissedColleges(
     percentile: number,
@@ -69,7 +107,7 @@ class StrategyService {
 
     // Collect latest Round I cutoff per (collegeCode, branchName, category)
     type Key = string;
-    const latestR1 = new Map<Key, { code: string; name: string; branch: string; cutoff: number }>();
+    const latestR1 = new Map<Key, { code: string; name: string; branch: string; cutoff: number; year: string }>();
 
     for (const c of all) {
       if (c.capRound !== 'I') continue;
@@ -78,13 +116,13 @@ class StrategyService {
 
       const key: Key = `${c.collegeCode}||${c.branchName}||${c.category}`;
       const existing = latestR1.get(key);
-      const yr = parseInt(c.year, 10);
-      if (!existing || (!isNaN(yr) && yr > parseInt('0', 10))) {
+      if (!existing || (c.year ?? '') > (existing.year ?? '')) {
         latestR1.set(key, {
           code: c.collegeCode,
           name: c.collegeName,
           branch: c.branchName,
           cutoff: c.cutoffPercentile,
+          year: c.year ?? '',
         });
       }
     }
@@ -96,14 +134,14 @@ class StrategyService {
       if (delta <= 0 || delta > 8) continue;
 
       const avgDelta = this.computeHistoricalAvgDelta(entry.code, entry.branch, category);
-      if (avgDelta === null || avgDelta < 3.0) continue;
+      if (avgDelta === null || avgDelta < 1.5) continue;
 
       const expectedR2Cutoff = parseFloat((entry.cutoff - avgDelta).toFixed(2));
       const r2Delta = entry.cutoff - expectedR2Cutoff;
 
       // Estimate round2Probability using a simple sigmoid-like mapping
       const margin = percentile - expectedR2Cutoff;
-      const round2Probability = Math.round(Math.min(100, Math.max(0, 50 + margin * 10)));
+      const round2Probability = Math.round(Math.min(100, Math.max(5, 50 + margin * 10)));
 
       results.push({
         collegeCode: entry.code,
@@ -117,7 +155,7 @@ class StrategyService {
       });
     }
 
-    return results.sort((a, b) => b.expectedDrop - a.expectedDrop).slice(0, 10);
+    return results.sort((a, b) => b.round2Probability - a.round2Probability).slice(0, 10);
   }
 
   /**
@@ -186,7 +224,7 @@ class StrategyService {
       seen.add(key);
 
       const avgDelta = this.computeHistoricalAvgDelta(c.collegeCode, c.branchName, category);
-      if (avgDelta === null || avgDelta < 3.0) continue;
+      if (avgDelta === null || avgDelta < 1.5) continue;
 
       const expectedR2Cutoff = parseFloat((c.cutoffPercentile - avgDelta).toFixed(2));
 

@@ -61,7 +61,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   const [formData, setFormData] = useState<MhtCetFormData>({
     percentile: '',
     year: CURRENT_YEAR,
-    capRound: 'I',
+    capRound: 'I', // always Round I — strategy tab shows Round II/III chances
     category: 'GOPENS',
     branchPreference: '',
     location: '',
@@ -74,9 +74,8 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     let completed = 0;
     if (formData.percentile !== '') completed++;
     if (formData.category) completed++;
-    if (formData.capRound) completed++;
     if (formData.branchPreference) completed++;
-    return (completed / 4) * 100; // location and year are optional/defaulted
+    return (completed / 3) * 100;
   };
 
   const handlePredict = async (e: React.FormEvent) => {
@@ -191,20 +190,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               </div>
 
               {/* CAP Round */}
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-200">CAP Round</label>
-                <select
-                  required
-                  value={formData.capRound}
-                  onChange={(e) => setFormData(p => ({...p, capRound: e.target.value}))}
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
-                  disabled={isLoading}
-                >
-                  {CAP_ROUNDS.map(r => <option key={r} value={r} className="bg-slate-900">Round {r}</option>)}
-                </select>
-              </div>
-
-              {/* Year is automatically set to current cycle — no user input needed */}
+              {/* CAP Round always I — Round II/III chances shown in strategy tab */}
 
               {/* Branch */}
               <div className="space-y-2">

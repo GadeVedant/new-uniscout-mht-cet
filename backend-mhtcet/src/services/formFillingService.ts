@@ -45,14 +45,22 @@ function assignTier(
   cutoff: number,
   studentPercentile: number,
 ): 'safe' | 'target' | 'dream' | null {
-  const band = admissionBand;
-  if (band === 'Safe' || band === 'Likely' || admissionChance === 'High') return 'safe';
-  if (band === 'Moderate' || admissionChance === 'Medium') return 'target';
-  if (band === 'Risky' || admissionChance === 'Low') {
-    const diff = cutoff - studentPercentile;
-    return diff <= 5 ? 'dream' : null;
-  }
-  return null;
+  const diff = studentPercentile - cutoff; // positive = student is above cutoff
+
+  // Rule-based tier from percentile difference (always reliable)
+  let ruleTier: 'safe' | 'target' | 'dream' | null;
+  if (diff >= 3) ruleTier = 'safe';
+  else if (diff >= 0) ruleTier = 'target';
+  else if (diff >= -5) ruleTier = 'dream';
+  else ruleTier = null; // too far below cutoff — exclude
+
+  // ML band — only trust it when it's more optimistic or equally conservative
+  // Never let ML downgrade a rule-based safe/target to risky
+  if (admissionBand === 'Safe' || admissionBand === 'Likely') return 'safe';
+  if (admissionBand === 'Moderate') return ruleTier === 'safe' ? 'safe' : 'target';
+
+  // For 'Risky' or undefined ML band, fall back to rule-based
+  return ruleTier;
 }
 
 class FormFillingService {
@@ -90,7 +98,22 @@ class FormFillingService {
       });
     }
 
-    // ── 2. Budget filter ──────────────────────────────────────────────────────
+    // ── 2. District filter (soft: prefer selected districts, but don't exclude all) ──
+    if (preferredDistricts.length > 0) {
+      const districtLower = preferredDistricts.map((d) => d.toLowerCase().trim());
+      const inDistrict = candidates.filter((c) =>
+        districtLower.some((d) => c.district?.toLowerCase().includes(d) || c.location?.toLowerCase().includes(d))
+      );
+      // Only apply hard filter if it leaves enough results (≥5), otherwise keep all
+      if (inDistrict.length >= 5) {
+        candidates = inDistrict;
+        logger.info(`FormFilling: district filter kept ${candidates.length} colleges in [${preferredDistricts.join(', ')}]`);
+      } else {
+        logger.info(`FormFilling: district filter too restrictive (${inDistrict.length} results), keeping all ${candidates.length} colleges`);
+      }
+    }
+
+    // ── 3. Budget filter ──────────────────────────────────────────────────────
     let budgetWarning = false;
     if (budget != null && budget > 0) {
       const beforeBudget = candidates.length;
