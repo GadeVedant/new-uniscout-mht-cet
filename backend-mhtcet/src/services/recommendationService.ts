@@ -187,13 +187,24 @@ class RecommendationService {
     rec.admissionProbability = result.admission_probability;
     rec.admissionProbabilityP10 = result.p10 != null ? Math.round(result.p10) : undefined;
     rec.admissionProbabilityP90 = result.p90 != null ? Math.round(result.p90) : undefined;
-    rec.admissionBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
     rec.confidenceLabel = result.confidence_label;
     rec.topFactors = result.top_factors;
-    // Backward-compat: map band → admissionChance
+
+    // Rule-based band from percentile difference — always reliable
+    const diff = rec.percentileDifference ?? 0;
+    const ruleBand: 'Safe' | 'Likely' | 'Moderate' | 'Risky' =
+      diff >= 5 ? 'Safe' : diff >= 2 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
+
+    const mlBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
+    const bandRank: Record<string, number> = { Safe: 3, Likely: 2, Moderate: 1, Risky: 0 };
+
+    // Use whichever band is MORE optimistic — never let ML downgrade a good rule-based result
+    rec.admissionBand = (bandRank[mlBand] ?? 0) > (bandRank[ruleBand] ?? 0) ? mlBand : ruleBand;
+
+    // Sync admissionChance with final band
     if (rec.admissionBand === 'Safe' || rec.admissionBand === 'Likely') rec.admissionChance = 'High';
     else if (rec.admissionBand === 'Moderate') rec.admissionChance = 'Medium';
-    else if (rec.admissionBand === 'Risky') rec.admissionChance = 'Low';
+    else rec.admissionChance = 'Low';
   }
 
   private classifyError(err: unknown): 'timeout' | 'non_200' | 'unreachable' {

@@ -167,9 +167,17 @@ class FormFillingService {
       const results = await mlServiceClient.predictBatch(mlRequests, 'form-filling');
       results.forEach((result, i) => {
         recs[i].admissionProbability = result.admission_probability;
-        recs[i].admissionBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
         recs[i].confidenceLabel = result.confidence_label;
         recs[i].topFactors = result.top_factors;
+
+        // Rule-based band — always reliable
+        const diff = recs[i].percentileDifference ?? 0;
+        const ruleBand: 'Safe' | 'Likely' | 'Moderate' | 'Risky' =
+          diff >= 5 ? 'Safe' : diff >= 2 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
+        const mlBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
+        const bandRank: Record<string, number> = { Safe: 3, Likely: 2, Moderate: 1, Risky: 0 };
+        // Use whichever is more optimistic
+        recs[i].admissionBand = (bandRank[mlBand] ?? 0) > (bandRank[ruleBand] ?? 0) ? mlBand : ruleBand;
       });
     } catch {
       mlUnavailable = true;
