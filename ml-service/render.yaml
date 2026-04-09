@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: uniscout-ml
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: ML_MODEL_DIR
+        value: ./models
+      - key: ML_DATA_DIR
+        value: ./data
+      - key: TRAINING_ENABLED
+        value: "false"
+      - key: ML_LOG_LEVEL
+        value: INFO

@@ -3,23 +3,38 @@
 ## Architecture
 
 ```
-uniscout.in     → Render Static Site  (React/Vite frontend)  — free
-api.uniscout.in → Render Web Service  (Node.js backend)       — free / $7/mo
-                  Railway             (Python ML service)     — $5 credit/mo
+uniscout.in         → Render Static Site  (React/Vite frontend)  — free
+api.uniscout.in     → Render Web Service  (Node.js backend)       — free / $7/mo
+ml.uniscout.in      → Render Web Service  (Python ML service)     — free / $7/mo
 ```
-
-ML service URL: `https://uniscout-ml-production.up.railway.app`
 
 ---
 
-## Step 1 — ML Service (Railway) ✅ Already deployed
+## Step 1 — ML Service on Render (Docker)
 
-URL: `https://uniscout-ml-production.up.railway.app/health`
+1. Render dashboard → **New → Web Service**
+2. Connect repo: `Vedant040201/new-uniscout-mht-cet`
+3. Settings:
+   - **Root Directory:** `ml-service`
+   - **Runtime:** Docker
+   - **Dockerfile Path:** `./Dockerfile`
+   - **Plan:** Free (spins down after 15min) or $7/mo (always-on)
+4. Environment variables:
+   ```
+   ML_MODEL_DIR=./models
+   ML_DATA_DIR=./data
+   TRAINING_ENABLED=false
+   ML_LOG_LEVEL=INFO
+   ```
+5. Deploy — model loads from `./models/` on startup (~20s)
+6. Test: `https://uniscout-ml.onrender.com/health`
+   - Should return: `{ "model_loaded": true, "status": "ok" }`
 
-If you need to redeploy:
-- Railway → project → ML service → Root Directory: `ml-service`
-- Uses `Dockerfile` (includes `libgomp1` for LightGBM)
-- Env vars: `ML_MODEL_DIR=./models`, `ML_DATA_DIR=./data`, `TRAINING_ENABLED=false`
+**Custom domain (optional):** Render → Settings → Custom Domains → add `ml.uniscout.in`
+
+> **Note:** On the free plan, the service spins down after 15 min of inactivity.
+> The backend already has a 1.5s ML timeout and graceful fallback, so cold starts
+> won't break anything — predictions just use historical data until ML warms up.
 
 ---
 
@@ -36,10 +51,11 @@ If you need to redeploy:
    ```
    NODE_ENV=production
    DATA_DIR=./data
-   ML_SERVICE_URL=https://uniscout-ml-production.up.railway.app
+   ML_SERVICE_URL=https://uniscout-ml.onrender.com
    CORS_ORIGIN=https://uniscout.in
    RATE_LIMIT_MAX_REQUESTS=200
    ```
+   > Replace `uniscout-ml.onrender.com` with your actual ML service URL from Step 1.
 5. Deploy — loads ~80k records from `./data/` on startup (~30s)
 6. Test: `https://uniscout-backend.onrender.com/api/health`
 
@@ -65,24 +81,27 @@ If you need to redeploy:
 
 ## DNS Records
 
-| Type | Name | Value |
-|------|------|-------|
-| A/CNAME | `@` | Render-provided |
-| CNAME | `www` | Render-provided |
-| CNAME | `api` | `uniscout-backend.onrender.com` |
+| Type  | Name  | Value                          |
+|-------|-------|--------------------------------|
+| CNAME | `@`   | Render-provided (frontend)     |
+| CNAME | `www` | Render-provided (frontend)     |
+| CNAME | `api` | `uniscout-backend.onrender.com`|
+| CNAME | `ml`  | `uniscout-ml.onrender.com`     |
 
 ---
 
 ## After Deploy Checklist
 
-- [ ] `https://uniscout-ml-production.up.railway.app/health` → `model_loaded: true` ✅
+- [ ] `https://uniscout-ml.onrender.com/health` → `model_loaded: true` ✅
 - [ ] `https://uniscout-backend.onrender.com/api/health` → `success: true, totalRecords: ~80000`
-- [ ] `https://uniscout-frontend.onrender.com` loads homepage
+- [ ] `https://uniscout.in` loads homepage
 - [ ] MHT-CET predictor returns results with admission bands
 - [ ] College detail page shows cutoff history chart
-- [ ] Smart Form Filling generates preference list
-- [ ] `https://uniscout-frontend.onrender.com/robots.txt` accessible
-- [ ] `https://uniscout-frontend.onrender.com/sitemap.xml` accessible
+- [ ] Smart Form Filling generates preference list (no "AI unavailable" note)
+- [ ] `https://uniscout.in/robots.txt` accessible
+- [ ] `https://uniscout.in/sitemap.xml` accessible
+
+---
 
 ## SEO & Analytics Setup
 
@@ -107,7 +126,6 @@ If you need to redeploy:
   - Check Core Web Vitals for `https://uniscout.in`
   - Target: LCP < 2.5s, CLS < 0.1, INP < 200ms
 
-- [ ] **Connect custom domain** (`uniscout.in`) to Render frontend
 - [ ] Update `CORS_ORIGIN` on backend to `https://uniscout.in`
 - [ ] Update `VITE_API_URL` on frontend to `https://api.uniscout.in/api`
 
@@ -116,26 +134,26 @@ If you need to redeploy:
 ## Environment Variables Reference
 
 ### Frontend (Render Static Site)
-| Variable | Value |
-|---|---|
-| `VITE_API_URL` | `https://api.uniscout.in/api` |
+| Variable       | Value                          |
+|----------------|--------------------------------|
+| `VITE_API_URL` | `https://api.uniscout.in/api`  |
 
 ### Backend (Render Web Service)
-| Variable | Value |
-|---|---|
-| `NODE_ENV` | `production` |
-| `DATA_DIR` | `./data` |
-| `ML_SERVICE_URL` | `https://uniscout-ml-production.up.railway.app` |
-| `CORS_ORIGIN` | `https://uniscout.in` |
-| `RATE_LIMIT_MAX_REQUESTS` | `200` |
-| `LOAD_ALL_YEARS` | `true` (optional — loads 2022-25, uses more RAM) |
+| Variable                  | Value                                  |
+|---------------------------|----------------------------------------|
+| `NODE_ENV`                | `production`                           |
+| `DATA_DIR`                | `./data`                               |
+| `ML_SERVICE_URL`          | `https://uniscout-ml.onrender.com`     |
+| `CORS_ORIGIN`             | `https://uniscout.in`                  |
+| `RATE_LIMIT_MAX_REQUESTS` | `200`                                  |
 
-### ML Service (Railway)
-| Variable | Value |
-|---|---|
-| `ML_MODEL_DIR` | `./models` |
-| `ML_DATA_DIR` | `./data` |
-| `TRAINING_ENABLED` | `false` |
+### ML Service (Render Web Service — Docker)
+| Variable           | Value      |
+|--------------------|------------|
+| `ML_MODEL_DIR`     | `./models` |
+| `ML_DATA_DIR`      | `./data`   |
+| `TRAINING_ENABLED` | `false`    |
+| `ML_LOG_LEVEL`     | `INFO`     |
 
 ---
 
@@ -144,8 +162,9 @@ If you need to redeploy:
 **Terminal 1 — ML Service**
 ```bash
 cd new-uniscout-mht-cet/ml-service
-python -m uvicorn main:app --host 0.0.0.0 --port 8000
+python main.py
 ```
+Wait for: `Model loaded on startup`
 
 **Terminal 2 — Backend**
 ```bash
@@ -166,8 +185,8 @@ Open: `http://localhost:3000`
 ## Adding New Exam Data
 
 ```bash
-git add ml-service/data/jee_main_2024.csv
-git commit -m "data: add JEE Main 2024"
+git add ml-service/data/new_data.csv backend-mhtcet/data/new_data.csv
+git commit -m "data: add new CAP data"
 git push
 ```
-Render auto-redeploys backend. Railway auto-redeploys ML service.
+Render auto-redeploys both backend and ML service.

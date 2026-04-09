@@ -8,7 +8,7 @@ import axios from 'axios';
 import { randomUUID } from 'crypto';
 
 const ML_SERVICE_URL = process.env.ML_SERVICE_URL ?? 'http://localhost:8000';
-const ML_TIMEOUT_MS = parseInt(process.env.ML_TIMEOUT_MS ?? '1500', 10); // 1.5s default — fail fast if ML is down
+const ML_TIMEOUT_MS = parseInt(process.env.ML_TIMEOUT_MS ?? '8000', 10); // 8s default — allows for cross-region latency
 
 export interface MLPredictionRequest {
   college_code: string;
