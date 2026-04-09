@@ -101,14 +101,16 @@ class DataService {
     return { byCode, byName };
   }
 
-  /** Load seat intake from all seat matrix CSVs: Map<"code|branch", intake> */
+  /** Load seat intake from all seat matrix CSVs: Map<"code|branch", intake>
+   * Uses State Level intake as the primary value (represents total open pool).
+   * Falls back to Home University or any category if State Level is absent.
+   */
   private loadSeatMap(dataDir: string): Map<string, number> {
     const map = new Map<string, number>();
-    const PRIMARY_CATS = new Set(['state level', 'home university', 'other than home university']);
-    // Load all seat matrix files sorted ascending so newest overwrites older
     const files = fs.readdirSync(dataDir)
       .filter(f => (f.startsWith('seatmatrix') || f.startsWith('seat_matrix')) && f.endsWith('.csv'))
-      .sort();
+      .sort(); // ascending = oldest first, newest overwrites
+
     for (const file of files) {
       const content = fs.readFileSync(path.join(dataDir, file), 'utf8');
       const lines = content.split(/\r?\n/);
@@ -120,10 +122,9 @@ class DataService {
       const catIdx = headers.indexOf('category');
       if (codeIdx === -1 || branchIdx === -1 || intakeIdx === -1) continue;
 
-      // Two passes: primary categories first, then fallback for colleges with no primary data
-      const primaryMap = new Map<string, number>();  // key -> intake (primary cats only)
-      const fallbackMap = new Map<string, number>(); // key -> max intake (any cat, for colleges missing primary)
-      const codesWithPrimary = new Set<string>();
+      // Per file: track State Level intake and fallback (max of any other category)
+      const stateLevelMap = new Map<string, number>(); // key -> State Level intake
+      const fallbackMap = new Map<string, number>();   // key -> best fallback intake
 
       for (let i = 1; i < lines.length; i++) {
         const vals = this.parseCsvLine(lines[i]);
@@ -133,21 +134,21 @@ class DataService {
         const category = catIdx !== -1 ? String(vals[catIdx] ?? '').toLowerCase().trim() : '';
         if (!code || !branch || isNaN(intake) || intake <= 0) continue;
         const key = `${code}|${branch}`;
-        if (PRIMARY_CATS.has(category)) {
-          primaryMap.set(key, (primaryMap.get(key) ?? 0) + intake);
-          codesWithPrimary.add(code);
-        } else {
-          // Keep max intake across non-primary categories as fallback
+
+        if (category === 'state level') {
+          // State Level = total open pool — use directly, don't sum
+          stateLevelMap.set(key, intake);
+        } else if (category !== 'home university' && category !== 'other than home university') {
+          // EWS, TFWS, PWD, DEF — keep max as fallback
           if (intake > (fallbackMap.get(key) ?? 0)) fallbackMap.set(key, intake);
         }
+        // Home University / Other than Home University are sub-allocations — skip
       }
 
-      // Merge primary data
-      for (const [key, val] of primaryMap) map.set(key, val);
-      // Merge fallback only for colleges that have NO primary category data in this file
+      // Merge: State Level takes priority, then fallback for colleges with no State Level
+      for (const [key, val] of stateLevelMap) map.set(key, val);
       for (const [key, val] of fallbackMap) {
-        const code = key.split('|')[0];
-        if (!codesWithPrimary.has(code) && !map.has(key)) map.set(key, val);
+        if (!stateLevelMap.has(key)) map.set(key, val);
       }
     }
     logger.info(`  Seat map: ${map.size} entries from ${files.length} seat matrix file(s)`);
