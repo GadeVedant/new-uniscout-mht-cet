@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { dataService } from '../services/dataService.js';
+import { categoryMatches } from '../utils/categoryMap.js';
 import type { CutoffHistoryEntry } from '../types/index.js';
 
 /**
@@ -27,13 +28,12 @@ export const getCutoffHistory = (req: Request, res: Response): void => {
 
   const colleges = dataService.getAllColleges();
 
-  // Filter by collegeCode, branchName, category — ignore capRound for history
-  // (different years may have different round naming conventions)
+  // Filter by collegeCode, branchName, category (expanded) — ignore capRound for history
   const matches = colleges.filter(
     (c) =>
       c.collegeCode === collegeCode &&
       c.branchName.toLowerCase() === (branch as string).toLowerCase() &&
-      c.category.toLowerCase() === (category as string).toLowerCase(),
+      categoryMatches(c.category, category as string),
   );
 
   // Deduplicate by year — keep lowest cutoffPercentile per year (most competitive/accurate)

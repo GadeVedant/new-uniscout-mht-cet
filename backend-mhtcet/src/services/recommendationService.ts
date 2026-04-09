@@ -56,7 +56,7 @@ class RecommendationService {
 
     // ---- Rule-based filter ----
     const applyFilters = (withLocation: boolean) => dataService.getAllColleges().filter(c => {
-      if (year && c.year !== year) return false;
+      // No year filter — dedup in dataService already keeps most recent year per college+branch+category
       if (capRound && c.capRound !== capRound) return false;
       if (category) {
         if (!categoryMatches(c.category, category)) return false;
@@ -81,9 +81,22 @@ class RecommendationService {
 
     logger.info(`Filtered to ${filtered.length} colleges`);
 
-    const recommendations = filtered
+    const allRecs = filtered
       .map(c => this.buildRecommendation(c, percentile))
-      .filter(r => r.percentileDifference >= -5)
+      .filter(r => r.percentileDifference >= -5);
+
+    // Dedup: keep one record per college+branch — the one with the lowest cutoff
+    // (most accessible entry point for the student's category group)
+    const bestPerCollegeBranch = new Map<string, typeof allRecs[0]>();
+    for (const rec of allRecs) {
+      const key = `${rec.code}|${rec.branch}`;
+      const existing = bestPerCollegeBranch.get(key);
+      if (!existing || rec.cutoffPercentile < existing.cutoffPercentile) {
+        bestPerCollegeBranch.set(key, rec);
+      }
+    }
+
+    const recommendations = [...bestPerCollegeBranch.values()]
       .sort((a, b) => {
         const order = { High: 0, Medium: 1, Low: 2 };
         const diff = order[a.admissionChance] - order[b.admissionChance];
