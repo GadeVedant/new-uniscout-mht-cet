@@ -25,7 +25,7 @@ const CATEGORIES = [
   { label: 'NT3', value: 'GNT3S' },
   { label: 'VJ/DT', value: 'GVJS' },
 ];
-const CAP_ROUNDS = ['I', 'III'];
+const CAP_ROUNDS = ['I', 'II', 'III'];
 const BRANCHES = [
   'artificial intelligence and data science',
   'artificial intelligence and machine learning',
@@ -120,6 +120,7 @@ export function SmartFormPage() {
 
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [result, setResult] = useState<FormFillingResponse | null>(null);
+  const [request, setRequest] = useState<FormFillingRequest | null>(null);
   const [mlUnavailable, setMlUnavailable] = useState(false);
   const [budgetWarning, setBudgetWarning] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -204,6 +205,7 @@ export function SmartFormPage() {
     try {
       const response = await api.generateFormFillingList(request);
       if (response.success && response.data) {
+        setRequest(request);
         setResult(response.data);
         setMlUnavailable(response.metadata?.ml_unavailable ?? false);
         setBudgetWarning(response.metadata?.warning != null);
@@ -227,6 +229,7 @@ export function SmartFormPage() {
       <div ref={resultsRef} className="min-h-screen pb-32 text-slate-300 w-full flex flex-col items-center">
         <PreferenceList
           result={result}
+          request={request}
           mlUnavailable={mlUnavailable}
           budgetWarning={budgetWarning}
           onBack={() => setResult(null)}

@@ -25,7 +25,7 @@ const CATEGORIES = [
   { label: 'NT3', value: 'GNT3S' },
   { label: 'VJ/DT', value: 'GVJS' },
 ];
-const CAP_ROUNDS = ['I', 'III'];
+const CAP_ROUNDS = ['I', 'II', 'III'];
 const CURRENT_YEAR = '2025-26'; // Always predict for the current admission cycle
 const BRANCHES = [
   'artificial intelligence and data science',
@@ -74,8 +74,9 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     let completed = 0;
     if (formData.percentile !== '') completed++;
     if (formData.category) completed++;
+    if (formData.capRound) completed++;
     if (formData.branchPreference) completed++;
-    return (completed / 3) * 100;
+    return (completed / 4) * 100;
   };
 
   const handlePredict = async (e: React.FormEvent) => {
@@ -193,7 +194,18 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               </div>
 
               {/* CAP Round */}
-              {/* CAP Round always I — Round II/III chances shown in strategy tab */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-slate-200">CAP Round</label>
+                <select
+                  required
+                  value={formData.capRound}
+                  onChange={(e) => setFormData(p => ({...p, capRound: e.target.value}))}
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
+                  disabled={isLoading}
+                >
+                  {CAP_ROUNDS.map(r => <option key={r} value={r} className="bg-slate-900">Round {r}</option>)}
+                </select>
+              </div>
 
               {/* Branch */}
               <div className="space-y-2">

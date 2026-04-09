@@ -5,18 +5,25 @@
  */
 import { motion } from 'motion/react';
 import { Rocket, Target, CheckCircle, AlertCircle, WifiOff } from 'lucide-react';
-import type { FormFillingResponse } from '../services/api';
+import type { FormFillingRequest, FormFillingResponse } from '../services/api';
 import { PreferenceEntryCard } from './PreferenceEntryCard';
 import { CopyButton } from './CopyButton';
 
 interface PreferenceListProps {
   result: FormFillingResponse;
+  request?: FormFillingRequest;
   mlUnavailable?: boolean;
   budgetWarning?: boolean;
   onBack: () => void;
 }
 
-export function PreferenceList({ result, mlUnavailable, budgetWarning, onBack }: PreferenceListProps) {
+const CATEGORY_LABELS: Record<string, string> = {
+  GOPENS: 'Open', GSCS: 'SC', GSTS: 'ST', GOBCS: 'OBC',
+  GSEBCS: 'SEBC', EWS: 'EWS', TFWS: 'TFWS',
+  GNT1S: 'NT1', GNT2S: 'NT2', GNT3S: 'NT3', GVJS: 'VJ/DT',
+};
+
+export function PreferenceList({ result, request, mlUnavailable, budgetWarning, onBack }: PreferenceListProps) {
   const total = result.safePicks.length + result.targetPicks.length + result.dreamPicks.length;
 
   return (
@@ -36,6 +43,41 @@ export function PreferenceList({ result, mlUnavailable, budgetWarning, onBack }:
           ← Edit form
         </button>
       </div>
+
+      {/* Query summary pills */}
+      {request && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-wrap gap-2 mb-6"
+        >
+          <span className="px-3 py-1.5 bg-cyan-500/15 border border-cyan-500/30 rounded-full text-cyan-300 text-sm font-semibold">
+            {request.percentile} %ile
+          </span>
+          <span className="px-3 py-1.5 bg-purple-500/15 border border-purple-500/30 rounded-full text-purple-300 text-sm font-semibold">
+            {CATEGORY_LABELS[request.category] ?? request.category}
+          </span>
+          <span className="px-3 py-1.5 bg-slate-500/20 border border-slate-500/30 rounded-full text-slate-300 text-sm font-semibold">
+            CAP Round {request.capRound}
+          </span>
+          {request.branchPreferences.map((b) => (
+            <span key={b} className="px-3 py-1.5 bg-blue-500/15 border border-blue-500/30 rounded-full text-blue-300 text-sm font-semibold">
+              {b.replace(/\b\w/g, (c) => c.toUpperCase())}
+            </span>
+          ))}
+          {request.preferredDistricts?.map((d) => (
+            <span key={d} className="px-3 py-1.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full text-emerald-300 text-sm font-semibold">
+              📍 {d}
+            </span>
+          ))}
+          <button
+            onClick={onBack}
+            className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-slate-400 text-sm hover:bg-white/10 transition-colors"
+          >
+            ✏️ Edit
+          </button>
+        </motion.div>
+      )}
 
       {/* Summary bar */}
       {total > 0 && (
