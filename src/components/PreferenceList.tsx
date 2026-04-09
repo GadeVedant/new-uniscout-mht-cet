@@ -57,9 +57,7 @@ export function PreferenceList({ result, request, mlUnavailable, budgetWarning, 
           <span className="px-3 py-1.5 bg-purple-500/15 border border-purple-500/30 rounded-full text-purple-300 text-sm font-semibold">
             {CATEGORY_LABELS[request.category] ?? request.category}
           </span>
-          <span className="px-3 py-1.5 bg-slate-500/20 border border-slate-500/30 rounded-full text-slate-300 text-sm font-semibold">
-            CAP Round {request.capRound}
-          </span>
+          {/* CAP Round always I — no need to show */}
           {request.branchPreferences.map((b) => (
             <span key={b} className="px-3 py-1.5 bg-blue-500/15 border border-blue-500/30 rounded-full text-blue-300 text-sm font-semibold">
               {b.replace(/\b\w/g, (c) => c.toUpperCase())}

@@ -83,7 +83,6 @@ function ProgressIndicator({ form }: { form: FormState }) {
   const steps = [
     { label: 'Percentile', done: form.percentile !== '' && parseFloat(form.percentile) >= 0 && parseFloat(form.percentile) <= 100 },
     { label: 'Category', done: !!form.category },
-    { label: 'CAP Round', done: !!form.capRound },
     { label: 'Branch(es)', done: form.branchPreferences.length > 0 },
   ];
   const completed = steps.filter((s) => s.done).length;
@@ -120,7 +119,7 @@ export function SmartFormPage() {
 
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [result, setResult] = useState<FormFillingResponse | null>(null);
-  const [request, setRequest] = useState<FormFillingRequest | null>(null);
+  const [request, setRequest] = useState<FormFillingRequest | undefined>(undefined);
   const [mlUnavailable, setMlUnavailable] = useState(false);
   const [budgetWarning, setBudgetWarning] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -272,7 +271,7 @@ export function SmartFormPage() {
           <form onSubmit={handleGenerate} className="space-y-8" noValidate>
 
             {/* ── Academic Info ── */}
-            <div className="grid md:grid-cols-3 gap-6 border-b border-white/10 pb-8">
+            <div className="grid md:grid-cols-2 gap-6 border-b border-white/10 pb-8">
               {/* Percentile */}
               <div className="space-y-2">
                 <label htmlFor="percentile" className="block text-sm font-medium text-slate-200">
@@ -317,22 +316,7 @@ export function SmartFormPage() {
                   {CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.label}</option>)}
                 </select>
               </div>
-
-              {/* CAP Round */}
-              <div className="space-y-2">
-                <label htmlFor="capRound" className="block text-sm font-medium text-slate-200">
-                  CAP Round <span className="text-red-400">*</span>
-                </label>
-                <select
-                  id="capRound"
-                  value={form.capRound}
-                  onChange={(e) => setForm((p) => ({ ...p, capRound: e.target.value }))}
-                  className="w-full bg-slate-900 border border-white/20 rounded-lg px-4 py-2.5 focus:border-cyan-500 outline-none text-white disabled:opacity-50 appearance-none"
-                  disabled={isLoading}
-                >
-                  {CAP_ROUNDS.map((r) => <option key={r} value={r}>Round {r}</option>)}
-                </select>
-              </div>
+              {/* CAP Round always I — Cap 2/3 chances shown in results */}
             </div>
 
             {/* ── Branch Preferences ── */}
