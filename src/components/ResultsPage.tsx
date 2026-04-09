@@ -191,6 +191,7 @@ export function ResultsPage({
         )}
 
         {isRound1 && lastQuery ? (
+          <Tabs defaultValue="results" className="w-full">
             <div className="flex justify-center mb-8">
               <TabsList className="bg-white/10 border border-white/20 p-1">
                 <TabsTrigger value="results" className="data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-900 font-semibold px-8 py-2.5">
