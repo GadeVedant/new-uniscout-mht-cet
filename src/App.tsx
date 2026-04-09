@@ -11,6 +11,9 @@ import { ExamLandingPage } from './components/ExamLandingPage';
 import { JEE_CONFIG, NEET_CONFIG, CAT_CONFIG } from './components/examConfigs';
 import { CollegeRecommendation, RecommendationRequest } from './services/api';
 
+// Extend RecommendationRequest with UI-only flags
+export type QueryWithMeta = RecommendationRequest & { locationFallback?: boolean };
+
 export interface MhtCetFormData {
   percentile: string;
   year: string;
@@ -30,7 +33,7 @@ export default function App() {
       return saved ? JSON.parse(saved) : [];
     } catch { return []; }
   });
-  const [lastQuery, setLastQuery] = useState<RecommendationRequest | null>(() => {
+  const [lastQuery, setLastQuery] = useState<QueryWithMeta | null>(() => {
     try {
       const saved = sessionStorage.getItem('uniscout_query');
       return saved ? JSON.parse(saved) : null;
@@ -43,7 +46,7 @@ export default function App() {
     setColleges(results);
     try { sessionStorage.setItem('uniscout_colleges', JSON.stringify(results)); } catch {}
   };
-  const setLastQueryAndPersist = (query: RecommendationRequest | null) => {
+  const setLastQueryAndPersist = (query: QueryWithMeta | null) => {
     setLastQuery(query);
     try { sessionStorage.setItem('uniscout_query', JSON.stringify(query)); } catch {}
   };

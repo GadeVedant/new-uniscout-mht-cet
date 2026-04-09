@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { CollegeRecommendation, RecommendationRequest } from '../services/api';
+import type { QueryWithMeta } from '../App';
 import { CollegeCard } from './CollegeCard';
 import { FloatingCompareBar } from './FloatingCompareBar';
 import { StrategyTab } from './StrategyTab';
@@ -22,7 +23,7 @@ import { useSEO } from '../seo/useSEO';
 
 interface ResultsPageProps {
   colleges: CollegeRecommendation[];
-  lastQuery: RecommendationRequest | null;
+  lastQuery: QueryWithMeta | null;
   portalType: 'mht-cet' | 'jee';
   comparisonSelection: CollegeRecommendation[];
   setComparisonSelection: React.Dispatch<React.SetStateAction<CollegeRecommendation[]>>;
