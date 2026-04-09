@@ -3,6 +3,7 @@
  */
 import { dataService } from './dataService.js';
 import { mlServiceClient } from './mlServiceClient.js';
+import { categoryMatches } from '../utils/categoryMap.js';
 import {
   resolveAdmissionProbability,
   computeWeightedScore,
@@ -70,30 +71,29 @@ class FormFillingService {
     budgetWarning: boolean;
   }> {
     const { percentile, category, capRound, branchPreferences, budget, preferredDistricts, priorityMode } = request;
-    const catLower = category.toLowerCase();
 
     // ── 1. Filter candidates ──────────────────────────────────────────────────
     const all = dataService.getAllColleges();
     let candidates = all.filter((c) => {
       if (c.capRound !== capRound) return false;
-      if (c.category.toLowerCase() !== catLower) return false;
+      if (!categoryMatches(c.category, category)) return false;
       return branchPreferences.some((pref) => branchMatches(pref, c.branchName));
     });
 
-    // Fallback 1: if no results, try without capRound filter (different years may use different rounds)
+    // Fallback 1: if no results, try without capRound filter
     if (candidates.length === 0) {
       logger.info(`FormFilling: no results for capRound=${capRound}, trying without round filter`);
       candidates = all.filter((c) => {
-        if (c.category.toLowerCase() !== catLower) return false;
+        if (!categoryMatches(c.category, category)) return false;
         return branchPreferences.some((pref) => branchMatches(pref, c.branchName));
       });
     }
 
-    // Fallback 2: if still no results, relax category to include open seats
+    // Fallback 2: if still no results, relax to GOPENS group
     if (candidates.length === 0) {
       logger.info(`FormFilling: no results for category=${category}, trying GOPENS fallback`);
       candidates = all.filter((c) => {
-        if (!['gopens', 'gopenh', 'gopeno'].includes(c.category.toLowerCase())) return false;
+        if (!categoryMatches(c.category, 'GOPENS')) return false;
         return branchPreferences.some((pref) => branchMatches(pref, c.branchName));
       });
     }

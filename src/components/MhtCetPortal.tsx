@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { MhtCetFormData } from '../App';
 import { api, CollegeRecommendation } from '../services/api';
 import { Slider } from './ui/slider';
+import { SingleBranchSearch } from './BranchSearch';
 import { useSEO } from '../seo/useSEO';
 
 interface MhtCetPortalProps {
@@ -196,17 +197,13 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
 
               {/* Branch */}
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-200">Branch Preference</label>
-                <select
-                  required
+                <label className="block text-sm font-medium text-slate-200">Branch Preference <span className="text-red-400">*</span></label>
+                <SingleBranchSearch
                   value={formData.branchPreference}
-                  onChange={(e) => setFormData(p => ({...p, branchPreference: e.target.value}))}
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 appearance-none disabled:opacity-50"
+                  onChange={(val) => setFormData(p => ({...p, branchPreference: val}))}
                   disabled={isLoading}
-                >
-                  <option value="" className="bg-slate-900 text-slate-400">Select branch</option>
-                  {BRANCHES.map(b => <option key={b} value={b} className="bg-slate-900">{b.replace(/\b\w/g, c => c.toUpperCase())}</option>)}
-                </select>
+                  required
+                />
               </div>
 
               {/* District */}

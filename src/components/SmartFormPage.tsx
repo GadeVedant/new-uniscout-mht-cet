@@ -9,6 +9,7 @@ import { ArrowLeft, Loader2, AlertCircle, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { api, FormFillingRequest, FormFillingResponse } from '../services/api';
 import { Slider } from './ui/slider';
+import { MultiBranchSearch } from './BranchSearch';
 import { PreferenceList } from './PreferenceList';
 import { useSEO } from '../seo/useSEO';
 
@@ -323,35 +324,19 @@ export function SmartFormPage() {
             <div className="space-y-3">
               <div className="flex justify-between items-end">
                 <label className="block text-sm font-medium text-slate-200">
-                  Branch Preferences (select up to 5) <span className="text-red-400">*</span>
+                  Branch Preferences (up to 5) <span className="text-red-400">*</span>
                 </label>
                 <span className="text-xs text-slate-500">{form.branchPreferences.length}/5</span>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {BRANCHES.map((b) => {
-                  const isSelected = form.branchPreferences.includes(b);
-                  const rank = form.branchPreferences.indexOf(b);
-                  return (
-                    <button
-                      key={b}
-                      type="button"
-                      disabled={isLoading}
-                      onClick={() => handleBranchToggle(b)}
-                      aria-pressed={isSelected}
-                      className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all border ${
-                        isSelected
-                          ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50'
-                          : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
-                      }`}
-                    >
-                      {isSelected && (
-                        <span className="mr-1.5 text-xs font-black text-cyan-400">#{rank + 1}</span>
-                      )}
-                      {BRANCH_LABELS[b] || b}
-                    </button>
-                  );
-                })}
-              </div>
+              <MultiBranchSearch
+                selected={form.branchPreferences}
+                onChange={(vals) => {
+                  setForm((p) => ({ ...p, branchPreferences: vals }));
+                  setBranchError(null);
+                }}
+                max={5}
+                disabled={isLoading}
+              />
               {branchError && (
                 <p className="text-xs text-red-400 flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" /> {branchError}

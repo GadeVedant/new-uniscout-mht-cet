@@ -10,6 +10,7 @@ import { mlServiceClient, type MLPredictionRequest } from './mlServiceClient.js'
 import { get as cacheGet, set as cacheSet } from './mlPredictionCache.js';
 import { cutoffTrendService } from './cutoffTrendService.js';
 import { placementLoader } from './placementLoader.js';
+import { categoryMatches } from '../utils/categoryMap.js';
 import logger from '../utils/logger.js';
 import type { RecommendationRequest, CollegeRecommendation, CollegeData, ApiResponse } from '../types/index.js';
 
@@ -58,13 +59,7 @@ class RecommendationService {
       if (year && c.year !== year) return false;
       if (capRound && c.capRound !== capRound) return false;
       if (category) {
-        const norm = category.toLowerCase().trim();
-        const cNorm = c.category.toLowerCase().trim();
-        if (norm !== 'open') {
-          if (cNorm !== norm && cNorm !== 'open') return false;
-        } else {
-          if (cNorm !== 'open') return false;
-        }
+        if (!categoryMatches(c.category, category)) return false;
       }
       if (branchPreference && !this.branchMatches(branchPreference, c.branchName)) return false;
       if (withLocation && location) {
