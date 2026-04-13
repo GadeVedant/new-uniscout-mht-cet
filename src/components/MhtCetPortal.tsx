@@ -66,7 +66,8 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     if (formData.percentile !== '') completed++;
     if (formData.category) completed++;
     if (formData.branchPreferences.length > 0) completed++;
-    return (completed / 3) * 100;
+    if (formData.locations.length > 0) completed++;
+    return (completed / 4) * 100;
   };
 
   const toggleLocation = (loc: string) => {
@@ -81,6 +82,10 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     e.preventDefault();
     if (formData.branchPreferences.length === 0) {
       setError('Please select at least one branch.');
+      return;
+    }
+    if (formData.locations.length === 0) {
+      setError('Please select at least one district.');
       return;
     }
     setIsLoading(true);
@@ -216,7 +221,10 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
             {/* Locations — up to 5 */}
             <div className="space-y-3">
               <div className="flex justify-between items-end">
-                <label className="block text-sm font-medium text-slate-200">Preferred Districts (optional, up to 5)</label>
+                <div>
+                  <label className="block text-sm font-medium text-slate-200">Preferred Districts <span className="text-red-400">*</span></label>
+                  <p className="text-xs text-slate-500 mt-0.5">Select at least 1, up to 5</p>
+                </div>
                 <span className="text-xs text-slate-500">{formData.locations.length}/5</span>
               </div>
               {/* Selected tags */}
