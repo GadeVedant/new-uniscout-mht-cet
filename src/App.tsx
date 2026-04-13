@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HomePage } from './components/HomePage';
 import { MhtCetPortal } from './components/MhtCetPortal';
 import { JeePortal } from './components/JeePortal';
@@ -21,6 +21,13 @@ export interface MhtCetFormData {
   category: string;
   branchPreferences: string[];  // up to 5
   locations: string[];           // up to 5
+}
+
+// Scroll to top on every route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
 }
 
 export default function App() {
@@ -53,6 +60,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-950 to-slate-950 relative overflow-hidden text-slate-300">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -94,18 +102,12 @@ export default function App() {
               portalType={portalType}
               comparisonSelection={comparisonSelection}
               setComparisonSelection={setComparisonSelection}
-              onHome={() => {}}
-              onViewDetails={() => {}}
-              onCompare={() => {}}
             />
           } />
 
           <Route path="/college/:id" element={
             <CollegeDetailPage
               colleges={colleges}
-              // Notice we no longer pass `college` as a prop; the component will extract it via useParams!
-              onBack={() => {}}
-              onHome={() => {}}
             />
           } />
 

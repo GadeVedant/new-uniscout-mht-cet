@@ -1,4 +1,4 @@
-/**
+ena/**
  * Category expansion map.
  * When a user selects a broad category (e.g. "GOPENS"), expand it to include
  * all related seat types (State, Home University, Other than Home University)
