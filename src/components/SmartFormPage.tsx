@@ -174,7 +174,6 @@ export function SmartFormPage() {
     });
   };
 
-  // ── Submit ────────────────────────────────────────────────────────────────
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -202,25 +201,35 @@ export function SmartFormPage() {
       budget: form.budget > 0 ? form.budget : undefined,
     };
 
-    try {
-      const response = await api.generateFormFillingList(request);
-      if (response.success && response.data) {
-        setRequest(request);
-        setResult(response.data);
-        setMlUnavailable(response.metadata?.ml_unavailable ?? false);
-        setBudgetWarning(response.metadata?.warning != null);
-        // Scroll to results
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 100);
-      } else {
-        setError(response.error || 'Failed to generate list');
+    // Retry up to 3 times — handles Render cold start (server wakes up mid-request)
+    let lastError: Error | null = null;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const response = await api.generateFormFillingList(request);
+        if (response.success && response.data) {
+          const total = response.data.safePicks.length + response.data.targetPicks.length + response.data.dreamPicks.length;
+          // If empty on first attempt, wait and retry (cold start may still be loading data)
+          if (total === 0 && attempt < 3) {
+            await new Promise(r => setTimeout(r, 3000));
+            continue;
+          }
+          setRequest(request);
+          setResult(response.data);
+          setMlUnavailable(response.metadata?.ml_unavailable ?? false);
+          setBudgetWarning(response.metadata?.warning != null);
+          setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100);
+          setIsLoading(false);
+          return;
+        } else {
+          lastError = new Error(response.error || 'Failed to generate list');
+        }
+      } catch (err) {
+        lastError = err instanceof Error ? err : new Error('Failed to connect to server.');
+        if (attempt < 3) await new Promise(r => setTimeout(r, 3000));
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to connect to server.');
-    } finally {
-      setIsLoading(false);
     }
+    setError(lastError?.message ?? 'Failed to generate list');
+    setIsLoading(false);
   };
 
   // ── Result view ───────────────────────────────────────────────────────────
@@ -473,8 +482,7 @@ export function SmartFormPage() {
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
                   Generating your personalised preference list...
-                </>
-              ) : (
+                </>              ) : (
                 'Generate Form Filling List'
               )}
             </button>

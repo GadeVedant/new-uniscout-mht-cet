@@ -215,7 +215,7 @@ export function PreferenceList({ result, request, mlUnavailable, budgetWarning, 
       )}
 
       {/* Tier sections */}
-      <div className="space-y-12">
+      <div className="space-y-12 pb-24">
         {result.safePicks.length > 0 && (
           <section>
             <h3 className="flex items-center gap-2 text-xl font-bold text-emerald-400 mb-4">
@@ -253,7 +253,7 @@ export function PreferenceList({ result, request, mlUnavailable, budgetWarning, 
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3"
+          className="fixed bottom-4 left-0 right-0 z-50 flex items-center justify-center gap-2 px-4"
         >
           <CopyButton
             safePicks={result.safePicks}
@@ -263,10 +263,10 @@ export function PreferenceList({ result, request, mlUnavailable, budgetWarning, 
           <button
             onClick={() => downloadPDF(result, request)}
             aria-label="Download preference list as PDF"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-bold rounded-full shadow-lg transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-bold rounded-full shadow-lg transition-all text-sm whitespace-nowrap"
           >
-            <Download className="w-4 h-4" />
-            Download PDF
+            <Download className="w-4 h-4 shrink-0" />
+            <span>Download PDF</span>
           </button>
         </motion.div>
       )}
