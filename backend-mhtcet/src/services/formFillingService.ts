@@ -4,6 +4,7 @@
 import { dataService } from './dataService.js';
 import { mlServiceClient } from './mlServiceClient.js';
 import { categoryMatches } from '../utils/categoryMap.js';
+import { placementLoader } from './placementLoader.js';
 import {
   resolveAdmissionProbability,
   computeWeightedScore,
@@ -98,18 +99,28 @@ class FormFillingService {
       });
     }
 
-    // ── 2. District filter (soft: prefer selected districts, but don't exclude all) ──
+    // Dedup: keep one record per college+branch — lowest cutoff (most accessible for the category)
+    const bestPerCollegeBranch = new Map<string, typeof candidates[0]>();
+    for (const c of candidates) {
+      const key = `${c.collegeCode}|${c.branchName}`;
+      const existing = bestPerCollegeBranch.get(key);
+      if (!existing || c.cutoffPercentile < existing.cutoffPercentile) {
+        bestPerCollegeBranch.set(key, c);
+      }
+    }
+    candidates = [...bestPerCollegeBranch.values()];
+
+    // ── 2. District filter (hard filter with fallback) ──
     if (preferredDistricts.length > 0) {
       const districtLower = preferredDistricts.map((d) => d.toLowerCase().trim());
       const inDistrict = candidates.filter((c) =>
         districtLower.some((d) => c.district?.toLowerCase().includes(d) || c.location?.toLowerCase().includes(d))
       );
-      // Only apply hard filter if it leaves enough results (≥5), otherwise keep all
-      if (inDistrict.length >= 5) {
+      if (inDistrict.length > 0) {
         candidates = inDistrict;
         logger.info(`FormFilling: district filter kept ${candidates.length} colleges in [${preferredDistricts.join(', ')}]`);
       } else {
-        logger.info(`FormFilling: district filter too restrictive (${inDistrict.length} results), keeping all ${candidates.length} colleges`);
+        logger.info(`FormFilling: no colleges in [${preferredDistricts.join(', ')}], keeping all ${candidates.length} colleges`);
       }
     }
 
@@ -185,7 +196,15 @@ class FormFillingService {
     }
 
     // ── 5. Score + tier assignment ────────────────────────────────────────────
-    const maxAvgPackage = 0; // no placement data yet — will be non-zero once CSV is loaded
+    // Get max avg package from placement data for scoring
+    const allPlacements = recs.map(r => {
+      const p = placementLoader.getPlacement(r.code, r.name);
+      r.avgPackage = p.avgPackage;
+      r.highestPackage = p.highestPackage;
+      const pkg = p.avgPackage ? parseFloat(p.avgPackage.replace(/[^0-9.]/g, '')) : 0;
+      return isNaN(pkg) ? 0 : pkg;
+    });
+    const maxAvgPackage = Math.max(0, ...allPlacements);
 
     type TieredEntry = { rec: CollegeRecommendation; tier: 'safe' | 'target' | 'dream'; score: number; branchRank: number };
     const tiered: TieredEntry[] = [];
