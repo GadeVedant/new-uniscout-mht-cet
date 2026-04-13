@@ -85,6 +85,7 @@ function ProgressIndicator({ form }: { form: FormState }) {
     { label: 'Percentile', done: form.percentile !== '' && parseFloat(form.percentile) >= 0 && parseFloat(form.percentile) <= 100 },
     { label: 'Category', done: !!form.category },
     { label: 'Branch(es)', done: form.branchPreferences.length > 0 },
+    { label: 'District(s)', done: form.preferredDistricts.length > 0 },
   ];
   const completed = steps.filter((s) => s.done).length;
 
@@ -158,15 +159,15 @@ export function SmartFormPage() {
     });
   };
 
-  // ── District toggle with max-3 guard ─────────────────────────────────────
+  // ── District toggle with max-5 guard ─────────────────────────────────────
   const handleDistrictToggle = (district: string) => {
     setForm((p) => {
       if (p.preferredDistricts.includes(district)) {
         setDistrictError(null);
         return { ...p, preferredDistricts: p.preferredDistricts.filter((d) => d !== district) };
       }
-      if (p.preferredDistricts.length >= 3) {
-        setDistrictError('You can select up to 3 districts.');
+      if (p.preferredDistricts.length >= 5) {
+        setDistrictError('You can select up to 5 districts.');
         return p;
       }
       setDistrictError(null);
@@ -185,6 +186,10 @@ export function SmartFormPage() {
     }
     if (form.branchPreferences.length === 0) {
       setBranchError('Please select at least 1 branch preference.');
+      return;
+    }
+    if (form.preferredDistricts.length === 0) {
+      setDistrictError('Please select at least 1 district or choose All Maharashtra.');
       return;
     }
 
@@ -357,10 +362,10 @@ export function SmartFormPage() {
             <div className="space-y-3 border-t border-white/10 pt-8">
               <div className="flex justify-between items-end">
                 <label className="block text-sm font-medium text-slate-200">
-                  Preferred Districts (optional, up to 3)
+                  Preferred Districts <span className="text-red-400">*</span>
                 </label>
                 <span className="text-xs text-slate-500">
-                  {form.preferredDistricts.includes('ALL') ? 'All' : `${form.preferredDistricts.length}/3`}
+                  {form.preferredDistricts.includes('ALL') ? 'All' : `${form.preferredDistricts.length}/5`}
                 </span>
               </div>
 
