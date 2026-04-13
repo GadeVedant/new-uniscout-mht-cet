@@ -431,18 +431,18 @@ export function SmartFormPage() {
               <div className="flex justify-between items-center">
                 <label className="block text-sm font-medium text-slate-200 flex items-center gap-2">
                   <DollarSign className="w-4 h-4 text-emerald-400" aria-hidden="true" />
-                  Max Annual Budget (optional)
+                  Max Annual College Fees (optional)
                 </label>
                 <span className="text-emerald-400 font-bold">
                   {form.budget > 0 ? `₹${form.budget} Lakhs/Yr` : 'No Limit'}
                 </span>
               </div>
               <Slider
-                max={5}
+                max={10}
                 step={0.5}
                 value={[form.budget]}
                 onValueChange={(v: number[]) => setForm((p) => ({ ...p, budget: v[0] }))}
-                aria-label="Maximum annual budget in lakhs"
+                aria-label="Maximum annual college fees in lakhs"
               />
             </div>
 
