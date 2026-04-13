@@ -113,15 +113,30 @@ function buildPrintHTML(
 
 function downloadPDF(result: FormFillingResponse, request?: FormFillingRequest) {
   const html = buildPrintHTML(result, request);
-  const win = window.open('', '_blank');
-  if (!win) return;
-  win.document.write(html);
-  win.document.close();
-  win.focus();
-  setTimeout(() => {
-    win.print();
-    win.close();
-  }, 300);
+
+  // Mobile browsers block window.open() — use blob URL with <a> download instead
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+
+  // Try to open in new tab for print (desktop), fallback to direct download (mobile)
+  const win = window.open(url, '_blank');
+  if (win) {
+    win.addEventListener('load', () => {
+      setTimeout(() => {
+        win.print();
+        URL.revokeObjectURL(url);
+      }, 300);
+    });
+  } else {
+    // Mobile fallback: download the HTML file directly
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `uniscout-preference-list-${new Date().toISOString().slice(0, 10)}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
 }
 
 export function PreferenceList({ result, request, mlUnavailable, budgetWarning, onBack }: PreferenceListProps) {

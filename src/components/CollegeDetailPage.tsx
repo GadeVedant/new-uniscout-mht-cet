@@ -169,7 +169,7 @@ function ChancesSection({
         </div>
 
         {/* Probability bar */}
-        {college.p10 != null && college.p90 != null && studentPercentile != null && (
+        {college.p10 != null && college.p90 != null && (college.p10 > 0 || college.p90 > 0) && studentPercentile != null && (
           <div className="mb-8">
             <ProbabilityBar
               studentPercentile={studentPercentile}
@@ -179,8 +179,8 @@ function ChancesSection({
           </div>
         )}
 
-        {/* P10/P90 range */}
-        {college.p10 != null && college.p90 != null && (
+        {/* P10/P90 range — only show when values are meaningful (non-zero) */}
+        {college.p10 != null && college.p90 != null && (college.p10 > 0 || college.p90 > 0) && (
           <p className="text-sm text-white/70 mb-3">
             Cutoff range: <span className="text-white font-semibold">P10: {college.p10.toFixed(1)}</span>
             {' – '}
@@ -274,7 +274,16 @@ function CutoffHistorySection({
         <p className="text-white/50 text-sm py-4">No historical data available for this combination.</p>
       )}
 
-      {!loading && !error && data.length > 0 && (
+      {!loading && !error && data.length === 1 && (
+        <div className="py-4">
+          <p className="text-white/70 text-sm mb-2">
+            2025 cutoff: <span className="text-cyan-300 font-bold">{data[0].cutoffPercentile.toFixed(2)}</span>
+          </p>
+          <p className="text-white/40 text-xs">Historical data for previous years is not yet available for this branch/category combination.</p>
+        </div>
+      )}
+
+      {!loading && !error && data.length > 1 && (
         <ResponsiveContainer width="100%" height={200}>
           <LineChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
@@ -300,9 +309,6 @@ function CutoffHistorySection({
     </SectionCard>
   );
 }
-
-// ---------------------------------------------------------------------------
-// Placement Section
 // ---------------------------------------------------------------------------
 
 function PlacementSection({ college }: { college: CollegeRecommendation }) {
