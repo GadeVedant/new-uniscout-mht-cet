@@ -85,7 +85,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
       return;
     }
     if (formData.locations.length === 0) {
-      setError('Please select at least one district.');
+      setError('Please select at least one district or choose All Maharashtra.');
       return;
     }
     setIsLoading(true);
@@ -94,7 +94,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     try {
       // Send one request per branch, merge results
       const allResults: CollegeRecommendation[] = [];
-      const locationStr = formData.locations.join(',');
+      const locationStr = formData.locations.includes('ALL') ? '' : formData.locations.join(',');
 
       for (const branch of formData.branchPreferences) {
         const requestPayload = {
@@ -218,17 +218,37 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               />
             </div>
 
-            {/* Locations — up to 5 */}
+            {/* Locations — up to 5 or All Maharashtra */}
             <div className="space-y-3">
               <div className="flex justify-between items-end">
                 <div>
                   <label className="block text-sm font-medium text-slate-200">Preferred Districts <span className="text-red-400">*</span></label>
-                  <p className="text-xs text-slate-500 mt-0.5">Select at least 1, up to 5</p>
+                  <p className="text-xs text-slate-500 mt-0.5">Select specific districts or choose All Maharashtra</p>
                 </div>
-                <span className="text-xs text-slate-500">{formData.locations.length}/5</span>
+                <span className="text-xs text-slate-500">
+                  {formData.locations.includes('ALL') ? 'All' : `${formData.locations.length}/5`}
+                </span>
               </div>
+
+              {/* All Maharashtra toggle */}
+              <button
+                type="button"
+                onClick={() => setFormData(p => ({
+                  ...p,
+                  locations: p.locations.includes('ALL') ? [] : ['ALL']
+                }))}
+                disabled={isLoading}
+                className={`w-full px-4 py-2.5 rounded-xl text-sm font-semibold transition-all border ${
+                  formData.locations.includes('ALL')
+                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
+                    : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
+                }`}
+              >
+                🗺️ All Maharashtra (no district filter)
+              </button>
+
               {/* Selected tags */}
-              {formData.locations.length > 0 && (
+              {!formData.locations.includes('ALL') && formData.locations.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {formData.locations.map(loc => (
                     <span key={loc} className="flex items-center gap-1.5 px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-full text-xs font-semibold">
@@ -240,27 +260,30 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
                   ))}
                 </div>
               )}
-              {/* District grid */}
-              <div className="flex flex-wrap gap-2">
-                {DISTRICTS.map(d => {
-                  const selected = formData.locations.includes(d);
-                  const disabled = isLoading || (!selected && formData.locations.length >= 5);
-                  return (
-                    <button
-                      key={d} type="button"
-                      onClick={() => toggleLocation(d)}
-                      disabled={disabled}
-                      className={`px-3 py-1.5 rounded-full text-sm transition-all border ${
-                        selected
-                          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
-                          : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 disabled:opacity-40'
-                      }`}
-                    >
-                      {d}
-                    </button>
-                  );
-                })}
-              </div>
+
+              {/* District grid — hidden when All is selected */}
+              {!formData.locations.includes('ALL') && (
+                <div className="flex flex-wrap gap-2">
+                  {DISTRICTS.map(d => {
+                    const selected = formData.locations.includes(d);
+                    const disabled = isLoading || (!selected && formData.locations.length >= 5);
+                    return (
+                      <button
+                        key={d} type="button"
+                        onClick={() => toggleLocation(d)}
+                        disabled={disabled}
+                        className={`px-3 py-1.5 rounded-full text-sm transition-all border ${
+                          selected
+                            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                            : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 disabled:opacity-40'
+                        }`}
+                      >
+                        {d}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             {/* Error */}

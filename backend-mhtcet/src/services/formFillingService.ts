@@ -237,12 +237,16 @@ class FormFillingService {
     const toEntry = (e: TieredEntry): PreferenceEntry => ({
       rank: rank++,
       collegeName: e.rec.name,
+      collegeId: e.rec.id,
+      location: e.rec.location,
       branchName: e.rec.branch,
       entryReason: generateEntryReason(e.rec, maxAvgPackage),
       cutoffPercentile: e.rec.cutoffPercentile,
       admissionBand: (e.rec.admissionBand ?? (e.rec.admissionChance === 'High' ? 'Safe' : e.rec.admissionChance === 'Medium' ? 'Moderate' : 'Risky')) as 'Safe' | 'Likely' | 'Moderate' | 'Risky',
       admissionProbability: Math.round(resolveAdmissionProbability(e.rec) * 100),
       fees: e.rec.fees,
+      seats: e.rec.seats || undefined,
+      avgPackage: e.rec.avgPackage,
     });
 
     const allEntries = [...safe, ...target, ...dream].slice(0, FORM_FILLING_MAX_ENTRIES);

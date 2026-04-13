@@ -1,0 +1,131 @@
+### UniScout MHT-CET Backend API
+### Requires: REST Client extension (VS Code)
+### Start server: node dist/server.js
+
+@base = http://localhost:5001/api
+
+# ─────────────────────────────────────────────
+# 1. Health Check
+# ─────────────────────────────────────────────
+### GET Health
+GET {{base}}/health
+
+
+# ─────────────────────────────────────────────
+# 2. Filter Options
+# ─────────────────────────────────────────────
+### GET All Filters (years, rounds, categories, branches, locations)
+GET {{base}}/filters
+
+### GET Branches only
+GET {{base}}/branches
+
+### GET Locations only
+GET {{base}}/locations
+
+### GET Categories only
+GET {{base}}/categories
+
+
+# ─────────────────────────────────────────────
+# 3. College Recommendations
+# ─────────────────────────────────────────────
+### POST Recommendations — Open, Computer Engg, Mumbai, 85%ile
+POST {{base}}/recommendations
+Content-Type: application/json
+
+{
+  "percentile": 85,
+  "year": "2025-26",
+  "capRound": "I",
+  "category": "GOPENS",
+  "branchPreference": "computer engineering",
+  "location": "Mumbai"
+}
+
+###
+### POST Recommendations — SC, AI & DS, Pune, 75%ile
+POST {{base}}/recommendations
+Content-Type: application/json
+
+{
+  "percentile": 75,
+  "year": "2025-26",
+  "capRound": "I",
+  "category": "GSCS",
+  "branchPreference": "artificial intelligence and data science",
+  "location": "Pune"
+}
+
+###
+### POST Recommendations — No location filter
+POST {{base}}/recommendations
+Content-Type: application/json
+
+{
+  "percentile": 90,
+  "year": "2025-26",
+  "capRound": "I",
+  "category": "GOPENS",
+  "branchPreference": "information technology",
+  "location": ""
+}
+
+
+# ─────────────────────────────────────────────
+# 4. Cutoff History
+# ─────────────────────────────────────────────
+### GET Cutoff History — VJTI Mumbai, Computer Engg, GOPENS
+GET {{base}}/colleges/3173/cutoff-history?branch=computer+engineering&category=GOPENS&capRound=I
+
+###
+### GET Cutoff History — Shah Anchor Kutchhi, VLSI, GOPENS
+GET {{base}}/colleges/3148/cutoff-history?branch=electronics+engineering+%28+vlsi+design+and+technology%29&category=GOPENS&capRound=I
+
+
+# ─────────────────────────────────────────────
+# 5. CAP Round 2 Strategy
+# ─────────────────────────────────────────────
+### POST Round 2 Strategy
+POST {{base}}/strategy/round2
+Content-Type: application/json
+
+{
+  "percentile": 85,
+  "category": "GOPENS",
+  "branch": "computer engineering",
+  "capRound": "I"
+}
+
+
+# ─────────────────────────────────────────────
+# 6. Smart Form Filling
+# ─────────────────────────────────────────────
+### POST Generate Preference List — Mumbai, Open, Computer Engg
+POST {{base}}/form-filling/generate
+Content-Type: application/json
+
+{
+  "percentile": 85,
+  "category": "GOPENS",
+  "capRound": "I",
+  "branchPreferences": ["computer engineering", "information technology"],
+  "preferredDistricts": ["Mumbai", "Pune"],
+  "priorityMode": "college",
+  "budget": 0
+}
+
+###
+### POST Generate Preference List — SC, AI & DS, with budget
+POST {{base}}/form-filling/generate
+Content-Type: application/json
+
+{
+  "percentile": 75,
+  "category": "GSCS",
+  "capRound": "I",
+  "branchPreferences": ["artificial intelligence and data science"],
+  "preferredDistricts": ["Nagpur"],
+  "priorityMode": "branch",
+  "budget": 2
+}

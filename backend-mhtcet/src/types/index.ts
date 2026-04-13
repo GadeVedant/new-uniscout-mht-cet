@@ -148,12 +148,16 @@ export interface FormFillingRequest {
 export interface PreferenceEntry {
   rank: number;
   collegeName: string;
+  collegeId: string;   // id for detail page navigation
+  location: string;
   branchName: string;
   entryReason: string;
   cutoffPercentile: number;
   admissionBand: 'Safe' | 'Likely' | 'Moderate' | 'Risky';
   admissionProbability: number;
   fees: string;
+  seats?: number;
+  avgPackage?: string | null;
 }
 
 export interface FormFillingResponse {

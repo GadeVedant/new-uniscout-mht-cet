@@ -196,7 +196,7 @@ export function SmartFormPage() {
       category: form.category,
       capRound: form.capRound,
       branchPreferences: form.branchPreferences,
-      preferredDistricts: form.preferredDistricts,
+      preferredDistricts: form.preferredDistricts.includes('ALL') ? [] : form.preferredDistricts,
       priorityMode: form.priorityMode,
       budget: form.budget > 0 ? form.budget : undefined,
     };
@@ -359,29 +359,52 @@ export function SmartFormPage() {
                 <label className="block text-sm font-medium text-slate-200">
                   Preferred Districts (optional, up to 3)
                 </label>
-                <span className="text-xs text-slate-500">{form.preferredDistricts.length}/3</span>
+                <span className="text-xs text-slate-500">
+                  {form.preferredDistricts.includes('ALL') ? 'All' : `${form.preferredDistricts.length}/3`}
+                </span>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {DISTRICTS.map((d) => {
-                  const isSelected = form.preferredDistricts.includes(d);
-                  return (
-                    <button
-                      key={d}
-                      type="button"
-                      disabled={isLoading}
-                      onClick={() => handleDistrictToggle(d)}
-                      aria-pressed={isSelected}
-                      className={`px-3 py-1.5 rounded-full text-sm transition-all border ${
-                        isSelected
-                          ? 'bg-purple-500/20 text-purple-300 border-purple-500/50'
-                          : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
-                      }`}
-                    >
-                      {d}
-                    </button>
-                  );
-                })}
-              </div>
+
+              {/* All Maharashtra toggle */}
+              <button
+                type="button"
+                disabled={isLoading}
+                onClick={() => setForm(p => ({
+                  ...p,
+                  preferredDistricts: p.preferredDistricts.includes('ALL') ? [] : ['ALL']
+                }))}
+                className={`w-full px-4 py-2.5 rounded-xl text-sm font-semibold transition-all border ${
+                  form.preferredDistricts.includes('ALL')
+                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
+                    : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
+                }`}
+              >
+                🗺️ All Maharashtra (no district filter)
+              </button>
+
+              {/* District grid — hidden when All is selected */}
+              {!form.preferredDistricts.includes('ALL') && (
+                <div className="flex flex-wrap gap-2">
+                  {DISTRICTS.map((d) => {
+                    const isSelected = form.preferredDistricts.includes(d);
+                    return (
+                      <button
+                        key={d}
+                        type="button"
+                        disabled={isLoading}
+                        onClick={() => handleDistrictToggle(d)}
+                        aria-pressed={isSelected}
+                        className={`px-3 py-1.5 rounded-full text-sm transition-all border ${
+                          isSelected
+                            ? 'bg-purple-500/20 text-purple-300 border-purple-500/50'
+                            : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
+                        }`}
+                      >
+                        {d}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
               {districtError && (
                 <p className="text-xs text-amber-400 flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" /> {districtError}
