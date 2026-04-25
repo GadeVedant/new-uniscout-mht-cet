@@ -10,6 +10,7 @@ import { SmartFormPage } from './components/SmartFormPage';
 import { ExamLandingPage } from './components/ExamLandingPage';
 import { JEE_CONFIG, NEET_CONFIG, CAT_CONFIG } from './components/examConfigs';
 import { CollegeRecommendation, RecommendationRequest } from './services/api';
+import { FeedbackButton } from './components/FeedbackButton';
 
 // Extend RecommendationRequest with UI-only flags
 export type QueryWithMeta = RecommendationRequest & { locationFallback?: boolean };
@@ -126,6 +127,9 @@ export default function App() {
           {/* Catch-all redirect */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+
+        {/* Global feedback button — visible on every page */}
+        <FeedbackButton />
       </div>
     </BrowserRouter>
   );
