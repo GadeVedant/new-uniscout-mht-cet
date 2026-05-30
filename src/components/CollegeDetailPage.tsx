@@ -455,12 +455,16 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
 
   // SEO: dynamic title + meta per college page
   const seoTitle = college
-    ? `${college.name} – ${college.branch} Cutoff & Admission | UNISCOUT`
-    : 'College Details | UNISCOUT';
+    ? `${college.name} – ${college.branch} MHT CET Cutoff 2025 & Admission | UniScout`
+    : 'College Details | UniScout';
   const seoDescription = college
-    ? `${college.name} (${college.code}) ${college.branch} cutoff percentile ${college.cutoffPercentile} for ${college.category} category, ${college.location}. Admission band, fees, seats, and placement data.`
+    ? `${college.name} ${college.branch} MHT CET 2025 cutoff is ${college.cutoffPercentile} percentile (${college.category}, ${college.location}). See 3-year cutoff trend, admission probability, fees${college.fees ? ` ₹${college.fees}` : ''}, seats${college.seats ? ` ${college.seats}` : ''}, and CAP Round 2 strategy.`
     : 'College details and cutoff information.';
-  useSEO({ title: seoTitle, description: seoDescription });
+  useSEO({
+    title: seoTitle,
+    description: seoDescription,
+    canonical: college ? `https://www.uniscout.co.in/college/${college.id}` : undefined,
+  });
 
   if (!college) {
     return <Navigate to="/results" replace />;

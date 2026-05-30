@@ -48,7 +48,7 @@ export function collegeSchema(college: {
   avgPackage?: string | null;
 }) {
   return {
-    '@type': 'CollegeOrUniversity',
+    '@type': ['CollegeOrUniversity', 'EducationalOrganization'],
     name: college.name,
     identifier: college.code,
     address: {
@@ -57,13 +57,21 @@ export function collegeSchema(college: {
       addressRegion: college.district || 'Maharashtra',
       addressCountry: 'IN',
     },
-    hasCourse: {
-      '@type': 'Course',
-      name: college.branch,
-      provider: { '@type': 'CollegeOrUniversity', name: college.name },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Engineering Programs',
+      itemListElement: [{
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Course',
+          name: college.branch,
+          provider: { '@type': 'CollegeOrUniversity', name: college.name },
+          ...(college.fees ? { offers: { '@type': 'Offer', price: college.fees, priceCurrency: 'INR' } } : {}),
+        },
+      }],
     },
-    ...(college.fees ? { tuitionCost: college.fees } : {}),
     ...(college.seats ? { numberOfStudents: college.seats } : {}),
+    ...(college.avgPackage ? { description: `Average placement package: ${college.avgPackage}` } : {}),
   };
 }
 
