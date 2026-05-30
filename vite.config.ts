@@ -52,6 +52,7 @@
     build: {
       target: 'esnext',
       outDir: 'build',
+      copyPublicDir: true,
     },
     server: {
       port: 3000,
