@@ -53,6 +53,29 @@
       target: 'esnext',
       outDir: 'build',
       copyPublicDir: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // React core — changes rarely, long cache life
+            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+            // Animation — large, isolated
+            'vendor-motion': ['motion'],
+            // Charts — only used on college detail page
+            'vendor-charts': ['recharts'],
+            // Radix UI components
+            'vendor-radix': [
+              '@radix-ui/react-slider',
+              '@radix-ui/react-dialog',
+              '@radix-ui/react-select',
+              '@radix-ui/react-tabs',
+              '@radix-ui/react-tooltip',
+              '@radix-ui/react-popover',
+            ],
+            // Icons
+            'vendor-icons': ['lucide-react'],
+          },
+        },
+      },
     },
     server: {
       port: 3000,
