@@ -89,3 +89,39 @@ export function faqSchema(faqs: { question: string; answer: string }[]) {
     })),
   };
 }
+
+export function webPageSchema(page: {
+  name: string;
+  description: string;
+  url: string;
+  breadcrumbs?: { name: string; url: string }[];
+}) {
+  return {
+    '@type': 'WebPage',
+    name: page.name,
+    description: page.description,
+    url: page.url,
+    isPartOf: { '@type': 'WebSite', name: 'UniScout', url: 'https://www.uniscout.co.in' },
+    ...(page.breadcrumbs ? {
+      breadcrumb: breadcrumbSchema(page.breadcrumbs),
+    } : {}),
+  };
+}
+
+export function howToSchema(data: {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+}) {
+  return {
+    '@type': 'HowTo',
+    name: data.name,
+    description: data.description,
+    step: data.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}

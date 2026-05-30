@@ -7,6 +7,7 @@ import { api, CollegeRecommendation } from '../services/api';
 import { Slider } from './ui/slider';
 import { MultiBranchSearch } from './BranchSearch';
 import { useSEO } from '../seo/useSEO';
+import { SchemaOrg, webPageSchema, howToSchema, faqSchema } from '../seo/SchemaOrg';
 
 interface MhtCetPortalProps {
   onBack?: () => void;
@@ -92,7 +93,6 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     setError(null);
 
     try {
-      // Send one request per branch, merge results
       const allResults: CollegeRecommendation[] = [];
       const locationStr = formData.locations.includes('ALL') ? '' : formData.locations.join(',');
 
@@ -111,7 +111,6 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
         }
       }
 
-      // Dedup by id, keep unique
       const seen = new Set<string>();
       const unique = allResults.filter(r => {
         if (seen.has(r.id)) return false;
@@ -141,6 +140,45 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
 
   return (
     <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center">
+      {/* Structured data */}
+      <SchemaOrg id="mhtcet-webpage" schema={webPageSchema({
+        name: 'MHT CET College Predictor 2025',
+        description: 'Enter your MHT CET 2025 percentile, category, and branch to get AI-powered college predictions for 386 Maharashtra engineering colleges.',
+        url: 'https://www.uniscout.co.in/mht-cet',
+        breadcrumbs: [
+          { name: 'Home', url: 'https://www.uniscout.co.in/' },
+          { name: 'MHT CET Predictor', url: 'https://www.uniscout.co.in/mht-cet' },
+        ],
+      })} />
+      <SchemaOrg id="mhtcet-howto" schema={howToSchema({
+        name: 'How to use the MHT CET College Predictor',
+        description: 'Get AI-powered college predictions for MHT CET 2025 in 4 simple steps.',
+        steps: [
+          { name: 'Enter your percentile', text: 'Type or slide to enter your MHT CET 2025 percentile score between 0 and 100.' },
+          { name: 'Select your category', text: 'Choose your reservation category: Open, SC, ST, OBC, SEBC, EWS, NT1, NT2, NT3, VJ/DT, or TFWS.' },
+          { name: 'Choose branch preferences', text: 'Select up to 5 branch preferences from 103 available branches.' },
+          { name: 'Choose preferred districts', text: 'Select up to 5 districts in Maharashtra or choose All Maharashtra for statewide results, then click Predict Colleges.' },
+        ],
+      })} />
+      <SchemaOrg id="mhtcet-faq" schema={faqSchema([
+        {
+          question: 'What percentile do I need for VJTI Mumbai Computer Engineering?',
+          answer: 'For VJTI Mumbai Computer Engineering (Open category), you typically need a percentile above 99.5 in MHT CET. The exact cutoff varies each year based on the number of applicants.',
+        },
+        {
+          question: 'How accurate is the MHT CET college predictor?',
+          answer: "UniScout's predictor is trained on 4 years of CAP cutoff data (2022–2025) using a LightGBM model. It provides P10/P50/P90 probability bands rather than a single cutoff, giving you a realistic range.",
+        },
+        {
+          question: 'Which reservation categories are supported?',
+          answer: 'All 11 Maharashtra reservation categories are supported: Open, SC, ST, OBC, SEBC, EWS, NT1, NT2, NT3, VJ/DT, and TFWS.',
+        },
+        {
+          question: 'Can I predict colleges for multiple branches?',
+          answer: 'Yes, you can select up to 5 branch preferences. The predictor will show results for all selected branches combined.',
+        },
+      ])} />
+
       <div className="max-w-3xl w-full">
         {/* Header */}
         <header className="flex items-center justify-between mb-8">
@@ -204,7 +242,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               </select>
             </div>
 
-            {/* Branch Preferences — up to 5 */}
+            {/* Branch Preferences */}
             <div className="space-y-2">
               <div className="flex justify-between items-end">
                 <label className="block text-sm font-medium text-slate-200">Branch Preferences (up to 5) <span className="text-red-400">*</span></label>
@@ -218,7 +256,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               />
             </div>
 
-            {/* Locations — up to 5 or All Maharashtra */}
+            {/* Locations */}
             <div className="space-y-3">
               <div className="flex justify-between items-end">
                 <div>
@@ -230,7 +268,6 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
                 </span>
               </div>
 
-              {/* All Maharashtra toggle */}
               <button
                 type="button"
                 onClick={() => setFormData(p => ({
@@ -247,7 +284,6 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
                 🗺️ All Maharashtra (no district filter)
               </button>
 
-              {/* Selected tags */}
               {!formData.locations.includes('ALL') && formData.locations.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {formData.locations.map(loc => (
@@ -261,7 +297,6 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
                 </div>
               )}
 
-              {/* District grid — hidden when All is selected */}
               {!formData.locations.includes('ALL') && (
                 <div className="flex flex-wrap gap-2">
                   {DISTRICTS.map(d => {

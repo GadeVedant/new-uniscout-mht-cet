@@ -12,6 +12,7 @@ import { Slider } from './ui/slider';
 import { MultiBranchSearch } from './BranchSearch';
 import { PreferenceList } from './PreferenceList';
 import { useSEO } from '../seo/useSEO';
+import { SchemaOrg, webPageSchema, faqSchema } from '../seo/SchemaOrg';
 
 const CATEGORIES = [
   { label: 'Open (General)', value: 'GOPENS' },
@@ -255,6 +256,34 @@ export function SmartFormPage() {
   // ── Form view ─────────────────────────────────────────────────────────────
   return (
     <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center text-slate-300">
+      {/* Structured data */}
+      <SchemaOrg id="smartform-webpage" schema={webPageSchema({
+        name: 'MHT CET CAP Form Filling 2025 – Smart Preference List Generator',
+        description: 'Generate an optimized MHT CET CAP 2025 preference list with Safe, Target and Dream college picks ranked by AI.',
+        url: 'https://www.uniscout.co.in/smart-form',
+        breadcrumbs: [
+          { name: 'Home', url: 'https://www.uniscout.co.in/' },
+          { name: 'Smart Form Filling', url: 'https://www.uniscout.co.in/smart-form' },
+        ],
+      })} />
+      <SchemaOrg id="smartform-faq" schema={faqSchema([
+        {
+          question: 'How many colleges should I add in the MHT CET CAP preference list?',
+          answer: 'DTE Maharashtra recommends filling at least 50 preferences. UniScout generates a tiered list of Safe, Target, and Dream picks to help you fill all slots strategically.',
+        },
+        {
+          question: 'What is the difference between Safe, Target, and Dream picks?',
+          answer: 'Safe picks are colleges where your admission probability is above 80%. Target picks are 50–80% probability. Dream picks are below 50% but worth including for a chance at a top college.',
+        },
+        {
+          question: 'Can I download the preference list as PDF?',
+          answer: 'Yes, UniScout generates a printable PDF of your preference list that you can use as a reference while filling the DTE portal.',
+        },
+        {
+          question: 'Does the preference list support all reservation categories?',
+          answer: 'Yes, all 11 Maharashtra CAP categories are supported including Open, SC, ST, OBC, SEBC, EWS, NT1, NT2, NT3, VJ/DT, and TFWS.',
+        },
+      ])} />
       <div className="max-w-3xl w-full">
         {/* Back button */}
         <header className="flex items-center mb-10">
