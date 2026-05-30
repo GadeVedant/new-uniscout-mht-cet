@@ -22,7 +22,7 @@ lines = ['<?xml version="1.0" encoding="UTF-8"?>',
 
 for code, (cid, name) in sorted(colleges.items()):
     lines.append(f'''  <url>
-    <loc>https://uniscout.co.in/college/{cid}</loc>
+    <loc>https://www.uniscout.co.in/college/{cid}</loc>
     <lastmod>{TODAY}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

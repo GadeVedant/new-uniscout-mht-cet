@@ -1,6 +1,6 @@
 # UniScout — MHT CET College Predictor
 
-**Live:** [uniscout.co.in](https://uniscout.co.in)
+**Live:** [uniscout.co.in](https://www.uniscout.co.in)
 
 ---
 

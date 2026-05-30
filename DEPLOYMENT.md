@@ -52,7 +52,7 @@ ml.uniscout.co.in      → Render Web Service  (Python ML service)     — free 
    NODE_ENV=production
    DATA_DIR=./data
    ML_SERVICE_URL=https://uniscout-ml.onrender.com
-   CORS_ORIGIN=https://uniscout.co.in
+   CORS_ORIGIN=https://www.uniscout.co.in
    RATE_LIMIT_MAX_REQUESTS=200
    ```
    > Replace `uniscout-ml.onrender.com` with your actual ML service URL from Step 1.
@@ -94,39 +94,39 @@ ml.uniscout.co.in      → Render Web Service  (Python ML service)     — free 
 
 - [ ] `https://uniscout-ml.onrender.com/health` → `model_loaded: true` ✅
 - [ ] `https://uniscout-backend.onrender.com/api/health` → `success: true, totalRecords: ~80000`
-- [ ] `https://uniscout.co.in` loads homepage
+- [ ] `https://www.uniscout.co.in` loads homepage
 - [ ] MHT-CET predictor returns results with admission bands
 - [ ] College detail page shows cutoff history chart
 - [ ] Smart Form Filling generates preference list (no "AI unavailable" note)
-- [ ] `https://uniscout.co.in/robots.txt` accessible
-- [ ] `https://uniscout.co.in/sitemap.xml` accessible
+- [ ] `https://www.uniscout.co.in/robots.txt` accessible
+- [ ] `https://www.uniscout.co.in/sitemap.xml` accessible
 
 ---
 
 ## SEO & Analytics Setup
 
 - [ ] **Google Search Console** — [search.google.com/search-console](https://search.google.com/search-console)
-  1. Add property → enter `https://uniscout.co.in`
+  1. Add property → enter `https://www.uniscout.co.in`
   2. Verify ownership (HTML tag or DNS TXT record)
-  3. Sitemaps → submit `https://uniscout.co.in/sitemap.xml`
+  3. Sitemaps → submit `https://www.uniscout.co.in/sitemap.xml`
 
 - [ ] **Bing Webmaster Tools** — [bing.com/webmasters](https://www.bing.com/webmasters)
-  1. Add site → `https://uniscout.co.in`
-  2. Submit sitemap: `https://uniscout.co.in/sitemap.xml`
+  1. Add site → `https://www.uniscout.co.in`
+  2. Submit sitemap: `https://www.uniscout.co.in/sitemap.xml`
 
 - [ ] **Google Analytics (GA4)** — [analytics.google.com](https://analytics.google.com)
   1. Create GA4 property for `uniscout.co.in`
   2. Copy the `gtag.js` snippet and add it to `index.html` before `</head>`
 
 - [ ] **Rich Results Test** — [search.google.com/test/rich-results](https://search.google.com/test/rich-results)
-  - Test `https://uniscout.co.in/` → should detect FAQPage schema
-  - Test `https://uniscout.co.in/jee-college-predictor` → should detect WebPage schema
+  - Test `https://www.uniscout.co.in/` → should detect FAQPage schema
+  - Test `https://www.uniscout.co.in/jee-college-predictor` → should detect WebPage schema
 
 - [ ] **PageSpeed Insights** — [pagespeed.web.dev](https://pagespeed.web.dev)
-  - Check Core Web Vitals for `https://uniscout.co.in`
+  - Check Core Web Vitals for `https://www.uniscout.co.in`
   - Target: LCP < 2.5s, CLS < 0.1, INP < 200ms
 
-- [ ] Update `CORS_ORIGIN` on backend to `https://uniscout.co.in`
+- [ ] Update `CORS_ORIGIN` on backend to `https://www.uniscout.co.in`
 - [ ] Update `VITE_API_URL` on frontend to `https://api.uniscout.co.in/api`
 
 ---
@@ -144,7 +144,7 @@ ml.uniscout.co.in      → Render Web Service  (Python ML service)     — free 
 | `NODE_ENV`                | `production`                           |
 | `DATA_DIR`                | `./data`                               |
 | `ML_SERVICE_URL`          | `https://uniscout-ml.onrender.com`     |
-| `CORS_ORIGIN`             | `https://uniscout.co.in`                  |
+| `CORS_ORIGIN`             | `https://www.uniscout.co.in`                  |
 | `RATE_LIMIT_MAX_REQUESTS` | `200`                                  |
 
 ### ML Service (Render Web Service — Docker)

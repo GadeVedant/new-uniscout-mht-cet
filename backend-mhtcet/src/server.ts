@@ -23,7 +23,7 @@ app.use(cors({
       config.corsOrigin.replace(/\/$/, ''), // without trailing slash
       config.corsOrigin + '/',              // with trailing slash
       'https://uniscout-frontend.onrender.com',
-      'https://uniscout.co.in',
+      'https://www.uniscout.co.in',
       'https://www.uniscout.co.in',
       'http://localhost:3000',
       'http://localhost:3001',
