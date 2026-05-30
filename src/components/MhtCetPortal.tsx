@@ -44,8 +44,8 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   const navigate = useNavigate();
 
   useSEO({
-    title: 'MHT CET College Predictor – Enter Your Percentile | UNISCOUT',
-    description: 'Enter your MHT CET percentile, category, and branch to get AI-powered college recommendations with cutoff trends and admission probability bands.',
+    title: 'MHT CET College Predictor 2025 – Enter Percentile & Get Results | UniScout',
+    description: 'Enter your MHT CET 2025 percentile, category, and branch to get instant college predictions. See Safe, Likely, and Dream colleges with 3-year cutoff trends and AI admission probability.',
     canonical: 'https://www.uniscout.co.in/mht-cet',
   });
 

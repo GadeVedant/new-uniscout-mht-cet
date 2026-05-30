@@ -114,8 +114,8 @@ export function SmartFormPage() {
   const resultsRef = useRef<HTMLDivElement>(null);
 
   useSEO({
-    title: 'Smart CAP Form Filling – MHT CET Preference List Generator | UNISCOUT',
-    description: 'Generate an optimized MHT CET CAP preference list with Safe, Target, and Dream picks. AI-ranked colleges based on your percentile, category, and branch preferences.',
+    title: 'MHT CET CAP Form Filling 2025 – Smart Preference List Generator | UniScout',
+    description: 'Generate an optimized MHT CET CAP 2025 preference list in minutes. Get Safe, Target & Dream college picks ranked by AI based on your percentile, category, and branch. Download as PDF.',
     canonical: 'https://www.uniscout.co.in/smart-form',
   });
 

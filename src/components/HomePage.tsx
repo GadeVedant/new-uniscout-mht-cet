@@ -13,8 +13,8 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
   const navigate = useNavigate();
 
   useSEO({
-    title: 'College Predictor for JEE, MHT CET, NEET, CAT & More | UniScout',
-    description: "UniScout is India's multi-exam college predictor. Find the best engineering, medical, and MBA colleges using JEE, MHT CET, NEET, or CAT scores. AI-powered cutoffs, admission bands, and smart preference list.",
+    title: 'MHT CET College Predictor 2025 – AI-Powered Admission Predictions | UniScout',
+    description: 'Get AI-powered MHT CET college predictions for 2025. Enter your percentile, category & branch to see admission probability for 386 Maharashtra engineering colleges. Free, instant results.',
     canonical: 'https://www.uniscout.co.in/',
   });
 
