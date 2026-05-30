@@ -32,22 +32,37 @@ Last updated: 31 May 2026
 - [x] `sitemap-static.xml` — 6 key pages with correct priorities
 - [x] `sitemap-colleges.xml` — 107 college pages
 - [x] `robots.txt` — correct allow/disallow rules, sitemap URL updated
-- [x] www redirect rule added to `_redirects` (no effect on Render, but harmless)
 
 ### On-Page SEO — Titles & Meta Descriptions
-- [x] Homepage (`/`) — updated to lead with "MHT CET College Predictor 2025"
-- [x] MHT CET page (`/mht-cet`) — updated with year and specifics
-- [x] Smart Form page (`/smart-form`) — updated with "CAP Form Filling 2025"
+- [x] Homepage (`/`) — "MHT CET College Predictor 2025" as primary keyword
+- [x] MHT CET page (`/mht-cet`) — year + specifics in title
+- [x] Smart Form page (`/smart-form`) — "CAP Form Filling 2025"
+- [x] College detail pages — dynamic title with college name, branch, cutoff, year
+- [x] College detail canonical URL set per page (`/college/:id`)
 - [x] `index.html` static title updated for pre-JS crawling
 - [x] OG tags updated in `index.html`
-- [x] `useSEO` hook in place — dynamically sets title, description, canonical, OG tags per page
 
 ### Structured Data
 - [x] `WebSite` schema with `SearchAction` — in `index.html`
 - [x] `WebApplication` schema — in `index.html`
 - [x] `ItemList` schema (exam predictors) — in `index.html`
-- [x] `FAQPage` schema — on homepage via `SchemaOrg` component
-- [x] `BreadcrumbList` schema — on college detail pages
+- [x] `FAQPage` schema — on homepage
+- [x] `WebPage` + `HowTo` + `FAQPage` schemas — on `/mht-cet`
+- [x] `WebPage` + `FAQPage` schemas — on `/smart-form`
+- [x] `CollegeOrUniversity` + `EducationalOrganization` + `BreadcrumbList` — on all college detail pages
+- [x] Dynamic `FAQPage` schema per college (cutoff, fees, seats, placement, probability)
+
+### Performance SEO
+- [x] **31 May 2026** — Bundle split from 891KB → 192KB main chunk
+  - `vendor-react`: 180KB (React core)
+  - `vendor-charts`: 393KB (Recharts — lazy loaded, only on college detail)
+  - `vendor-motion`: 89KB (Framer Motion)
+  - `vendor-radix`: 24KB (Radix UI)
+  - `vendor-icons`: 17KB (Lucide)
+
+### Content SEO
+- [x] Dynamic FAQ accordion on every college detail page (5 questions per college)
+- [x] `SimilarColleges` internal linking already in place on college detail pages
 
 ---
 
@@ -77,29 +92,21 @@ Last updated: 31 May 2026
 
 ## 🔲 REMAINING — On-Page SEO
 
-- [ ] Structured data on `/mht-cet` page (WebPage + HowTo schema)
-- [ ] Structured data on `/smart-form` page (WebPage schema)
-- [ ] College detail page SEO — dynamic title/description per college
-- [ ] College detail page structured data (EducationalOrganization schema)
 - [ ] JEE/NEET/CAT landing page titles and descriptions audit
 
 ## 🔲 REMAINING — Performance SEO
 
-- [ ] Core Web Vitals audit (LCP, CLS, INP) via PageSpeed Insights
-- [ ] Bundle size optimization — current JS bundle is 891KB (warned by Vite)
-- [ ] Image optimization — og-image.png needs to be created/verified
-- [ ] Code splitting with dynamic imports
+- [ ] Core Web Vitals audit via PageSpeed Insights — run on `https://www.uniscout.co.in/`
+- [ ] Image optimization — og-image.png needs to be created (currently missing)
 
 ## 🔲 REMAINING — Content SEO
 
-- [ ] College-specific page content (currently just data, no descriptive text)
-- [ ] FAQ sections on `/mht-cet` and `/smart-form` pages
-- [ ] Internal linking strategy — college pages linking to related colleges
+- [ ] FAQ section on homepage (beyond the existing 3 questions)
+- [ ] Internal linking from homepage to top college pages
 - [ ] Blog/guide content (future)
 
 ## 🔲 REMAINING — Search Console
 
-- [ ] Request indexing for homepage once confirmed 200
 - [ ] Monitor Pages report for indexed count (check back: ~14 June 2026)
 - [ ] Set up email alerts for coverage issues
 - [ ] Submit to Bing Webmaster Tools
