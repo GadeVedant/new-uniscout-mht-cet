@@ -18,7 +18,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = 'UNISCOUT';
-const BASE_URL = 'https://uniscout.in';
+const BASE_URL = 'https://uniscout.co.in';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 function setMeta(name: string, content: string, property = false) {

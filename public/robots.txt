@@ -21,4 +21,4 @@ Disallow: /jee$
 Disallow: /*?*ref=
 Disallow: /*?*utm_
 
-Sitemap: https://uniscout.in/sitemap.xml
+Sitemap: https://uniscout.co.in/sitemap.xml

@@ -3,9 +3,9 @@
 ## Architecture
 
 ```
-uniscout.in         → Render Static Site  (React/Vite frontend)  — free
-api.uniscout.in     → Render Web Service  (Node.js backend)       — free / $7/mo
-ml.uniscout.in      → Render Web Service  (Python ML service)     — free / $7/mo
+uniscout.co.in         → Render Static Site  (React/Vite frontend)  — free
+api.uniscout.co.in     → Render Web Service  (Node.js backend)       — free / $7/mo
+ml.uniscout.co.in      → Render Web Service  (Python ML service)     — free / $7/mo
 ```
 
 ---
@@ -30,7 +30,7 @@ ml.uniscout.in      → Render Web Service  (Python ML service)     — free / $
 6. Test: `https://uniscout-ml.onrender.com/health`
    - Should return: `{ "model_loaded": true, "status": "ok" }`
 
-**Custom domain (optional):** Render → Settings → Custom Domains → add `ml.uniscout.in`
+**Custom domain (optional):** Render → Settings → Custom Domains → add `ml.uniscout.co.in`
 
 > **Note:** On the free plan, the service spins down after 15 min of inactivity.
 > The backend already has a 1.5s ML timeout and graceful fallback, so cold starts
@@ -52,14 +52,14 @@ ml.uniscout.in      → Render Web Service  (Python ML service)     — free / $
    NODE_ENV=production
    DATA_DIR=./data
    ML_SERVICE_URL=https://uniscout-ml.onrender.com
-   CORS_ORIGIN=https://uniscout.in
+   CORS_ORIGIN=https://uniscout.co.in
    RATE_LIMIT_MAX_REQUESTS=200
    ```
    > Replace `uniscout-ml.onrender.com` with your actual ML service URL from Step 1.
 5. Deploy — loads ~80k records from `./data/` on startup (~30s)
 6. Test: `https://uniscout-backend.onrender.com/api/health`
 
-**Custom domain:** Render → Settings → Custom Domains → add `api.uniscout.in`
+**Custom domain:** Render → Settings → Custom Domains → add `api.uniscout.co.in`
 
 ---
 
@@ -73,9 +73,9 @@ ml.uniscout.in      → Render Web Service  (Python ML service)     — free / $
    - **Publish Directory:** `build`
 4. Environment variable:
    ```
-   VITE_API_URL=https://api.uniscout.in/api
+   VITE_API_URL=https://api.uniscout.co.in/api
    ```
-5. Custom domain: add `uniscout.in` and `www.uniscout.in`
+5. Custom domain: add `uniscout.co.in` and `www.uniscout.co.in`
 
 ---
 
@@ -94,40 +94,40 @@ ml.uniscout.in      → Render Web Service  (Python ML service)     — free / $
 
 - [ ] `https://uniscout-ml.onrender.com/health` → `model_loaded: true` ✅
 - [ ] `https://uniscout-backend.onrender.com/api/health` → `success: true, totalRecords: ~80000`
-- [ ] `https://uniscout.in` loads homepage
+- [ ] `https://uniscout.co.in` loads homepage
 - [ ] MHT-CET predictor returns results with admission bands
 - [ ] College detail page shows cutoff history chart
 - [ ] Smart Form Filling generates preference list (no "AI unavailable" note)
-- [ ] `https://uniscout.in/robots.txt` accessible
-- [ ] `https://uniscout.in/sitemap.xml` accessible
+- [ ] `https://uniscout.co.in/robots.txt` accessible
+- [ ] `https://uniscout.co.in/sitemap.xml` accessible
 
 ---
 
 ## SEO & Analytics Setup
 
 - [ ] **Google Search Console** — [search.google.com/search-console](https://search.google.com/search-console)
-  1. Add property → enter `https://uniscout.in`
+  1. Add property → enter `https://uniscout.co.in`
   2. Verify ownership (HTML tag or DNS TXT record)
-  3. Sitemaps → submit `https://uniscout.in/sitemap.xml`
+  3. Sitemaps → submit `https://uniscout.co.in/sitemap.xml`
 
 - [ ] **Bing Webmaster Tools** — [bing.com/webmasters](https://www.bing.com/webmasters)
-  1. Add site → `https://uniscout.in`
-  2. Submit sitemap: `https://uniscout.in/sitemap.xml`
+  1. Add site → `https://uniscout.co.in`
+  2. Submit sitemap: `https://uniscout.co.in/sitemap.xml`
 
 - [ ] **Google Analytics (GA4)** — [analytics.google.com](https://analytics.google.com)
-  1. Create GA4 property for `uniscout.in`
+  1. Create GA4 property for `uniscout.co.in`
   2. Copy the `gtag.js` snippet and add it to `index.html` before `</head>`
 
 - [ ] **Rich Results Test** — [search.google.com/test/rich-results](https://search.google.com/test/rich-results)
-  - Test `https://uniscout.in/` → should detect FAQPage schema
-  - Test `https://uniscout.in/jee-college-predictor` → should detect WebPage schema
+  - Test `https://uniscout.co.in/` → should detect FAQPage schema
+  - Test `https://uniscout.co.in/jee-college-predictor` → should detect WebPage schema
 
 - [ ] **PageSpeed Insights** — [pagespeed.web.dev](https://pagespeed.web.dev)
-  - Check Core Web Vitals for `https://uniscout.in`
+  - Check Core Web Vitals for `https://uniscout.co.in`
   - Target: LCP < 2.5s, CLS < 0.1, INP < 200ms
 
-- [ ] Update `CORS_ORIGIN` on backend to `https://uniscout.in`
-- [ ] Update `VITE_API_URL` on frontend to `https://api.uniscout.in/api`
+- [ ] Update `CORS_ORIGIN` on backend to `https://uniscout.co.in`
+- [ ] Update `VITE_API_URL` on frontend to `https://api.uniscout.co.in/api`
 
 ---
 
@@ -136,7 +136,7 @@ ml.uniscout.in      → Render Web Service  (Python ML service)     — free / $
 ### Frontend (Render Static Site)
 | Variable       | Value                          |
 |----------------|--------------------------------|
-| `VITE_API_URL` | `https://api.uniscout.in/api`  |
+| `VITE_API_URL` | `https://api.uniscout.co.in/api`  |
 
 ### Backend (Render Web Service)
 | Variable                  | Value                                  |
@@ -144,7 +144,7 @@ ml.uniscout.in      → Render Web Service  (Python ML service)     — free / $
 | `NODE_ENV`                | `production`                           |
 | `DATA_DIR`                | `./data`                               |
 | `ML_SERVICE_URL`          | `https://uniscout-ml.onrender.com`     |
-| `CORS_ORIGIN`             | `https://uniscout.in`                  |
+| `CORS_ORIGIN`             | `https://uniscout.co.in`                  |
 | `RATE_LIMIT_MAX_REQUESTS` | `200`                                  |
 
 ### ML Service (Render Web Service — Docker)

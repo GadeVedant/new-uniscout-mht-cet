@@ -1,6 +1,6 @@
 # UniScout — MHT CET College Predictor
 
-**Live:** [uniscout.in](https://uniscout.in)
+**Live:** [uniscout.co.in](https://uniscout.co.in)
 
 ---
 
@@ -91,7 +91,7 @@ UniScout solves all of this in one place.
 - Deployed on **Render** (Web Service)
 
 ### ML Service
-- **Python** + **FastAPI**
+- **Python** + **FastAPI** (a Python REST API framework)
 - **LightGBM** model (3 quantile regressors: P10, P50, P90)
 - **SHAP** for explainability (top factors)
 - Trained on 4 years of CAP data
@@ -105,10 +105,10 @@ UniScout solves all of this in one place.
 Browser (React)
     │
     ▼
-Render Static Site (uniscout.in)
+Render Static Site (uniscout.co.in)
     │  REST API calls
     ▼
-Render Web Service (api.uniscout.in)
+Render Web Service (api.uniscout.co.in)
     │  Node.js + Express
     │  Loads CSV data on startup
     │  ML prediction calls
@@ -120,6 +120,8 @@ Railway (ML Service)
 ---
 
 ## API Endpoints
+
+The entire project uses **REST API** architecture — JSON over HTTP. The main backend uses Express.js, and the ML service uses FastAPI (a Python framework that also builds REST APIs). Both communicate via standard HTTP GET/POST requests.
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|

@@ -489,9 +489,9 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
       <SchemaOrg
         id={`breadcrumb-${college.code}`}
         schema={breadcrumbSchema([
-          { name: 'Home', url: 'https://uniscout.in/' },
-          { name: 'MHT CET Predictor', url: 'https://uniscout.in/mht-cet' },
-          { name: college.name, url: `https://uniscout.in/college/${college.id}` },
+          { name: 'Home', url: 'https://uniscout.co.in/' },
+          { name: 'MHT CET Predictor', url: 'https://uniscout.co.in/mht-cet' },
+          { name: college.name, url: `https://uniscout.co.in/college/${college.id}` },
         ])}
       />
       {/* Sticky header */}

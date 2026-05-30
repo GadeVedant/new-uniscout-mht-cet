@@ -15,7 +15,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
   useSEO({
     title: 'College Predictor for JEE, MHT CET, NEET, CAT & More | UniScout',
     description: "UniScout is India's multi-exam college predictor. Find the best engineering, medical, and MBA colleges using JEE, MHT CET, NEET, or CAT scores. AI-powered cutoffs, admission bands, and smart preference list.",
-    canonical: 'https://uniscout.in/',
+    canonical: 'https://uniscout.co.in/',
   });
 
   return (

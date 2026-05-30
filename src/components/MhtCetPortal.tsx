@@ -46,7 +46,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   useSEO({
     title: 'MHT CET College Predictor – Enter Your Percentile | UNISCOUT',
     description: 'Enter your MHT CET percentile, category, and branch to get AI-powered college recommendations with cutoff trends and admission probability bands.',
-    canonical: 'https://uniscout.in/mht-cet',
+    canonical: 'https://uniscout.co.in/mht-cet',
   });
 
   const [formData, setFormData] = useState<MhtCetFormData>({

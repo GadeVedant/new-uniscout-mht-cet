@@ -106,7 +106,7 @@ function buildPrintHTML(
     </thead>
     <tbody>${rows}</tbody>
   </table>
-  <p class="footer">uniscout.in · Cutoffs are based on historical CAP data. Verify on dte.maharashtra.gov.in before submission.</p>
+  <p class="footer">uniscout.co.in · Cutoffs are based on historical CAP data. Verify on dte.maharashtra.gov.in before submission.</p>
 </body>
 </html>`;
 }

@@ -13,7 +13,7 @@ export function JeePortal({ }: JeePortalProps) {
   useSEO({
     title: 'JEE College Predictor 2024 – Find IITs, NITs & GFTIs | UniScout',
     description: 'Predict your JEE Main and Advanced college using your rank. Find IITs, NITs, IIITs, and GFTIs with cutoff trends and admission probability.',
-    canonical: 'https://uniscout.in/jee-college-predictor',
+    canonical: 'https://uniscout.co.in/jee-college-predictor',
   });
   return (
     <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center">

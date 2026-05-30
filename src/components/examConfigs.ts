@@ -6,7 +6,7 @@ export const JEE_CONFIG: ExamConfig = {
   shortName: 'JEE',
   title: 'JEE College Predictor 2024 – Find IITs, NITs & GFTIs | UniScout',
   description: 'Predict your JEE Main and JEE Advanced college using your rank and category. Find IITs, NITs, IIITs, and GFTIs with cutoff trends, branch-wise analysis, and admission probability.',
-  canonical: 'https://uniscout.in/jee-college-predictor',
+  canonical: 'https://uniscout.co.in/jee-college-predictor',
   h1: 'JEE College Predictor – Find IITs, NITs & GFTIs',
   subheading: 'Enter your JEE Main or Advanced rank to discover which IITs, NITs, IIITs, and GFTIs you can get into. Cutoff trends, branch-wise analysis, and admission probability — all in one place.',
   colleges: [
@@ -49,7 +49,7 @@ export const NEET_CONFIG: ExamConfig = {
   shortName: 'NEET',
   title: 'NEET College Predictor 2024 – Find MBBS, BDS & AYUSH Colleges | UniScout',
   description: 'Predict your NEET college using your score and rank. Find the best MBBS, BDS, and AYUSH colleges with state-wise cutoffs, fees, and admission probability bands.',
-  canonical: 'https://uniscout.in/neet-college-predictor',
+  canonical: 'https://uniscout.co.in/neet-college-predictor',
   h1: 'NEET College Predictor – Find MBBS & BDS Colleges',
   subheading: 'Enter your NEET score and rank to discover MBBS, BDS, and AYUSH colleges you can get into. State-wise cutoffs, fees, and admission probability — all in one place.',
   colleges: [
@@ -92,7 +92,7 @@ export const CAT_CONFIG: ExamConfig = {
   shortName: 'CAT',
   title: 'CAT College Predictor 2024 – Find IIMs & Top MBA Colleges | UniScout',
   description: 'Predict your CAT college using your percentile and profile. Find IIMs, FMS, XLRI, and top MBA colleges with cutoff percentiles, fees, and admission probability.',
-  canonical: 'https://uniscout.in/cat-college-predictor',
+  canonical: 'https://uniscout.co.in/cat-college-predictor',
   h1: 'CAT College Predictor – Find IIMs & Top MBA Colleges',
   subheading: 'Enter your CAT percentile to discover IIMs, FMS, XLRI, and other top MBA colleges you can target. Cutoff percentiles, fees, placement packages, and admission probability.',
   colleges: [
