@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import { api, CollegeRecommendation, CutoffHistoryEntry } from '../services/api';
 import { useSEO } from '../seo/useSEO';
-import { SchemaOrg, collegeSchema, breadcrumbSchema } from '../seo/SchemaOrg';
+import { SchemaOrg, collegeSchema, breadcrumbSchema, faqSchema } from '../seo/SchemaOrg';
 import { SimilarColleges } from './SimilarColleges';
 
 // ---------------------------------------------------------------------------
@@ -402,6 +402,69 @@ function Round2StrategySection({ college }: { college: CollegeRecommendation }) 
 }
 
 // ---------------------------------------------------------------------------
+// College FAQ Section — content SEO
+// ---------------------------------------------------------------------------
+
+function CollegeFAQSection({ college }: { college: CollegeRecommendation }) {
+  const faqs = [
+    {
+      question: `What is the MHT CET cutoff for ${college.name} ${college.branch}?`,
+      answer: `The MHT CET 2025 cutoff for ${college.name} ${college.branch} (${college.category} category) is ${college.cutoffPercentile} percentile. This is based on CAP Round ${college.capRound} data.`,
+    },
+    {
+      question: `What are the fees for ${college.branch} at ${college.name}?`,
+      answer: college.fees
+        ? `The annual fees for ${college.branch} at ${college.name} is approximately ₹${college.fees}. Fees may vary based on category and year of admission.`
+        : `Fee information for ${college.name} is not available in our current dataset. Please check the official DTE Maharashtra website or contact the college directly.`,
+    },
+    {
+      question: `How many seats are available for ${college.branch} at ${college.name}?`,
+      answer: college.seats
+        ? `${college.name} has ${college.seats} seats for ${college.branch} under the CAP quota.`
+        : `Seat intake data for ${college.name} ${college.branch} is not available. Please refer to the DTE Maharashtra seat matrix.`,
+    },
+    {
+      question: `What is the admission probability for ${college.name} with my percentile?`,
+      answer: `UniScout's AI model predicts your admission probability based on 4 years of historical cutoff data. The current admission band for ${college.name} ${college.branch} is "${college.admissionBand}". Enter your percentile on the MHT CET predictor page for a personalized probability score.`,
+    },
+    ...(college.avgPackage ? [{
+      question: `What is the average placement package at ${college.name}?`,
+      answer: `The average placement package at ${college.name} is ${college.avgPackage}${college.highestPackage ? `, with the highest package recorded at ${college.highestPackage}` : ''}. Placement data is based on available records and may vary by branch and year.`,
+    }] : []),
+  ];
+
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <SectionCard>
+      <SchemaOrg id={`faq-${college.code}`} schema={faqSchema(faqs)} />
+      <SectionTitle>Frequently Asked Questions</SectionTitle>
+      <div className="space-y-3">
+        {faqs.map((faq, i) => (
+          <div key={i} className="border border-white/10 rounded-xl overflow-hidden">
+            <button
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-white/5 transition-colors"
+              aria-expanded={openIndex === i}
+            >
+              <span className="text-sm font-medium text-slate-200 pr-4">{faq.question}</span>
+              <span className={`text-slate-400 shrink-0 transition-transform ${openIndex === i ? 'rotate-180' : ''}`}>
+                ▾
+              </span>
+            </button>
+            {openIndex === i && (
+              <div className="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/10 pt-3">
+                {faq.answer}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </SectionCard>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Main CollegeDetailPage
 // ---------------------------------------------------------------------------
 
@@ -565,6 +628,11 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
         {/* 7. Internal linking — similar colleges */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
           <SimilarColleges current={college} all={colleges} />
+        </motion.div>
+
+        {/* 8. FAQ section — content SEO */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+          <CollegeFAQSection college={college} />
         </motion.div>
       </main>
     </div>
