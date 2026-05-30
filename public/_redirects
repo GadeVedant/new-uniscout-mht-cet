@@ -1,5 +1,2 @@
-# Redirect www to non-www (canonical domain)
-https://www.uniscout.co.in/* https://uniscout.co.in/:splat 301!
-
 # SPA fallback — all routes serve index.html
 /* /index.html 200
