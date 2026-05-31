@@ -59,10 +59,18 @@ Last updated: 31 May 2026
   - `vendor-motion`: 89KB (Framer Motion)
   - `vendor-radix`: 24KB (Radix UI)
   - `vendor-icons`: 17KB (Lucide)
+- [x] **31 May 2026** — Lazy loading for all routes (reduces unused JS on homepage)
+- [x] **31 May 2026** — Heading order fixed (h1 → h2, no skipped levels)
+- [x] **31 May 2026** — OG image created and optimized (62KB JPEG, 1200×630)
+- [x] PageSpeed Insights scores: Performance 92, Accessibility 98, Best Practices 100, SEO 100
 
 ### Content SEO
 - [x] Dynamic FAQ accordion on every college detail page (5 questions per college)
 - [x] `SimilarColleges` internal linking already in place on college detail pages
+
+### Search Engines
+- [x] Google Search Console — property verified, sitemap submitted, 113 pages discovered
+- [x] Bing Webmaster Tools — property added, sitemap submitted
 
 ---
 
@@ -92,24 +100,20 @@ Last updated: 31 May 2026
 
 ## 🔲 REMAINING — On-Page SEO
 
-- [ ] JEE/NEET/CAT landing page titles and descriptions audit
+- [ ] JEE/NEET/CAT landing page titles and descriptions audit (when pages are built out)
 
 ## 🔲 REMAINING — Performance SEO
 
-- [ ] Core Web Vitals audit via PageSpeed Insights — run on `https://www.uniscout.co.in/`
-- [ ] Image optimization — og-image.png needs to be created (currently missing)
+- [ ] Re-run PageSpeed Insights after lazy loading deploy to confirm improvement
 
 ## 🔲 REMAINING — Content SEO
 
-- [ ] FAQ section on homepage (beyond the existing 3 questions)
-- [ ] Internal linking from homepage to top college pages
-- [ ] Blog/guide content (future)
+- [ ] Blog/guide content (future — "MHT CET CAP Round 2 strategy 2025" etc.)
 
-## 🔲 REMAINING — Search Console
+## 🔲 REMAINING — Monitoring
 
-- [ ] Monitor Pages report for indexed count (check back: ~14 June 2026)
-- [ ] Set up email alerts for coverage issues
-- [ ] Submit to Bing Webmaster Tools
+- [ ] Check Search Console Pages report ~14 June 2026 for indexed count
+- [ ] Set up Search Console email alerts for coverage issues
 
 ---
 
