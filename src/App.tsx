@@ -1,16 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HomePage } from './components/HomePage';
-import { MhtCetPortal } from './components/MhtCetPortal';
-import { JeePortal } from './components/JeePortal';
-import { ResultsPage } from './components/ResultsPage';
-import { CollegeDetailPage } from './components/CollegeDetailPage';
-import { CollegeComparisonPage } from './components/CollegeComparisonPage';
-import { SmartFormPage } from './components/SmartFormPage';
-import { ExamLandingPage } from './components/ExamLandingPage';
-import { JEE_CONFIG, NEET_CONFIG, CAT_CONFIG } from './components/examConfigs';
 import { CollegeRecommendation, RecommendationRequest } from './services/api';
 import { FeedbackButton } from './components/FeedbackButton';
+
+// Lazy-loaded routes — only downloaded when the user navigates to them
+const MhtCetPortal = lazy(() => import('./components/MhtCetPortal').then(m => ({ default: m.MhtCetPortal })));
+const JeePortal = lazy(() => import('./components/JeePortal').then(m => ({ default: m.JeePortal })));
+const ResultsPage = lazy(() => import('./components/ResultsPage').then(m => ({ default: m.ResultsPage })));
+const CollegeDetailPage = lazy(() => import('./components/CollegeDetailPage').then(m => ({ default: m.CollegeDetailPage })));
+const CollegeComparisonPage = lazy(() => import('./components/CollegeComparisonPage').then(m => ({ default: m.CollegeComparisonPage })));
+const SmartFormPage = lazy(() => import('./components/SmartFormPage').then(m => ({ default: m.SmartFormPage })));
+const ExamLandingPage = lazy(() => import('./components/ExamLandingPage').then(m => ({ default: m.ExamLandingPage })));
+
+// Lazy-load exam configs only when needed
+const JEE_CONFIG_PROMISE = import('./components/examConfigs').then(m => m.JEE_CONFIG);
+const NEET_CONFIG_PROMISE = import('./components/examConfigs').then(m => m.NEET_CONFIG);
+const CAT_CONFIG_PROMISE = import('./components/examConfigs').then(m => m.CAT_CONFIG);
+
+// Simple loading fallback
+function PageLoader() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-white/20 border-t-cyan-400 rounded-full animate-spin" />
+    </div>
+  );
+}
 
 // Extend RecommendationRequest with UI-only flags
 export type QueryWithMeta = RecommendationRequest & { locationFallback?: boolean };
@@ -29,6 +44,23 @@ function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
+}
+
+// Lazy exam landing page wrappers — load config only when route is visited
+function JeeLandingRoute() {
+  const [config, setConfig] = useState<any>(null);
+  useEffect(() => { JEE_CONFIG_PROMISE.then(setConfig); }, []);
+  return config ? <ExamLandingPage config={config} /> : <PageLoader />;
+}
+function NeetLandingRoute() {
+  const [config, setConfig] = useState<any>(null);
+  useEffect(() => { NEET_CONFIG_PROMISE.then(setConfig); }, []);
+  return config ? <ExamLandingPage config={config} /> : <PageLoader />;
+}
+function CatLandingRoute() {
+  const [config, setConfig] = useState<any>(null);
+  useEffect(() => { CAT_CONFIG_PROMISE.then(setConfig); }, []);
+  return config ? <ExamLandingPage config={config} /> : <PageLoader />;
 }
 
 export default function App() {
@@ -69,64 +101,62 @@ export default function App() {
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
-        <Routes>
-          <Route path="/" element={
-            <HomePage 
-              onPortalSelect={(portal) => setPortalType(portal)} 
-              onSmartFormSelect={() => {}} // Now handled by Link in HomePage
-            />
-          } />
-          
-          <Route path="/mht-cet" element={
-            <MhtCetPortal 
-              onBack={() => {}} // Now handled by useNavigate in component
-              onRecommendationsReady={(results, query) => {
-                setCollegesAndPersist(results);
-                setLastQueryAndPersist(query);
-              }}
-            />
-          } />
-          
-          <Route path="/jee" element={
-            <JeePortal onBack={() => {}} />
-          } />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={
+              <HomePage 
+                onPortalSelect={(portal) => setPortalType(portal)} 
+                onSmartFormSelect={() => {}}
+              />
+            } />
+            
+            <Route path="/mht-cet" element={
+              <MhtCetPortal 
+                onBack={() => {}}
+                onRecommendationsReady={(results, query) => {
+                  setCollegesAndPersist(results);
+                  setLastQueryAndPersist(query);
+                }}
+              />
+            } />
+            
+            <Route path="/jee" element={
+              <JeePortal onBack={() => {}} />
+            } />
 
-          {/* Exam-specific SEO landing pages */}
-          <Route path="/jee-college-predictor" element={<ExamLandingPage config={JEE_CONFIG} />} />
-          <Route path="/neet-college-predictor" element={<ExamLandingPage config={NEET_CONFIG} />} />
-          <Route path="/cat-college-predictor" element={<ExamLandingPage config={CAT_CONFIG} />} />
+            {/* Exam-specific SEO landing pages */}
+            <Route path="/jee-college-predictor" element={<JeeLandingRoute />} />
+            <Route path="/neet-college-predictor" element={<NeetLandingRoute />} />
+            <Route path="/cat-college-predictor" element={<CatLandingRoute />} />
 
-          <Route path="/results" element={
-            <ResultsPage 
-              colleges={colleges}
-              lastQuery={lastQuery}
-              portalType={portalType}
-              comparisonSelection={comparisonSelection}
-              setComparisonSelection={setComparisonSelection}
-            />
-          } />
+            <Route path="/results" element={
+              <ResultsPage 
+                colleges={colleges}
+                lastQuery={lastQuery}
+                portalType={portalType}
+                comparisonSelection={comparisonSelection}
+                setComparisonSelection={setComparisonSelection}
+              />
+            } />
 
-          <Route path="/college/:id" element={
-            <CollegeDetailPage
-              colleges={colleges}
-            />
-          } />
+            <Route path="/college/:id" element={
+              <CollegeDetailPage colleges={colleges} />
+            } />
 
-          <Route path="/compare" element={
-            <CollegeComparisonPage
-              colleges={comparisonSelection}
-              onBack={() => {}}
-              onHome={() => {}}
-            />
-          } />
+            <Route path="/compare" element={
+              <CollegeComparisonPage
+                colleges={comparisonSelection}
+                onBack={() => {}}
+                onHome={() => {}}
+              />
+            } />
 
-          <Route path="/smart-form" element={
-            <SmartFormPage />
-          } />
+            <Route path="/smart-form" element={<SmartFormPage />} />
 
-          {/* Catch-all redirect */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+            {/* Catch-all redirect */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
 
         {/* Global feedback button — visible on every page */}
         <FeedbackButton />

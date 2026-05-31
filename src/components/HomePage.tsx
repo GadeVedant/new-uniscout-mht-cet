@@ -123,9 +123,9 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <Map className="w-5 h-5 text-pink-400" />
-                  <h3 className="text-xl font-bold text-white group-hover:text-pink-300 transition-colors">
+                  <h2 className="text-xl font-bold text-white group-hover:text-pink-300 transition-colors">
                     Generate Form Filling List
-                  </h3>
+                  </h2>
                 </div>
                 <p className="text-slate-300">
                   Get a smart, personalized preference list of Safe, Target, and Dream colleges.
@@ -177,7 +177,7 @@ function ExamCard({ title, description, isActive, onClick, delay }: ExamCardProp
       `}
     >
       <div className="flex justify-between w-full items-start mb-4">
-        <h3 className="text-3xl font-bold text-white">{title}</h3>
+        <h2 className="text-3xl font-bold text-white">{title}</h2>
         {!isActive && (
           <span className="bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded-full font-medium border border-slate-700">
             Coming Soon
