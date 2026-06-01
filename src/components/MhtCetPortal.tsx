@@ -95,6 +95,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     try {
       const allResults: CollegeRecommendation[] = [];
       const locationStr = formData.locations.includes('ALL') ? '' : formData.locations.join(',');
+      let anyLocationFallback = false;
 
       for (const branch of formData.branchPreferences) {
         const requestPayload = {
@@ -108,6 +109,9 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
         const response = await api.getRecommendations(requestPayload);
         if (response.success && response.data) {
           allResults.push(...response.data);
+          if (response.metadata?.location_fallback) {
+            anyLocationFallback = true;
+          }
         }
       }
 
@@ -125,7 +129,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
         category: formData.category,
         branchPreference: formData.branchPreferences.join(', '),
         location: locationStr,
-        locationFallback: false,
+        locationFallback: anyLocationFallback,
       };
 
       onRecommendationsReady(unique, queryMeta);

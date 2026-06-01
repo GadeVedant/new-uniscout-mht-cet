@@ -186,7 +186,7 @@ export function ResultsPage({
           >
             <div className="flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-300 text-sm">
               <span>⚠️</span>
-              <span>No colleges found in <strong>{lastQuery.location}</strong> for your branch/category. Showing results from all districts.</span>
+              <span>No colleges found in <strong>{lastQuery.location}</strong> for your selected branch/category. Showing results from all Maharashtra instead.</span>
             </div>
           </motion.div>
         )}

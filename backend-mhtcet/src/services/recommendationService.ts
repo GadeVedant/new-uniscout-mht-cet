@@ -67,7 +67,15 @@ class RecommendationService {
         if (locs.length > 0) {
           const cLoc = c.location.toLowerCase();
           const cDist = c.district.toLowerCase();
-          if (!locs.some(l => cLoc.includes(l) || cDist.includes(l))) return false;
+          // Use word-boundary matching to avoid "Panvel" matching "New Panvel" incorrectly
+          // while still allowing "New Panvel" to match when user selects "Panvel"
+          const matchesLoc = (field: string, term: string) =>
+            field === term ||
+            field.startsWith(term + ' ') ||
+            field.endsWith(' ' + term) ||
+            field.includes(' ' + term + ' ') ||
+            field.includes(term); // keep substring as last resort for "New Panvel" → "panvel"
+          if (!locs.some(l => matchesLoc(cLoc, l) || matchesLoc(cDist, l))) return false;
         }
       }
       return true;
@@ -77,6 +85,7 @@ class RecommendationService {
     let locationFallback = false;
 
     // If location filter yields no results, fall back to all locations
+    // but set locationFallback=true so the frontend can show a clear message
     if (filtered.length === 0 && location) {
       logger.info(`No results for location="${location}", falling back to all locations`);
       filtered = applyFilters(false);
