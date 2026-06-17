@@ -12,6 +12,8 @@ const CollegeDetailPage = lazy(() => import('./components/CollegeDetailPage').th
 const CollegeComparisonPage = lazy(() => import('./components/CollegeComparisonPage').then(m => ({ default: m.CollegeComparisonPage })));
 const SmartFormPage = lazy(() => import('./components/SmartFormPage').then(m => ({ default: m.SmartFormPage })));
 const ExamLandingPage = lazy(() => import('./components/ExamLandingPage').then(m => ({ default: m.ExamLandingPage })));
+const SscPortal = lazy(() => import('./components/SscPortal').then(m => ({ default: m.SscPortal })));
+const ComingSoon = lazy(() => import('./components/ComingSoon').then(m => ({ default: m.ComingSoon })));
 
 // Lazy-load exam configs only when needed
 const JEE_CONFIG_PROMISE = import('./components/examConfigs').then(m => m.JEE_CONFIG);
@@ -37,6 +39,15 @@ export interface MhtCetFormData {
   category: string;
   branchPreferences: string[];  // up to 5
   locations: string[];           // up to 5
+}
+
+export interface SscFormData {
+  totalMarks: string;
+  year: string;
+  regularRound: string;
+  category: string;
+  branchPreference: string;
+  location: string;
 }
 
 // Scroll to top on every route change
@@ -152,6 +163,19 @@ export default function App() {
             } />
 
             <Route path="/smart-form" element={<SmartFormPage />} />
+
+            {/* SSC Portal */}
+            <Route path="/ssc" element={
+              <SscPortal
+                onSubmit={(data) => { console.log('SSC form submitted', data); }}
+                onBack={() => {}}
+              />
+            } />
+
+            {/* Coming Soon portals */}
+            <Route path="/dse" element={<ComingSoon portalType="mht-cet" onBack={() => {}} />} />
+            <Route path="/pharmacy" element={<ComingSoon portalType="mht-cet" onBack={() => {}} />} />
+            <Route path="/neet" element={<ComingSoon portalType="mht-cet" onBack={() => {}} />} />
 
             {/* Catch-all redirect */}
             <Route path="*" element={<Navigate to="/" replace />} />
