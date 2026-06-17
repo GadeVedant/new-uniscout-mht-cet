@@ -1,22 +1,10 @@
-import { motion, AnimatePresence } from 'motion/react';
-import { 
-  MapPin, 
-  TrendingUp, 
-  TrendingDown,
-  Minus,
-  CheckCircle,
-  AlertCircle,
-  MinusCircle,
-  DollarSign,
-  GraduationCap,
-  Users,
-  Calendar,
-  Building2,
-  Tag
+import { AnimatePresence, motion } from 'motion/react';
+import {
+  MapPin, Building2, BookOpen, ExternalLink, GitCompare,
+  Bookmark, DollarSign, Users, TrendingUp, TrendingDown, Minus,
 } from 'lucide-react';
 import { CollegeRecommendation } from '../services/api';
 import { Checkbox } from './ui/checkbox';
-import { Badge } from './ui/badge';
 
 interface CollegeCardProps {
   college: CollegeRecommendation;
@@ -29,27 +17,62 @@ interface CollegeCardProps {
   compareDisabled?: boolean;
 }
 
-export function CollegeCard({ 
-  college, delay, isExpanded, onToggle, onViewDetails, isCompared, onCompareToggle, compareDisabled
+// ── Shared helpers ────────────────────────────────────────────────────────────
+
+function AdmissionBadge({ category }: { category: string }) {
+  const cfg: Record<string, { label: string; cls: string }> = {
+    Safe:     { label: 'Safe',     cls: 'text-emerald-400 bg-emerald-500/[0.12] border-emerald-500/30' },
+    Likely:   { label: 'Likely',   cls: 'text-blue-400   bg-blue-500/[0.12]   border-blue-500/30'   },
+    Moderate: { label: 'Moderate', cls: 'text-amber-400  bg-amber-500/[0.12]  border-amber-500/30'  },
+    Risky:    { label: 'Risky',    cls: 'text-red-400    bg-red-500/[0.12]    border-red-500/30'    },
+    High:     { label: 'Safe',     cls: 'text-emerald-400 bg-emerald-500/[0.12] border-emerald-500/30' },
+    Medium:   { label: 'Moderate', cls: 'text-amber-400  bg-amber-500/[0.12]  border-amber-500/30'  },
+    Low:      { label: 'Risky',    cls: 'text-red-400    bg-red-500/[0.12]    border-red-500/30'    },
+  };
+  const c = cfg[category] ?? cfg.Moderate;
+  return (
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${c.cls}`}>
+      <span className="size-1.5 rounded-full bg-current opacity-80" />
+      {c.label}
+    </span>
+  );
+}
+
+function ProbBar({ value, category }: { value: number; category: string }) {
+  const bar: Record<string, string> = {
+    Safe: 'bg-emerald-500', Likely: 'bg-blue-500', Moderate: 'bg-amber-500', Risky: 'bg-red-500',
+    High: 'bg-emerald-500', Medium: 'bg-amber-500', Low: 'bg-red-500',
+  };
+  return (
+    <div className="flex items-center gap-2.5">
+      <div className="flex-1 h-1.5 bg-white/[0.08] rounded-full overflow-hidden">
+        <div
+          className={`h-full rounded-full transition-all duration-700 ${bar[category] ?? 'bg-primary'}`}
+          style={{ width: `${value}%` }}
+        />
+      </div>
+      <span className="text-xs font-medium tabular-nums w-8 text-right text-muted-foreground">{Math.round(value)}%</span>
+    </div>
+  );
+}
+
+// ── Main component ─────────────────────────────────────────────────────────────
+
+export function CollegeCard({
+  college, delay, isExpanded, onToggle, onViewDetails, isCompared, onCompareToggle, compareDisabled,
 }: CollegeCardProps) {
-  
   const isMlAvailable = !!college.admissionBand;
-  const band = college.admissionBand || 
+  const band = college.admissionBand ||
     (college.admissionChance === 'High' ? 'Safe' : college.admissionChance === 'Medium' ? 'Moderate' : 'Risky');
 
-  const bandConfig = {
-    Safe: { bg: 'bg-emerald-500/20', text: 'text-emerald-400', border: 'border-emerald-500/30' },
-    Likely: { bg: 'bg-blue-500/20', text: 'text-blue-400', border: 'border-blue-500/30' },
-    Moderate: { bg: 'bg-amber-500/20', text: 'text-amber-400', border: 'border-amber-500/30' },
-    Risky: { bg: 'bg-red-500/20', text: 'text-red-400', border: 'border-red-500/30' },
-  };
-  const config = bandConfig[band];
+  const probability = college.admissionProbability
+    ?? (band === 'Safe' ? 90 : band === 'Likely' ? 75 : band === 'Moderate' ? 60 : 35);
 
   const renderTrend = () => {
     switch (college.cutoffTrend) {
-      case 'rising': return <span className="text-red-400 font-bold ml-1" title="Rising (Harder)">↑</span>;
-      case 'falling': return <span className="text-emerald-400 font-bold ml-1" title="Falling (Easier)">↓</span>;
-      case 'stable': return <span className="text-slate-400 font-bold ml-1" title="Stable">→</span>;
+      case 'rising':  return <TrendingUp  className="size-3 text-red-400"     title="Rising (Harder)"  />;
+      case 'falling': return <TrendingDown className="size-3 text-emerald-400" title="Falling (Easier)" />;
+      case 'stable':  return <Minus       className="size-3 text-slate-400"   title="Stable"           />;
       default: return null;
     }
   };
@@ -57,159 +80,174 @@ export function CollegeCard({
   return (
     <motion.article
       layout
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.4 }}
-      className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-all text-slate-300 shadow-lg"
+      transition={{ delay, duration: 0.3 }}
+      className="group p-5 rounded-2xl bg-card border border-white/[0.07] hover:border-white/[0.14] transition-all"
     >
-      <div 
-        className="p-5 cursor-pointer hover:bg-white-[0.02]"
-        onClick={onToggle}
-      >
-        <div className="flex justify-between items-start mb-3">
-          <div className="flex flex-wrap gap-2 items-center">
-            <span className={`px-2.5 py-1 text-xs font-bold rounded-lg border ${config.bg} ${config.text} ${config.border}`}>
-              {isMlAvailable ? band : college.admissionChance}
-            </span>
-            {college.collegeType && (
-              <span className="px-2.5 py-1 text-xs font-medium bg-white/10 text-slate-300 rounded-lg">
-                {college.collegeType}
-              </span>
-            )}
-            {college.round2Opportunity && (
-              <span className="px-2.5 py-1 text-xs font-bold bg-teal-500/20 text-teal-400 border border-teal-500/30 rounded-lg">
-                Round 2 Opp
-              </span>
-            )}
+      <div className="flex items-start gap-4">
+        {/* Compare checkbox */}
+        {onCompareToggle && (
+          <div className="pt-0.5 shrink-0" onClick={e => e.stopPropagation()}>
+            <Checkbox
+              checked={isCompared}
+              onCheckedChange={onCompareToggle}
+              disabled={compareDisabled && !isCompared}
+              className="border-white/20 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+            />
           </div>
-          {onCompareToggle && (
-            <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-              <Checkbox 
-                checked={isCompared} 
-                onCheckedChange={onCompareToggle} 
-                disabled={compareDisabled && !isCompared}
-              />
+        )}
+
+        <div className="flex-1 min-w-0">
+          {/* Top row */}
+          <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">
+            <div className="flex-1 min-w-0">
+              <button
+                onClick={onToggle}
+                className="text-[15px] font-semibold hover:text-primary transition-colors text-left leading-snug text-foreground"
+              >
+                {college.name}
+              </button>
+              <div className="flex items-center gap-3 mt-1.5 text-xs text-muted-foreground flex-wrap">
+                <span className="flex items-center gap-1"><MapPin className="size-3" />{college.location}</span>
+                {college.district && college.district !== college.location && (
+                  <span className="flex items-center gap-1"><Building2 className="size-3" />{college.district}</span>
+                )}
+                <span className="flex items-center gap-1"><BookOpen className="size-3" />{college.branch}</span>
+                {college.collegeType && (
+                  <span className="px-1.5 py-0.5 rounded-md bg-white/[0.05] border border-white/10 text-[10px]">
+                    {college.collegeType}
+                  </span>
+                )}
+              </div>
             </div>
-          )}
-        </div>
-
-        <h3 className="text-lg font-bold text-white mb-1 leading-tight pr-2">
-          {college.name}
-        </h3>
-        
-        <div className="flex items-center gap-1 text-slate-400 mb-3 text-sm">
-          <MapPin className="w-3.5 h-3.5" />
-          <span>{college.location}</span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 mb-4">
-          <div className="bg-white/5 rounded-lg p-2.5 border border-white/5">
-            <div className="text-xs text-slate-400 mb-0.5">Branch</div>
-            <div className="text-sm font-semibold text-white truncate" title={college.branch}>
-              {college.branch}
+            <div className="shrink-0">
+              <AdmissionBadge category={band} />
             </div>
           </div>
-          <div className="bg-white/5 rounded-lg p-2.5 border border-white/5">
-            <div className="text-xs text-slate-400 mb-0.5">Cutoff</div>
-            <div className="text-sm font-semibold text-white flex items-center gap-1">
-              {college.cutoffPercentile?.toFixed(2)} {renderTrend()}
-              {college.estimatedCutoff && (
-                <span className="text-xs text-amber-400/70 font-normal" title="Estimated from Open category — no SC/reserved data available">
-                  ~est.
+
+          {/* Probability bar */}
+          <div className="mb-4">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-xs text-muted-foreground">Admission Probability</span>
+              {college.admissionProbabilityP10 && college.admissionProbabilityP90 && (
+                <span className="text-xs text-muted-foreground/60 font-mono">
+                  {Math.round(college.admissionProbabilityP10)}%–{Math.round(college.admissionProbabilityP90)}%
                 </span>
               )}
             </div>
+            <ProbBar value={probability} category={band} />
           </div>
-        </div>
 
-        <div className="flex items-center justify-between mt-4">
-          <div className="text-sm font-medium">
-            {isMlAvailable ? (
-              <span className="text-slate-300">
-                {college.admissionProbabilityP10 && college.admissionProbabilityP90 ? 
-                  `${Math.round(college.admissionProbabilityP10)}%–${Math.round(college.admissionProbabilityP90)}% chance` :
-                  (college.admissionProbability ? `${Math.round(college.admissionProbability)}% chance` : '')}
-              </span>
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 pt-3.5 border-t border-white/[0.05]">
+            <div>
+              <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider flex items-center gap-1">
+                Cutoff {renderTrend()}
+                {college.estimatedCutoff && (
+                  <span className="text-amber-400/70 normal-case not-italic" title="Estimated from Open category">~est</span>
+                )}
+              </div>
+              <div className="text-sm font-mono font-semibold">
+                {college.cutoffPercentile?.toFixed(2)}%ile
+              </div>
+            </div>
+            {college.fees ? (
+              <div>
+                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Fees/yr</div>
+                <div className="text-sm font-semibold">{college.fees}</div>
+              </div>
             ) : (
-              <span className="text-slate-500 italic text-xs">Basic prediction</span>
+              <div>
+                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Category</div>
+                <div className="text-sm font-semibold text-muted-foreground">{college.category}</div>
+              </div>
             )}
+            {college.avgPackage ? (
+              <div>
+                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Avg Pkg</div>
+                <div className="text-sm font-semibold text-emerald-400">{college.avgPackage} LPA</div>
+              </div>
+            ) : college.seats ? (
+              <div>
+                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Seats</div>
+                <div className="text-sm font-semibold">{college.seats}</div>
+              </div>
+            ) : null}
           </div>
-          {college.avgPackage && (
-            <div className="text-sm font-medium text-emerald-400 flex items-center gap-1">
-              <DollarSign className="w-4 h-4" />
-              {college.avgPackage} LPA avg
+
+          {/* Round 2 badge */}
+          {college.round2Opportunity && (
+            <div className="mt-3 px-2.5 py-1.5 rounded-lg bg-teal-500/[0.08] border border-teal-500/20 text-teal-400 text-xs font-medium inline-flex items-center gap-1.5">
+              <span className="size-1.5 rounded-full bg-teal-400" />
+              Round 2 Opportunity
             </div>
           )}
-        </div>
 
-        {/* Actions - moved to unexpanded face */}
-        {onViewDetails && (
-          <button
-            onClick={(e) => { e.stopPropagation(); onViewDetails(college); }}
-            className="w-full mt-4 py-2.5 px-4 rounded-lg border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 font-medium transition-all"
-          >
-            View Full Details
-          </button>
-        )}
+          {/* Actions */}
+          <div className="flex items-center gap-2 mt-4 pt-3.5 border-t border-white/[0.05]">
+            {onViewDetails && (
+              <button
+                onClick={(e) => { e.stopPropagation(); onViewDetails(college); }}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
+              >
+                <ExternalLink className="size-3" />View Details
+              </button>
+            )}
+            <button
+              onClick={(e) => { e.stopPropagation(); onToggle(); }}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {isExpanded ? 'Less ↑' : 'More ↓'}
+            </button>
+          </div>
+        </div>
       </div>
 
+      {/* Expanded details */}
       <AnimatePresence>
         {isExpanded && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-white/10 bg-white/[0.02]"
+            className="overflow-hidden"
           >
-            <div className="p-5 space-y-4">
-              {/* Placement Details */}
+            <div className="mt-4 pt-4 border-t border-white/[0.06] space-y-3 pl-8">
               {college.highestPackage && (
-                <div className="flex justify-between items-center text-sm border-b border-white/5 pb-3">
-                  <span className="text-slate-400">Highest Package</span>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Highest Package</span>
                   <span className="font-semibold text-emerald-400">{college.highestPackage} LPA</span>
                 </div>
               )}
-
-              {/* Factors */}
+              {college.seats && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Total Seats</span>
+                  <span className="font-semibold">{college.seats}</span>
+                </div>
+              )}
               {isMlAvailable && college.topFactors && college.topFactors.length > 0 && (
-                <div className="space-y-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Key Factors</span>
-                  <div className="flex flex-wrap gap-2">
+                <div>
+                  <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2">Key Factors</div>
+                  <div className="flex flex-wrap gap-1.5">
                     {college.topFactors.map((factor, i) => (
-                      <span key={i} className="text-xs px-2 py-1 bg-white/5 text-slate-300 border border-white/10 rounded-md">
+                      <span key={i} className="text-xs px-2 py-0.5 bg-white/[0.05] border border-white/10 rounded-md text-muted-foreground">
                         {factor}
                       </span>
                     ))}
                   </div>
                 </div>
               )}
-
-              {/* Confidence Label */}
               {isMlAvailable && college.confidenceLabel && (
-                <div className="text-xs flex items-center gap-1.5 mt-2">
-                  <span className="text-slate-500">AI Confidence:</span>
+                <div className="flex justify-between text-xs">
+                  <span className="text-muted-foreground">AI Confidence</span>
                   <span className={
                     college.confidenceLabel.toLowerCase().includes('high') ? 'text-emerald-400' :
                     college.confidenceLabel.toLowerCase().includes('medium') ? 'text-amber-400' :
-                    'text-slate-400 italic'
-                  }>
-                    {college.confidenceLabel}
-                  </span>
+                    'text-muted-foreground'
+                  }>{college.confidenceLabel}</span>
                 </div>
               )}
-
-              {/* Stats Row */}
-              <div className="grid grid-cols-2 gap-4 mt-2">
-                <div className="space-y-1">
-                  <span className="text-xs text-slate-500">Fees</span>
-                  <div className="text-sm font-semibold">{college.fees}</div>
-                </div>
-                <div className="space-y-1">
-                  <span className="text-xs text-slate-500">Total Seats</span>
-                  <div className="text-sm font-semibold">{college.seats || 'N/A'}</div>
-                </div>
-              </div>
-
             </div>
           </motion.div>
         )}

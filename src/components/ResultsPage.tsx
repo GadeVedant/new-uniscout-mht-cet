@@ -1,16 +1,10 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  ArrowLeft, 
-  Home,
-  ChevronDown,
+  GitCompare,
   Filter,
-  Search,
-  Sparkles,
-  GraduationCap,
-  CheckCircle,
-  AlertCircle,
-  MinusCircle
+  SlidersHorizontal,
+  Check,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { CollegeRecommendation, RecommendationRequest } from '../services/api';
@@ -115,67 +109,48 @@ export function ResultsPage({
 
   return (
     <div className="w-full flex-1 flex flex-col items-center">
-      {/* Header */}
-      <header className="w-full relative z-10 bg-white/10 backdrop-blur-xl border-b border-white/20 sticky top-0">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <motion.button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-blue-200 hover:text-blue-100 transition-all backdrop-blur-sm"
-          >
-            <Home className="w-5 h-5" />
-            <span className="hidden sm:inline font-semibold">Home</span>
-          </motion.button>
-          <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-xl">
-            <Sparkles className="w-4 h-4 text-cyan-300" />
-            <span className="text-sm font-bold text-cyan-300">
-              {colleges.length} colleges
-            </span>
+      {/* Sticky sub-header */}
+      <header className="w-full sticky top-0 z-40 border-b border-white/[0.06] bg-card/60 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-5 py-4">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <div className="size-2 rounded-full bg-emerald-500 shadow-[0_0_6px_2px_rgba(34,197,94,0.3)]" />
+                <span className="text-xs text-muted-foreground font-mono tracking-wide">
+                  MHT-CET Engineering · {lastQuery?.category ?? 'OPEN'} Category
+                </span>
+              </div>
+              <h1 className="text-lg font-semibold text-foreground">
+                Admission Predictions
+                {lastQuery?.percentile && (
+                  <span className="ml-3 text-sm font-normal text-muted-foreground">
+                    Percentile: <span className="text-primary font-mono font-medium">{lastQuery.percentile}</span>
+                  </span>
+                )}
+              </h1>
+            </div>
+            <div className="flex items-center gap-2.5">
+              {comparisonSelection.length > 0 && (
+                <button
+                  onClick={() => navigate('/compare')}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary/15 border border-primary/25 text-primary text-[13px] font-medium hover:bg-primary/25 transition-colors"
+                >
+                  <GitCompare className="size-4" />
+                  Compare ({comparisonSelection.length})
+                </button>
+              )}
+              <button
+                onClick={() => navigate('/')}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-muted-foreground hover:text-foreground text-[13px] font-medium transition-colors"
+              >
+                ✏️ Edit Search
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
-      <main className="w-full max-w-7xl px-6 py-8">
-        <motion.div className="text-center mb-8">
-          <h1 className="text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Your Predicted Colleges
-          </h1>
-          {!mlAvailable && (
-            <p className="mt-2 text-slate-400 text-sm italic">Basic predictions loaded. ML-enhanced probabilities are temporarily unavailable.</p>
-          )}
-        </motion.div>
-
-        {/* Query summary */}
-        {lastQuery && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-wrap justify-center gap-2 mb-8"
-          >
-            <span className="px-3 py-1.5 bg-cyan-500/15 border border-cyan-500/30 rounded-full text-cyan-300 text-sm font-semibold">
-              {lastQuery.percentile} %ile
-            </span>
-            <span className="px-3 py-1.5 bg-purple-500/15 border border-purple-500/30 rounded-full text-purple-300 text-sm font-semibold">
-              {lastQuery.category}
-            </span>
-            <span className="px-3 py-1.5 bg-blue-500/15 border border-blue-500/30 rounded-full text-blue-300 text-sm font-semibold">
-              {lastQuery.branchPreference}
-            </span>
-            <span className="px-3 py-1.5 bg-slate-500/20 border border-slate-500/30 rounded-full text-slate-300 text-sm font-semibold">
-              CAP Round {lastQuery.capRound}
-            </span>
-            {lastQuery.location && (
-              <span className="px-3 py-1.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full text-emerald-300 text-sm font-semibold">
-                📍 {lastQuery.location}
-              </span>
-            )}
-            <button
-              onClick={() => navigate('/')}
-              className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-slate-400 text-sm hover:bg-white/10 transition-colors"
-            >
-              ✏️ Edit
-            </button>
-          </motion.div>
-        )}
+      <main className="w-full max-w-7xl px-5 py-7">
 
         {/* Location fallback notice */}
         {lastQuery?.locationFallback && lastQuery?.location && (
@@ -194,11 +169,11 @@ export function ResultsPage({
         {isRound1 && lastQuery ? (
           <Tabs defaultValue="results" className="w-full">
             <div className="flex justify-center mb-8">
-              <TabsList className="bg-white/10 border border-white/20 p-1">
-                <TabsTrigger value="results" className="data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-900 font-semibold px-8 py-2.5">
+              <TabsList className="bg-card border border-white/[0.08] p-1 rounded-xl">
+                <TabsTrigger value="results" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-semibold px-8 py-2.5 rounded-lg text-[13px]">
                   Results
                 </TabsTrigger>
-                <TabsTrigger value="strategy" className="data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-900 font-semibold px-8 py-2.5">
+                <TabsTrigger value="strategy" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-semibold px-8 py-2.5 rounded-lg text-[13px]">
                   Round 2 Strategy
                 </TabsTrigger>
               </TabsList>
@@ -234,114 +209,127 @@ export function ResultsPage({
 }
 
 function ResultsContent({
-  stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, 
-  sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, navigate, 
+  stats, mlAvailable, bandsAvailable, filterBand, setFilterBand,
+  sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, navigate,
   comparisonSelection, handleCompareToggle
 }: any) {
   return (
-    <>
-      {/* Stats Cards */}
-      <motion.div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-        <StatCard label={mlAvailable ? "Safe" : "High Chance"} value={stats.b1} variant="success" icon={<CheckCircle className="w-6 h-6" />} />
-        <StatCard label={mlAvailable ? "Likely" : "Medium Chance"} value={stats.b2} variant="default" icon={<GraduationCap className="w-6 h-6" />} />
-        <StatCard label={mlAvailable ? "Moderate" : "Low Chance"} value={stats.b3} variant="warning" icon={<MinusCircle className="w-6 h-6" />} />
-        <StatCard label={mlAvailable ? "Risky" : "Risky"} value={stats.b4} variant="danger" icon={<AlertCircle className="w-6 h-6" />} />
-      </motion.div>
+    <div className="flex gap-7">
+      {/* Sidebar filters */}
+      <aside className="hidden lg:flex flex-col w-52 shrink-0 gap-5">
+        <div className="sticky top-[120px] space-y-5">
+          <div className="flex items-center gap-2 text-[13px] font-semibold text-foreground">
+            <SlidersHorizontal className="size-4 text-muted-foreground" />
+            Filters
+          </div>
 
-      {/* Filters */}
-      <motion.div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6 mb-8">
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className="lg:hidden flex items-center justify-between w-full text-blue-100"
-            >
-               <span className="flex items-center gap-2 font-semibold">
-                 <Filter className="w-4 h-4" /> Filters & Sort
-               </span>
-               <ChevronDown className={`w-5 h-5 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
-            </button>
+          {/* Sort */}
+          <div>
+            <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Sort By</div>
+            {[
+              { value: 'chance',     label: 'Admission Chance' },
+              { value: 'cutoff-high',label: 'Cutoff: High → Low' },
+              { value: 'cutoff-low', label: 'Cutoff: Low → High' },
+              { value: 'fees',       label: 'Fees' },
+              { value: 'name',       label: 'College Name' },
+            ].map(opt => (
+              <button key={opt.value} onClick={() => setSortBy(opt.value)}
+                className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 ${
+                  sortBy === opt.value
+                    ? 'bg-primary/12 text-primary border border-primary/20'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+                }`}>
+                <span className={`size-3.5 rounded-sm border flex items-center justify-center shrink-0 ${sortBy === opt.value ? 'bg-primary border-primary' : 'border-white/20'}`}>
+                  {sortBy === opt.value && <Check className="size-2.5 text-white" />}
+                </span>
+                {opt.label}
+              </button>
+            ))}
+          </div>
 
-            <div className={`${showFilters ? 'mt-5' : 'hidden'} lg:flex flex-col lg:flex-row gap-5`}>
-              <div className="flex-1 lg:max-w-xs">
-                <label className="block text-xs font-semibold text-slate-400 uppercase mb-2">Sort by</label>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
-                  className="w-full h-11 px-4 bg-white/10 border border-white/20 rounded-xl text-white appearance-none cursor-pointer focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                >
-                  <option value="chance" className="bg-slate-900">Admission Chance</option>
-                  <option value="cutoff-high" className="bg-slate-900">Cutoff: High to Low</option>
-                  <option value="cutoff-low" className="bg-slate-900">Cutoff: Low to High</option>
-                  <option value="name" className="bg-slate-900">College Name</option>
-                  <option value="fees" className="bg-slate-900">Fees</option>
-                  <option value="seats" className="bg-slate-900">Seats</option>
-                </select>
+          {/* Band filter */}
+          <div>
+            <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Admission Chance</div>
+            {['all', ...bandsAvailable].map((band: string) => (
+              <button key={band} onClick={() => setFilterBand(band)}
+                className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 capitalize ${
+                  filterBand === band
+                    ? 'bg-primary/12 text-primary border border-primary/20'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+                }`}>
+                <span className={`size-3.5 rounded-sm border flex items-center justify-center shrink-0 ${filterBand === band ? 'bg-primary border-primary' : 'border-white/20'}`}>
+                  {filterBand === band && <Check className="size-2.5 text-white" />}
+                </span>
+                {band === 'all' ? 'All' : band}
+              </button>
+            ))}
+          </div>
+
+          {/* Legend */}
+          <div className="p-3.5 rounded-xl bg-card border border-white/[0.07]">
+            <div className="text-[11px] text-muted-foreground font-medium mb-3 uppercase tracking-wider">Probability Guide</div>
+            {[
+              { label: 'Safe',     range: '>85%',   dot: 'bg-emerald-500' },
+              { label: 'Likely',   range: '70–85%', dot: 'bg-blue-500'    },
+              { label: 'Moderate', range: '50–70%', dot: 'bg-amber-500'   },
+              { label: 'Risky',    range: '<50%',   dot: 'bg-red-500'     },
+            ].map(item => (
+              <div key={item.label} className="flex items-center gap-2 mb-2 last:mb-0">
+                <div className={`size-2 rounded-full ${item.dot}`} />
+                <span className="text-xs text-muted-foreground">{item.label}</span>
+                <span className="text-xs text-muted-foreground/40 ml-auto font-mono">{item.range}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </aside>
 
-              <div className="flex-1">
-                <label className="block text-xs font-semibold text-slate-400 uppercase mb-2">Filter by Band</label>
-                <div className="flex flex-wrap gap-2">
-                  {['all', ...bandsAvailable].map((band) => (
-                    <button
-                      key={band}
-                      onClick={() => setFilterBand(band)}
-                      className={`h-11 px-5 rounded-xl text-sm font-semibold transition-all border ${
-                        filterBand === band
-                          ? 'bg-cyan-600/30 border-cyan-500 text-white'
-                          : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10'
-                      }`}
-                    >
-                      {band}
-                    </button>
-                  ))}
-                </div>
-              </div>
+      {/* Cards */}
+      <div className="flex-1 space-y-3 min-w-0 pb-24">
+        {/* Stats row */}
+        <div className="grid grid-cols-4 gap-3 mb-6">
+          {[
+            { label: mlAvailable ? 'Safe' : 'High',     value: stats.b1, dot: 'bg-emerald-500' },
+            { label: mlAvailable ? 'Likely' : 'Medium', value: stats.b2, dot: 'bg-blue-500'    },
+            { label: mlAvailable ? 'Moderate' : 'Med',  value: stats.b3, dot: 'bg-amber-500'   },
+            { label: mlAvailable ? 'Risky' : 'Low',     value: stats.b4, dot: 'bg-red-500'     },
+          ].map(s => (
+            <div key={s.label} className="p-4 rounded-xl bg-card border border-white/[0.07] text-center">
+              <div className={`size-2 rounded-full ${s.dot} mx-auto mb-2`} />
+              <div className="text-2xl font-semibold text-foreground">{s.value}</div>
+              <div className="text-[11px] text-muted-foreground mt-0.5">{s.label}</div>
             </div>
-      </motion.div>
+          ))}
+        </div>
 
-      {/* Grid */}
-      {processedColleges.length > 0 ? (
-        <motion.ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 pb-24" layout>
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-sm text-muted-foreground">{processedColleges.length} colleges found</p>
+        </div>
+
+        {processedColleges.length > 0 ? (
           <AnimatePresence mode="popLayout">
             {processedColleges.map((college: any, i: number) => (
-              <li key={college.id}>
-                <CollegeCard
-                  college={college}
-                  delay={Math.min(i * 0.05, 0.3)}
-                  isExpanded={expandedCard === college.id}
-                  onToggle={() => setExpandedCard(expandedCard === college.id ? null : college.id)}
-                  onViewDetails={() => navigate(`/college/${college.id}`)}
-                  isCompared={comparisonSelection.some((c: any) => c.id === college.id)}
-                  onCompareToggle={(checked) => handleCompareToggle(college, checked)}
-                  compareDisabled={comparisonSelection.length >= 3}
-                />
-              </li>
+              <CollegeCard
+                key={college.id}
+                college={college}
+                delay={Math.min(i * 0.03, 0.2)}
+                isExpanded={expandedCard === college.id}
+                onToggle={() => setExpandedCard(expandedCard === college.id ? null : college.id)}
+                onViewDetails={() => navigate(`/college/${college.id}`)}
+                isCompared={comparisonSelection.some((c: any) => c.id === college.id)}
+                onCompareToggle={(checked) => handleCompareToggle(college, checked)}
+                compareDisabled={comparisonSelection.length >= 3}
+              />
             ))}
           </AnimatePresence>
-        </motion.ul>
-      ) : (
-        <div className="bg-white/5 rounded-3xl p-16 text-center border border-white/10">
-          <Search className="w-12 h-12 text-slate-500 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-white mb-2">No matches found</h3>
-          <p className="text-slate-400">Try adjusting your filters or sorting criteria.</p>
-        </div>
-      )}
-    </>
-  );
-}
-
-function StatCard({ label, value, variant, icon }: any) {
-  const styles: Record<string, string> = {
-    default: 'from-blue-500/20 to-cyan-500/10 border-blue-500/30 text-blue-400',
-    success: 'from-emerald-500/20 to-green-500/10 border-emerald-500/30 text-emerald-400',
-    warning: 'from-amber-500/20 to-orange-500/10 border-amber-500/30 text-amber-400',
-    danger: 'from-red-500/20 to-rose-500/10 border-red-500/30 text-red-400',
-  };
-
-  return (
-    <div className={`bg-gradient-to-br ${styles[variant]} border rounded-2xl p-6`}>
-      <div className="mb-4">{icon}</div>
-      <div className="text-4xl font-black text-white leading-none mb-2">{value}</div>
-      <div className="text-xs font-bold uppercase tracking-wider opacity-80">{label}</div>
+        ) : (
+          <div className="p-16 rounded-2xl bg-card border border-white/[0.07] text-center">
+            <Filter className="size-12 text-muted-foreground/30 mx-auto mb-4" />
+            <h3 className="text-base font-semibold text-foreground mb-2">No matches found</h3>
+            <p className="text-sm text-muted-foreground">Try adjusting your filters.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
