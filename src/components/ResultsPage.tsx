@@ -213,97 +213,133 @@ function ResultsContent({
   sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, navigate,
   comparisonSelection, handleCompareToggle
 }: any) {
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const sortOptions = [
+    { value: 'chance',      label: 'Admission Chance' },
+    { value: 'cutoff-high', label: 'Cutoff: High → Low' },
+    { value: 'cutoff-low',  label: 'Cutoff: Low → High' },
+    { value: 'fees',        label: 'Fees' },
+    { value: 'name',        label: 'College Name' },
+  ];
+
+  const legend = [
+    { label: 'Safe',     range: '>85%',   dot: 'bg-emerald-500' },
+    { label: 'Likely',   range: '70–85%', dot: 'bg-blue-500'    },
+    { label: 'Moderate', range: '50–70%', dot: 'bg-amber-500'   },
+    { label: 'Risky',    range: '<50%',   dot: 'bg-red-500'     },
+  ];
+
+  function FilterPanel() {
+    return (
+      <div className="space-y-5">
+        <div>
+          <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Sort By</div>
+          {sortOptions.map(opt => (
+            <button key={opt.value} onClick={() => setSortBy(opt.value)}
+              className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 ${
+                sortBy === opt.value ? 'bg-primary/12 text-primary border border-primary/20' : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+              }`}>
+              <span className={`size-3.5 rounded-sm border flex items-center justify-center shrink-0 ${sortBy === opt.value ? 'bg-primary border-primary' : 'border-white/20'}`}>
+                {sortBy === opt.value && <Check className="size-2.5 text-white" />}
+              </span>
+              {opt.label}
+            </button>
+          ))}
+        </div>
+        <div>
+          <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Admission Chance</div>
+          {['all', ...bandsAvailable].map((band: string) => (
+            <button key={band} onClick={() => { setFilterBand(band); setMobileFiltersOpen(false); }}
+              className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 capitalize ${
+                filterBand === band ? 'bg-primary/12 text-primary border border-primary/20' : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+              }`}>
+              <span className={`size-3.5 rounded-sm border flex items-center justify-center shrink-0 ${filterBand === band ? 'bg-primary border-primary' : 'border-white/20'}`}>
+                {filterBand === band && <Check className="size-2.5 text-white" />}
+              </span>
+              {band === 'all' ? 'All' : band}
+            </button>
+          ))}
+        </div>
+        <div className="p-3.5 rounded-xl bg-card border border-white/[0.07]">
+          <div className="text-[11px] text-muted-foreground font-medium mb-3 uppercase tracking-wider">Probability Guide</div>
+          {legend.map(item => (
+            <div key={item.label} className="flex items-center gap-2 mb-2 last:mb-0">
+              <div className={`size-2 rounded-full ${item.dot}`} />
+              <span className="text-xs text-muted-foreground">{item.label}</span>
+              <span className="text-xs text-muted-foreground/40 ml-auto font-mono">{item.range}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex gap-7">
-      {/* Sidebar filters */}
+      {/* Desktop sidebar */}
       <aside className="hidden lg:flex flex-col w-52 shrink-0 gap-5">
         <div className="sticky top-[120px] space-y-5">
           <div className="flex items-center gap-2 text-[13px] font-semibold text-foreground">
             <SlidersHorizontal className="size-4 text-muted-foreground" />
             Filters
           </div>
-
-          {/* Sort */}
-          <div>
-            <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Sort By</div>
-            {[
-              { value: 'chance',     label: 'Admission Chance' },
-              { value: 'cutoff-high',label: 'Cutoff: High → Low' },
-              { value: 'cutoff-low', label: 'Cutoff: Low → High' },
-              { value: 'fees',       label: 'Fees' },
-              { value: 'name',       label: 'College Name' },
-            ].map(opt => (
-              <button key={opt.value} onClick={() => setSortBy(opt.value)}
-                className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 ${
-                  sortBy === opt.value
-                    ? 'bg-primary/12 text-primary border border-primary/20'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
-                }`}>
-                <span className={`size-3.5 rounded-sm border flex items-center justify-center shrink-0 ${sortBy === opt.value ? 'bg-primary border-primary' : 'border-white/20'}`}>
-                  {sortBy === opt.value && <Check className="size-2.5 text-white" />}
-                </span>
-                {opt.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Band filter */}
-          <div>
-            <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Admission Chance</div>
-            {['all', ...bandsAvailable].map((band: string) => (
-              <button key={band} onClick={() => setFilterBand(band)}
-                className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 capitalize ${
-                  filterBand === band
-                    ? 'bg-primary/12 text-primary border border-primary/20'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
-                }`}>
-                <span className={`size-3.5 rounded-sm border flex items-center justify-center shrink-0 ${filterBand === band ? 'bg-primary border-primary' : 'border-white/20'}`}>
-                  {filterBand === band && <Check className="size-2.5 text-white" />}
-                </span>
-                {band === 'all' ? 'All' : band}
-              </button>
-            ))}
-          </div>
-
-          {/* Legend */}
-          <div className="p-3.5 rounded-xl bg-card border border-white/[0.07]">
-            <div className="text-[11px] text-muted-foreground font-medium mb-3 uppercase tracking-wider">Probability Guide</div>
-            {[
-              { label: 'Safe',     range: '>85%',   dot: 'bg-emerald-500' },
-              { label: 'Likely',   range: '70–85%', dot: 'bg-blue-500'    },
-              { label: 'Moderate', range: '50–70%', dot: 'bg-amber-500'   },
-              { label: 'Risky',    range: '<50%',   dot: 'bg-red-500'     },
-            ].map(item => (
-              <div key={item.label} className="flex items-center gap-2 mb-2 last:mb-0">
-                <div className={`size-2 rounded-full ${item.dot}`} />
-                <span className="text-xs text-muted-foreground">{item.label}</span>
-                <span className="text-xs text-muted-foreground/40 ml-auto font-mono">{item.range}</span>
-              </div>
-            ))}
-          </div>
+          <FilterPanel />
         </div>
       </aside>
 
+      {/* Mobile filter drawer */}
+      {mobileFiltersOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 flex">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileFiltersOpen(false)} />
+          <div className="relative ml-auto w-72 h-full bg-card border-l border-white/[0.07] p-5 overflow-y-auto">
+            <div className="flex items-center justify-between mb-5">
+              <span className="text-[13px] font-semibold text-foreground flex items-center gap-2">
+                <SlidersHorizontal className="size-4 text-muted-foreground" />
+                Filters
+              </span>
+              <button onClick={() => setMobileFiltersOpen(false)}
+                className="size-7 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-muted-foreground text-sm transition-colors">
+                ✕
+              </button>
+            </div>
+            <FilterPanel />
+          </div>
+        </div>
+      )}
+
       {/* Cards */}
       <div className="flex-1 space-y-3 min-w-0 pb-24">
-        {/* Stats row */}
-        <div className="grid grid-cols-4 gap-3 mb-6">
-          {[
-            { label: mlAvailable ? 'Safe' : 'High',     value: stats.b1, dot: 'bg-emerald-500' },
-            { label: mlAvailable ? 'Likely' : 'Medium', value: stats.b2, dot: 'bg-blue-500'    },
-            { label: mlAvailable ? 'Moderate' : 'Med',  value: stats.b3, dot: 'bg-amber-500'   },
-            { label: mlAvailable ? 'Risky' : 'Low',     value: stats.b4, dot: 'bg-red-500'     },
-          ].map(s => (
-            <div key={s.label} className="p-4 rounded-xl bg-card border border-white/[0.07] text-center">
-              <div className={`size-2 rounded-full ${s.dot} mx-auto mb-2`} />
-              <div className="text-2xl font-semibold text-foreground">{s.value}</div>
-              <div className="text-[11px] text-muted-foreground mt-0.5">{s.label}</div>
-            </div>
-          ))}
+        {/* Stats + mobile filter button row */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="grid grid-cols-4 gap-2 flex-1">
+            {[
+              { label: mlAvailable ? 'Safe' : 'High',     value: stats.b1, dot: 'bg-emerald-500' },
+              { label: mlAvailable ? 'Likely' : 'Medium', value: stats.b2, dot: 'bg-blue-500'    },
+              { label: mlAvailable ? 'Moderate' : 'Med',  value: stats.b3, dot: 'bg-amber-500'   },
+              { label: mlAvailable ? 'Risky' : 'Low',     value: stats.b4, dot: 'bg-red-500'     },
+            ].map(s => (
+              <div key={s.label} className="p-3 rounded-xl bg-card border border-white/[0.07] text-center">
+                <div className={`size-2 rounded-full ${s.dot} mx-auto mb-1.5`} />
+                <div className="text-lg font-semibold text-foreground">{s.value}</div>
+                <div className="text-[10px] text-muted-foreground mt-0.5 hidden sm:block">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          {/* Mobile filter button */}
+          <button onClick={() => setMobileFiltersOpen(true)}
+            className="lg:hidden flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-card border border-white/[0.07] text-muted-foreground hover:text-foreground text-xs font-medium transition-colors shrink-0">
+            <Filter className="size-3.5" />
+            <span className="hidden xs:inline">Filter</span>
+            {filterBand !== 'all' && <span className="size-1.5 rounded-full bg-primary" />}
+          </button>
         </div>
 
         <div className="flex items-center justify-between mb-3">
           <p className="text-sm text-muted-foreground">{processedColleges.length} colleges found</p>
+          {filterBand !== 'all' && (
+            <button onClick={() => setFilterBand('all')} className="text-xs text-primary hover:underline">Clear filter</button>
+          )}
         </div>
 
         {processedColleges.length > 0 ? (

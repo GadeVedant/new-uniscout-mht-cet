@@ -45,6 +45,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
   const [selectedExam, setSelectedExam] = useState('mhtcet-eng');
   const [score, setScore] = useState('');
   const [category, setCategory] = useState('OPEN');
+  const [location, setLocation] = useState('');
 
   useSEO({
     title: 'MHT CET College Predictor 2025 – AI-Powered Admission Predictions | UniScout',
@@ -120,7 +121,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
           <div className="relative max-w-7xl mx-auto px-5 py-20 flex flex-col items-center text-center">
             <div className="mb-7 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/[0.08] text-violet-300 text-xs font-medium">
               <Sparkles className="size-3" />
-              AI-Powered Admissions Intelligence · Class of 2025
+              AI-Powered Admissions Intelligence
             </div>
 
             <h1 className="text-[52px] md:text-[72px] font-semibold tracking-[-0.03em] leading-[1.05] mb-6 max-w-4xl">
@@ -175,6 +176,18 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
                   </div>
                 </div>
 
+                {/* Location row */}
+                <div className="mb-4">
+                  <label className="block text-xs text-muted-foreground mb-1.5 font-medium">Preferred District</label>
+                  <select value={location} onChange={e => setLocation(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-sm focus:outline-none focus:border-primary/60 text-foreground transition-all">
+                    <option value="" style={{ backgroundColor: '#0d0d1b' }}>All Maharashtra</option>
+                    {['Mumbai','Pune','Nagpur','Thane','Nashik','Aurangabad','Navi Mumbai','Kolhapur','Solapur','Ahmednagar','Amravati','Jalgaon','Latur','Nanded','Satara','Sangli','Dhule','Akola','Yavatmal','Parbhani','Osmanabad','Panvel','Vasai','Raigad'].map(d => (
+                      <option key={d} value={d} style={{ backgroundColor: '#0d0d1b' }}>{d}</option>
+                    ))}
+                  </select>
+                </div>
+
                 <button onClick={handlePredict}
                   className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 group shadow-[0_4px_24px_rgba(90,135,239,0.4)]">
                   <Brain className="size-4" />
@@ -183,12 +196,6 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
                 </button>
 
                 <p className="text-center text-xs text-muted-foreground/60 mt-3">Free · No signup required · Instant results</p>
-              </div>
-
-              <div className="flex justify-center gap-3 mt-5 flex-wrap">
-                {['99.82%ile → COEP Comp Engg ✓', '98.21%ile → DJ Sanghvi ✓', '96.43%ile → KJSCE ✓'].map(t => (
-                  <div key={t} className="px-3 py-1.5 rounded-full bg-card border border-white/[0.07] text-xs text-muted-foreground">{t}</div>
-                ))}
               </div>
             </div>
           </div>
@@ -219,15 +226,12 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {features.map((f, i) => (
-              <div key={i} className="group relative p-7 rounded-2xl bg-card border border-white/[0.07] hover:border-white/[0.14] transition-all hover:-translate-y-0.5 cursor-default">
-                <div className={`size-11 rounded-xl bg-gradient-to-br ${f.grad} flex items-center justify-center mb-6 group-hover:scale-105 transition-transform shadow-lg`}>
+              <div key={i} className="p-7 rounded-2xl bg-card border border-white/[0.07] hover:border-white/[0.14] transition-all hover:-translate-y-0.5">
+                <div className={`size-11 rounded-xl bg-gradient-to-br ${f.grad} flex items-center justify-center mb-6 shadow-lg`}>
                   <f.icon className="size-5 text-white" />
                 </div>
                 <h3 className="text-[15px] font-semibold mb-2.5">{f.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
-                <div className="absolute bottom-7 right-7 size-7 rounded-lg bg-white/[0.04] flex items-center justify-center group-hover:bg-primary/15 transition-colors">
-                  <ArrowRight className="size-3.5 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-                </div>
               </div>
             ))}
           </div>
