@@ -241,7 +241,7 @@ export function SmartFormPage() {
   // ── Result view ───────────────────────────────────────────────────────────
   if (result) {
     return (
-      <div ref={resultsRef} className="min-h-screen pb-32 text-slate-300 w-full flex flex-col items-center">
+      <div ref={resultsRef} className="min-h-screen pb-32 text-foreground w-full flex flex-col items-center">
         <PreferenceList
           result={result}
           request={request}
@@ -255,7 +255,7 @@ export function SmartFormPage() {
 
   // ── Form view ─────────────────────────────────────────────────────────────
   return (
-    <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center text-slate-300">
+    <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center text-foreground">
       {/* Structured data */}
       <SchemaOrg id="smartform-webpage" schema={webPageSchema({
         name: 'MHT CET CAP Form Filling 2025 – Smart Preference List Generator',
@@ -298,27 +298,23 @@ export function SmartFormPage() {
         </header>
 
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-black bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent mb-2">
+          <h1 className="text-3xl font-semibold text-foreground tracking-tight mb-2">
             Smart Form Filling
           </h1>
-          <p className="text-slate-400 text-lg">Generate an AI-optimized preference list ready for the portal</p>
+          <p className="text-muted-foreground">Generate an AI-optimized preference list ready for the portal</p>
         </div>
 
         {/* Progress indicator */}
         <ProgressIndicator form={form} />
 
-        <motion.div
-          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-10 shadow-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <div className="bg-card border border-white/[0.07] rounded-2xl p-6 md:p-10 shadow-2xl">
           <form onSubmit={handleGenerate} className="space-y-8" noValidate>
 
             {/* ── Academic Info ── */}
-            <div className="grid md:grid-cols-2 gap-6 border-b border-white/10 pb-8">
+            <div className="grid md:grid-cols-2 gap-6 border-b border-white/[0.07] pb-8">
               {/* Percentile */}
               <div className="space-y-2">
-                <label htmlFor="percentile" className="block text-sm font-medium text-slate-200">
+                <label htmlFor="percentile" className="block text-sm font-medium text-foreground">
                   Percentile (0–100) <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -532,19 +528,20 @@ export function SmartFormPage() {
             <button
               type="submit"
               disabled={isLoading || !!percentileError}
-              className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold rounded-xl px-4 py-4 transition-all shadow-lg flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-blue-600 to-violet-600 hover:opacity-90 text-white font-semibold rounded-xl px-4 py-4 transition-all shadow-[0_4px_24px_rgba(90,135,239,0.4)] flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               aria-busy={isLoading}
             >
               {isLoading ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
                   Generating your personalised preference list...
-                </>              ) : (
+                </>
+              ) : (
                 'Generate Form Filling List'
               )}
             </button>
           </form>
-        </motion.div>
+        </div>
       </div>
     </main>
   );
