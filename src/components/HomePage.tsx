@@ -44,7 +44,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
   const navigate = useNavigate();
   const [selectedExam, setSelectedExam] = useState('mhtcet-eng');
   const [score, setScore] = useState('');
-  const [category, setCategory] = useState('OPEN');
+  const [category, setCategory] = useState('GOPENS');
   const [location, setLocation] = useState('');
 
   useSEO({
@@ -179,8 +179,19 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
                     <label className="block text-xs text-muted-foreground mb-1.5 font-medium">Category</label>
                     <select value={category} onChange={e => setCategory(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-sm focus:outline-none focus:border-primary/60 text-foreground transition-all">
-                      {['OPEN','OBC','SC','ST','NT-1','NT-2','NT-3','SEBC','EWS'].map(c => (
-                        <option key={c} value={c} style={{ backgroundColor: '#0d0d1b' }}>{c}</option>
+                      {[
+                        { label: 'Open (General)', value: 'GOPENS' },
+                        { label: 'OBC',            value: 'GOBCS'  },
+                        { label: 'SC',             value: 'GSCS'   },
+                        { label: 'ST',             value: 'GSTS'   },
+                        { label: 'NT-1',           value: 'GNT1S'  },
+                        { label: 'NT-2',           value: 'GNT2S'  },
+                        { label: 'NT-3',           value: 'GNT3S'  },
+                        { label: 'SEBC',           value: 'GSEBCS' },
+                        { label: 'EWS',            value: 'EWS'    },
+                        { label: 'TFWS',           value: 'TFWS'   },
+                      ].map(c => (
+                        <option key={c.value} value={c.value} style={{ backgroundColor: '#0d0d1b' }}>{c.label}</option>
                       ))}
                     </select>
                   </div>
