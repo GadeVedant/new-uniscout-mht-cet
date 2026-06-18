@@ -70,9 +70,9 @@ export function CollegeCard({
 
   const renderTrend = () => {
     switch (college.cutoffTrend) {
-      case 'rising':  return <TrendingUp  className="size-3 text-red-400"     title="Rising (Harder)"  />;
-      case 'falling': return <TrendingDown className="size-3 text-emerald-400" title="Falling (Easier)" />;
-      case 'stable':  return <Minus       className="size-3 text-slate-400"   title="Stable"           />;
+      case 'rising':  return <TrendingUp  className="size-3 text-red-400"     aria-label="Rising (Harder)"  />;
+      case 'falling': return <TrendingDown className="size-3 text-emerald-400" aria-label="Falling (Easier)" />;
+      case 'stable':  return <Minus       className="size-3 text-slate-400"   aria-label="Stable"           />;
       default: return null;
     }
   };
