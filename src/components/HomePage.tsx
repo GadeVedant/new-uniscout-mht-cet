@@ -56,8 +56,18 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
   const handlePredict = () => {
     const exam = exams.find(e => e.id === selectedExam);
     if (!exam?.available) return;
-    if (selectedExam === 'mhtcet-eng') onPortalSelect('mht-cet');
-    navigate(exam.route);
+    if (selectedExam === 'mhtcet-eng') {
+      onPortalSelect('mht-cet');
+      // Pass score, category, location as query params to pre-fill the form
+      const params = new URLSearchParams();
+      if (score) params.set('percentile', score);
+      if (category) params.set('category', category);
+      if (location) params.set('location', location);
+      const qs = params.toString();
+      navigate(`/mht-cet${qs ? `?${qs}` : ''}`);
+    } else {
+      navigate(exam.route);
+    }
   };
 
   return (

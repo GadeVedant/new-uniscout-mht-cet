@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, Loader2, AlertCircle, X } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { MhtCetFormData } from '../App';
 import { api, CollegeRecommendation } from '../services/api';
 import { Slider } from './ui/slider';
@@ -43,6 +43,12 @@ const DISTRICTS = [
 
 export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  // Pre-fill from homepage prediction card query params
+  const initPercentile = searchParams.get('percentile') ?? '';
+  const initCategory = searchParams.get('category') ?? 'GOPENS';
+  const initLocation = searchParams.get('location') ?? '';
 
   useSEO({
     title: 'MHT CET College Predictor 2025 – Enter Percentile & Get Results | UniScout',
@@ -51,12 +57,12 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   });
 
   const [formData, setFormData] = useState<MhtCetFormData>({
-    percentile: '',
+    percentile: initPercentile,
     year: CURRENT_YEAR,
     capRound: 'I',
-    category: 'GOPENS',
+    category: initCategory,
     branchPreferences: [],
-    locations: [],
+    locations: initLocation ? [initLocation] : [],
   });
 
   const [isLoading, setIsLoading] = useState(false);
