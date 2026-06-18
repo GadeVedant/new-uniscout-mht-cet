@@ -40,18 +40,35 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
               Back to Results
             </button>
           </div>
-          <h1 className="font-bold hidden sm:block">College Comparison</h1>
+          <h1 className="font-semibold text-sm text-foreground hidden sm:block">College Comparison</h1>
         </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-5 py-8">
         <div className="mb-8">
           <h1 className="text-lg font-semibold text-foreground mb-0.5">College Comparison</h1>
-          <p className="text-muted-foreground text-sm">Comparing {colleges.length} selected colleges · Computer Engineering · OPEN</p>
+          <p className="text-muted-foreground text-sm">Comparing {colleges.length} selected colleges</p>
         </div>
 
+        {/* Empty state */}
+        {colleges.length === 0 && (
+          <div className="p-16 rounded-2xl bg-card border border-white/[0.07] text-center">
+            <div className="size-14 rounded-2xl bg-white/[0.05] flex items-center justify-center mx-auto mb-4">
+              <Trophy className="size-7 text-muted-foreground/30" />
+            </div>
+            <h3 className="text-base font-semibold text-foreground mb-2">No colleges selected</h3>
+            <p className="text-sm text-muted-foreground mb-6">Select 2–3 colleges from the results page using the Compare button on each card.</p>
+            <button
+              onClick={() => navigate(-1)}
+              className="px-6 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              Go to Results
+            </button>
+          </div>
+        )}
+
         {/* Best Pick Card */}
-        {(bestPick || isTie) && (
+        {colleges.length > 0 && (bestPick || isTie) && (
           <div className="bg-emerald-500/[0.08] border border-emerald-500/20 rounded-2xl p-6 mb-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-[0.06]">
               <Trophy className="w-32 h-32 text-emerald-500" />

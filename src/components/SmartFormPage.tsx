@@ -255,7 +255,7 @@ export function SmartFormPage() {
 
   // ── Form view ─────────────────────────────────────────────────────────────
   return (
-    <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center text-foreground">
+    <main className="min-h-screen pt-[60px] px-4 py-8 relative z-10 w-full flex justify-center text-foreground">
       {/* Structured data */}
       <SchemaOrg id="smartform-webpage" schema={webPageSchema({
         name: 'MHT CET CAP Form Filling 2025 – Smart Preference List Generator',

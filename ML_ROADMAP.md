@@ -1,6 +1,6 @@
 # UniScout ML Roadmap
 
-Last updated: 31 May 2026
+Last updated: 17 June 2026
 
 ---
 

@@ -143,7 +143,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   };
 
   return (
-    <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center">
+    <main className="min-h-screen pt-[60px] px-4 py-8 relative z-10 w-full flex justify-center">
       {/* Structured data */}
       <SchemaOrg id="mhtcet-webpage" schema={webPageSchema({
         name: 'MHT CET College Predictor 2025',

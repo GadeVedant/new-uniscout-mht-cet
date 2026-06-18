@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Sparkles, Bell, Brain, TrendingUp, BarChart2, ListChecks,
-  Layers, ArrowRight, GraduationCap, Star,
+  Layers, ArrowRight, GraduationCap,
 } from 'lucide-react';
 import { useSEO } from '../seo/useSEO';
 import { SchemaOrg, faqSchema } from '../seo/SchemaOrg';
@@ -40,12 +40,6 @@ const stats = [
   { value: '4 Yrs', label: 'Cutoff History'      },
 ];
 
-const testimonials = [
-  { name: 'Aryan Mehta',  college: 'VJTI Mumbai — Computer Engg', score: '99.71%ile', text: 'UniScout predicted my exact admission outcome. The cutoff trend analysis helped me build a perfect preference list with zero guesswork.', avatar: 'AM', color: 'from-blue-600 to-indigo-600' },
-  { name: 'Priya Sharma', college: 'DJ Sanghvi — IT Engineering',  score: '98.43%ile', text: 'I shortlisted 15 colleges in under 10 minutes. The probability scores are incredibly accurate — I got into exactly my Target pick.', avatar: 'PS', color: 'from-violet-600 to-purple-600' },
-  { name: 'Rohan Joshi',  college: 'COEP Pune — Mechanical Engg', score: '99.68%ile', text: 'The preference list builder with Safe/Target/Dream categorization is a stroke of genius. It took away all the anxiety of counselling round.', avatar: 'RJ', color: 'from-teal-600 to-cyan-600' },
-];
-
 export function HomePage({ onPortalSelect }: HomePageProps) {
   const navigate = useNavigate();
   const [selectedExam, setSelectedExam] = useState('mhtcet-eng');
@@ -68,7 +62,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SchemaOrg id="home-faq" schema={faqSchema([
-        { question: 'How does the MHT CET college predictor work?', answer: 'Enter your MHT CET percentile, category, and branch preference. Our AI analyzes 4 years of cutoff data to predict your admission probability at each college.' },
+        { question: 'How does the MHT CET college predictor work?', answer: 'Enter your CET percentile, category, and branch preference. Our AI analyzes 4 years of cutoff data to predict your admission probability at each college.' },
         { question: 'Is UniScout free to use?', answer: 'Yes, UniScout is completely free. No sign-up required — just enter your score and get instant predictions.' },
         { question: 'Which categories are supported?', answer: 'All 11 Maharashtra reservation categories: Open, SC, ST, OBC, SEBC, EWS, NT1, NT2, NT3, VJ/DT, and TFWS.' },
         { question: 'Can I download the preference list?', answer: 'Yes — generate your Safe, Target & Dream picks and download as a PDF for the DTE portal.' },
@@ -138,7 +132,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
             </h1>
 
             <p className="text-base md:text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed">
-              UniScout analyzes 4 years of MHT-CET cutoff data to predict your exact admission probability
+              UniScout analyzes years of entrance exam cutoff data to predict your exact admission probability
               across 386 colleges. Stop guessing. Start planning.
             </p>
 
@@ -290,34 +284,6 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
           </div>
         </section>
 
-        {/* ── Testimonials ── */}
-        <section className="border-y border-white/[0.06] bg-card/20">
-          <div className="max-w-7xl mx-auto px-5 py-24">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-semibold tracking-tight mb-3">Trusted by toppers across Maharashtra</h2>
-              <p className="text-muted-foreground">Real students. Real admissions. Real outcomes.</p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-5">
-              {testimonials.map((t, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-card border border-white/[0.07] flex flex-col gap-5 hover:border-white/[0.12] transition-all">
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, j) => <Star key={j} className="size-3.5 text-amber-400 fill-amber-400" />)}
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">"{t.text}"</p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                    <div className={`size-9 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold shrink-0`}>{t.avatar}</div>
-                    <div className="min-w-0">
-                      <div className="text-sm font-semibold truncate">{t.name}</div>
-                      <div className="text-xs text-muted-foreground truncate">{t.college}</div>
-                    </div>
-                    <div className="ml-auto text-xs font-mono text-primary font-medium shrink-0">{t.score}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── CTA ── */}
         <section className="max-w-7xl mx-auto px-5 py-28 flex justify-center">
           <div className="relative w-full max-w-3xl">
@@ -350,7 +316,6 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
             </div>
             <div className="flex items-center gap-5">
               <span>© {new Date().getFullYear()} UniScout. All rights reserved.</span>
-              <span className="hidden md:block opacity-50">MHT-CET · DSE Engineering · Pharmacy</span>
             </div>
           </div>
         </footer>

@@ -117,7 +117,7 @@ export function ResultsPage({
               <div className="flex items-center gap-2 mb-1">
                 <div className="size-2 rounded-full bg-emerald-500 shadow-[0_0_6px_2px_rgba(34,197,94,0.3)]" />
                 <span className="text-xs text-muted-foreground font-mono tracking-wide">
-                  MHT-CET Engineering · {lastQuery?.category ?? 'OPEN'} Category
+                  Admission Predictions · {lastQuery?.category ?? 'OPEN'} Category
                 </span>
               </div>
               <h1 className="text-lg font-semibold text-foreground">

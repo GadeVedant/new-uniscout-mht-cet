@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { HomePage } from './components/HomePage';
 import { CollegeRecommendation, RecommendationRequest } from './services/api';
 import { FeedbackButton } from './components/FeedbackButton';
+import { Navbar } from './components/Navbar';
 
 // Lazy-loaded routes — only downloaded when the user navigates to them
 const MhtCetPortal = lazy(() => import('./components/MhtCetPortal').then(m => ({ default: m.MhtCetPortal })));
@@ -106,15 +107,16 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-        {/* Subtle animated glow — kept from original, now uses new theme colours */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
+        {/* Global navbar — hidden on homepage which has its own */}
+        <Navbar />
+
         <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={
+          <Routes>            <Route path="/" element={
               <HomePage 
                 onPortalSelect={(portal) => setPortalType(portal)} 
                 onSmartFormSelect={() => {}}
