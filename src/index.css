@@ -10,18 +10,18 @@
     --font-size: 16px;
 
     /* Core colours (hex — mapped to Tailwind via tailwind.config.js) */
-    --background: #07070e;
+    --background: #1a0a2e;
     --foreground: #eeeef6;
-    --card: #0d0d1b;
+    --card: #23104a;
     --card-foreground: #eeeef6;
-    --popover: #0d0d1b;
+    --popover: #23104a;
     --popover-foreground: #eeeef6;
     --primary: #5a87ef;
     --primary-foreground: #ffffff;
-    --secondary: #14142a;
+    --secondary: #2d1060;
     --secondary-foreground: #eeeef6;
-    --muted: #14142a;
-    --muted-foreground: #7878a2;
+    --muted: #2d1060;
+    --muted-foreground: #a78fd0;
     --accent: #7c5cfc;
     --accent-foreground: #ffffff;
     --destructive: #ef4444;
@@ -50,7 +50,8 @@
   }
 
   body {
-    background-color: var(--background);
+    background: linear-gradient(135deg, #1a0a2e 0%, #2d1060 40%, #1a1060 70%, #0a1a40 100%);
+    background-attachment: fixed;
     color: var(--foreground);
     font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
     min-height: 100vh;

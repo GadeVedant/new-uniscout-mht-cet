@@ -45,7 +45,7 @@ export function ExamLandingPage({ config }: ExamLandingPageProps) {
     url: config.canonical,
     mainEntity: {
       '@type': 'WebApplication',
-      name: `${config.exam} College Predictor – UniScout`,
+      name: `${config.exam} College Predictor – Uniscout`,
       applicationCategory: 'EducationApplication',
       description: config.description,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

@@ -146,7 +146,7 @@ export function FeedbackModal({ isOpen, onClose, scriptUrl }: FeedbackModalProps
                   >
                     <CheckCircle className="w-12 h-12 text-emerald-400" />
                     <p className="text-white font-semibold text-lg">Thanks for the feedback!</p>
-                    <p className="text-slate-400 text-sm">We'll look into it and improve UniScout.</p>
+                    <p className="text-slate-400 text-sm">We'll look into it and improve Uniscout.</p>
                     <button
                       onClick={handleClose}
                       className="mt-2 px-5 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 transition-colors text-sm font-medium"

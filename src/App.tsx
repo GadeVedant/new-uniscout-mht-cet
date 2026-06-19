@@ -81,13 +81,13 @@ export default function App() {
   // Restore colleges from sessionStorage on hard reload (e.g. direct /college/:id navigation)
   const [colleges, setColleges] = useState<CollegeRecommendation[]>(() => {
     try {
-      const saved = sessionStorage.getItem('uniscout_colleges');
+      const saved = sessionStorage.getItem('Uniscout_colleges');
       return saved ? JSON.parse(saved) : [];
     } catch { return []; }
   });
   const [lastQuery, setLastQuery] = useState<QueryWithMeta | null>(() => {
     try {
-      const saved = sessionStorage.getItem('uniscout_query');
+      const saved = sessionStorage.getItem('Uniscout_query');
       return saved ? JSON.parse(saved) : null;
     } catch { return null; }
   });
@@ -96,11 +96,11 @@ export default function App() {
   // Persist colleges to sessionStorage whenever they change
   const setCollegesAndPersist = (results: CollegeRecommendation[]) => {
     setColleges(results);
-    try { sessionStorage.setItem('uniscout_colleges', JSON.stringify(results)); } catch {}
+    try { sessionStorage.setItem('Uniscout_colleges', JSON.stringify(results)); } catch {}
   };
   const setLastQueryAndPersist = (query: QueryWithMeta | null) => {
     setLastQuery(query);
-    try { sessionStorage.setItem('uniscout_query', JSON.stringify(query)); } catch {}
+    try { sessionStorage.setItem('Uniscout_query', JSON.stringify(query)); } catch {}
   };
 
   return (

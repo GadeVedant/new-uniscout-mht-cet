@@ -11,9 +11,9 @@ export function JeePortal({ }: JeePortalProps) {
   const navigate = useNavigate();
 
   useSEO({
-    title: 'JEE College Predictor 2024 – Find IITs, NITs & GFTIs | UniScout',
+    title: 'JEE College Predictor 2024 – Find IITs, NITs & GFTIs | Uniscout',
     description: 'Predict your JEE Main and Advanced college using your rank. Find IITs, NITs, IIITs, and GFTIs with cutoff trends and admission probability.',
-    canonical: 'https://www.uniscout.co.in/jee-college-predictor',
+    canonical: 'https://www.Uniscout.co.in/jee-college-predictor',
   });
   return (
     <main className="min-h-screen px-4 py-8 relative z-10 w-full flex justify-center">

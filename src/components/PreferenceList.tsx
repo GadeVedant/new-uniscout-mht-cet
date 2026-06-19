@@ -75,7 +75,7 @@ function buildPrintHTML(
 <html>
 <head>
   <meta charset="UTF-8"/>
-  <title>UniScout – CAP Preference List</title>
+  <title>Uniscout – CAP Preference List</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #111; padding: 32px; font-size: 13px; }
@@ -89,7 +89,7 @@ function buildPrintHTML(
   </style>
 </head>
 <body>
-  <h1>UniScout – CAP Preference List</h1>
+  <h1>Uniscout – CAP Preference List</h1>
   <p class="subtitle">Generated on ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} · Enter colleges in this exact order on the DTE portal</p>
   ${meta}
   <table>
@@ -106,7 +106,7 @@ function buildPrintHTML(
     </thead>
     <tbody>${rows}</tbody>
   </table>
-  <p class="footer">uniscout.co.in · Cutoffs are based on historical CAP data. Verify on dte.maharashtra.gov.in before submission.</p>
+  <p class="footer">Uniscout.co.in · Cutoffs are based on historical CAP data. Verify on dte.maharashtra.gov.in before submission.</p>
 </body>
 </html>`;
 }
@@ -131,7 +131,7 @@ function downloadPDF(result: FormFillingResponse, request?: FormFillingRequest) 
     // Mobile fallback: download the HTML file directly
     const a = document.createElement('a');
     a.href = url;
-    a.download = `uniscout-preference-list-${new Date().toISOString().slice(0, 10)}.html`;
+    a.download = `Uniscout-preference-list-${new Date().toISOString().slice(0, 10)}.html`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

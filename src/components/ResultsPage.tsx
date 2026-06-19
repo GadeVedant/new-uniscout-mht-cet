@@ -44,8 +44,8 @@ export function ResultsPage({
   const percentile = lastQuery?.percentile;
   useSEO({
     title: percentile
-      ? `${branch} Colleges for ${percentile} Percentile MHT CET | UNISCOUT`
-      : 'MHT CET College Results | UNISCOUT',
+      ? `${branch} Colleges for ${percentile} Percentile MHT CET | Uniscout`
+      : 'MHT CET College Results | Uniscout',
     description: `${colleges.length} Maharashtra engineering colleges matching your MHT CET profile. Sorted by admission probability with cutoff trends and CAP round strategy.`,
     noIndex: true, // results are session-specific, not for indexing
   });

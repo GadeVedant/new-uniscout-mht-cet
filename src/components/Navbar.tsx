@@ -20,15 +20,15 @@ export function Navbar() {
   if (pathname === '/') return null;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-background/75 backdrop-blur-2xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-gradient-to-r from-[#4facfe] via-[#a78bfa] to-[#f093fb] backdrop-blur-2xl">
       <div className="max-w-7xl mx-auto px-5 flex items-center h-[60px] gap-6">
         {/* Logo */}
         <button onClick={() => navigate('/')} className="flex items-center gap-2.5 shrink-0">
           <div className="size-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-[0_0_12px_rgba(90,135,239,0.5)]">
             <Sparkles className="size-3.5 text-white" />
           </div>
-          <span className="text-sm font-semibold tracking-tight">UniScout</span>
-          <span className="hidden md:inline-block text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-blue-500/15 border border-blue-500/25 text-blue-400">BETA</span>
+          <span className="text-sm font-semibold tracking-tight text-white">Uniscout</span>
+          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white text-purple-700 border border-purple-300">BETA</span>
         </button>
 
         {/* Nav links */}
@@ -39,8 +39,8 @@ export function Navbar() {
               onClick={() => navigate(item.route)}
               className={`px-3.5 py-1.5 rounded-lg text-[13px] font-medium transition-all ${
                 pathname === item.route
-                  ? 'text-foreground bg-white/10'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+                  ? 'text-white bg-white/10'
+                  : 'text-white/70 hover:text-white hover:bg-white/5'
               }`}
             >
               {item.label}
@@ -50,10 +50,14 @@ export function Navbar() {
 
         {/* Predict CTA */}
         <div className="flex items-center gap-3 ml-auto">
+          <button className="size-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-white/60 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+          </button>
           <button
             onClick={() => navigate('/mht-cet')}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary text-primary-foreground text-[13px] font-medium hover:opacity-90 transition-opacity shadow-[0_0_16px_rgba(90,135,239,0.35)]"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-red-600 text-white text-[13px] font-medium hover:bg-red-500 transition-colors shadow-[0_0_16px_rgba(220,38,38,0.35)]"
           >
+            <Sparkles className="size-3.5" />
             Predict Now
           </button>
         </div>

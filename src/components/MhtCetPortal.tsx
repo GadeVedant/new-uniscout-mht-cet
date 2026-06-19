@@ -51,9 +51,9 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   const initLocation = searchParams.get('location') ?? '';
 
   useSEO({
-    title: 'MHT CET College Predictor 2025 – Enter Percentile & Get Results | UniScout',
+    title: 'MHT CET College Predictor 2025 – Enter Percentile & Get Results | Uniscout',
     description: 'Enter your MHT CET 2025 percentile, category, and branch to get instant college predictions. See Safe, Likely, and Dream colleges with 3-year cutoff trends and AI admission probability.',
-    canonical: 'https://www.uniscout.co.in/mht-cet',
+    canonical: 'https://www.Uniscout.co.in/mht-cet',
   });
 
   const [formData, setFormData] = useState<MhtCetFormData>({
@@ -154,10 +154,10 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
       <SchemaOrg id="mhtcet-webpage" schema={webPageSchema({
         name: 'MHT CET College Predictor 2025',
         description: 'Enter your MHT CET 2025 percentile, category, and branch to get AI-powered college predictions for 386 Maharashtra engineering colleges.',
-        url: 'https://www.uniscout.co.in/mht-cet',
+        url: 'https://www.Uniscout.co.in/mht-cet',
         breadcrumbs: [
-          { name: 'Home', url: 'https://www.uniscout.co.in/' },
-          { name: 'MHT CET Predictor', url: 'https://www.uniscout.co.in/mht-cet' },
+          { name: 'Home', url: 'https://www.Uniscout.co.in/' },
+          { name: 'MHT CET Predictor', url: 'https://www.Uniscout.co.in/mht-cet' },
         ],
       })} />
       <SchemaOrg id="mhtcet-howto" schema={howToSchema({
@@ -177,7 +177,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
         },
         {
           question: 'How accurate is the MHT CET college predictor?',
-          answer: "UniScout's predictor is trained on 4 years of CAP cutoff data (2022–2025) using a LightGBM model. It provides P10/P50/P90 probability bands rather than a single cutoff, giving you a realistic range.",
+          answer: "Uniscout's predictor is trained on 4 years of CAP cutoff data (2022–2025) using a LightGBM model. It provides P10/P50/P90 probability bands rather than a single cutoff, giving you a realistic range.",
         },
         {
           question: 'Which reservation categories are supported?',
