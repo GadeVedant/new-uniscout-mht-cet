@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 const NAV_ITEMS = [
   { label: 'Home',         route: '/'           },
-  { label: 'MHT-CET',     route: '/mht-cet'    },
+  { label: 'Predictor',    route: '/mht-cet'    },
   { label: 'Form Filling', route: '/smart-form' },
   { label: 'Compare',      route: '/compare'    },
 ];
@@ -27,7 +27,7 @@ export function Navbar() {
           <div className="size-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-[0_0_12px_rgba(90,135,239,0.5)]">
             <Sparkles className="size-3.5 text-white" />
           </div>
-          <span className="text-sm font-semibold tracking-tight text-white">Uniscout</span>
+          <span className="text-sm font-semibold tracking-tight text-slate-900">Uniscout</span>
           <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white text-purple-700 border border-purple-300">BETA</span>
         </button>
 
@@ -37,10 +37,10 @@ export function Navbar() {
             <button
               key={item.route}
               onClick={() => navigate(item.route)}
-              className={`px-3.5 py-1.5 rounded-lg text-[13px] font-medium transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-[13px] font-semibold transition-all ${
                 pathname === item.route
-                  ? 'text-white bg-white/10'
-                  : 'text-white/70 hover:text-white hover:bg-white/5'
+                  ? 'text-slate-900 bg-black/10'
+                  : 'text-slate-800 hover:text-slate-900 hover:bg-black/10'
               }`}
             >
               {item.label}

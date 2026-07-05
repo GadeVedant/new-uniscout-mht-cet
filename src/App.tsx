@@ -7,6 +7,8 @@ import { Navbar } from './components/Navbar';
 
 // Lazy-loaded routes — only downloaded when the user navigates to them
 const MhtCetPortal = lazy(() => import('./components/MhtCetPortal').then(m => ({ default: m.MhtCetPortal })));
+const MhtCetSelector = lazy(() => import('./components/MhtCetSelector').then(m => ({ default: m.MhtCetSelector })));
+const MhtCetSubSelector = lazy(() => import('./components/MhtCetSubSelector').then(m => ({ default: m.MhtCetSubSelector })));
 const JeePortal = lazy(() => import('./components/JeePortal').then(m => ({ default: m.JeePortal })));
 const ResultsPage = lazy(() => import('./components/ResultsPage').then(m => ({ default: m.ResultsPage })));
 const CollegeDetailPage = lazy(() => import('./components/CollegeDetailPage').then(m => ({ default: m.CollegeDetailPage })));
@@ -106,7 +108,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      <div className="min-h-screen bg-background text-foreground relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
@@ -123,8 +125,12 @@ export default function App() {
               />
             } />
             
-            <Route path="/mht-cet" element={
-              <MhtCetPortal 
+            <Route path="/mht-cet" element={<MhtCetSelector />} />
+
+            <Route path="/mht-cet/select" element={<MhtCetSubSelector />} />
+
+            <Route path="/mht-cet/engineering" element={
+              <MhtCetPortal
                 onBack={() => {}}
                 onRecommendationsReady={(results, query) => {
                   setCollegesAndPersist(results);
@@ -132,7 +138,11 @@ export default function App() {
                 }}
               />
             } />
-            
+
+            <Route path="/mht-cet/pharmacy" element={
+              <ComingSoon portalType="mht-cet" title="MHT CET Pharmacy" subtitle="Pharmacy college admissions for PCB students" backRoute="/mht-cet/select" />
+            } />
+
             <Route path="/jee" element={
               <JeePortal onBack={() => {}} />
             } />
@@ -168,10 +178,7 @@ export default function App() {
 
             {/* SSC Portal */}
             <Route path="/ssc" element={
-              <SscPortal
-                onSubmit={(data) => { console.log('SSC form submitted', data); }}
-                onBack={() => {}}
-              />
+              <ComingSoon portalType="ssc" title="10th SSC / Diploma" subtitle="Junior college admissions for Arts, Commerce & Science" />
             } />
 
             {/* Coming Soon portals */}

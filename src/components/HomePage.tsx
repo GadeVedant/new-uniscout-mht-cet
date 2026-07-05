@@ -81,7 +81,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               { label: 'Compare',    route: '/compare'    },
             ].map(item => (
               <button key={item.label} onClick={() => navigate(item.route)}
-                className="px-3.5 py-1.5 rounded-lg text-[13px] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all">
+                className="px-3.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-800 hover:text-slate-900 hover:bg-black/10 transition-all">
                 {item.label}
               </button>
             ))}
@@ -289,14 +289,18 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
 
             {/* Col 1 — Brand */}
             <div>
-              <div className="flex items-center gap-2.5 mb-2">
-                <div className="size-9 rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center">
-                  <Sparkles className="size-4 text-white" />
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="/ago-logo.png.jpeg"
+                  alt="A.G.O Innovations Logo"
+                  className="w-14 h-14 rounded-full object-cover border-2 border-white/20 shadow-lg"
+                />
+                <div>
+                  <span className="text-lg font-bold text-cyan-400">A.G.O Innovations</span>
+                  <p className="text-sm text-slate-300 mt-0.5">Team Incredible</p>
                 </div>
-                <span className="text-lg font-bold text-white">A.G.O Innovations</span>
               </div>
-              <p className="text-xs text-muted-foreground mb-4">Team Incredible</p>
-              <p className="text-cyan-400 font-semibold text-sm">One platform. Many possibilities.</p>
+              <p className="text-cyan-400 font-semibold text-sm mt-3">One platform. Many possibilities.</p>
             </div>
 
             {/* Col 2 — Quick Links */}
