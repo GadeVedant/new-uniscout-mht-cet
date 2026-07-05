@@ -24,7 +24,7 @@ Each exam has completely different data distributions, counselling processes, el
   - Better features (seat vacancy data, demand trends)
   - More years of data
 
-### 2. DSE (Direct Second Year Engineering)
+### 2. DSYE (Direct Second Year Engineering)
 - Algorithm: **CatBoost or LightGBM**
 - Owner: You
 - Status: 🔲 Not started
@@ -61,7 +61,7 @@ Each exam has completely different data distributions, counselling processes, el
 | Exam | Algorithm | Reason |
 |------|-----------|--------|
 | Engineering | LightGBM | Existing, proven, fast |
-| DSE | CatBoost or LightGBM | Handles categoricals well |
+| DSYE | CatBoost or LightGBM | Handles categoricals well |
 | Pharmacy | Trend engine → LightGBM | Start simple |
 | JEE | CatBoost | Better with high-cardinality categoricals |
 | NEET | CatBoost | Same reasoning |
@@ -74,21 +74,37 @@ Each exam has completely different data distributions, counselling processes, el
 
 | Person | Responsibility |
 |--------|---------------|
-| You | DSE predictor |
-| Friend | Pharmacy predictor |
+| You | DSYE predictor |
+| Friend | Pharmacy predictor (MHT-CET PCB) |
+| TBD | JEE Main predictor |
+| TBD | NEET predictor |
 
 ### Git Workflow
-```
-# You
-git checkout -b feature/dse-model
 
-# Friend
-git checkout -b feature/pharmacy-model
+All branches are created off `master`. Each exam gets its own isolated branch.
+
+```
+# Active branches (already created)
+feature/dsye-model       ← You (DSYE predictor)
+feature/pharmacy-model   ← Friend (MHT-CET PCB / Pharmacy)
+feature/jee-model        ← Future (JEE Main predictor)
+feature/neet-model       ← Future (NEET predictor)
+
+# To switch to your branch
+git checkout feature/dsye-model
+
+# Friend fetches and checks out their branch
+git fetch origin
+git checkout feature/pharmacy-model
+
+# Push a branch to remote (first time)
+git push -u origin feature/dsye-model
 ```
 
-- Never commit directly to `main`
-- Create Pull Requests for review before merging
-- Enable Branch Protection on GitHub: Settings → Branch Protection → Require PR before merge
+- Never commit directly to `master`
+- Create Pull Requests for review before merging into `master`
+- Enable Branch Protection on GitHub: Settings → Branches → Add rule → Require PR before merge
+- Future owners (JEE, NEET) should checkout their branch when they begin work — scaffolding is already in place
 
 ### .gitignore — Never commit model files
 ```
@@ -113,16 +129,24 @@ uniscout-ml/
 │   ├── metrics.py
 │   └── utils.py
 │
-├── engineering/          ← You (existing)
+├── engineering/          ← You (existing, MHT-CET PCM)
 │   ├── train.py
 │   ├── predict.py
 │   └── model/
 │
-├── dse/                  ← You
+├── dsye/                 ← You (feature/dsye-model)
 │   ├── train.py
 │   └── predict.py
 │
-├── pharmacy/             ← Friend
+├── pharmacy/             ← Friend (feature/pharmacy-model)
+│   ├── train.py
+│   └── predict.py
+│
+├── jee/                  ← Future (feature/jee-model)
+│   ├── train.py
+│   └── predict.py
+│
+├── neet/                 ← Future (feature/neet-model)
 │   ├── train.py
 │   └── predict.py
 │
@@ -136,16 +160,20 @@ class Predictor:
     def predict(self, payload: dict) -> dict:
         pass
 
-class DSEPredictor(Predictor): ...
+class DSYEPredictor(Predictor): ...
 class PharmacyPredictor(Predictor): ...
+class JEEPredictor(Predictor): ...
+class NEETPredictor(Predictor): ...
 ```
 
 Backend routes based on exam:
 ```python
 predictors = {
-    "DSE": DSEPredictor(),
+    "DSYE": DSYEPredictor(),
     "PHARMACY": PharmacyPredictor(),
     "ENGINEERING": EngineeringPredictor(),
+    "JEE": JEEPredictor(),        # future
+    "NEET": NEETPredictor(),      # future
 }
 result = predictors[exam].predict(payload)
 ```
@@ -176,23 +204,30 @@ uniscout/
 │   ├── routes/
 │   │   ├── engineering.ts
 │   │   ├── pharmacy.ts
-│   │   └── dse.ts
+│   │   ├── dsye.ts
+│   │   ├── jee.ts        ← future
+│   │   └── neet.ts       ← future
 │   └── services/
 │       ├── engineeringService.ts
 │       ├── pharmacyService.ts
-│       └── dseService.ts
+│       ├── dsyeService.ts
+│       ├── jeeService.ts        ← future
+│       └── neetService.ts       ← future
 │
 ├── ml/
 │   ├── engineering/
 │   ├── pharmacy/
-│   ├── dse/
+│   ├── dsye/
+│   ├── jee/              ← future
+│   ├── neet/             ← future
 │   └── shared/
 │
 ├── data/
 │   ├── engineering/
 │   ├── pharmacy/
-│   ├── dse/
-│   └── jee/
+│   ├── dsye/
+│   ├── jee/              ← future
+│   └── neet/             ← future
 │
 ├── scripts/              (move root-level check_*.py files here)
 │   ├── check_branch.py
@@ -218,8 +253,8 @@ uniscout/
 ## Priority Order
 
 1. ✅ MHT-CET Engineering (done)
-2. 🔲 DSE (next — you)
-3. 🔲 MHT-CET Pharmacy (next — friend)
-4. 🔲 JEE Main (future)
-5. 🔲 NEET (future)
+2. 🔲 DSYE (next — you, `feature/dsye-model`)
+3. 🔲 MHT-CET Pharmacy (next — friend, `feature/pharmacy-model`)
+4. 🔲 JEE Main (future, `feature/jee-model`)
+5. 🔲 NEET (future, `feature/neet-model`)
 6. 🔲 CLAT/CAT (don't plan yet)
