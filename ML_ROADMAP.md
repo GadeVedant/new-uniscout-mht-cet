@@ -1,6 +1,6 @@
 # UniScout ML Roadmap
 
-Last updated: 17 June 2026
+Last updated: 6 July 2026
 
 ---
 
@@ -103,10 +103,12 @@ git push -u origin feature/dsye-model
 
 - Never commit directly to `master`
 - Create Pull Requests for review before merging into `master`
+- ✅ Repo is **public** on GitHub (`GadeVedant/new-uniscout-mht-cet`) — branch protection works on free plan for public repos
 - ✅ Branch Protection enabled on GitHub (Rulesets → master):
   - Require a pull request before merging
   - Restrict deletions
   - Block force pushes
+  - Verified: direct push to master is rejected with `GH013: Repository rule violations`
 - Future owners (JEE, NEET) should checkout their branch when they begin work — scaffolding is already in place
 
 ### .gitignore — Never commit model files
