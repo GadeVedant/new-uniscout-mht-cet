@@ -103,7 +103,10 @@ git push -u origin feature/dsye-model
 
 - Never commit directly to `master`
 - Create Pull Requests for review before merging into `master`
-- Enable Branch Protection on GitHub: Settings → Branches → Add rule → Require PR before merge
+- ✅ Branch Protection enabled on GitHub (Rulesets → master):
+  - Require a pull request before merging
+  - Restrict deletions
+  - Block force pushes
 - Future owners (JEE, NEET) should checkout their branch when they begin work — scaffolding is already in place
 
 ### .gitignore — Never commit model files
