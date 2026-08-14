@@ -28,7 +28,6 @@ export function Navbar() {
             <Sparkles className="size-3.5 text-white" />
           </div>
           <span className="text-sm font-semibold tracking-tight text-slate-900">Uniscout</span>
-          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white text-purple-700 border border-purple-300">BETA</span>
         </button>
 
         {/* Nav links */}
@@ -50,7 +49,7 @@ export function Navbar() {
 
         {/* Predict CTA */}
         <div className="flex items-center gap-3 ml-auto">
-          <button className="size-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-white/60 hover:text-white transition-colors">
+          <button className="size-8 rounded-lg hover:bg-black/10 flex items-center justify-center text-slate-800 hover:text-slate-900 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
           </button>
           <button
