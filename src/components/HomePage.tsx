@@ -102,7 +102,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
 
       <div className="pt-[60px]">
         {/* ── Hero ── */}
-        <section className="relative min-h-[calc(100vh-60px)] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-[calc(100vh-60px)] flex items-start justify-center overflow-hidden pt-8">
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-blue-600/[0.12] rounded-full blur-[140px]" />
             <div className="absolute top-[30%] left-[20%] w-[500px] h-[500px] bg-violet-600/[0.09] rounded-full blur-[120px]" />
@@ -111,8 +111,8 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.4) 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-5 py-20 flex flex-col items-center text-center">
-            <div className="mb-7 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/[0.08] text-violet-300 text-xs font-medium">
+          <div className="relative max-w-7xl mx-auto px-5 py-8 flex flex-col items-center text-center">
+            <div className="mb-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/[0.08] text-violet-300 text-xs font-medium">
               <Sparkles className="size-3" />
               AI-Powered Admissions Intelligence
             </div>
