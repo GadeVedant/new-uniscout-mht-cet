@@ -115,9 +115,9 @@ export function SmartFormPage() {
   const resultsRef = useRef<HTMLDivElement>(null);
 
   useSEO({
-    title: 'MHT CET CAP Form Filling 2025 – Smart Preference List Generator | UniScout',
+    title: 'MHT CET CAP Form Filling 2025 – Smart Preference List Generator | Uniscout',
     description: 'Generate an optimized MHT CET CAP 2025 preference list in minutes. Get Safe, Target & Dream college picks ranked by AI based on your percentile, category, and branch. Download as PDF.',
-    canonical: 'https://www.uniscout.co.in/smart-form',
+    canonical: 'https://www.Uniscout.co.in/smart-form',
   });
 
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
@@ -260,16 +260,16 @@ export function SmartFormPage() {
       <SchemaOrg id="smartform-webpage" schema={webPageSchema({
         name: 'MHT CET CAP Form Filling 2025 – Smart Preference List Generator',
         description: 'Generate an optimized MHT CET CAP 2025 preference list with Safe, Target and Dream college picks ranked by AI.',
-        url: 'https://www.uniscout.co.in/smart-form',
+        url: 'https://www.Uniscout.co.in/smart-form',
         breadcrumbs: [
-          { name: 'Home', url: 'https://www.uniscout.co.in/' },
-          { name: 'Smart Form Filling', url: 'https://www.uniscout.co.in/smart-form' },
+          { name: 'Home', url: 'https://www.Uniscout.co.in/' },
+          { name: 'Smart Form Filling', url: 'https://www.Uniscout.co.in/smart-form' },
         ],
       })} />
       <SchemaOrg id="smartform-faq" schema={faqSchema([
         {
           question: 'How many colleges should I add in the MHT CET CAP preference list?',
-          answer: 'DTE Maharashtra recommends filling at least 50 preferences. UniScout generates a tiered list of Safe, Target, and Dream picks to help you fill all slots strategically.',
+          answer: 'DTE Maharashtra recommends filling at least 50 preferences. Uniscout generates a tiered list of Safe, Target, and Dream picks to help you fill all slots strategically.',
         },
         {
           question: 'What is the difference between Safe, Target, and Dream picks?',
@@ -277,7 +277,7 @@ export function SmartFormPage() {
         },
         {
           question: 'Can I download the preference list as PDF?',
-          answer: 'Yes, UniScout generates a printable PDF of your preference list that you can use as a reference while filling the DTE portal.',
+          answer: 'Yes, Uniscout generates a printable PDF of your preference list that you can use as a reference while filling the DTE portal.',
         },
         {
           question: 'Does the preference list support all reservation categories?',

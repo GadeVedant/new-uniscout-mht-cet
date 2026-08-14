@@ -3,7 +3,7 @@
  * canonical URL, and OG tags for each page/route.
  *
  * Usage:
- *   useSEO({ title: 'VJTI Mumbai | UNISCOUT', description: '...' })
+ *   useSEO({ title: 'VJTI Mumbai | Uniscout', description: '...' })
  */
 import { useEffect } from 'react';
 
@@ -17,8 +17,8 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
-const SITE_NAME = 'UNISCOUT';
-const BASE_URL = 'https://www.uniscout.co.in';
+const SITE_NAME = 'Uniscout';
+const BASE_URL = 'https://www.Uniscout.co.in';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 
 function setMeta(name: string, content: string, property = false) {

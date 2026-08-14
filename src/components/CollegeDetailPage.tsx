@@ -422,7 +422,7 @@ function CollegeFAQSection({ college }: { college: CollegeRecommendation }) {
     },
     {
       question: `What is the admission probability for ${college.name} with my percentile?`,
-      answer: `UniScout's AI model predicts your admission probability based on 4 years of historical cutoff data. The current admission band for ${college.name} ${college.branch} is "${college.admissionBand}". Enter your percentile on the MHT CET predictor page for a personalized probability score.`,
+      answer: `Uniscout's AI model predicts your admission probability based on 4 years of historical cutoff data. The current admission band for ${college.name} ${college.branch} is "${college.admissionBand}". Enter your percentile on the MHT CET predictor page for a personalized probability score.`,
     },
     ...(college.avgPackage ? [{
       question: `What is the average placement package at ${college.name}?`,
@@ -515,15 +515,15 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
 
   // SEO: dynamic title + meta per college page
   const seoTitle = college
-    ? `${college.name} – ${college.branch} MHT CET Cutoff 2025 & Admission | UniScout`
-    : 'College Details | UniScout';
+    ? `${college.name} – ${college.branch} MHT CET Cutoff 2025 & Admission | Uniscout`
+    : 'College Details | Uniscout';
   const seoDescription = college
     ? `${college.name} ${college.branch} MHT CET 2025 cutoff is ${college.cutoffPercentile} percentile (${college.category}, ${college.location}). See 3-year cutoff trend, admission probability, fees${college.fees ? ` ₹${college.fees}` : ''}, seats${college.seats ? ` ${college.seats}` : ''}, and CAP Round 2 strategy.`
     : 'College details and cutoff information.';
   useSEO({
     title: seoTitle,
     description: seoDescription,
-    canonical: college ? `https://www.uniscout.co.in/college/${college.id}` : undefined,
+    canonical: college ? `https://www.Uniscout.co.in/college/${college.id}` : undefined,
   });
 
   if (!college) {
@@ -538,9 +538,9 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
       {/* Structured data */}
       <SchemaOrg id={`college-${college.code}`} schema={collegeSchema({ name: college.name, code: college.code, location: college.location, district: college.district, branch: college.branch, fees: college.fees, seats: college.seats, cutoffPercentile: college.cutoffPercentile, avgPackage: college.avgPackage })} />
       <SchemaOrg id={`breadcrumb-${college.code}`} schema={breadcrumbSchema([
-        { name: 'Home', url: 'https://www.uniscout.co.in/' },
-          { name: 'MHT CET Predictor', url: 'https://www.uniscout.co.in/mht-cet' },
-          { name: college.name, url: `https://www.uniscout.co.in/college/${college.id}` },
+        { name: 'Home', url: 'https://www.Uniscout.co.in/' },
+          { name: 'MHT CET Predictor', url: 'https://www.Uniscout.co.in/mht-cet' },
+          { name: college.name, url: `https://www.Uniscout.co.in/college/${college.id}` },
         ])}
       />
       {/* Sticky header */}

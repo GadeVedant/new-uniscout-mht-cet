@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Sparkles, Bell, Brain, TrendingUp, BarChart2, ListChecks,
@@ -42,52 +41,36 @@ const stats = [
 
 export function HomePage({ onPortalSelect }: HomePageProps) {
   const navigate = useNavigate();
-  const [selectedExam, setSelectedExam] = useState('mhtcet-eng');
-  const [score, setScore] = useState('');
-  const [category, setCategory] = useState('GOPENS');
-  const [location, setLocation] = useState('');
+
+  const handlePredict = () => {
+    onPortalSelect('mht-cet');
+    navigate('/mht-cet');
+  };
 
   useSEO({
-    title: 'MHT CET College Predictor 2025 – AI-Powered Admission Predictions | UniScout',
+    title: 'MHT CET College Predictor 2025 – AI-Powered Admission Predictions | Uniscout',
     description: 'Get AI-powered MHT CET college predictions for 2025. Enter your percentile, category & branch to see admission probability for 386 Maharashtra engineering colleges. Free, instant results.',
     canonical: 'https://www.uniscout.co.in/',
   });
-
-  const handlePredict = () => {
-    const exam = exams.find(e => e.id === selectedExam);
-    if (!exam?.available) return;
-    if (selectedExam === 'mhtcet-eng') {
-      onPortalSelect('mht-cet');
-      // Pass score, category, location as query params to pre-fill the form
-      const params = new URLSearchParams();
-      if (score) params.set('percentile', score);
-      if (category) params.set('category', category);
-      if (location) params.set('location', location);
-      const qs = params.toString();
-      navigate(`/mht-cet${qs ? `?${qs}` : ''}`);
-    } else {
-      navigate(exam.route);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SchemaOrg id="home-faq" schema={faqSchema([
         { question: 'How does the MHT CET college predictor work?', answer: 'Enter your CET percentile, category, and branch preference. Our AI analyzes 4 years of cutoff data to predict your admission probability at each college.' },
-        { question: 'Is UniScout free to use?', answer: 'Yes, UniScout is completely free. No sign-up required — just enter your score and get instant predictions.' },
+        { question: 'Is Uniscout free to use?', answer: 'Yes, Uniscout is completely free. No sign-up required — just enter your score and get instant predictions.' },
         { question: 'Which categories are supported?', answer: 'All 11 Maharashtra reservation categories: Open, SC, ST, OBC, SEBC, EWS, NT1, NT2, NT3, VJ/DT, and TFWS.' },
         { question: 'Can I download the preference list?', answer: 'Yes — generate your Safe, Target & Dream picks and download as a PDF for the DTE portal.' },
       ])} />
 
       {/* ── Navbar ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-background/75 backdrop-blur-2xl">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-gradient-to-r from-[#4facfe] via-[#a78bfa] to-[#f093fb] backdrop-blur-2xl">
         <div className="max-w-7xl mx-auto px-5 flex items-center h-[60px] gap-6">
           <button onClick={() => navigate('/')} className="flex items-center gap-2.5 shrink-0">
             <div className="size-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-[0_0_12px_rgba(90,135,239,0.5)]">
               <Sparkles className="size-3.5 text-white" />
             </div>
-            <span className="text-sm font-semibold tracking-tight">UniScout</span>
-            <span className="hidden md:inline-block text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-blue-500/15 border border-blue-500/25 text-blue-400">BETA</span>
+            <span className="text-sm font-semibold tracking-tight">Uniscout</span>
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white text-purple-700 border border-purple-300">BETA</span>
           </button>
 
           <div className="hidden md:flex items-center gap-0.5 flex-1">
@@ -98,18 +81,18 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               { label: 'Compare',    route: '/compare'    },
             ].map(item => (
               <button key={item.label} onClick={() => navigate(item.route)}
-                className="px-3.5 py-1.5 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all">
+                className="px-3.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-800 hover:text-slate-900 hover:bg-black/10 transition-all">
                 {item.label}
               </button>
             ))}
           </div>
 
           <div className="flex items-center gap-3 ml-auto">
-            <button className="size-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+            <button className="size-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-white/60 hover:text-white transition-colors">
               <Bell className="size-4" />
             </button>
             <button onClick={() => { onPortalSelect('mht-cet'); navigate('/mht-cet'); }}
-              className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary text-primary-foreground text-[13px] font-medium hover:opacity-90 transition-opacity shadow-[0_0_16px_rgba(90,135,239,0.35)]">
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-red-600 text-white text-[13px] font-medium hover:bg-red-500 transition-colors shadow-[0_0_16px_rgba(220,38,38,0.35)]">
               <Brain className="size-3.5" />
               Predict Now
             </button>
@@ -134,80 +117,39 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               AI-Powered Admissions Intelligence
             </div>
 
-            <h1 className="text-[52px] md:text-[72px] font-semibold tracking-[-0.03em] leading-[1.05] mb-6 max-w-4xl">
+            <h1 className="text-[72px] md:text-[100px] font-black tracking-tight leading-none mb-4 select-none">
+              <span className="relative inline-flex items-center gap-4">
+                <GraduationCap className="w-16 h-16 md:w-20 md:h-20 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)]" />
+                <span
+                  className="bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent"
+                  style={{ filter: 'drop-shadow(0 0 24px rgba(109,213,250,0.6)) drop-shadow(0 0 48px rgba(167,139,250,0.4))' }}
+                >
+                  UNISCOUT
+                </span>
+                <Sparkles className="absolute -top-4 left-[52%] w-7 h-7 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)]" />
+              </span>
+            </h1>
+
+            <h3 className="text-xl md:text-2xl font-semibold mb-6 bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent">
+              Sponsored by A.G.O
+            </h3>
+
+            <h2 className="text-[42px] md:text-[60px] font-semibold tracking-[-0.03em] leading-[1.05] mb-6 max-w-4xl">
               Predict Your Admission.
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-violet-400 to-blue-400">
                 Decide With Confidence.
               </span>
-            </h1>
+            </h2>
 
             <p className="text-base md:text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed">
-              UniScout analyzes years of entrance exam cutoff data to predict your exact admission probability
+              Uniscout analyzes years of entrance exam cutoff data to predict your exact admission probability
               across 386 colleges. Stop guessing. Start planning.
             </p>
 
             {/* Prediction card */}
             <div className="w-full max-w-[580px]">
               <div className="bg-card/70 backdrop-blur-2xl border border-white/[0.09] rounded-2xl p-6 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
-                {/* Exam tabs */}
-                <div className="flex gap-2 mb-5 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
-                  {exams.map(exam => (
-                    <button key={exam.id}
-                      onClick={() => exam.available && setSelectedExam(exam.id)}
-                      disabled={!exam.available}
-                      className={`shrink-0 px-3 py-2 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${
-                        !exam.available
-                          ? 'opacity-35 cursor-not-allowed text-muted-foreground border border-white/[0.05]'
-                          : selectedExam === exam.id
-                            ? 'bg-primary text-white shadow-[0_0_12px_rgba(90,135,239,0.4)]'
-                            : 'text-muted-foreground hover:text-foreground hover:bg-white/5 border border-white/10'
-                      }`}>
-                      {exam.name}
-                      {!exam.available && <span className="ml-1.5 text-[10px] opacity-80">Soon</span>}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 mb-4">
-                  <div>
-                    <label className="block text-xs text-muted-foreground mb-1.5 font-medium">Percentile / Score</label>
-                    <input type="text" value={score} onChange={e => setScore(e.target.value)} placeholder="e.g. 98.45"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-sm focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/15 placeholder:text-muted-foreground/40 transition-all text-foreground" />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-muted-foreground mb-1.5 font-medium">Category</label>
-                    <select value={category} onChange={e => setCategory(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-sm focus:outline-none focus:border-primary/60 text-foreground transition-all">
-                      {[
-                        { label: 'Open (General)', value: 'GOPENS' },
-                        { label: 'OBC',            value: 'GOBCS'  },
-                        { label: 'SC',             value: 'GSCS'   },
-                        { label: 'ST',             value: 'GSTS'   },
-                        { label: 'NT-1',           value: 'GNT1S'  },
-                        { label: 'NT-2',           value: 'GNT2S'  },
-                        { label: 'NT-3',           value: 'GNT3S'  },
-                        { label: 'SEBC',           value: 'GSEBCS' },
-                        { label: 'EWS',            value: 'EWS'    },
-                        { label: 'TFWS',           value: 'TFWS'   },
-                      ].map(c => (
-                        <option key={c.value} value={c.value} style={{ backgroundColor: '#0d0d1b' }}>{c.label}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Location row */}
-                <div className="mb-4">
-                  <label className="block text-xs text-muted-foreground mb-1.5 font-medium">Preferred District</label>
-                  <select value={location} onChange={e => setLocation(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-sm focus:outline-none focus:border-primary/60 text-foreground transition-all">
-                    <option value="" style={{ backgroundColor: '#0d0d1b' }}>All Maharashtra</option>
-                    {['Mumbai','Pune','Nagpur','Thane','Nashik','Aurangabad','Navi Mumbai','Kolhapur','Solapur','Ahmednagar','Amravati','Jalgaon','Latur','Nanded','Satara','Sangli','Dhule','Akola','Yavatmal','Parbhani','Osmanabad','Panvel','Vasai','Raigad'].map(d => (
-                      <option key={d} value={d} style={{ backgroundColor: '#0d0d1b' }}>{d}</option>
-                    ))}
-                  </select>
-                </div>
 
                 <button onClick={handlePredict}
                   className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 group shadow-[0_4px_24px_rgba(90,135,239,0.4)]">
@@ -262,7 +204,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
         <section className="border-y border-white/[0.06] bg-gradient-to-b from-card/20 to-transparent">
           <div className="max-w-7xl mx-auto px-5 py-24">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">How UniScout works</h2>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">How Uniscout works</h2>
               <p className="text-muted-foreground max-w-md mx-auto">From your percentile to your perfect preference list in three steps.</p>
             </div>
             <div className="grid md:grid-cols-3 gap-10">
@@ -318,7 +260,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
                 <Sparkles className="size-7 text-blue-400" />
               </div>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Your admission story starts here</h2>
-              <p className="text-muted-foreground mb-8 max-w-md mx-auto leading-relaxed">Join thousands of students who used UniScout to predict, plan, and secure their dream college seats.</p>
+              <p className="text-muted-foreground mb-8 max-w-md mx-auto leading-relaxed">Join thousands of students who used Uniscout to predict, plan, and secure their dream college seats.</p>
               <button onClick={() => { onPortalSelect('mht-cet'); navigate('/mht-cet'); }}
                 className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold hover:opacity-90 transition-opacity inline-flex items-center gap-2.5 group shadow-[0_4px_32px_rgba(90,135,239,0.4)]">
                 Start Your Prediction
@@ -329,20 +271,142 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="border-t border-white/[0.06]">
-          <div className="max-w-7xl mx-auto px-5 py-7 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <div className="size-5 rounded-md bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center">
-                <Sparkles className="size-3 text-white" />
-              </div>
-              <span className="font-semibold text-foreground">UniScout</span>
-              <span className="opacity-30">·</span>
-              AI-Powered Admissions Intelligence
-            </div>
-            <div className="flex items-center gap-5">
-              <span>© {new Date().getFullYear()} UniScout. All rights reserved.</span>
+        <footer className="border-t border-white/[0.06]" style={{ background: 'linear-gradient(180deg, #0f0a3e 0%, #1a1260 40%, #1e1b6e 100%)' }}>
+
+          {/* Top banner */}
+          <div className="flex justify-center pt-10 pb-6 px-5">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium">
+              <Sparkles className="size-4" />
+              Uniscout — Your AI-powered college admission companion. Find the right college, faster.
+              <Sparkles className="size-4" />
             </div>
           </div>
+
+          <div className="border-t border-white/[0.06] mx-5" />
+
+          {/* Main footer columns */}
+          <div className="max-w-7xl mx-auto px-5 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+
+            {/* Col 1 — Brand */}
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="/ago-logo.png.jpeg"
+                  alt="A.G.O Innovations Logo"
+                  className="w-14 h-14 rounded-full object-cover border-2 border-white/20 shadow-lg"
+                />
+                <div>
+                  <span className="text-lg font-bold text-cyan-400">A.G.O Innovations</span>
+                  <p className="text-sm text-slate-300 mt-0.5">Team Incredible</p>
+                </div>
+              </div>
+              <p className="text-cyan-400 font-semibold text-sm mt-3">One platform. Many possibilities.</p>
+            </div>
+
+            {/* Col 2 — Quick Links */}
+            <div>
+              <h4 className="text-white font-semibold mb-5 text-base">Quick Links</h4>
+              <ul className="space-y-3">
+                {[
+                  { label: 'Home',         route: '/'           },
+                  { label: 'Predictor',    route: '/mht-cet'    },
+                  { label: 'Form Filling', route: '/smart-form' },
+                  { label: 'Compare',      route: '/compare'    },
+                ].map(link => (
+                  <li key={link.route}>
+                    <button
+                      onClick={() => navigate(link.route)}
+                      className="text-muted-foreground hover:text-white text-sm transition-colors"
+                    >
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Col 3 — Contact Us */}
+            <div>
+              <h4 className="text-white font-semibold mb-5 text-base">Contact Us</h4>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="size-9 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                    <svg className="size-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Email</div>
+                    <div className="text-sm text-white">help.agoinnovations@gmail.com</div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="size-9 rounded-xl bg-green-600 flex items-center justify-center shrink-0">
+                    <svg className="size-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Phone</div>
+                    <div className="text-sm text-white">+91 9322578756</div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="size-9 rounded-xl bg-violet-600 flex items-center justify-center shrink-0">
+                    <svg className="size-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Phone</div>
+                    <div className="text-sm text-white">+91 9372663841</div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="size-9 rounded-xl bg-orange-500 flex items-center justify-center shrink-0">
+                    <svg className="size-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Phone</div>
+                    <div className="text-sm text-white">+91 7738340929</div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="size-9 rounded-xl bg-cyan-600 flex items-center justify-center shrink-0">
+                    <svg className="size-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Address</div>
+                    <div className="text-sm text-white">Mumbai, India</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Connect With Us */}
+          <div className="border-t border-white/[0.06] py-10 px-5 text-center">
+            <h4 className="text-cyan-400 font-bold text-2xl mb-6">Connect With Us</h4>
+            <div className="flex justify-center gap-5 mb-6">
+              <a href="mailto:help.agoinnovations@gmail.com" className="size-14 rounded-full bg-red-500 hover:bg-red-400 flex items-center justify-center transition-colors shadow-lg">
+                <svg className="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </a>
+              <a href="https://instagram.com/ago.innovations" target="_blank" rel="noreferrer" className="size-14 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 hover:opacity-90 flex items-center justify-center transition-opacity shadow-lg">
+                <svg className="size-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
+              <a href="https://youtube.com/@ago.innovations" target="_blank" rel="noreferrer" className="size-14 rounded-full bg-red-600 hover:bg-red-500 flex items-center justify-center transition-colors shadow-lg">
+                <svg className="size-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+              <a href="https://facebook.com/agoinnovations" target="_blank" rel="noreferrer" className="size-14 rounded-full bg-blue-600 hover:bg-blue-500 flex items-center justify-center transition-colors shadow-lg">
+                <svg className="size-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </div>
+            <div className="space-y-1 text-sm text-muted-foreground mb-8">
+              <p><span className="font-semibold text-white">Gmail:</span> help.agoinnovations@gmail.com</p>
+              <p><span className="font-semibold text-white">Instagram:</span> ago.innovations</p>
+              <p><span className="font-semibold text-white">YouTube:</span> @ago.innovations</p>
+              <p><span className="font-semibold text-white">Facebook:</span> A.G.O Innovations</p>
+            </div>
+            <div className="border-t border-white/[0.06] pt-6">
+              <p className="text-white font-bold text-base mb-1">© 2025 A.G.O Innovations. All rights reserved.</p>
+              <p className="text-muted-foreground text-sm">Made with <span className="text-red-400">♡</span> in India</p>
+            </div>
+          </div>
+
         </footer>
       </div>
     </div>

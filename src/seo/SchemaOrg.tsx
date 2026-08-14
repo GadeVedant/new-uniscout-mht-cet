@@ -109,7 +109,7 @@ export function webPageSchema(page: {
     name: page.name,
     description: page.description,
     url: page.url,
-    isPartOf: { '@type': 'WebSite', name: 'UniScout', url: 'https://www.uniscout.co.in' },
+    isPartOf: { '@type': 'WebSite', name: 'Uniscout', url: 'https://www.Uniscout.co.in' },
     ...(page.breadcrumbs ? {
       breadcrumb: breadcrumbSchema(page.breadcrumbs),
     } : {}),

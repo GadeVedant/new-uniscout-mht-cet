@@ -1,5 +1,5 @@
 /**
- * API Service for UNISCOUT College Recommendation System
+ * API Service for Uniscout College Recommendation System
  * Handles all communication with the backend
  */
 
