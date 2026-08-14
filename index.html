@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Cache busting — force browsers to load fresh version -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <!-- Primary SEO — MHT CET focus with multi-exam secondary -->
     <title>MHT CET College Predictor 2025 – AI Predictions for 386 Maharashtra Colleges | UniScout</title>
     <meta name="description" content="Free MHT CET 2025 college predictor. Enter your percentile, category & branch to get AI-powered admission predictions for 386 Maharashtra engineering colleges. Includes CAP Round 2 strategy & smart form filling." />
@@ -114,61 +119,24 @@
   </head>
 
   <body>
-    <!-- Pre-rendered static shell — visible to crawlers before JS loads -->
     <div id="root">
       <style>
-        .ssr-container { min-height: 100vh; background: linear-gradient(to bottom right, #1e1b4b, #3b0764, #020617); color: white; display: flex; flex-direction: column; align-items: center; padding: 4rem 1rem; font-family: system-ui, -apple-system, sans-serif; text-align: center; }
-        .ssr-hero { max-width: 64rem; margin: 0 auto; }
-        .ssr-badge { display: inline-block; background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.3); border-radius: 9999px; padding: 0.35rem 1rem; font-size: 0.8rem; color: #93c5fd; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
-        .ssr-title { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; margin-bottom: 1rem; background: linear-gradient(to right, #60a5fa, #c084fc, #34d399); background-clip: text; -webkit-background-clip: text; color: transparent; line-height: 1.2; }
-        .ssr-subtitle { font-size: 1.15rem; color: #94a3b8; margin-bottom: 2rem; max-width: 48rem; margin-left: auto; margin-right: auto; }
-        .ssr-exams { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 2.5rem; }
-        .ssr-exam { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 0.6rem; padding: 0.6rem 1.2rem; font-size: 0.9rem; font-weight: 600; color: #e2e8f0; }
-        .ssr-exam a { color: inherit; text-decoration: none; }
-        .ssr-exam a:hover { color: #93c5fd; }
-        .ssr-features { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 3rem; }
-        .ssr-feature { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 0.75rem 1.25rem; font-size: 0.85rem; color: #cbd5e1; }
-        .ssr-nav { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
-        .ssr-nav a { color: #93c5fd; text-decoration: none; font-size: 0.9rem; }
-        .ssr-nav a:hover { text-decoration: underline; }
-        .ssr-loader { width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.1); border-top-color: #60a5fa; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+        #initial-loader {
+          min-height: 100vh;
+          background: linear-gradient(135deg, #1a0a2e 0%, #2d1060 40%, #1a1060 70%, #0a1a40 100%);
+          display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px;
+        }
+        #initial-loader .spinner {
+          width: 36px; height: 36px;
+          border: 3px solid rgba(6,182,212,0.2);
+          border-top-color: #06b6d4;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
         @keyframes spin { to { transform: rotate(360deg); } }
       </style>
-      <div class="ssr-container">
-        <div class="ssr-hero">
-          <div class="ssr-badge">Multi-Exam College Discovery Platform</div>
-
-          <h1 class="ssr-title">College Predictor &amp; Career Explorer<br/>for JEE, NEET, CAT &amp; More</h1>
-
-          <p class="ssr-subtitle">Find the best engineering, medical, and MBA colleges using your exam score. AI-powered cutoff predictions, admission probability bands, and smart preference list generation.</p>
-
-          <!-- Exam landing pages — crawlable links -->
-          <div class="ssr-exams" role="list" aria-label="Supported exams">
-            <div class="ssr-exam" role="listitem"><a href="/mht-cet">🎯 MHT CET</a></div>
-            <div class="ssr-exam" role="listitem"><a href="/jee-college-predictor">⚙️ JEE Main &amp; Advanced</a></div>
-            <div class="ssr-exam" role="listitem"><a href="/neet-college-predictor">🏥 NEET</a></div>
-            <div class="ssr-exam" role="listitem"><a href="/cat-college-predictor">📊 CAT</a></div>
-          </div>
-
-          <nav class="ssr-nav" aria-label="Quick links">
-            <a href="/mht-cet">MHT CET Predictor</a>
-            <a href="/smart-form">Smart Form Filling</a>
-            <a href="/compare">Compare Colleges</a>
-            <a href="/branches/computer-engineering">Computer Engineering</a>
-            <a href="/branches/information-technology">Information Technology</a>
-          </nav>
-
-          <div class="ssr-features" role="list" aria-label="Platform features">
-            <div class="ssr-feature" role="listitem">📊 Cutoff Trend Analysis</div>
-            <div class="ssr-feature" role="listitem">🎯 Admission Probability Bands</div>
-            <div class="ssr-feature" role="listitem">🔄 CAP Round 2 Strategy</div>
-            <div class="ssr-feature" role="listitem">📋 Smart Preference List</div>
-            <div class="ssr-feature" role="listitem">🏫 500+ Colleges</div>
-            <div class="ssr-feature" role="listitem">📈 3-Year Cutoff History</div>
-          </div>
-
-          <div class="ssr-loader" aria-label="Loading UniScout..."></div>
-        </div>
+      <div id="initial-loader">
+        <div class="spinner"></div>
       </div>
     </div>
 
