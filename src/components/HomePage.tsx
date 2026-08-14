@@ -70,7 +70,6 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               <Sparkles className="size-3.5 text-white" />
             </div>
             <span className="text-sm font-semibold tracking-tight">Uniscout</span>
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white text-purple-700 border border-purple-300">BETA</span>
           </button>
 
           <div className="hidden md:flex items-center gap-0.5 flex-1">
@@ -88,7 +87,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
           </div>
 
           <div className="flex items-center gap-3 ml-auto">
-            <button className="size-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-white/60 hover:text-white transition-colors">
+            <button className="size-8 rounded-lg hover:bg-black/10 flex items-center justify-center text-slate-800 hover:text-slate-900 transition-colors">
               <Bell className="size-4" />
             </button>
             <button onClick={() => { onPortalSelect('mht-cet'); navigate('/mht-cet'); }}
