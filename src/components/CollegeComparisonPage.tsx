@@ -28,23 +28,8 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-background px-4 py-3">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => navigate(-1)}
-              className="flex items-center gap-1.5 text-[13px] text-blue-400 hover:text-blue-300 transition-colors font-medium"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Results
-            </button>
-          </div>
-          <h1 className="font-semibold text-sm text-foreground hidden sm:block">College Comparison</h1>
-        </div>
-      </header>
 
-      <main className="max-w-6xl mx-auto px-5 py-8">
+      <main className="max-w-6xl mx-auto px-5 py-8 pt-[80px]">
         {/* Back to Main Page button */}
         <div className="mb-6">
           <button
