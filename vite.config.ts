@@ -80,5 +80,8 @@
     server: {
       port: 3000,
       open: true,
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
     },
   });
