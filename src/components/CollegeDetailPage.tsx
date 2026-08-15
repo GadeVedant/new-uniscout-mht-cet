@@ -534,7 +534,7 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
   const studentPercentile = college.cutoffPercentile + college.percentileDifference;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground pt-[60px]">
       {/* Structured data */}
       <SchemaOrg id={`college-${college.code}`} schema={collegeSchema({ name: college.name, code: college.code, location: college.location, district: college.district, branch: college.branch, fees: college.fees, seats: college.seats, cutoffPercentile: college.cutoffPercentile, avgPackage: college.avgPackage })} />
       <SchemaOrg id={`breadcrumb-${college.code}`} schema={breadcrumbSchema([
@@ -543,19 +543,17 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
           { name: college.name, url: `https://www.Uniscout.co.in/college/${college.id}` },
         ])}
       />
-      {/* Sticky header */}
-      <header className="sticky top-[60px] z-40 border-b border-white/[0.06] bg-background px-5 py-3">
-        <div className="max-w-7xl mx-auto flex items-center gap-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30 text-[13px] font-medium transition-colors"
-            aria-label="Back to results"
-          >
-            <ChevronRight className="size-4 rotate-180" />
-            Back to College List
-          </button>
-        </div>
-      </header>
+      {/* Back button — not sticky, scrolls away */}
+      <div className="px-5 pt-4 pb-2 max-w-7xl mx-auto">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30 text-[13px] font-medium transition-colors"
+          aria-label="Back to results"
+        >
+          <ChevronRight className="size-4 rotate-180" />
+          Back to College List
+        </button>
+      </div>
 
       {/* College header */}
       <div className="border-b border-white/[0.06]">
