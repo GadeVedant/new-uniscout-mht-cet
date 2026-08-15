@@ -192,9 +192,9 @@ export function ResultsPage({
 
   return (
     <div className="w-full flex-1 flex flex-col items-center pt-[60px]">
-      {/* Sticky sub-header */}
-      <header className="w-full sticky top-[60px] z-40 border-b border-white/[0.06] bg-card/60 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-5 py-4">
+      {/* Non-sticky header — scrolls away with content */}
+      <div className="w-full border-b border-white/[0.06] bg-card/60 px-4 py-3">
+        <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between flex-wrap gap-3">
             {/* Left — Back button */}
             <div className="flex items-center gap-2 flex-wrap">
@@ -234,7 +234,7 @@ export function ResultsPage({
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
       <main className="w-full max-w-7xl px-5 py-7">
 
