@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Sparkles, Bell, Brain, TrendingUp, BarChart2, ListChecks,
@@ -41,6 +42,7 @@ const stats = [
 
 export function HomePage({ onPortalSelect }: HomePageProps) {
   const navigate = useNavigate();
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const handlePredict = () => {
     onPortalSelect('mht-cet');
@@ -64,9 +66,9 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
 
       {/* ── Navbar ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-gradient-to-r from-[#4facfe] via-[#a78bfa] to-[#f093fb] backdrop-blur-2xl">
-        <div className="max-w-7xl mx-auto px-5 flex items-center h-[60px] gap-6">
-          <button onClick={() => navigate('/')} className="flex items-center gap-2.5 shrink-0">
-            <div className="size-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-[0_0_12px_rgba(90,135,239,0.5)]">
+        <div className="max-w-7xl mx-auto px-4 flex items-center h-[60px] gap-3">
+          <button onClick={() => navigate('/')} className="flex items-center gap-2 shrink-0">
+            <div className="size-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center">
               <Sparkles className="size-3.5 text-white" />
             </div>
             <span className="text-sm font-bold tracking-tight text-white">Uniscout</span>
@@ -74,10 +76,10 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
 
           <div className="hidden md:flex items-center gap-0.5 flex-1">
             {[
-              { label: 'Home',       route: '/'           },
-              { label: 'Predictor',  route: '/mht-cet'    },
+              { label: 'Home',        route: '/'           },
+              { label: 'Predictor',   route: '/mht-cet'    },
               { label: 'Form Filling',route: '/smart-form' },
-              { label: 'Compare',    route: '/compare'    },
+              { label: 'Compare',     route: '/compare'    },
             ].map(item => (
               <button key={item.label} onClick={() => navigate(item.route)}
                 className="px-3.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-800 hover:text-slate-900 hover:bg-black/10 transition-all">
@@ -86,7 +88,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
             ))}
           </div>
 
-          <div className="flex items-center gap-3 ml-auto">
+          <div className="flex items-center gap-2 ml-auto">
             <button className="size-8 rounded-lg hover:bg-black/10 flex items-center justify-center transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" className="size-4" fill="none" viewBox="0 0 24 24" stroke="#ffffff" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
             </button>
@@ -95,10 +97,35 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               <Brain className="size-3.5" />
               Predict Now
             </button>
+            {/* Hamburger — mobile only */}
+            <button onClick={() => setMobileMenu(o => !o)} className="md:hidden size-8 rounded-lg flex items-center justify-center hover:bg-black/10 transition-colors">
+              {mobileMenu
+                ? <svg xmlns="http://www.w3.org/2000/svg" className="size-5" fill="none" viewBox="0 0 24 24" stroke="#ffffff" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                : <svg xmlns="http://www.w3.org/2000/svg" className="size-5" fill="none" viewBox="0 0 24 24" stroke="#ffffff" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              }
+            </button>
           </div>
         </div>
       </nav>
 
+      {/* Mobile menu dropdown */}
+      {mobileMenu && (
+        <div className="fixed top-[60px] left-0 right-0 z-40 bg-gradient-to-b from-[#4facfe] to-[#a78bfa] border-b border-white/20 shadow-xl md:hidden">
+          <div className="flex flex-col px-4 py-3 gap-1">
+            {[
+              { label: 'Home',        route: '/'           },
+              { label: 'Predictor',   route: '/mht-cet'    },
+              { label: 'Form Filling',route: '/smart-form' },
+              { label: 'Compare',     route: '/compare'    },
+            ].map(item => (
+              <button key={item.label} onClick={() => { navigate(item.route); setMobileMenu(false); }}
+                className="px-4 py-3 rounded-xl text-left text-[14px] font-semibold text-slate-900 hover:bg-black/10 transition-all">
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="pt-[60px]">
         {/* ── Hero ── */}
         <section className="relative min-h-[calc(100vh-60px)] flex items-start justify-center overflow-hidden pt-8">
@@ -116,16 +143,16 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               <span className="text-xs">AI-Powered Admissions Intelligence</span>
             </div>
 
-            <h1 className="text-[28px] sm:text-[56px] md:text-[100px] font-black tracking-tight leading-none mb-4 select-none w-full">
-              <span className="relative inline-flex items-center gap-1.5 md:gap-4 justify-center">
-                <GraduationCap className="w-7 h-7 sm:w-12 sm:h-12 md:w-20 md:h-20 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)] shrink-0" />
+            <h1 className="text-[32px] sm:text-[56px] md:text-[100px] font-black tracking-tight leading-none mb-4 select-none w-full text-center">
+              <span className="inline-flex items-center gap-2 md:gap-4 justify-center">
+                <GraduationCap className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)] shrink-0" />
                 <span
-                  className="bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent"
+                  className="bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent relative"
                   style={{ filter: 'drop-shadow(0 0 24px rgba(109,213,250,0.6)) drop-shadow(0 0 48px rgba(167,139,250,0.4))' }}
                 >
                   UNISCOUT
+                  <Sparkles className="absolute -top-2 -right-6 w-4 h-4 md:w-7 md:h-7 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)]" />
                 </span>
-                <Sparkles className="absolute -top-2 left-[55%] w-4 h-4 md:w-7 md:h-7 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)]" />
               </span>
             </h1>
 
