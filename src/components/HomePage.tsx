@@ -110,30 +110,30 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.4) 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-5 py-8 flex flex-col items-center text-center">
-            <div className="mb-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/[0.08] text-violet-300 text-xs font-medium">
-              <Sparkles className="size-3" />
-              AI-Powered Admissions Intelligence
+          <div className="relative max-w-7xl mx-auto px-4 py-8 flex flex-col items-center text-center w-full overflow-hidden">
+            <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/[0.08] text-violet-300 text-xs font-medium">
+              <Sparkles className="size-3 shrink-0" />
+              <span className="text-xs">AI-Powered Admissions Intelligence</span>
             </div>
 
-            <h1 className="text-[72px] md:text-[100px] font-black tracking-tight leading-none mb-4 select-none">
-              <span className="relative inline-flex items-center gap-4">
-                <GraduationCap className="w-16 h-16 md:w-20 md:h-20 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)]" />
+            <h1 className="text-[36px] sm:text-[56px] md:text-[100px] font-black tracking-tight leading-none mb-4 select-none w-full">
+              <span className="relative inline-flex items-center gap-2 md:gap-4 justify-center flex-wrap">
+                <GraduationCap className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)] shrink-0" />
                 <span
                   className="bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent"
                   style={{ filter: 'drop-shadow(0 0 24px rgba(109,213,250,0.6)) drop-shadow(0 0 48px rgba(167,139,250,0.4))' }}
                 >
                   UNISCOUT
                 </span>
-                <Sparkles className="absolute -top-4 left-[52%] w-7 h-7 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)]" />
+                <Sparkles className="absolute -top-2 left-[55%] w-4 h-4 sm:w-5 sm:h-5 md:w-7 md:h-7 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)]" />
               </span>
             </h1>
 
-            <h3 className="text-xl md:text-2xl font-semibold mb-6 bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent">
+            <h3 className="text-sm sm:text-base md:text-2xl font-semibold mb-4 bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent">
               Sponsored by A.G.O
             </h3>
 
-            <h2 className="text-[42px] md:text-[60px] font-semibold tracking-[-0.03em] leading-[1.05] mb-6 max-w-4xl">
+            <h2 className="text-[24px] sm:text-[36px] md:text-[60px] font-semibold tracking-[-0.02em] leading-[1.15] mb-5 w-full px-2">
               Predict Your Admission.
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-violet-400 to-blue-400">
@@ -141,7 +141,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               </span>
             </h2>
 
-            <p className="text-base md:text-lg text-muted-foreground max-w-xl mb-12 leading-relaxed">
+            <p className="text-sm md:text-lg text-muted-foreground w-full max-w-xl mb-8 leading-relaxed px-2">
               Uniscout analyzes years of entrance exam cutoff data to predict your exact admission probability
               across 386 colleges. Stop guessing. Start planning.
             </p>
