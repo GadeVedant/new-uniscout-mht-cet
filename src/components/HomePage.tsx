@@ -128,29 +128,27 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
       )}
       <div className="pt-[60px]">
         {/* ── Hero ── */}
-        <section className="relative min-h-[calc(100vh-60px)] flex items-start justify-center overflow-hidden pt-8">
+        <section className="relative min-h-[calc(100vh-60px)] flex items-center justify-center overflow-hidden px-4">
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-blue-600/[0.12] rounded-full blur-[140px]" />
-            <div className="absolute top-[30%] left-[20%] w-[500px] h-[500px] bg-violet-600/[0.09] rounded-full blur-[120px]" />
-            <div className="absolute top-[40%] right-[15%] w-[400px] h-[400px] bg-indigo-600/[0.08] rounded-full blur-[100px]" />
             <div className="absolute inset-0 opacity-[0.018]"
               style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.4) 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-4 py-8 flex flex-col items-center text-center w-full overflow-hidden">
-            <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/[0.08] text-violet-300 text-xs font-medium">
+          <div className="relative w-full max-w-sm sm:max-w-lg mx-auto py-8 flex flex-col items-center text-center gap-0">
+
+            {/* Badge */}
+            <div className="mb-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/[0.08] text-violet-300 text-[11px] font-medium">
               <Sparkles className="size-3 shrink-0" />
-              <span className="text-xs">AI-Powered Admissions Intelligence</span>
+              <span>AI-Powered Admissions Intelligence</span>
             </div>
 
-            {/* Sparkle above title */}
-            <div className="flex justify-center mb-1">
-              <Sparkles className="w-7 h-7 md:w-9 md:h-9 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)]" />
-            </div>
+            {/* Sparkle icon */}
+            <Sparkles className="w-7 h-7 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)] mb-1" />
 
-            <h1 className="text-[32px] sm:text-[56px] md:text-[100px] font-black tracking-tight leading-none mb-4 select-none w-full text-center">
-              <span className="inline-flex items-center gap-2 md:gap-4 justify-center">
-                <GraduationCap className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)] shrink-0" />
+            {/* UNISCOUT title */}
+            <h1 className="text-[42px] sm:text-[60px] md:text-[80px] font-black tracking-tight leading-none select-none w-full text-center mb-0.5">
+              <span className="inline-flex items-center gap-2 justify-center">
+                <GraduationCap className="w-9 h-9 sm:w-12 sm:h-12 md:w-16 md:h-16 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)] shrink-0" />
                 <span
                   className="bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent"
                   style={{ filter: 'drop-shadow(0 0 24px rgba(109,213,250,0.6)) drop-shadow(0 0 48px rgba(167,139,250,0.4))' }}
@@ -160,11 +158,13 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               </span>
             </h1>
 
-            <h3 className="text-sm sm:text-base md:text-2xl font-semibold mb-4 bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent">
+            {/* Sponsored — directly under title, minimal gap */}
+            <p className="text-[11px] sm:text-xs font-semibold mb-4 bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent">
               Sponsored by A.G.O
-            </h3>
+            </p>
 
-            <h2 className="text-[24px] sm:text-[36px] md:text-[60px] font-semibold tracking-[-0.02em] leading-[1.15] mb-5 w-full px-2">
+            {/* Main heading */}
+            <h2 className="text-[20px] sm:text-[28px] md:text-[40px] font-semibold tracking-[-0.02em] leading-[1.25] mb-3 w-full">
               Predict Your Admission.
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-violet-400 to-blue-400">
@@ -172,23 +172,25 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               </span>
             </h2>
 
-            <p className="text-sm md:text-lg text-muted-foreground w-full max-w-xl mb-8 leading-relaxed px-2">
+            {/* Description */}
+            <p className="text-[13px] sm:text-sm text-muted-foreground w-full mb-6 leading-relaxed">
               Uniscout analyzes years of entrance exam cutoff data to predict your exact admission probability
               across 386 colleges. Stop guessing. Start planning.
             </p>
 
             {/* Prediction card */}
-            <div className="w-full max-w-[580px] px-2">
-              <div className="bg-card/70 backdrop-blur-2xl border border-white/[0.09] rounded-2xl p-4 md:p-6 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
+            <div className="w-full">
+              <div className="bg-card/70 backdrop-blur-2xl border border-white/[0.09] rounded-2xl p-4 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
                 <button onClick={handlePredict}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 group shadow-[0_4px_24px_rgba(90,135,239,0.4)]">
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold text-[13px] sm:text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 group shadow-[0_4px_24px_rgba(90,135,239,0.4)]">
                   <Brain className="size-4 shrink-0" />
                   <span>Predict My Admissions</span>
                   <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform shrink-0" />
                 </button>
-                <p className="text-center text-xs text-muted-foreground/60 mt-3">Free · No signup required · Instant results</p>
+                <p className="text-center text-[11px] text-muted-foreground/60 mt-3">Free · No signup required · Instant results</p>
               </div>
             </div>
+
           </div>
         </section>
 
