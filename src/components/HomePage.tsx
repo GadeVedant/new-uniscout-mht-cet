@@ -147,12 +147,12 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               <span className="inline-flex items-center gap-2 md:gap-4 justify-center">
                 <GraduationCap className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)] shrink-0" />
                 <span
-                  className="bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent relative"
+                  className="bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent"
                   style={{ filter: 'drop-shadow(0 0 24px rgba(109,213,250,0.6)) drop-shadow(0 0 48px rgba(167,139,250,0.4))' }}
                 >
                   UNISCOUT
-                  <Sparkles className="absolute -top-2 -right-6 w-4 h-4 md:w-7 md:h-7 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)]" />
                 </span>
+                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)] shrink-0" />
               </span>
             </h1>
 
