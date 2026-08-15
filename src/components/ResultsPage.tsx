@@ -191,9 +191,9 @@ export function ResultsPage({
   };
 
   return (
-    <div className="w-full flex-1 flex flex-col items-center">
+    <div className="w-full flex-1 flex flex-col items-center pt-[60px]">
       {/* Sticky sub-header */}
-      <header className="w-full sticky top-0 z-40 border-b border-white/[0.06] bg-card/60 backdrop-blur-xl">
+      <header className="w-full sticky top-[60px] z-40 border-b border-white/[0.06] bg-card/60 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-5 py-4">
           <div className="flex items-center justify-between flex-wrap gap-4">
             {/* Left — Back button */}
