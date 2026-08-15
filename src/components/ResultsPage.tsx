@@ -195,57 +195,41 @@ export function ResultsPage({
       {/* Sticky sub-header */}
       <header className="w-full sticky top-[60px] z-40 border-b border-white/[0.06] bg-card/60 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-5 py-4">
-          <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="flex items-center justify-between flex-wrap gap-3">
             {/* Left — Back button */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 flex-wrap">
               <button
                 onClick={() => navigate('/mht-cet/engineering')}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30 text-[13px] font-medium transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30 text-[12px] font-medium transition-colors"
               >
-                <ArrowLeft className="size-4" />
-                Back to Portal
+                <ArrowLeft className="size-3.5" />
+                Back
               </button>
               <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="size-2 rounded-full bg-emerald-500 shadow-[0_0_6px_2px_rgba(34,197,94,0.3)]" />
-                  <span className="text-xs text-muted-foreground font-mono tracking-wide">
-                    Admission Predictions · {lastQuery?.category ?? 'OPEN'} Category
-                  </span>
-                </div>
-                <h1 className="text-lg font-semibold text-foreground">
+                <h1 className="text-sm md:text-lg font-semibold text-foreground">
                   Admission Predictions
                   {lastQuery?.percentile && (
-                    <span className="ml-3 text-sm font-normal text-muted-foreground">
-                      Percentile: <span className="text-primary font-mono font-medium">{lastQuery.percentile}</span>
+                    <span className="ml-2 text-xs md:text-sm font-normal text-muted-foreground">
+                      · <span className="text-primary font-mono font-medium">{lastQuery.percentile}</span>%
                     </span>
                   )}
                 </h1>
               </div>
             </div>
 
-            {/* Right — Compare + Download + Edit */}
-            <div className="flex items-center gap-2.5">
+            {/* Right — Compare + Download */}
+            <div className="flex items-center gap-2">
               {comparisonSelection.length > 0 && (
-                <button
-                  onClick={() => navigate('/compare')}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary/15 border border-primary/25 text-primary text-[13px] font-medium hover:bg-primary/25 transition-colors"
-                >
-                  <GitCompare className="size-4" />
-                  Compare ({comparisonSelection.length})
+                <button onClick={() => navigate('/compare')}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/15 border border-primary/25 text-primary text-[12px] font-medium hover:bg-primary/25 transition-colors">
+                  <GitCompare className="size-3.5" />
+                  <span className="hidden sm:inline">Compare </span>({comparisonSelection.length})
                 </button>
               )}
-              <button
-                onClick={handleDownloadPDF}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/25 text-[13px] font-medium transition-colors"
-              >
-                <Download className="size-4" />
-                Download PDF
-              </button>
-              <button
-                onClick={() => navigate('/')}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-muted-foreground hover:text-foreground text-[13px] font-medium transition-colors"
-              >
-                ✏️ Edit Search
+              <button onClick={handleDownloadPDF}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/25 text-[12px] font-medium transition-colors">
+                <Download className="size-3.5" />
+                <span className="hidden sm:inline">Download </span>PDF
               </button>
             </div>
           </div>
