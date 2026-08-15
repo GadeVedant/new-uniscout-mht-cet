@@ -544,15 +544,15 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
         ])}
       />
       {/* Sticky header */}
-      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-background/80 backdrop-blur-xl px-5 py-3">
+      <header className="sticky top-[60px] z-40 border-b border-white/[0.06] bg-background px-5 py-3">
         <div className="max-w-7xl mx-auto flex items-center gap-3">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-1.5 text-[13px] text-muted-foreground hover:text-foreground transition-colors group"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30 text-[13px] font-medium transition-colors"
             aria-label="Back to results"
           >
-            <ChevronRight className="size-4 rotate-180 group-hover:-translate-x-0.5 transition-transform" />
-            Back to Results
+            <ChevronRight className="size-4 rotate-180" />
+            Back to College List
           </button>
         </div>
       </header>
