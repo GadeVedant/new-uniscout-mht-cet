@@ -69,7 +69,7 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
             <div className="size-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-[0_0_12px_rgba(90,135,239,0.5)]">
               <Sparkles className="size-3.5 text-white" />
             </div>
-            <span className="text-sm font-semibold tracking-tight">Uniscout</span>
+            <span className="text-sm font-bold tracking-tight text-white">Uniscout</span>
             <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white text-purple-700 border border-purple-300">BETA</span>
           </button>
 
