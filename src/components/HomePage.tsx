@@ -143,6 +143,11 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               <span className="text-xs">AI-Powered Admissions Intelligence</span>
             </div>
 
+            {/* Sparkle above title */}
+            <div className="flex justify-center mb-1">
+              <Sparkles className="w-7 h-7 md:w-9 md:h-9 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)]" />
+            </div>
+
             <h1 className="text-[32px] sm:text-[56px] md:text-[100px] font-black tracking-tight leading-none mb-4 select-none w-full text-center">
               <span className="inline-flex items-center gap-2 md:gap-4 justify-center">
                 <GraduationCap className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20 text-cyan-400 drop-shadow-[0_0_18px_rgba(6,182,212,0.8)] shrink-0" />
@@ -152,7 +157,6 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
                 >
                   UNISCOUT
                 </span>
-                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.9)] shrink-0" />
               </span>
             </h1>
 
