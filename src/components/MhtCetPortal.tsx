@@ -239,12 +239,12 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
             <ArrowLeft className="w-4 h-4" /> Back
           </motion.button>
 
-          <div className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
-            <span className="text-slate-400 text-xs font-medium">Progress</span>
-            <div className="w-28 h-1.5 bg-white/10 rounded-full overflow-hidden">
+          <div className="flex items-center gap-1.5 sm:gap-3 px-2 sm:px-4 py-1.5 sm:py-2 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
+            <span className="text-slate-400 text-[10px] sm:text-xs font-medium">Progress</span>
+            <div className="w-16 sm:w-28 h-1.5 bg-white/10 rounded-full overflow-hidden">
               <motion.div className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" initial={{ width: 0 }} animate={{ width: `${progress}%` }} transition={{ duration: 0.4 }} />
             </div>
-            <span className="text-cyan-400 text-xs font-bold w-6">{Math.round(progress)}%</span>
+            <span className="text-cyan-400 text-[10px] sm:text-xs font-bold w-5 sm:w-6">{Math.round(progress)}%</span>
           </div>
         </div>
 
