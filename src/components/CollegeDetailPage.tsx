@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import {
   ChevronRight, MapPin, Building2, GraduationCap,
   DollarSign, Users, Award, TrendingUp, AlertCircle,
@@ -468,7 +468,12 @@ function CollegeFAQSection({ college }: { college: CollegeRecommendation }) {
 export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const college = colleges.find((c) => c.id === id);
+
+  // Where to go back: prefer the referrer stored in location.state.from,
+  // fall back to /results (handles direct URL access and Smart Form navigation).
+  const backTarget: string = (location.state as { from?: string } | null)?.from ?? '/results';
 
   const [cutoffHistory, setCutoffHistory] = useState<CutoffHistoryEntry[]>([]);
   const [cutoffLoading, setCutoffLoading] = useState(true);
@@ -546,7 +551,7 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
       {/* Back button — not sticky, scrolls away */}
       <div className="px-5 pt-4 pb-2 max-w-7xl mx-auto">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(backTarget)}
           className="flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30 text-[13px] font-medium transition-colors"
           aria-label="Back to results"
         >

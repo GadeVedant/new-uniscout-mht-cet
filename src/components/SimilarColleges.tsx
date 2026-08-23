@@ -40,7 +40,7 @@ export function SimilarColleges({ current, all }: SimilarCollegesProps) {
               href={`/college/${college.id}`}
               onClick={(e) => {
                 e.preventDefault();
-                navigate(`/college/${college.id}`);
+                navigate(`/college/${college.id}`, { state: { from: `/college/${current.id}` } });
               }}
               className="flex flex-col justify-between h-full p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
             >

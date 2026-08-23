@@ -110,7 +110,7 @@ The frontend also has a client-side fallback: `SmartFormPage.tsx` retries failed
 - **LightGBM** model (3 quantile regressors: P10, P50, P90)
 - **SHAP** for explainability (top factors)
 - Trained on 4 years of CAP data
-- Deployed on **Railway**
+- Deployed on **Render** (Web Service, account: gadevedant04@gmail.com)
 
 ---
 
@@ -123,12 +123,12 @@ Browser (React)
 Render Static Site (uniscout.co.in)
     │  REST API calls
     ▼
-Render Web Service (api.uniscout.co.in)
+Render Web Service (api.uniscout.co.in)  [account: nkgadevedant@gmail.com]
     │  Node.js + Express
     │  Loads CSV data on startup
     │  ML prediction calls
     ▼
-Railway (ML Service)
+Render Web Service (uniscout-ml-226x.onrender.com)  [account: gadevedant04@gmail.com]
     Python + FastAPI + LightGBM
 ```
 

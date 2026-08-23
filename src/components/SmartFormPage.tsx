@@ -5,7 +5,7 @@
  */
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Loader2, AlertCircle, DollarSign } from 'lucide-react';
+import { ArrowLeft, Loader2, AlertCircle, DollarSign, ServerCrash } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { api, FormFillingRequest, FormFillingResponse } from '../services/api';
 import { Slider } from './ui/slider';
@@ -127,6 +127,7 @@ export function SmartFormPage() {
   const [budgetWarning, setBudgetWarning] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showWarmupBanner, setShowWarmupBanner] = useState(false);
 
   // Inline validation errors
   const [percentileError, setPercentileError] = useState<string | null>(null);
@@ -163,6 +164,11 @@ export function SmartFormPage() {
   // ── District toggle with max-5 guard ─────────────────────────────────────
   const handleDistrictToggle = (district: string) => {
     setForm((p) => {
+      // If 'ALL' is currently selected, deselect it and select just this district
+      if (p.preferredDistricts.includes('ALL')) {
+        setDistrictError(null);
+        return { ...p, preferredDistricts: [district] };
+      }
       if (p.preferredDistricts.includes(district)) {
         setDistrictError(null);
         return { ...p, preferredDistricts: p.preferredDistricts.filter((d) => d !== district) };
@@ -197,6 +203,9 @@ export function SmartFormPage() {
     setIsLoading(true);
     setError(null);
 
+    // Show warm-up banner if server takes > 5s (Render free tier cold start)
+    const warmupTimer = setTimeout(() => setShowWarmupBanner(true), 5000);
+
     const request: FormFillingRequest = {
       percentile: pct,
       category: form.category,
@@ -224,6 +233,8 @@ export function SmartFormPage() {
           setMlUnavailable(response.metadata?.ml_unavailable ?? false);
           setBudgetWarning(response.metadata?.warning != null);
           setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 100);
+          clearTimeout(warmupTimer);
+          setShowWarmupBanner(false);
           setIsLoading(false);
           return;
         } else {
@@ -235,6 +246,8 @@ export function SmartFormPage() {
       }
     }
     setError(lastError?.message ?? 'Failed to generate list');
+    clearTimeout(warmupTimer);
+    setShowWarmupBanner(false);
     setIsLoading(false);
   };
 
@@ -498,6 +511,21 @@ export function SmartFormPage() {
                 aria-label="Maximum annual college fees in lakhs"
               />
             </div>
+
+            {/* ── Warm-up banner ── */}
+            <AnimatePresence>
+              {showWarmupBanner && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3 flex items-center gap-3 text-amber-300 text-sm"
+                >
+                  <ServerCrash className="w-4 h-4 shrink-0" />
+                  <span>Server is warming up — this takes ~30 seconds on first request. Please wait...</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* ── Error ── */}
             <AnimatePresence>

@@ -364,7 +364,13 @@ function ResultsContent({
           ))}
         </div>
         <div>
-          <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Admission Chance</div>
+          <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5 flex items-center gap-1">
+            Admission Chance
+            <span
+              title="Safe = >80% probability · Likely = 50–80% · Moderate = 20–50% · Risky = <20%"
+              className="inline-flex items-center justify-center size-3.5 rounded-full bg-white/10 text-[9px] text-muted-foreground cursor-help hover:bg-white/20 transition-colors"
+            >?</span>
+          </div>
           {['all', ...bandsAvailable].map((band: string) => (
             <button key={band} onClick={() => { setFilterBand(band); setMobileFiltersOpen(false); }}
               className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 capitalize ${
@@ -467,7 +473,7 @@ function ResultsContent({
                 delay={Math.min(i * 0.03, 0.2)}
                 isExpanded={expandedCard === college.id}
                 onToggle={() => setExpandedCard(expandedCard === college.id ? null : college.id)}
-                onViewDetails={() => navigate(`/college/${college.id}`)}
+                onViewDetails={() => navigate(`/college/${college.id}`, { state: { from: '/results' } })}
                 isCompared={comparisonSelection.some((c: any) => c.id === college.id)}
                 onCompareToggle={(checked) => handleCompareToggle(college, checked)}
                 compareDisabled={comparisonSelection.length >= 3}
@@ -478,7 +484,19 @@ function ResultsContent({
           <div className="p-16 rounded-2xl bg-card border border-white/[0.07] text-center">
             <Filter className="size-12 text-muted-foreground/30 mx-auto mb-4" />
             <h3 className="text-base font-semibold text-foreground mb-2">No matches found</h3>
-            <p className="text-sm text-muted-foreground">Try adjusting your filters.</p>
+            {filterBand !== 'all' ? (
+              <p className="text-sm text-muted-foreground mb-4">No colleges in the <strong>{filterBand}</strong> band. Try a different filter.</p>
+            ) : (
+              <div className="text-sm text-muted-foreground space-y-1 mb-4">
+                <p>No colleges match your current search. Try:</p>
+                <ul className="text-left inline-block mt-2 space-y-1">
+                  <li className="flex items-center gap-2"><span className="text-primary">→</span> Select <strong>All Maharashtra</strong> for location</li>
+                  <li className="flex items-center gap-2"><span className="text-primary">→</span> Choose a broader branch (e.g. Computer Engineering)</li>
+                  <li className="flex items-center gap-2"><span className="text-primary">→</span> Try a different CAP Round</li>
+                </ul>
+              </div>
+            )}
+            <button onClick={() => setFilterBand('all')} className="text-xs text-primary hover:underline">Clear filters</button>
           </div>
         )}
       </div>
