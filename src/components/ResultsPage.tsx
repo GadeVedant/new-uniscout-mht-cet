@@ -214,6 +214,36 @@ export function ResultsPage({
                     </span>
                   )}
                 </h1>
+                {/* Form fill summary */}
+                {lastQuery && (
+                  <div className="flex items-center gap-1.5 flex-wrap mt-1">
+                    {lastQuery.category && (
+                      <span className="px-2 py-0.5 rounded-full bg-violet-500/15 border border-violet-500/25 text-violet-300 text-[11px] font-medium">
+                        {lastQuery.category}
+                      </span>
+                    )}
+                    {lastQuery.branchPreference && (
+                      <span className="px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/25 text-cyan-300 text-[11px] font-medium capitalize">
+                        {lastQuery.branchPreference}
+                      </span>
+                    )}
+                    {lastQuery.capRound && (
+                      <span className="px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-300 text-[11px] font-medium">
+                        Round {lastQuery.capRound}
+                      </span>
+                    )}
+                    {lastQuery.location && !lastQuery.locationFallback && (
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-300 text-[11px] font-medium">
+                        {lastQuery.location}
+                      </span>
+                    )}
+                    {lastQuery.year && (
+                      <span className="px-2 py-0.5 rounded-full bg-slate-500/15 border border-slate-500/25 text-slate-400 text-[11px] font-medium">
+                        {lastQuery.year}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 

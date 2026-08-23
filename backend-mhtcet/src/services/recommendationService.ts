@@ -248,16 +248,16 @@ class RecommendationService {
     rec.confidenceLabel = result.confidence_label;
     rec.topFactors = result.top_factors;
 
-    // Rule-based band from percentile difference — always reliable
-    const diff = rec.percentileDifference ?? 0;
-    const ruleBand: 'Safe' | 'Likely' | 'Moderate' | 'Risky' =
-      diff >= 5 ? 'Safe' : diff >= 2 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
-
     const mlBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
-    const bandRank: Record<string, number> = { Safe: 3, Likely: 2, Moderate: 1, Risky: 0 };
 
-    // Use whichever band is MORE optimistic — never let ML downgrade a good rule-based result
-    rec.admissionBand = (bandRank[mlBand] ?? 0) > (bandRank[ruleBand] ?? 0) ? mlBand : ruleBand;
+    // Trust the ML band when it's a real prediction (not a fallback).
+    // Only fall back to rule-based if ML returned a fallback_reason (i.e. no training data).
+    if (result.fallback_reason) {
+      const diff = rec.percentileDifference ?? 0;
+      rec.admissionBand = diff >= 10 ? 'Safe' : diff >= 5 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
+    } else {
+      rec.admissionBand = mlBand;
+    }
 
     // Sync admissionChance with final band
     if (rec.admissionBand === 'Safe' || rec.admissionBand === 'Likely') rec.admissionChance = 'High';
@@ -279,7 +279,7 @@ class RecommendationService {
   // ---------------------------------------------------------------------------
   private buildRecommendation(college: CollegeData, percentile: number): CollegeRecommendation {
     const diff = parseFloat((percentile - college.cutoffPercentile).toFixed(2));
-    const chance: 'High' | 'Medium' | 'Low' = diff >= 3 ? 'High' : diff >= 0 ? 'Medium' : 'Low';
+    const chance: 'High' | 'Medium' | 'Low' = diff >= 10 ? 'High' : diff >= 0 ? 'Medium' : 'Low';
     return {
       id: `${college.collegeCode}-${college.branchCode}-${college.category}`,
       name: college.collegeName,

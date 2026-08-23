@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Loader2, AlertCircle, X, Sparkles, Search, ChevronDown, Percent, CalendarDays, MapPin, BookMarked, BookOpen } from 'lucide-react';
+import { ArrowLeft, Loader2, AlertCircle, X, Sparkles, Search, ChevronDown, Percent, MapPin, BookMarked, BookOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { api, CollegeRecommendation } from '../services/api';
 import { useSEO } from '../seo/useSEO';
@@ -31,8 +31,6 @@ const CAP_ROUNDS = [
   { label: 'Round II',  value: 'II'  },
   { label: 'Round III', value: 'III' },
 ];
-
-const ACADEMIC_YEARS = ['2025', '2024', '2023'];
 
 const DISTRICTS = [
   'All Maharashtra',
@@ -266,27 +264,16 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
         <motion.div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
           <form onSubmit={handlePredict} className="space-y-6">
 
-            {/* Row 1: Percentile + Academic Year */}
-            <div className="grid md:grid-cols-2 gap-5">
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                  <Percent className="w-4 h-4 text-slate-400" /> Enter Your Percentile
-                </label>
-                <input type="number" min="0" max="100" step="0.01" required
-                  value={formData.percentile} onChange={e => setFormData(p => ({ ...p, percentile: e.target.value }))}
-                  placeholder="e.g. 95.5" disabled={isLoading}
-                  className="w-full bg-indigo-950/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/60 transition-colors"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                  <CalendarDays className="w-4 h-4 text-slate-400" /> Academic Year
-                </label>
-                <select value={formData.year} onChange={e => setFormData(p => ({ ...p, year: e.target.value }))} disabled={isLoading}
-                  className="w-full bg-indigo-950/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-cyan-500/60 transition-colors appearance-none cursor-pointer">
-                  {ACADEMIC_YEARS.map(y => <option key={y} value={y} className="bg-slate-900">{y}</option>)}
-                </select>
-              </div>
+            {/* Row 1: Percentile */}
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                <Percent className="w-4 h-4 text-slate-400" /> Enter Your Percentile
+              </label>
+              <input type="number" min="0" max="100" step="0.01" required
+                value={formData.percentile} onChange={e => setFormData(p => ({ ...p, percentile: e.target.value }))}
+                placeholder="e.g. 95.5" disabled={isLoading}
+                className="w-full bg-indigo-950/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/60 transition-colors"
+              />
             </div>
 
             {/* Row 2: CAP Round + Category */}
