@@ -75,6 +75,21 @@ UniScout solves all of this in one place.
 
 ---
 
+## Infrastructure & Keep-Alive
+
+Render's free tier spins down services after 15 minutes of inactivity. Both the backend and ML service are kept warm via UptimeRobot cron jobs that ping their health endpoints every 5 minutes.
+
+| Service | Render Account | UptimeRobot Account | Health URL |
+|---------|---------------|---------------------|------------|
+| Backend (Node.js) | nkgadevedant@gmail.com | nkgadevedant@gmail.com | `https://uniscout-backend.onrender.com/health` |
+| ML Service (Python/FastAPI) | gadevedant04@gmail.com | gadevedant04@gmail.com | `https://uniscout-ml-226x.onrender.com/health` |
+
+> **Note:** UptimeRobot sends HEAD requests by default. The ML service `/health` endpoint was updated to accept both GET and HEAD (`@app.api_route("/health", methods=["GET", "HEAD"])`) to prevent 405 errors.
+
+The frontend also has a client-side fallback: `SmartFormPage.tsx` retries failed requests up to 3 times with a 3-second wait between attempts, handling the case where the server wakes up mid-request.
+
+---
+
 ## Technology Stack
 
 ### Frontend
