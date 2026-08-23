@@ -63,7 +63,10 @@ export function MhtCetSelector() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="p-8 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => navigate('/mht-cet/select')}
+              className="p-8 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col cursor-pointer hover:border-cyan-500/40 transition-all"
             >
               <Rocket className="w-9 h-9 text-white/80 mb-4" />
               <h2 className="text-2xl font-bold text-white mb-1">MHT CET Portal</h2>
@@ -100,7 +103,7 @@ export function MhtCetSelector() {
               </div>
 
               <button
-                onClick={() => navigate('/mht-cet/select')}
+                onClick={(e) => { e.stopPropagation(); navigate('/mht-cet/select'); }}
                 className="mt-auto w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold transition-all shadow-lg shadow-cyan-900/30"
               >
                 Explore Now →
