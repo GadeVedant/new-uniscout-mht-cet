@@ -92,7 +92,7 @@ export function PreferenceEntryCard({ entry, tierAccent }: PreferenceEntryCardPr
         {/* View Details button */}
         {entry.collegeId && (
           <button
-            onClick={() => navigate(`/college/${entry.collegeId}`)}
+            onClick={() => navigate(`/college/${entry.collegeId}`, { state: { from: '/smart-form' } })}
             className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors underline underline-offset-2"
           >
             View Full Details →

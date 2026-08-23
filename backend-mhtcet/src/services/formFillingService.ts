@@ -27,6 +27,7 @@ const BRANCH_ALIASES: Record<string, string[]> = {
   'electrical engineering': ['electrical engineering', 'electrical engg'],
   'artificial intelligence and data science': ['artificial intelligence and data science', 'artificial intelligence & data science', 'ai and data science', 'ai & data science', 'aids', 'artificial intelligence (ai) and data science'],
   'artificial intelligence and machine learning': ['artificial intelligence and machine learning', 'artificial intelligence & machine learning', 'ai and machine learning', 'ai & machine learning', 'aiml'],
+  'artificial intelligence': ['artificial intelligence and data science', 'artificial intelligence & data science', 'ai and data science', 'ai & data science', 'aids', 'artificial intelligence (ai) and data science', 'artificial intelligence and machine learning', 'artificial intelligence & machine learning', 'ai and machine learning', 'ai & machine learning', 'aiml'],
 };
 
 function branchMatches(preference: string, collegeBranch: string): boolean {
@@ -181,14 +182,14 @@ class FormFillingService {
         recs[i].confidenceLabel = result.confidence_label;
         recs[i].topFactors = result.top_factors;
 
-        // Rule-based band — always reliable
-        const diff = recs[i].percentileDifference ?? 0;
-        const ruleBand: 'Safe' | 'Likely' | 'Moderate' | 'Risky' =
-          diff >= 5 ? 'Safe' : diff >= 2 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
-        const mlBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
-        const bandRank: Record<string, number> = { Safe: 3, Likely: 2, Moderate: 1, Risky: 0 };
-        // Use whichever is more optimistic
-        recs[i].admissionBand = (bandRank[mlBand] ?? 0) > (bandRank[ruleBand] ?? 0) ? mlBand : ruleBand;
+        // Trust the ML band when it's a real prediction (not a fallback).
+        // Only fall back to rule-based if ML returned a fallback_reason (no training data).
+        if (result.fallback_reason) {
+          const diff = recs[i].percentileDifference ?? 0;
+          recs[i].admissionBand = diff >= 10 ? 'Safe' : diff >= 5 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
+        } else {
+          recs[i].admissionBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
+        }
       });
     } catch {
       mlUnavailable = true;

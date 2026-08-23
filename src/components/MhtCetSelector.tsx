@@ -1,9 +1,30 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Rocket, FlaskConical, BookOpen, Sparkles, Users, Building2, TrendingUp } from 'lucide-react';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 export function MhtCetSelector() {
   const navigate = useNavigate();
+  const [stats, setStats] = useState({ colleges: '386+', records: '93K+', accuracy: '4 Yrs' });
+
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/health`)
+      .then(r => r.json())
+      .then(d => {
+        if (d?.stats) {
+          const colleges = d.stats.totalColleges ? `${d.stats.totalColleges}+` : '386+';
+          const records = d.stats.totalRecords
+            ? d.stats.totalRecords >= 1000
+              ? `${Math.round(d.stats.totalRecords / 1000)}K+`
+              : `${d.stats.totalRecords}+`
+            : '93K+';
+          setStats({ colleges, records, accuracy: '4 Yrs' });
+        }
+      })
+      .catch(() => {}); // silently keep defaults on error
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col relative z-10">
@@ -49,9 +70,9 @@ export function MhtCetSelector() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <StatBadge icon={<Users className="w-4 h-4 text-purple-400" />} value="50,000+" label="Students Helped" />
-              <StatBadge icon={<Building2 className="w-4 h-4 text-purple-400" />} value="200+" label="Top Colleges" />
-              <StatBadge icon={<TrendingUp className="w-4 h-4 text-purple-400" />} value="95%" label="Accuracy Rate" />
+              <StatBadge icon={<Users className="w-4 h-4 text-purple-400" />} value={stats.colleges} label="Colleges Indexed" />
+              <StatBadge icon={<Building2 className="w-4 h-4 text-purple-400" />} value={stats.records} label="Historical Records" />
+              <StatBadge icon={<TrendingUp className="w-4 h-4 text-purple-400" />} value={stats.accuracy} label="Cutoff History" />
             </motion.div>
           </motion.div>
 

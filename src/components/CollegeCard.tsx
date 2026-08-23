@@ -65,8 +65,11 @@ export function CollegeCard({
   const band = college.admissionBand ||
     (college.admissionChance === 'High' ? 'Safe' : college.admissionChance === 'Medium' ? 'Moderate' : 'Risky');
 
-  const probability = college.admissionProbability
-    ?? (band === 'Safe' ? 90 : band === 'Likely' ? 75 : band === 'Moderate' ? 60 : 35);
+  // Only show probability when ML returned a real value (not a 0-from-error fallback)
+  const hasMlProbability = college.admissionProbability != null && college.admissionProbability > 0;
+  const probability = hasMlProbability
+    ? college.admissionProbability!
+    : null;
 
   const renderTrend = () => {
     switch (college.cutoffTrend) {
@@ -136,7 +139,14 @@ export function CollegeCard({
                 </span>
               )}
             </div>
-            <ProbBar value={probability} category={band} />
+            {probability != null ? (
+              <ProbBar value={probability} category={band} />
+            ) : (
+              <div className="flex items-center gap-2.5">
+                <div className="flex-1 h-1.5 bg-white/[0.08] rounded-full" />
+                <span className="text-xs font-medium tabular-nums w-8 text-right text-muted-foreground/40">—</span>
+              </div>
+            )}
           </div>
 
           {/* Stats */}

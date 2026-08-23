@@ -33,11 +33,11 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
         {/* Back to Main Page button */}
         <div className="mb-6">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/results')}
             className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-sm font-semibold transition-colors shadow-lg shadow-blue-900/30"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Main Page
+            Back to Results
           </button>
         </div>
 

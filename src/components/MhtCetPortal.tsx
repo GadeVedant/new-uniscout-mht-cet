@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Loader2, AlertCircle, X, Sparkles, Search, ChevronDown, Percent, MapPin, BookMarked, BookOpen } from 'lucide-react';
+import { ArrowLeft, Loader2, AlertCircle, X, Sparkles, Search, ChevronDown, Percent, MapPin, BookMarked, BookOpen, ServerCrash } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { api, CollegeRecommendation } from '../services/api';
 import { useSEO } from '../seo/useSEO';
@@ -56,90 +56,199 @@ interface MultiSelectProps {
   searchable?: boolean;
 }
 
+// Detect if the user is on a small (mobile) screen
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return isMobile;
+}
+
 function MultiSelect({ placeholder, options, selected, onChange, max = 99, disabled, searchable }: MultiSelectProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
+  // Close dropdown on outside click (desktop only)
   useEffect(() => {
+    if (isMobile) return;
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
-  }, []);
+  }, [isMobile]);
+
+  // Prevent body scroll when mobile sheet is open
+  useEffect(() => {
+    if (isMobile && open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobile, open]);
 
   const filtered = searchable && query.trim()
     ? options.filter(o => o.label.toLowerCase().includes(query.toLowerCase()))
     : options;
 
-  const toggle = (val: string) => {
+  const toggle = useCallback((val: string) => {
     if (selected.includes(val)) onChange(selected.filter(v => v !== val));
     else if (selected.length < max) onChange([...selected, val]);
-  };
+  }, [selected, onChange, max]);
 
   const displayText = selected.length === 0
     ? placeholder
     : selected.map(v => options.find(o => o.value === v)?.label ?? v).join(', ');
 
-  return (
-    <div ref={ref} className="relative">
-      <div
-        onClick={() => !disabled && setOpen(o => !o)}
-        className={`flex items-center justify-between w-full bg-indigo-950/80 border border-white/10 rounded-xl px-4 py-3 cursor-pointer transition-all ${open ? 'border-cyan-500/60' : 'hover:border-white/25'} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
-      >
-        <span className={`text-sm truncate ${selected.length === 0 ? 'text-slate-500' : 'text-white'}`}>{displayText}</span>
-        <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 ml-2 transition-transform ${open ? 'rotate-180' : ''}`} />
-      </div>
-
-      {selected.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mt-2">
-          {selected.map(val => {
-            const label = options.find(o => o.value === val)?.label ?? val;
-            return (
-              <span key={val} className="flex items-center gap-1 px-2.5 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-full text-xs font-medium">
-                {label}
-                <button type="button" onClick={() => toggle(val)} disabled={disabled} className="hover:text-white ml-0.5">
-                  <X className="w-3 h-3" />
-                </button>
-              </span>
-            );
-          })}
+  // ── Shared list content ──────────────────────────────────────────────────
+  const ListContent = (
+    <>
+      {searchable && (
+        <div className="px-3 pt-2 pb-1 border-b border-white/10 bg-inherit">
+          <div className="flex items-center gap-2 bg-indigo-900/60 rounded-lg px-3 py-1.5">
+            <Search className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <input
+              autoFocus
+              type="text"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              placeholder="Search..."
+              className="flex-1 bg-transparent text-white text-sm outline-none placeholder:text-slate-500"
+              onClick={e => e.stopPropagation()}
+            />
+            {query && (
+              <button type="button" onClick={() => setQuery('')} className="text-slate-400 hover:text-white">
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
         </div>
       )}
+      {filtered.length === 0 && <div className="px-4 py-3 text-slate-500 text-sm">No results found</div>}
+      {filtered.map(opt => {
+        const isSel = selected.includes(opt.value);
+        const isDisabledOpt = !isSel && selected.length >= max;
+        return (
+          <div
+            key={opt.value}
+            onMouseDown={e => { if (!isMobile) { e.preventDefault(); if (!isDisabledOpt) toggle(opt.value); } }}
+            onClick={() => { if (isMobile && !isDisabledOpt) toggle(opt.value); }}
+            className={`px-4 py-3 text-sm flex items-center justify-between transition-colors select-none
+              ${isSel ? 'bg-cyan-500/20 text-cyan-300' : isDisabledOpt ? 'text-slate-600 cursor-not-allowed' : 'text-slate-300 hover:bg-white/10 cursor-pointer active:bg-white/20'}`}
+          >
+            <span>{opt.label}</span>
+            {isSel && <span className="text-cyan-400 text-xs ml-2 shrink-0">✓</span>}
+          </div>
+        );
+      })}
+    </>
+  );
 
+  // ── Trigger button ────────────────────────────────────────────────────────
+  const Trigger = (
+    <div
+      onClick={() => !disabled && setOpen(o => !o)}
+      className={`flex items-center justify-between w-full bg-indigo-950/80 border border-white/10 rounded-xl px-4 py-3 cursor-pointer transition-all
+        ${open && !isMobile ? 'border-cyan-500/60' : 'hover:border-white/25'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+    >
+      <span className={`text-sm truncate ${selected.length === 0 ? 'text-slate-500' : 'text-white'}`}>{displayText}</span>
+      <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 ml-2 transition-transform ${open && !isMobile ? 'rotate-180' : ''}`} />
+    </div>
+  );
+
+  // ── Selected chips ────────────────────────────────────────────────────────
+  const Chips = selected.length > 0 ? (
+    <div className="flex flex-wrap gap-1.5 mt-2">
+      {selected.map(val => {
+        const label = options.find(o => o.value === val)?.label ?? val;
+        return (
+          <span key={val} className="flex items-center gap-1 px-2.5 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-full text-xs font-medium">
+            {label}
+            <button type="button" onClick={() => toggle(val)} disabled={disabled} className="hover:text-white ml-0.5">
+              <X className="w-3 h-3" />
+            </button>
+          </span>
+        );
+      })}
+    </div>
+  ) : null;
+
+  // ── Mobile: bottom sheet ──────────────────────────────────────────────────
+  if (isMobile) {
+    return (
+      <div>
+        {Trigger}
+        {Chips}
+        <AnimatePresence>
+          {open && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                key="backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+                onClick={() => { setOpen(false); setQuery(''); }}
+              />
+              {/* Sheet */}
+              <motion.div
+                key="sheet"
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                exit={{ y: '100%' }}
+                transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                className="fixed bottom-0 left-0 right-0 z-50 bg-indigo-950 border-t border-white/10 rounded-t-2xl flex flex-col"
+                style={{ maxHeight: '80vh' }}
+              >
+                {/* Sheet header */}
+                <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 shrink-0">
+                  <span className="text-sm font-semibold text-white">
+                    {placeholder}
+                    {max < 99 && <span className="ml-2 text-xs text-slate-400">({selected.length}/{max})</span>}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => { setOpen(false); setQuery(''); }}
+                    className="px-4 py-1.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-semibold transition-colors"
+                  >
+                    Done
+                  </button>
+                </div>
+                {/* Scrollable list */}
+                <div className="overflow-y-auto flex-1">
+                  {ListContent}
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  }
+
+  // ── Desktop: dropdown ─────────────────────────────────────────────────────
+  return (
+    <div ref={ref} className="relative">
+      {Trigger}
+      {Chips}
       <AnimatePresence>
         {open && (
-          <motion.ul
+          <motion.div
             initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15 }}
             className="absolute z-50 mt-1 w-full max-h-56 overflow-y-auto bg-indigo-950 border border-white/15 rounded-xl shadow-2xl"
           >
-            {searchable && (
-              <li className="sticky top-0 bg-indigo-950 px-3 pt-2 pb-1 border-b border-white/10">
-                <div className="flex items-center gap-2 bg-indigo-900/60 rounded-lg px-3 py-1.5">
-                  <Search className="w-3.5 h-3.5 text-slate-400" />
-                  <input autoFocus type="text" value={query} onChange={e => setQuery(e.target.value)}
-                    placeholder="Search..." className="flex-1 bg-transparent text-white text-sm outline-none placeholder:text-slate-500"
-                    onClick={e => e.stopPropagation()} />
-                </div>
-              </li>
-            )}
-            {filtered.length === 0 && <li className="px-4 py-3 text-slate-500 text-sm">No results found</li>}
-            {filtered.map(opt => {
-              const isSel = selected.includes(opt.value);
-              const isDisabled = !isSel && selected.length >= max;
-              return (
-                <li key={opt.value}
-                  onMouseDown={e => { e.preventDefault(); if (!isDisabled) toggle(opt.value); }}
-                  className={`px-4 py-2.5 text-sm cursor-pointer flex items-center justify-between transition-colors ${isSel ? 'bg-cyan-500/20 text-cyan-300' : isDisabled ? 'text-slate-600 cursor-not-allowed' : 'text-slate-300 hover:bg-white/10'}`}
-                >
-                  {opt.label}
-                  {isSel && <span className="text-cyan-400 text-xs">✓</span>}
-                </li>
-              );
-            })}
-          </motion.ul>
+            {ListContent}
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
@@ -167,6 +276,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showWarmupBanner, setShowWarmupBanner] = useState(false);
 
   const progress = (() => {
     let c = 0;
@@ -186,6 +296,8 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     if (formData.locations.length === 0) { setError('Please select at least one location.'); return; }
     if (formData.categories.length === 0) { setError('Please select at least one category.'); return; }
     setIsLoading(true); setError(null);
+    // Show warm-up banner if server takes > 5s (Render free tier cold start)
+    const warmupTimer = setTimeout(() => setShowWarmupBanner(true), 5000);
     try {
       const allResults: CollegeRecommendation[] = [];
       const locationStr = formData.locations.includes('ALL') ? '' : formData.locations.join(',');
@@ -214,7 +326,11 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
       navigate('/results');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to connect to server.');
-    } finally { setIsLoading(false); }
+    } finally {
+      clearTimeout(warmupTimer);
+      setShowWarmupBanner(false);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -326,6 +442,21 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
                   else setFormData(p => ({ ...p, locations: vals.filter(v => v !== 'ALL') }));
                 }} max={5} disabled={isLoading} searchable />
             </div>
+
+            {/* Warm-up banner — shown after 5s of loading */}
+            <AnimatePresence>
+              {showWarmupBanner && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 flex items-center gap-2.5 text-amber-300 text-sm"
+                >
+                  <ServerCrash className="w-4 h-4 shrink-0" />
+                  <span>Server is warming up — this takes ~30 seconds on first request. Please wait...</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Error */}
             <AnimatePresence>
