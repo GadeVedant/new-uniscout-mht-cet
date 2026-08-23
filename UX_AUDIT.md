@@ -201,9 +201,9 @@ const studentPercentile = college.cutoffPercentile + college.percentileDifferenc
 | Smart form filling + PDF | ✅ | ✅ | ❌ | ❌ |
 | Cutoff history chart | ✅ | ❌ | ✅ | ✅ |
 | College comparison | ✅ | ❌ | ❌ | ✅ |
-| Session persistence | ❌ | ✅ | ✅ | ✅ |
+| Session persistence | ✅ | ✅ | ✅ | ✅ |
 | Rank → Percentile converter | ❌ | ✅ | ✅ | ✅ |
-| Mobile-optimized dropdowns | ❌ | ✅ | ✅ | ✅ |
+| Mobile-optimized dropdowns | ✅ | ✅ | ✅ | ✅ |
 | NAAC/Accreditation data | ❌ | ✅ | ❌ | ✅ |
 | Methodology transparency | ❌ | ✅ | ✅ | ✅ |
 
@@ -227,38 +227,39 @@ Tasks are ordered by priority. P1 = fix before next release. P2 = next sprint. P
 
 ### P1 — Critical Fixes (Do Before Any Marketing)
 
-- [ ] **TASK-01** Fix FormFillingService ML band logic — same "trust ML directly" fix applied to `recommendationService.ts` must be applied to `formFillingService.ts` line 174–182. Remove the "take most optimistic" override.
+- [x] **TASK-01** Fix FormFillingService ML band logic — same "trust ML directly" fix applied to `recommendationService.ts` must be applied to `formFillingService.ts` line 174–182. Remove the "take most optimistic" override.
 
-- [ ] **TASK-02** Session persistence — save `lastQuery` + `colleges` array to `sessionStorage` in App.tsx on every update. Restore on mount. Fixes BUG-02 and BUG-03 simultaneously.
+- [x] **TASK-02** Session persistence — save `lastQuery` + `colleges` array to `sessionStorage` in App.tsx on every update. Restore on mount. Fixes BUG-02 and BUG-03 simultaneously.
+  > Already implemented in App.tsx (`setCollegesAndPersist` / `setLastQueryAndPersist`). Verified.
 
-- [ ] **TASK-03** Add "Artificial Intelligence" as a branch alias — add to BRANCH_ALIASES in both `recommendationService.ts` and `formFillingService.ts`:
+- [x] **TASK-03** Add "Artificial Intelligence" as a branch alias — add to BRANCH_ALIASES in both `recommendationService.ts` and `formFillingService.ts`:
   ```
   'artificial intelligence': ['artificial intelligence and data science', 'artificial intelligence and machine learning']
   ```
 
-- [ ] **TASK-04** Fix Comparison page back button — change `navigate('/')` to `navigate('/results')` in `CollegeComparisonPage.tsx`.
+- [x] **TASK-04** Fix Comparison page back button — change `navigate('/')` to `navigate('/results')` in `CollegeComparisonPage.tsx`.
 
-- [ ] **TASK-05** Merge and deploy the ML predictor fix PR (`fix/ml-prediction-input-columns`) — already committed, needs merge + Render redeploy.
+- [x] **TASK-05** Merge and deploy the ML predictor fix PR (`fix/ml-prediction-input-columns`) — already committed, needs merge + Render redeploy.
 
 ---
 
 ### P2 — High-Impact UX (Next Sprint)
 
-- [ ] **TASK-06** Cold-start loading message — in `api.ts`, after 5 seconds of a pending request, show a soft banner: "Server warming up (~30s on first request). Please wait..."
+- [x] **TASK-06** Cold-start loading message — in `api.ts`, after 5 seconds of a pending request, show a soft banner: "Server warming up (~30s on first request). Please wait..."
 
-- [ ] **TASK-07** Admission probability "0%" guard — in `CollegeCard.tsx`, if `admissionProbability === 0` and there's no reliable ML result, show "—" instead of a fake percentage. Add a `fallback_reason` check.
+- [x] **TASK-07** Admission probability "0%" guard — in `CollegeCard.tsx`, if `admissionProbability === 0` and there's no reliable ML result, show "—" instead of a fake percentage. Add a `fallback_reason` check.
 
-- [ ] **TASK-08** Band legend tooltip — add a small "?" icon to the Admission Chance filter section in ResultsPage sidebar with a tooltip explaining: Safe = >80%, Likely = 50–80%, Moderate = 20–50%, Risky = <20%.
+- [x] **TASK-08** Band legend tooltip — add a small "?" icon to the Admission Chance filter section in ResultsPage sidebar with a tooltip explaining: Safe = >80%, Likely = 50–80%, Moderate = 20–50%, Risky = <20%.
 
-- [ ] **TASK-09** Empty results message improvement — when 0 colleges are found, show actionable suggestions: "No colleges found. Try: (1) Select All Maharashtra, (2) Choose a broader branch, (3) Increase your percentile range."
+- [x] **TASK-09** Empty results message improvement — when 0 colleges are found, show actionable suggestions: "No colleges found. Try: (1) Select All Maharashtra, (2) Choose a broader branch, (3) Increase your percentile range."
 
 - [x] **TASK-10** Mobile MultiSelect — wrap MultiSelect in a bottom sheet on mobile (screens < 640px). Add a "Done" button to close it. Fixes UX-09.
 
 - [x] **TASK-11** Fix "Back to Results" from comparison — already overlaps with TASK-04. Also fix `CollegeDetailPage.tsx` back button to use location.state.from if available.
 
-- [ ] **TASK-12** Replace hardcoded MhtCetSelector stats with real data — fetch from `/api/health` endpoint and display actual record counts instead of "50,000+ Students Helped" and "95% Accuracy Rate".
+- [x] **TASK-12** Replace hardcoded MhtCetSelector stats with real data — fetch from `/api/health` endpoint and display actual record counts instead of "50,000+ Students Helped" and "95% Accuracy Rate".
 
-- [ ] **TASK-13** Fix Smart Form "All Maharashtra" + specific district conflict — in `SmartFormPage.tsx`, when a specific district is clicked after ALL is selected, deselect ALL and add just that district.
+- [x] **TASK-13** Fix Smart Form "All Maharashtra" + specific district conflict — in `SmartFormPage.tsx`, when a specific district is clicked after ALL is selected, deselect ALL and add just that district.
 
 ---
 
@@ -292,8 +293,7 @@ Tasks are ordered by priority. P1 = fix before next release. P2 = next sprint. P
 
 ## Summary
 
-**Blockers to fix immediately:** TASK-01, 02, 03, 04, 05
-**High-impact UX to ship in the next release:** TASK-06 through 13
-**Backlog for after launch:** TASK-14 through 25
+**✅ Completed (TASK-01 through 13):** All P1 blockers and all P2 high-impact UX items are done.
+**Next up:** TASK-14 through 25 (P3 backlog — rank converter, WhatsApp share, NAAC data, PDF download, PWA manifest, etc.)
 
-The core product is solid — the ML pipeline, cutoff history, Smart Form, and Round 2 strategy are genuinely differentiated. The main gaps are: session persistence, cold-start UX, and a few critical band logic bugs. Once TASK-01 through 05 are done, the product is in a state worth promoting.
+The core product is now in a shippable state. ML bands are correct, session persists across refreshes, mobile dropdowns work properly, and all navigation flows have reliable back buttons. The main remaining gaps before serious marketing: Rank→Percentile converter (TASK-14) and a methodology transparency page (TASK-23).
