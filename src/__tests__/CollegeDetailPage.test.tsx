@@ -197,12 +197,13 @@ describe('Property 1: Hero section renders all identity fields', () => {
 describe('ChancesSection', () => {
   it('admissionBand Safe → band label shown', () => {
     renderPage(makeCollege({ admissionBand: 'Safe', p10: 75, p90: 85 }));
-    expect(screen.getByText('Safe')).toBeInTheDocument();
+    // Band label appears in both ChancesSection and the sticky right-panel widget
+    expect(screen.getAllByText('Safe').length).toBeGreaterThan(0);
   });
 
   it('no admissionBand → legacy label + "Basic prediction" shown', () => {
     renderPage(makeCollege({ admissionBand: undefined, admissionChance: 'High' }));
-    expect(screen.getByText('High')).toBeInTheDocument();
+    expect(screen.getAllByText('High').length).toBeGreaterThan(0);
     expect(screen.getByText('Basic prediction')).toBeInTheDocument();
   });
 
@@ -226,8 +227,9 @@ describe('Property 5: Chances section renders correct fields per ML availability
         (band, chance) => {
           const college = makeCollege({ admissionBand: band as any, admissionChance: chance as any });
           const { unmount } = renderPage(college);
-          const hasBand = band ? screen.queryByText(band) !== null : true;
-          const hasChance = !band ? screen.queryByText(chance) !== null : true;
+          // Use queryAllByText to handle multiple elements with same label
+          const hasBand = band ? screen.queryAllByText(band).length > 0 : true;
+          const hasChance = !band ? screen.queryAllByText(chance).length > 0 : true;
           unmount();
           return hasBand && hasChance;
         },
@@ -447,7 +449,7 @@ describe('Property 14: Non-chart sections render immediately from props', () => 
 
     // These sections render from props immediately — no async needed
     expect(screen.getByText('Test College')).toBeInTheDocument();
-    expect(screen.getByText('Safe')).toBeInTheDocument();
+    expect(screen.getAllByText('Safe').length).toBeGreaterThan(0);
     expect(screen.getByText('Fees')).toBeInTheDocument();
   });
 });
@@ -470,7 +472,7 @@ describe('Property 15: Fetch error shows error state with retry, does not crash 
 
     // All other sections still intact
     expect(screen.getByText('Test College')).toBeInTheDocument();
-    expect(screen.getByText('Likely')).toBeInTheDocument();
+    expect(screen.getAllByText('Likely').length).toBeGreaterThan(0);
     expect(screen.getByText('Fees')).toBeInTheDocument();
   });
 });
