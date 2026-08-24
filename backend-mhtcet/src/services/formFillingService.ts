@@ -30,6 +30,14 @@ const BRANCH_ALIASES: Record<string, string[]> = {
   'artificial intelligence': ['artificial intelligence and data science', 'artificial intelligence & data science', 'ai and data science', 'ai & data science', 'aids', 'artificial intelligence (ai) and data science', 'artificial intelligence and machine learning', 'artificial intelligence & machine learning', 'ai and machine learning', 'ai & machine learning', 'aiml'],
 };
 
+// Category-specific dream tier threshold (how far below cutoff is still worth including)
+// SC/ST categories have larger cutoff discounts so we extend the dream window
+const CATEGORY_DREAM_WINDOW: Record<string, number> = {
+  GSCS: 10, GSTS: 12, LSCS: 10, LSTS: 12,   // SC/ST get wider window
+  GOBCS: 7, GSEBCS: 7, GNT1S: 7, GNT2S: 7, GNT3S: 7, GVJS: 7, // OBC/NT get moderate
+};
+const DEFAULT_DREAM_WINDOW = 5; // default for Open / EWS / TFWS
+
 function branchMatches(preference: string, collegeBranch: string): boolean {
   const pref = preference.toLowerCase().trim();
   const branch = collegeBranch.toLowerCase().trim();
@@ -47,22 +55,19 @@ function assignTier(
   admissionChance: string,
   cutoff: number,
   studentPercentile: number,
+  category: string,
 ): 'safe' | 'target' | 'dream' | null {
-  const diff = studentPercentile - cutoff; // positive = student is above cutoff
+  const dreamWindow = CATEGORY_DREAM_WINDOW[category] ?? DEFAULT_DREAM_WINDOW;
+  const diff = studentPercentile - cutoff;
 
-  // Rule-based tier from percentile difference (always reliable)
   let ruleTier: 'safe' | 'target' | 'dream' | null;
   if (diff >= 3) ruleTier = 'safe';
   else if (diff >= 0) ruleTier = 'target';
-  else if (diff >= -5) ruleTier = 'dream';
-  else ruleTier = null; // too far below cutoff — exclude
+  else if (diff >= -dreamWindow) ruleTier = 'dream';
+  else ruleTier = null;
 
-  // ML band — only trust it when it's more optimistic or equally conservative
-  // Never let ML downgrade a rule-based safe/target to risky
   if (admissionBand === 'Safe' || admissionBand === 'Likely') return 'safe';
   if (admissionBand === 'Moderate') return ruleTier === 'safe' ? 'safe' : 'target';
-
-  // For 'Risky' or undefined ML band, fall back to rule-based
   return ruleTier;
 }
 

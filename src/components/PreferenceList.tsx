@@ -2,7 +2,7 @@
  * PreferenceList — Smart Form Filling results with PDF download.
  */
 import { motion } from 'motion/react';
-import { Rocket, Target, CheckCircle, AlertCircle, WifiOff, Download } from 'lucide-react';
+import { Rocket, Target, CheckCircle, AlertCircle, WifiOff, Download, Share2 } from 'lucide-react';
 import type { FormFillingRequest, FormFillingResponse, PreferenceEntry } from '../services/api';
 import { PreferenceEntryCard } from './PreferenceEntryCard';
 import { CopyButton } from './CopyButton';
@@ -142,6 +142,22 @@ function downloadPDF(result: FormFillingResponse, request?: FormFillingRequest) 
 export function PreferenceList({ result, request, mlUnavailable, budgetWarning, onBack }: PreferenceListProps) {
   const total = result.safePicks.length + result.targetPicks.length + result.dreamPicks.length;
 
+  const handleWhatsAppShare = () => {
+    const cat = request ? (CATEGORY_LABELS[request.category] ?? request.category) : '?';
+    const pct = request?.percentile ?? '?';
+    const branches = request?.branchPreferences?.join(', ') ?? '?';
+    const lines = [
+      `🎓 My MHT CET CAP Preference List (via Uniscout)`,
+      `📊 Percentile: ${pct} | Category: ${cat}`,
+      `🏛️ Branch: ${branches}`,
+      `✅ Safe: ${result.safePicks.length}  🎯 Target: ${result.targetPicks.length}  🚀 Dream: ${result.dreamPicks.length}`,
+      ``,
+      `🔗 Build yours free: https://www.uniscout.co.in/smart-form`,
+    ];
+    const text = encodeURIComponent(lines.join('\n'));
+    window.open(`https://wa.me/?text=${text}`, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       {/* Page title + back */}
@@ -268,7 +284,7 @@ export function PreferenceList({ result, request, mlUnavailable, budgetWarning, 
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed bottom-4 left-0 right-0 z-50 flex items-center justify-center gap-2 px-4"
+          className="fixed bottom-4 left-0 right-0 z-50 flex items-center justify-center gap-2 px-4 flex-wrap"
         >
           <CopyButton
             safePicks={result.safePicks}
@@ -282,6 +298,14 @@ export function PreferenceList({ result, request, mlUnavailable, budgetWarning, 
           >
             <Download className="w-4 h-4 shrink-0" />
             <span>Download PDF</span>
+          </button>
+          <button
+            onClick={handleWhatsAppShare}
+            aria-label="Share preference list on WhatsApp"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#25D366] hover:bg-[#1ebe59] text-white font-bold rounded-full shadow-lg transition-all text-sm whitespace-nowrap"
+          >
+            <Share2 className="w-4 h-4 shrink-0" />
+            <span>Share</span>
           </button>
         </motion.div>
       )}

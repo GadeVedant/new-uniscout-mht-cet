@@ -162,15 +162,15 @@ export function CollegeCard({
                 {college.cutoffPercentile?.toFixed(2)}%ile
               </div>
             </div>
-            {college.fees ? (
+            {college.fees && college.fees !== 'N/A' ? (
               <div>
                 <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Fees/yr</div>
                 <div className="text-sm font-semibold">{college.fees}</div>
               </div>
             ) : (
               <div>
-                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Category</div>
-                <div className="text-sm font-semibold text-muted-foreground">{college.category}</div>
+                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Fees/yr</div>
+                <div className="text-sm font-semibold text-muted-foreground" title="Fee data not available from DTE Maharashtra">Not reported</div>
               </div>
             )}
             {college.avgPackage ? (

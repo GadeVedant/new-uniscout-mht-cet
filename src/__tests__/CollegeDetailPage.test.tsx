@@ -346,10 +346,10 @@ describe('Property 11: Placement section renders only when data is present', () 
 // Validates: Requirements 7.2, 7.3
 // ---------------------------------------------------------------------------
 describe('CollegeInfoSection', () => {
-  it('fees empty → "Not available" shown', async () => {
+  it('fees empty → "Not reported" shown', async () => {
     renderPage(makeCollege({ fees: '' }));
     await waitFor(() => {
-      expect(screen.getAllByText('Not available').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Not reported').length).toBeGreaterThan(0);
     });
   });
 
