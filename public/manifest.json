@@ -1,0 +1,14 @@
+{
+  "name": "Uniscout – MHT CET College Predictor",
+  "short_name": "Uniscout",
+  "description": "AI-powered MHT CET college predictor for Maharashtra engineering admissions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a1a",
+  "theme_color": "#22d3ee",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/ago-logo.png.jpeg", "sizes": "192x192", "type": "image/jpeg" },
+    { "src": "/ago-logo.png.jpeg", "sizes": "512x512", "type": "image/jpeg" }
+  ]
+}

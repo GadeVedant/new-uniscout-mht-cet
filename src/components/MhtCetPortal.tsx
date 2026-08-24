@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Loader2, AlertCircle, X, Sparkles, Search, ChevronDown, Percent, MapPin, BookMarked, BookOpen, ServerCrash } from 'lucide-react';
+import { ArrowLeft, Loader2, AlertCircle, X, Sparkles, Search, ChevronDown, Percent, MapPin, BookMarked, BookOpen, ServerCrash, Hash, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { api, CollegeRecommendation } from '../services/api';
 import { useSEO } from '../seo/useSEO';
@@ -255,6 +255,112 @@ function MultiSelect({ placeholder, options, selected, onChange, max = 99, disab
   );
 }
 
+// ── Rank → Percentile Converter ───────────────────────────────────────────────
+const TOTAL_CANDIDATES = 450000;
+
+interface RankConverterProps {
+  onUsePercentile: (percentile: string) => void;
+}
+
+function RankToPercentileConverter({ onUsePercentile }: RankConverterProps) {
+  const [open, setOpen] = useState(false);
+  const [rankInput, setRankInput] = useState('');
+
+  const computedPercentile = (() => {
+    const rank = parseInt(rankInput, 10);
+    if (!rankInput || isNaN(rank) || rank < 1 || rank > TOTAL_CANDIDATES) return null;
+    return ((1 - rank / TOTAL_CANDIDATES) * 100).toFixed(2);
+  })();
+
+  const handleUse = () => {
+    if (computedPercentile !== null) {
+      onUsePercentile(computedPercentile);
+      setOpen(false);
+    }
+  };
+
+  return (
+    <div className="rounded-xl border border-white/10 overflow-hidden">
+      {/* Toggle header */}
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        className="w-full flex items-center justify-between px-4 py-3 bg-indigo-950/60 hover:bg-indigo-950/80 transition-colors text-left"
+      >
+        <span className="flex items-center gap-2 text-slate-400 text-sm">
+          <Hash className="w-4 h-4 text-cyan-500/70 shrink-0" />
+          Don't know your percentile? Convert rank →
+        </span>
+        <ChevronRight
+          className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${open ? 'rotate-90' : ''}`}
+        />
+      </button>
+
+      {/* Expandable body */}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="converter-body"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 pb-4 pt-3 bg-indigo-950/40 space-y-3 border-t border-white/10">
+              <p className="text-xs text-slate-500">
+                Based on ~4.5 lakh total candidates.{' '}
+                <span className="text-slate-600">Formula: (1 − rank / 4,50,000) × 100</span>
+              </p>
+
+              <div className="flex gap-2 items-start flex-wrap sm:flex-nowrap">
+                {/* Rank input */}
+                <div className="flex-1 min-w-0">
+                  <input
+                    type="number"
+                    min={1}
+                    max={TOTAL_CANDIDATES}
+                    step={1}
+                    value={rankInput}
+                    onChange={e => setRankInput(e.target.value)}
+                    placeholder="Enter your rank (1 – 4,50,000)"
+                    className="w-full bg-indigo-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/60 transition-colors"
+                  />
+                  {rankInput && !computedPercentile && (
+                    <p className="mt-1 text-xs text-red-400">Enter a rank between 1 and 4,50,000</p>
+                  )}
+                </div>
+
+                {/* Result badge */}
+                {computedPercentile !== null && (
+                  <div className="flex items-center gap-1.5 px-4 py-2.5 bg-cyan-500/15 border border-cyan-500/30 rounded-xl shrink-0">
+                    <Percent className="w-3.5 h-3.5 text-cyan-400" />
+                    <span className="text-cyan-300 font-bold text-sm tabular-nums">{computedPercentile}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Use button */}
+              {computedPercentile !== null && (
+                <motion.button
+                  type="button"
+                  onClick={handleUse}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 hover:text-white text-sm font-medium transition-all"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Use this percentile ({computedPercentile})
+                </motion.button>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 // ── Main Portal ───────────────────────────────────────────────────────────────
 export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   const navigate = useNavigate();
@@ -385,6 +491,12 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
                 <Percent className="w-4 h-4 text-slate-400" /> Enter Your Percentile
               </label>
+
+              {/* Rank → Percentile converter helper */}
+              <RankToPercentileConverter
+                onUsePercentile={p => setFormData(prev => ({ ...prev, percentile: p }))}
+              />
+
               <input type="number" min="0" max="100" step="0.01" required
                 value={formData.percentile} onChange={e => setFormData(p => ({ ...p, percentile: e.target.value }))}
                 placeholder="e.g. 95.5" disabled={isLoading}

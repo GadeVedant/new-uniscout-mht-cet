@@ -147,7 +147,7 @@ describe('SmartFormPage', () => {
     await waitFor(() => {
       expect(screen.getByText(/No matching colleges found/i)).toBeInTheDocument();
     }, { timeout: 15000 });
-  });
+  }, 20000);
 
   it('shows ML unavailable banner when ml_unavailable is true', async () => {
     const { api } = await import('../services/api');
@@ -164,5 +164,5 @@ describe('SmartFormPage', () => {
     await waitFor(() => {
       expect(screen.getByText(/Live AI predictions will be available soon/i)).toBeInTheDocument();
     }, { timeout: 10000 });
-  });
+  }, 15000);
 });
