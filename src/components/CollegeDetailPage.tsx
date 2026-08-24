@@ -88,7 +88,7 @@ function HeroSection({ college }: { college: CollegeRecommendation }) {
             <h1 className="text-2xl font-semibold text-foreground mb-2 tracking-tight leading-tight">{college.name}</h1>
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5"><MapPin className="size-3.5" />{college.location}{college.district && college.district !== college.location ? `, ${college.district}` : ''}</span>
-              {college.collegeType && <span className="flex items-center gap-1.5"><Building2 className="size-3.5" />{college.collegeType}</span>}
+              {college.collegeType && <span data-testid="college-type-badge" className="flex items-center gap-1.5"><Building2 className="size-3.5" />{college.collegeType}</span>}
               <span className="px-1.5 py-0.5 rounded-md bg-white/[0.05] border border-white/10 text-[11px]">Code: {college.code}</span>
             </div>
           </div>

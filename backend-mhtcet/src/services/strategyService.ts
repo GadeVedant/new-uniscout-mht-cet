@@ -50,7 +50,7 @@ class StrategyService {
       if (r2 !== undefined && r1 > r2) deltas.push(r1 - r2); // only count actual drops
     }
 
-    if (deltas.length >= 1) {
+    if (deltas.length >= 2) {
       return deltas.reduce((s, d) => s + d, 0) / deltas.length;
     }
 
@@ -88,7 +88,7 @@ class StrategyService {
       if (r1 > 0 && r2 > 0 && r1 > r2) deltas.push(r1 - r2);
     }
 
-    if (deltas.length === 0) return 2.5; // sensible default: 2.5 pt drop
+    if (deltas.length < 2) return null;
     return deltas.reduce((s, d) => s + d, 0) / deltas.length;
   }
 
