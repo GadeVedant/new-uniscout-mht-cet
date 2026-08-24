@@ -176,9 +176,9 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               </span>
             </h1>
 
-            {/* Sponsored — directly under title, minimal gap */}
+            {/* Tagline — directly under title, minimal gap */}
             <p className="text-[11px] sm:text-xs font-semibold mb-4 bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent">
-              by A.G.O Innovations
+              An initiative by A.G.O Innovations
             </p>
 
             {/* Main heading */}

@@ -147,7 +147,7 @@ This audit cross-references:
 ✅ **Fixed** — `HomePage` now hydrates stats from `/api/health` on mount. Falls back to hardcoded defaults if the API is cold.
 
 ### LOW-02 — "Sponsored by A.G.O" text looks unprofessional
-✅ **Fixed (TASK-24)** — Changed to "by A.G.O Innovations" directly below the UNISCOUT title.
+✅ **Fixed (TASK-24)** — Changed to "An initiative by A.G.O Innovations" directly below the UNISCOUT title.
 
 ### LOW-03 — MhtCetPortal shows Academic Year as 2025 but data goes to 2025-26
 ✅ **Fixed** — ResultsPage year chip now reads "CAP 2025–26" instead of just "2025-26".
@@ -257,7 +257,7 @@ Tasks are ordered by priority. P1 = fix before next release. P2 = next sprint. P
 
 - [x] **TASK-23** Methodology / transparency page — added `/how-it-works` route with `MethodologyPage` component explaining LightGBM model, training data, MAE (4.3 pts), band definitions, data sources, and limitations. Linked from ResultsPage header, Navbar, and footer.
 
-- [x] **TASK-24** Fix "Sponsored by A.G.O" in hero — change to "by A.G.O Innovations" or move to the footer only.
+- [x] **TASK-24** Fix "Sponsored by A.G.O" in hero — changed to "An initiative by A.G.O Innovations".
 
 - [x] **TASK-25** Category-adjusted dream tier in FormFillingService — use the already-computed category discount to adjust the threshold for dream picks (currently fixed at -5 regardless of category).
 
@@ -277,5 +277,5 @@ Tasks are ordered by priority. P1 = fix before next release. P2 = next sprint. P
 - TASK-21: Round 2 strategy tab populated via live API data (per-college round2Delta)
 - TASK-22: Multi-round cutoff comparison tabs (I/II/III) in CollegeDetailPage — lazy-fetched per tab
 - TASK-23: `/how-it-works` methodology page — LightGBM pipeline, band definitions, data sources, limitations, FAQ. Linked from Navbar, ResultsPage header, and footer.
-- TASK-24: "by A.G.O Innovations" in hero (not "Sponsored by A.G.O")
+- TASK-24: "An initiative by A.G.O Innovations" in hero (not "Sponsored by A.G.O")
 - TASK-25: Category-adjusted dream tier window in FormFillingService (SC/ST get wider window)
