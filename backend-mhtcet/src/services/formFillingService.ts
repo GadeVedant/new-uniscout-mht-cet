@@ -216,7 +216,7 @@ class FormFillingService {
     const tiered: TieredEntry[] = [];
 
     for (const rec of recs) {
-      const tier = assignTier(rec.admissionBand, rec.admissionChance, rec.cutoffPercentile, percentile);
+      const tier = assignTier(rec.admissionBand, rec.admissionChance, rec.cutoffPercentile, percentile, category);
       if (!tier) continue;
 
       const score = computeWeightedScore(rec, maxAvgPackage);
