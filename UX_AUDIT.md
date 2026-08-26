@@ -50,8 +50,8 @@ This audit cross-references:
 
 ### BUG-04 — Branch search "Artificial Intelligence" doesn't match data
 **File:** `backend-mhtcet/src/services/recommendationService.ts` BRANCH_ALIASES
-**Problem:** User selects "Artificial Intelligence" from the multiselect but the data has "artificial intelligence and data science" and "artificial intelligence and machine learning". There is no alias for plain "artificial intelligence". Results may be empty or miss colleges.
-**Fix:** Add `'artificial intelligence': ['artificial intelligence and data science', 'artificial intelligence and machine learning']` to BRANCH_ALIASES.
+**Problem:** ~~User selects "Artificial Intelligence" from the multiselect but the data has "artificial intelligence and data science" and "artificial intelligence and machine learning". There is no alias for plain "artificial intelligence". Results may be empty or miss colleges.~~
+**Status: ✅ Fixed (August 2026)** — Removed the over-broad `'artificial intelligence'` catch-all key from `BRANCH_ALIASES` in both `recommendationService.ts` and `formFillingService.ts`. This key was causing AiDS ↔ AiML cross-matching (each other's colleges appearing in wrong results). AiDS and AiML now have their own independent alias lists.
 
 ### BUG-05 — Admission probability shows 0% even with valid ML response (before fix deploys)
 **File:** `ml-service/app/predictor.py` — _build_input_df
@@ -263,11 +263,52 @@ Tasks are ordered by priority. P1 = fix before next release. P2 = next sprint. P
 
 ---
 
-## Summary
+## Bug-Fix Session — August 2026
 
-**✅ Completed (TASK-01 through 25, except TASK-17):** All P1, P2, and P3 tasks are done. The only remaining item is TASK-17 (NAAC grade data), which requires manual data collection from AICTE/DTE portal and is intentionally deferred.
+The following bugs were identified via full code audit and fixed in this session. All builds verified clean (exit 0) after each batch of fixes.
 
-**What was shipped in this session (TASK-14 to TASK-25):**
+### District / Location Filtering (High)
+- **`recommendationService.ts`** — `matchesLoc` used `field.includes(term)` as a last-resort fallback, causing short district names (e.g. "Nashik") to match unrelated location strings. Replaced with `matchesLocTerm` using strict word-boundary matching (exact, prefix, suffix, interior-word only).
+- **`recommendationService.ts`** — Category supplemental (Open-category fallback for reserved categories) queried the whole-state dataset with no location filter. Now applies the same `matchesLocTerm` district check.
+- **`formFillingService.ts`** — Same `field.includes(d)` over-matching bug in the district filter. Fixed with the same word-boundary helper.
+- **`recommendationService.ts` sort step** — `aInLoc`/`bInLoc` priority sort also used `.includes(l)`. Fixed to use `matchesLocTerm`.
+
+### Branch Matching (High)
+- **Both `recommendationService.ts` and `formFillingService.ts`** — The `'artificial intelligence'` catch-all key in `BRANCH_ALIASES` mapped to both AiDS and AiML aliases, causing cross-matching. Key removed; each branch now has its own independent alias list.
+
+### Cutoff Trends & Round 2 Strategy (High)
+- **`cutoffTrendService.ts`** — Used `getAllColleges()` (deduped to one year) instead of `getAllYearsData()`. Cutoff trend was always `'stable'` and `round2Opportunity` always `false`.
+- **`strategyService.ts`** — All four methods (`computeHistoricalAvgDelta`, `computeCategoryAvgDelta`, `computeRound2Opportunities`, `computeMissedColleges`) used `getAllColleges()`. All Round 2 strategy outputs were always empty/default.
+- **`strategyService.ts`** — Historical delta computation only included years where cutoff dropped (`r1 > r2`), skewing averages upward. Now includes all paired years for an unbiased mean.
+
+### Results Page (High/Medium)
+- **Fees sort** — `parseFloat("₹1,20,000")` returns `NaN`; sort order was undefined. Now strips non-numeric chars before parsing.
+- **Stats double-count** — `stats.b3` used `'Medium'` (same as `b2`) when ML unavailable, double-counting Medium colleges. Fixed to use `'Low'` for `b3` in non-ML mode.
+- **PDF print** — `URL.revokeObjectURL` was called immediately after `win.print()`, causing blank print dialogs in Firefox/Safari. Now revoked 1 s after print.
+- **"All Maharashtra" selection** — `onChange` handler in `MhtCetPortal.tsx` could silently drop the `ALL` selection on subsequent MultiSelect interactions. Fixed with explicit branch conditions.
+
+### Strategy Controller (Medium)
+- **`strategyController.ts`** — `colleges` array from request body accepted without validation; malformed items (null, missing fields) caused unhandled TypeErrors (500 instead of 400). Now filters items against a minimum shape check.
+
+### Smart Form Filling (High/Medium)
+- **GOPENS category fallback** — When no reserved-category data exists, the service silently returned Open cutoffs to SC/ST/OBC users. Now sets `categoryFallback: true` in the response; controller propagates `category_fallback` in metadata.
+- **Budget filter unit mismatch** — Fees stored as decimal LPA values (e.g. `1.5`) were divided by 100,000 again, making them pass any budget. Added a sanity check for values < 100.
+- **Input validation** — `budget` (must be ≥ 0) and `priorityMode` (must be `'college'` or `'branch'`) were not validated. Added guards in `formFillingController.ts`.
+- **Currency icon** — `DollarSign` replaced with `IndianRupee` on the budget field.
+- **Silent retry delay** — Empty-result retry waited 6 s with no feedback. Added `isRetrying` state and a "retrying…" banner.
+- **Round I disclosure** — No visible note that the preference list is optimised for Round I. Added info banner above the submit section.
+
+### College Comparison (High/Medium)
+- **`onBack`/`onHome` props** — Declared in the interface but destructuring ignored them; parent navigation was silently broken. Fixed; Back button now calls `onBack` prop with `navigate('/results')` fallback.
+- **`computeBestPick([])`** — Called before the empty-state guard; could crash on empty input. Moved after the `hasCols` check.
+
+### Strategy Tab (High)
+- **AbortController not wired** — `controller.signal` was created but never passed to `fetch`. The 10 s timeout showed a UI error but the HTTP request continued running. Fixed by adding `signal?: AbortSignal` to `api.getRound2Strategy` and threading it through.
+
+### College Card (Medium)
+- **`admissionProbability === 0` hidden** — The `> 0` guard treated a legitimate near-zero ML prediction (e.g. 1% rounded to 0) as "no ML data", hiding the probability bar. Changed to `!= null`.
+
+**What was shipped in previous session (TASK-14 to TASK-25):**
 - TASK-14: Rank → Percentile converter inline in MhtCetPortal (collapsible helper)
 - TASK-15: Notify Me email capture on all Coming Soon portal pages
 - TASK-16: WhatsApp share buttons on ResultsPage and PreferenceList floating bar

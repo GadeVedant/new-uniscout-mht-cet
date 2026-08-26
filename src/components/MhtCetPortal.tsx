@@ -550,8 +550,16 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               </label>
               <MultiSelect placeholder="Select your preferred location" options={locationOptions} selected={formData.locations}
                 onChange={vals => {
-                  if (vals.includes('ALL') && !formData.locations.includes('ALL')) setFormData(p => ({ ...p, locations: ['ALL'] }));
-                  else setFormData(p => ({ ...p, locations: vals.filter(v => v !== 'ALL') }));
+                  if (vals.includes('ALL') && !formData.locations.includes('ALL')) {
+                    // User just selected "All Maharashtra" — clear everything else
+                    setFormData(p => ({ ...p, locations: ['ALL'] }));
+                  } else if (!vals.includes('ALL') && formData.locations.includes('ALL')) {
+                    // User deselected "All Maharashtra" — keep whatever else they picked
+                    setFormData(p => ({ ...p, locations: vals.filter(v => v !== 'ALL') }));
+                  } else {
+                    // Normal multi-select change — strip ALL to avoid mixed state
+                    setFormData(p => ({ ...p, locations: vals.filter(v => v !== 'ALL') }));
+                  }
                 }} max={5} disabled={isLoading} searchable />
             </div>
 

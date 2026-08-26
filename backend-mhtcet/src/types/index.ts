@@ -166,4 +166,6 @@ export interface FormFillingResponse {
   dreamPicks: PreferenceEntry[];
   mlAvailable: boolean;
   budgetWarning: boolean;
+  /** True when reserved-category data was missing and Open (GOPENS) cutoffs were used as fallback */
+  categoryFallback?: boolean;
 }
