@@ -15,22 +15,26 @@ vi.mock('../services/mlServiceClient.js', () => ({
   },
 }));
 
-vi.mock('../services/dataService.js', () => ({
-  dataService: {
-    getAllColleges: vi.fn().mockReturnValue([
-      {
-        collegeCode: '1234', collegeName: 'Test College', branchCode: 'CE',
-        branchName: 'computer engineering', category: 'OPEN',
-        cutoffPercentile: 85.0, year: '2024', capRound: 'II',
-        location: 'Pune', district: 'Pune', collegeType: 'Government',
-        status: 'Admitted', fees: 50000, intake: 60,
-      },
-    ]),
-    isLoaded: vi.fn().mockReturnValue(true),
-    getFilterOptions: vi.fn().mockReturnValue({ years: [], capRounds: [], categories: [], branches: [], locations: [] }),
-    getStats: vi.fn().mockReturnValue({ totalRecords: 1, totalColleges: 1, totalBranches: 1, isLoaded: true }),
-  },
-}));
+vi.mock('../services/dataService.js', () => {
+  const colleges = [
+    {
+      collegeCode: '1234', collegeName: 'Test College', branchCode: 'CE',
+      branchName: 'computer engineering', category: 'OPEN',
+      cutoffPercentile: 85.0, year: '2024', capRound: 'II',
+      location: 'Pune', district: 'Pune', collegeType: 'Government',
+      status: 'Admitted', fees: 50000, intake: 60,
+    },
+  ];
+  return {
+    dataService: {
+      getAllColleges: vi.fn().mockReturnValue(colleges),
+      getAllYearsData: vi.fn().mockReturnValue(colleges),
+      isLoaded: vi.fn().mockReturnValue(true),
+      getFilterOptions: vi.fn().mockReturnValue({ years: [], capRounds: [], categories: [], branches: [], locations: [] }),
+      getStats: vi.fn().mockReturnValue({ totalRecords: 1, totalColleges: 1, totalBranches: 1, isLoaded: true }),
+    },
+  };
+});
 
 vi.mock('../utils/logger.js', () => ({
   default: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
