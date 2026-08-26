@@ -384,7 +384,43 @@ interface CollegeRecommendation {
 
 ---
 
-## 5. What to Build Next (Priority Order)
+## 5. Test Coverage
+
+**Runner:** Vitest — `npm run test -- --run` from the project root runs all 18 files.
+
+**Status: 223 / 223 tests passing (August 2026)**
+
+### Backend test files (`backend-mhtcet/src/tests/`)
+
+| File | Covers |
+|---|---|
+| `collegeController.test.ts` | Cutoff history, filter/branch/location endpoints |
+| `cutoffTrendService.test.ts` | Trend direction, Round 2 opportunity, property tests |
+| `formFillingController.test.ts` | Input validation for all fields |
+| `formFillingService.test.ts` | Tier assignment, district/budget filters, ML enrichment, GOPENS fallback |
+| `mlPredictionCache.test.ts` | Cache hit/miss, TTL, key generation |
+| `mlServiceClient.test.ts` | Batch predict, timeout, error propagation |
+| `placementLoader.test.ts` | CSV loading, code + name-based lookup |
+| `recommendationService.test.ts` | ML enrichment pipeline, graceful fallback, cache integration |
+| `strategyController.test.ts` | Endpoint validation, response shape, malformed input |
+| `strategyService.test.ts` | All four strategy methods + property-based bound tests |
+
+### Frontend test files (`src/__tests__/`)
+
+| File | Covers |
+|---|---|
+| `collegeComparison.test.ts` | `computeBestPick`, `computeBestValueHighlights`, tie handling |
+| `CollegeDetailPage.test.tsx` | Detail page rendering, chart, placement, navigation |
+| `CopyButton.test.tsx` | Clipboard, toast, visibility |
+| `enhancedResultsPage.test.ts` | Band filter, sort, stats bar |
+| `PreferenceEntryCard.test.tsx` | Field rendering, band colour classes |
+| `scoring.test.ts` | `parseAnnualFees`, `parsePackageLPA`, `computeWeightedScore`, `generateEntryReason` |
+| `SmartFormPage.test.tsx` | Validation, district/branch caps, submission, retry banner |
+| `strategyProperties.test.ts` | Property-based tests for FreezeFloatCard and MissedCollegeList |
+
+---
+
+## 6. What to Build Next (Priority Order)
 
 All six specs are complete. Remaining backlog items:
 
