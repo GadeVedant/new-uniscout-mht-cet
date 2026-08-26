@@ -143,7 +143,10 @@ The entire project uses **REST API** architecture — JSON over HTTP. The main b
 | GET | `/api/health` | Server health + data stats |
 | POST | `/api/recommendations` | College predictions |
 | GET | `/api/filters` | Available filter options |
-| GET | `/api/colleges/:code/cutoff-history` | 3-year cutoff chart |
+| GET | `/api/branches` | All branch names |
+| GET | `/api/locations` | All location names |
+| GET | `/api/categories` | All category codes |
+| GET | `/api/colleges/:code/cutoff-history` | Multi-year cutoff chart data |
 | POST | `/api/strategy/round2` | CAP Round 2 strategy |
 | POST | `/api/form-filling/generate` | Smart preference list |
 
@@ -182,3 +185,28 @@ Some colleges don't report SC/ST cutoffs to DTE. Rather than hiding these colleg
 - Push notifications for cutoff updates
 - User accounts to save preference lists
 - Comparison with previous year's allotment data
+
+---
+
+## Bug Fixes — August 2026
+
+Full detail in `UX_AUDIT.md` → *Bug-Fix Session — August 2026*. Summary of changes:
+
+| Area | Fix |
+|------|-----|
+| District filtering | Word-boundary matching replaces `field.includes(term)` across `recommendationService`, `formFillingService`, and sort step |
+| Category supplemental | Open-category fallback for reserved categories now applies the same district filter |
+| Branch matching | Removed `'artificial intelligence'` catch-all in `BRANCH_ALIASES` — was cross-matching AiDS ↔ AiML |
+| Cutoff trends | `cutoffTrendService` + all `strategyService` methods switched to `getAllYearsData()` — trends were always `'stable'` |
+| Round 2 strategy | `computeHistoricalAvgDelta` now includes rising cutoff years for an unbiased average |
+| Results fees sort | `parseFloat("₹1,20,000")` returned NaN — now strips non-numeric chars first |
+| Results stats | `b3` double-counted Medium colleges when ML unavailable; fixed to use `'Low'` |
+| PDF print | Blob URL revoked 1 s after `win.print()` instead of immediately — prevented blank print in Firefox/Safari |
+| GOPENS fallback | Reserved-category users now receive `categoryFallback: true` in the response metadata |
+| Budget filter | Guards against fee values stored as decimal LPA (e.g. `1.5`) being divided by 100,000 twice |
+| Form input validation | `budget` (≥ 0) and `priorityMode` now validated in `formFillingController` |
+| SmartFormPage UX | `IndianRupee` icon instead of `DollarSign`; retrying banner; Round I disclosure note |
+| CollegeComparisonPage | `onBack`/`onHome` props now correctly destructured and used; `computeBestPick` moved after empty-state guard |
+| StrategyTab | `AbortController.signal` threaded through to `fetch` — timeout now actually cancels the request |
+| CollegeCard | `admissionProbability != null` check instead of `> 0` — near-zero ML predictions no longer hidden |
+| strategyController | Malformed `colleges` array elements filtered before passing to service |

@@ -79,7 +79,9 @@ export function ResultsPage({
         case 'name':
           return a.name.localeCompare(b.name);
         case 'fees':
-          return parseFloat(a.fees) - parseFloat(b.fees || '0');
+          // fees is a formatted string like "₹1,20,000" — strip non-numeric chars before parsing
+          const parseFees = (s: string) => parseFloat(s.replace(/[^\d.]/g, '')) || 0;
+          return parseFees(a.fees) - parseFees(b.fees || '0');
         case 'seats':
           return (b.seats || 0) - (a.seats || 0);
         default:
@@ -94,7 +96,7 @@ export function ResultsPage({
       total: colleges.length,
       b1: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Safe' : 'High')).length,
       b2: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Likely' : 'Medium')).length,
-      b3: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Moderate' : 'Medium')).length,
+      b3: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Moderate' : 'Low')).length,
       b4: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Risky' : 'Low')).length,
     };
   }, [colleges, mlAvailable]);
@@ -186,7 +188,12 @@ export function ResultsPage({
     const win = window.open(url, '_blank');
     if (win) {
       win.addEventListener('load', () => {
-        setTimeout(() => { win.print(); URL.revokeObjectURL(url); }, 300);
+        setTimeout(() => {
+          win.print();
+          // Revoke after the print dialog closes (print() blocks until user dismisses).
+          // A short delay handles browsers that close the dialog asynchronously.
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }, 300);
       });
     } else {
       // Mobile fallback: direct download

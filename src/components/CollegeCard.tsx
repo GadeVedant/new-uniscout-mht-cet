@@ -65,11 +65,10 @@ export function CollegeCard({
   const band = college.admissionBand ||
     (college.admissionChance === 'High' ? 'Safe' : college.admissionChance === 'Medium' ? 'Moderate' : 'Risky');
 
-  // Only show probability when ML returned a real value (not a 0-from-error fallback)
-  const hasMlProbability = college.admissionProbability != null && college.admissionProbability > 0;
-  const probability = hasMlProbability
-    ? college.admissionProbability!
-    : null;
+  // Show probability bar for any value the ML model returned, including 0%.
+  // The previous `> 0` guard hid legitimate near-zero predictions.
+  const hasMlProbability = college.admissionProbability != null;
+  const probability = hasMlProbability ? college.admissionProbability! : null;
 
   const renderTrend = () => {
     switch (college.cutoffTrend) {

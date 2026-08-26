@@ -23,7 +23,9 @@ class StrategyService {
     branchName: string,
     category: string,
   ): number | null {
-    const all = dataService.getAllColleges();
+    // getAllYearsData() is required here — getAllColleges() is deduped to one year per combo
+    // and would produce at most 1 data point, making delta computation always return null.
+    const all = dataService.getAllYearsData();
     const branchLower = branchName.toLowerCase();
     const catLower = category.toLowerCase();
 
@@ -47,7 +49,9 @@ class StrategyService {
     const deltas: number[] = [];
     for (const [yr, r1] of r1ByYear) {
       const r2 = r2ByYear.get(yr);
-      if (r2 !== undefined && r1 > r2) deltas.push(r1 - r2); // only count actual drops
+      // Include both drops and rises so the average is unbiased.
+      // Positive delta = cutoff dropped (student benefits); negative = rose.
+      if (r2 !== undefined) deltas.push(r1 - r2);
     }
 
     if (deltas.length >= 2) {
@@ -63,7 +67,8 @@ class StrategyService {
    * Used as fallback when a specific college has no paired data.
    */
   private computeCategoryAvgDelta(branchName: string, category: string): number | null {
-    const all = dataService.getAllColleges();
+    // getAllYearsData() required — getAllColleges() is deduped to one year per combo.
+    const all = dataService.getAllYearsData();
     const branchLower = branchName.toLowerCase();
     const catLower = category.toLowerCase();
 
@@ -85,7 +90,8 @@ class StrategyService {
 
     const deltas: number[] = [];
     for (const { r1, r2 } of pairs.values()) {
-      if (r1 > 0 && r2 > 0 && r1 > r2) deltas.push(r1 - r2);
+      // Include both drops and rises for an unbiased average.
+      if (r1 > 0 && r2 > 0) deltas.push(r1 - r2);
     }
 
     if (deltas.length < 2) return null;
@@ -101,7 +107,10 @@ class StrategyService {
     category: string,
     branch: string,
   ): MissedCollege[] {
-    const all = dataService.getAllColleges();
+    // getAllYearsData() gives multi-year records so latestR1 can compare across years.
+    // getAllColleges() is deduped to one year and would still work for latestR1 logic,
+    // but getAllYearsData() is consistent with the rest of this service.
+    const all = dataService.getAllYearsData();
     const catLower = category.toLowerCase();
     const branchLower = branch.toLowerCase();
 
@@ -207,7 +216,8 @@ class StrategyService {
    * All colleges in the dataset for given category + branch with avg delta >= 3.0.
    */
   computeRound2Opportunities(category: string, branch: string): Round2Opportunity[] {
-    const all = dataService.getAllColleges();
+    // getAllYearsData() required — getAllColleges() is deduped and has only latest year.
+    const all = dataService.getAllYearsData();
     const catLower = category.toLowerCase();
     const branchLower = branch.toLowerCase();
 

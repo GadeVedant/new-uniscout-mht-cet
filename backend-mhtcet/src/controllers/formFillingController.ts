@@ -31,6 +31,19 @@ export const generateFormFillingList = async (req: Request, res: Response): Prom
       return;
     }
 
+    // Validate optional fields
+    if (body.budget !== undefined && body.budget !== null) {
+      const bgt = Number(body.budget);
+      if (isNaN(bgt) || bgt < 0) {
+        res.status(422).json({ success: false, error: 'budget must be a non-negative number' });
+        return;
+      }
+    }
+    if (body.priorityMode !== undefined && body.priorityMode !== 'college' && body.priorityMode !== 'branch') {
+      res.status(422).json({ success: false, error: "priorityMode must be 'college' or 'branch'" });
+      return;
+    }
+
     const request: FormFillingRequest = {
       percentile: pct,
       category: body.category,
@@ -41,7 +54,7 @@ export const generateFormFillingList = async (req: Request, res: Response): Prom
       priorityMode: body.priorityMode ?? 'college',
     };
 
-    const { response, mlUnavailable, budgetWarning } = await formFillingService.generatePreferenceList(request);
+    const { response, mlUnavailable, budgetWarning, categoryFallback } = await formFillingService.generatePreferenceList(request);
 
     res.json({
       success: true,
@@ -50,6 +63,7 @@ export const generateFormFillingList = async (req: Request, res: Response): Prom
         dataVersion: dataService.getStats().totalRecords,
         ...(mlUnavailable ? { ml_unavailable: true } : {}),
         ...(budgetWarning ? { warning: 'Budget filter resulted in fewer than 5 colleges' } : {}),
+        ...(categoryFallback ? { category_fallback: true } : {}),
       },
     });
   } catch (err) {

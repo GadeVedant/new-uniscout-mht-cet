@@ -210,24 +210,24 @@ whileTap={{ scale: 0.98 }}
 
 ### Spec 1: Enhanced Results Page
 
-**Status: Not started**
+**Status: ✅ Complete**
 
 | Task | Status | Description |
 |---|---|---|
-| Shared scoring module (`src/lib/scoring.ts`) | ⬜ Pending | `resolveAdmissionProbability`, `computeWeightedScore`, `generateEntryReason` |
-| Backend types update | ⬜ Pending | Add ML fields to `CollegeRecommendation` |
-| Frontend types update | ⬜ Pending | Mirror backend ML fields in `api.ts` |
-| PlacementLoader service | ⬜ Pending | Load `placements.csv`, join to recommendations |
-| CutoffTrendService | ⬜ Pending | Compute `cutoffTrend`, `round2Opportunity`, `round2Delta` |
-| Backend controller update | ⬜ Pending | Pass through ML fields, add placement + trend data |
-| Extract `CollegeCard` component | ⬜ Pending | Move out of `ResultsPage.tsx` into own file |
-| ML admission band badge | ⬜ Pending | Replace High/Medium/Low with Safe/Likely/Moderate/Risky |
-| Cutoff trend indicator | ⬜ Pending | ↑/↓/→ adjacent to cutoff percentile |
-| Placement data on card | ⬜ Pending | `avgPackage` on collapsed, `highestPackage` on expanded |
-| Round 2 badge | ⬜ Pending | Teal badge on collapsed card face |
-| Confidence label + top factors | ⬜ Pending | Expanded state only |
-| Stats bar update | ⬜ Pending | Safe/Likely/Moderate/Risky counts |
-| Filter + sort update | ⬜ Pending | Band-aware filter options and sort order |
+| Shared scoring module (`src/lib/scoring.ts`) | ✅ Done | `resolveAdmissionProbability`, `computeWeightedScore`, `generateEntryReason` |
+| Backend types update | ✅ Done | ML fields added to `CollegeRecommendation` |
+| Frontend types update | ✅ Done | Mirror backend ML fields in `api.ts` |
+| PlacementLoader service | ✅ Done | Load `placements.csv`, join to recommendations |
+| CutoffTrendService | ✅ Done | Compute `cutoffTrend`, `round2Opportunity`, `round2Delta` — uses `getAllYearsData()` |
+| Backend controller update | ✅ Done | Pass through ML fields, add placement + trend data |
+| Extract `CollegeCard` component | ✅ Done | Moved to `CollegeCard.tsx` |
+| ML admission band badge | ✅ Done | Safe/Likely/Moderate/Risky with legacy High/Medium/Low fallback |
+| Cutoff trend indicator | ✅ Done | ↑/↓/→ adjacent to cutoff percentile |
+| Placement data on card | ✅ Done | `avgPackage` on collapsed, `highestPackage` on expanded |
+| Round 2 badge | ✅ Done | Teal badge on collapsed card face |
+| Confidence label + top factors | ✅ Done | Expanded state only |
+| Stats bar update | ✅ Done | Safe/Likely/Moderate/Risky counts; non-ML mode uses High/Medium/Low without double-count |
+| Filter + sort update | ✅ Done | Band-aware filter; fees sort strips non-numeric chars |
 
 ---
 
@@ -280,60 +280,56 @@ whileTap={{ scale: 0.98 }}
 
 ### Spec 4: CAP Round 2 Strategy
 
-**Status: Not started**
+**Status: ✅ Complete**
 
 | Task | Status | Description |
 |---|---|---|
-| Backend types | ⬜ Pending | `Round2StrategyRequest`, `MissedCollege`, `FreezeOrFloatResult`, etc. |
-| StrategyService | ⬜ Pending | `computeHistoricalAvgDelta`, `computeMissedColleges`, `computeFreezeOrFloat`, `computeRound2Opportunities` |
-| StrategyController | ⬜ Pending | `POST /api/strategy/round2` |
-| Frontend types + API method | ⬜ Pending | Mirror backend types in `api.ts`, `getRound2Strategy()` |
-| Tab bar on ResultsPage | ⬜ Pending | "Results" / "Round 2 Strategy" tabs, visible only when `capRound === 'I'` |
-| Strategy data fetching | ⬜ Pending | Lazy fetch on first tab activation, 10s timeout, cache |
-| FreezeFloatCard component | ⬜ Pending | Large Freeze/Float badge, reasoning, better option summary |
-| MissedCollegeList component | ⬜ Pending | Up to 10 cards, "Good chance" indicator, "Within your range" badge |
-| Round2OpportunitiesList component | ⬜ Pending | Up to 20 entries sorted by expected drop |
-| StrategyTab layout | ⬜ Pending | Staggered animations, responsive grid |
-| Tests | ⬜ Pending | All property + unit tests |
+| Backend types | ✅ Done | `Round2StrategyRequest`, `MissedCollege`, `FreezeOrFloatResult`, etc. |
+| StrategyService | ✅ Done | All methods use `getAllYearsData()`; unbiased delta average |
+| StrategyController | ✅ Done | Input validation for `colleges` array items |
+| Frontend types + API method | ✅ Done | `getRound2Strategy()` accepts optional `AbortSignal` |
+| Tab bar on ResultsPage | ✅ Done | "Results" / "Round 2 Strategy" tabs, visible only when `capRound === 'I'` |
+| Strategy data fetching | ✅ Done | Lazy fetch on first tab activation, 10s timeout with real request cancellation |
+| FreezeFloatCard component | ✅ Done | Large Freeze/Float badge, reasoning, better option summary |
+| MissedCollegeList component | ✅ Done | Up to 10 cards, "Good chance" indicator, "Within your range" badge |
+| Round2OpportunitiesList component | ✅ Done | Up to 20 entries sorted by expected drop |
+| StrategyTab layout | ✅ Done | Staggered animations, responsive grid, Round III outlook section |
 
 ---
 
 ### Spec 5: College Comparison
 
-**Status: Not started**
+**Status: ✅ Complete**
 
 | Task | Status | Description |
 |---|---|---|
-| App.tsx navigation (`college-comparison` view) | ⬜ Pending | `comparisonSelection` state, toggle/open/back/home handlers |
-| FloatingCompareBar component | ⬜ Pending | Fixed bottom bar, "Compare (N)", enabled at 2+, Clear button |
-| Compare checkbox on CollegeCard | ⬜ Pending | `CheckSquare`/`Square` icon, `stopPropagation`, disabled at capacity |
-| Comparison toast | ⬜ Pending | "You can compare up to 3 colleges at a time." — 3s auto-dismiss |
-| CollegeComparisonPage scaffold | ⬜ Pending | Sticky header, fallback when < 2 selected |
-| ComparisonTable component | ⬜ Pending | CSS Grid, sticky label column, sticky header row, 12 metric rows |
-| Best-value cell highlighting | ⬜ Pending | `ring-2 ring-cyan-400/60` on best cell per quantitative row |
-| BestPickCard component | ⬜ Pending | Weighted score winner, tie handling, no raw score shown |
-| `src/lib/scoring.ts` utilities | ⬜ Pending | `parseAnnualFees`, `parsePackageLPA`, `computeWeightedScores`, `computeBestPick`, `computeBestValueHighlights` |
-| Tests | ⬜ Pending | All 20 property tests + unit tests |
+| App.tsx navigation (`college-comparison` view) | ✅ Done | `comparisonSelection` state, toggle/open/back/home handlers |
+| FloatingCompareBar component | ✅ Done | Fixed bottom bar, "Compare (N)", enabled at 2+, Clear button |
+| Compare checkbox on CollegeCard | ✅ Done | Checkbox, `stopPropagation`, disabled at capacity |
+| CollegeComparisonPage scaffold | ✅ Done | Sticky header, empty-state guard before `computeBestPick` |
+| ComparisonTable component | ✅ Done | Desktop table + mobile stacked cards, sticky label column |
+| Best-value cell highlighting | ✅ Done | `ring-2 ring-primary/60` on best cell per quantitative row |
+| BestPickCard component | ✅ Done | Weighted score winner, tie handling |
+| `src/lib/scoring.ts` utilities | ✅ Done | `parseAnnualFees`, `parsePackageLPA`, `computeWeightedScore`, `computeBestPick`, `computeBestValueHighlights` |
+| `onBack`/`onHome` props | ✅ Done | Now correctly destructured; Back button uses `onBack` with `navigate` fallback |
 
 ---
 
 ### Spec 6: Smart Form Filling
 
-**Status: Not started**
+**Status: ✅ Complete**
 
 | Task | Status | Description |
 |---|---|---|
-| Backend types | ⬜ Pending | `FormFillingRequest`, `PreferenceEntry`, `FormFillingResponse` |
-| FormFillingService | ⬜ Pending | Filter candidates, budget filter, ML batch call, tier assignment, weighted score, entry reason, priority mode sort |
-| FormFillingController | ⬜ Pending | `POST /api/form-filling/generate` |
-| Frontend types + API method | ⬜ Pending | Mirror backend types, `generateFormFillingList()` |
-| App.tsx navigation (`smart-form` view) | ⬜ Pending | "Generate Form Filling List" button on HomePage |
-| SmartFormPage component | ⬜ Pending | Full input form with validation, progress indicator, loading/error states |
-| PreferenceList component | ⬜ Pending | Safe/Target/Dream tier sections, summary bar, banners |
-| PreferenceEntryCard component | ⬜ Pending | Rank, name, branch, entry reason, band, probability, fees |
-| CopyButton component | ⬜ Pending | Plain-text clipboard copy with tier headers |
-| Disabled PDF button | ⬜ Pending | "Coming soon" label, always visible |
-| Tests | ⬜ Pending | All property + unit tests |
+| Backend types | ✅ Done | `FormFillingRequest`, `PreferenceEntry`, `FormFillingResponse` (with `categoryFallback` flag) |
+| FormFillingService | ✅ Done | Filter, district filter (word-boundary), budget filter (LPA guard), ML batch, tier assignment, weighted score, priority sort |
+| FormFillingController | ✅ Done | Validates `budget` (≥ 0) and `priorityMode`; propagates `categoryFallback` metadata |
+| Frontend types + API method | ✅ Done | `FormFillingResponse.categoryFallback`, `generateFormFillingList()` |
+| SmartFormPage component | ✅ Done | Full form, `IndianRupee` icon, retrying banner, Round I disclosure note |
+| PreferenceList component | ✅ Done | Safe/Target/Dream tier sections, summary bar, banners, PDF download, WhatsApp share |
+| PreferenceEntryCard component | ✅ Done | Rank, name, branch, entry reason, band, probability, fees |
+| CopyButton component | ✅ Done | Plain-text clipboard copy with tier headers |
+| PDF download | ✅ Done | Blob URL, `window.open` with mobile fallback; blob revoked after print |
 
 ---
 
@@ -341,19 +337,19 @@ whileTap={{ scale: 0.98 }}
 
 All API calls go through `src/services/api.ts`. Base URL: `import.meta.env.VITE_API_URL` (default `http://localhost:3001`).
 
-### Existing endpoints
+### All endpoints
 
 | Method | Path | Description |
 |---|---|---|
+| `GET` | `/api/health` | Server health + data stats |
 | `POST` | `/api/recommendations` | Get college recommendations |
-| `GET` | `/api/colleges/:code/cutoff-history` | Cutoff history for detail page chart |
-
-### Planned endpoints
-
-| Method | Path | Spec |
-|---|---|---|
-| `POST` | `/api/strategy/round2` | CAP Round 2 Strategy |
-| `POST` | `/api/form-filling/generate` | Smart Form Filling |
+| `GET` | `/api/filters` | Available filter options |
+| `GET` | `/api/branches` | All branch names |
+| `GET` | `/api/locations` | All location names |
+| `GET` | `/api/categories` | All category codes |
+| `GET` | `/api/colleges/:code/cutoff-history` | Multi-year cutoff chart data |
+| `POST` | `/api/strategy/round2` | CAP Round 2 strategy |
+| `POST` | `/api/form-filling/generate` | Smart preference list |
 
 ### Key TypeScript interfaces (current)
 
@@ -390,12 +386,9 @@ interface CollegeRecommendation {
 
 ## 5. What to Build Next (Priority Order)
 
-1. **Enhanced Results Page** — highest user impact; unlocks ML band display, placement data, trend indicators, and Round 2 badges across all college cards. Requires `src/lib/scoring.ts` first.
+All six specs are complete. Remaining backlog items:
 
-2. **Round 2 Strategy section** in CollegeDetailPage — single component, low effort, completes the detail page spec.
-
-3. **CAP Round 2 Strategy tab** — backend service + frontend tab; high value for Round 1 students.
-
-4. **College Comparison** — medium complexity; depends on `src/lib/scoring.ts` being complete.
-
-5. **Smart Form Filling** — most complex; depends on ML service being live and all scoring utilities ready.
+1. **NAAC grade data** (TASK-17) — requires manual data collection from AICTE/DTE portal.
+2. **JEE Main predictor** — data ready, UI scaffolded on Coming Soon page.
+3. **User accounts** — save preference lists across sessions.
+4. **Push notifications** — cutoff update alerts.

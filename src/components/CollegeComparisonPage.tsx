@@ -11,12 +11,8 @@ interface CollegeComparisonPageProps {
   onHome?: () => void;
 }
 
-export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) {
+export function CollegeComparisonPage({ colleges, onBack, onHome }: CollegeComparisonPageProps) {
   const navigate = useNavigate();
-
-  const { winners, isTie } = computeBestPick(colleges);
-  const bestPick = isTie ? null : winners[0] ?? null;
-  const highlights = computeBestValueHighlights(colleges);
 
   const fmt = (v: string | number | null | undefined) =>
     v == null || v === '' ? '—' : String(v);
@@ -26,6 +22,13 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
 
   const maxPkg = Math.max(0, ...colleges.map(c => parsePackageLPA(c.avgPackage ?? null) ?? 0));
 
+  // Guard: compute picks only when there are colleges to compare.
+  // Calling computeBestPick([]) before this check could throw on empty input.
+  const hasCols = colleges.length > 0;
+  const { winners, isTie } = hasCols ? computeBestPick(colleges) : { winners: [], isTie: false };
+  const bestPick = hasCols && !isTie ? winners[0] ?? null : null;
+  const highlights = hasCols ? computeBestValueHighlights(colleges) : {};
+
   return (
     <div className="min-h-screen bg-background text-foreground relative">
 
@@ -33,7 +36,7 @@ export function CollegeComparisonPage({ colleges }: CollegeComparisonPageProps) 
         {/* Back to Main Page button */}
         <div className="mb-6">
           <button
-            onClick={() => navigate('/results')}
+            onClick={() => onBack ? onBack() : navigate('/results')}
             className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-sm font-semibold transition-colors shadow-lg shadow-blue-900/30"
           >
             <ArrowLeft className="w-4 h-4" />

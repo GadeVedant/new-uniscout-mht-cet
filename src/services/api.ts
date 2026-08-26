@@ -154,6 +154,8 @@ export interface FormFillingResponse {
   dreamPicks: PreferenceEntry[];
   mlAvailable: boolean;
   budgetWarning: boolean;
+  /** True when reserved-category data was missing and Open (GOPENS) cutoffs were used as fallback */
+  categoryFallback?: boolean;
 }
 
 // API Functions
@@ -279,12 +281,13 @@ export const api = {
   /**
    * Get CAP Round 2 Strategy
    */
-  async getRound2Strategy(request: Round2StrategyRequest): Promise<ApiResponse<Round2StrategyResponse>> {
+  async getRound2Strategy(request: Round2StrategyRequest, signal?: AbortSignal): Promise<ApiResponse<Round2StrategyResponse>> {
     try {
       const response = await fetch(`${API_BASE_URL}/strategy/round2`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(request),
+        signal,
       });
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
