@@ -27,7 +27,16 @@ const BRANCH_ALIASES: Record<string, string[]> = {
   'electrical engineering': ['electrical engineering', 'electrical engg'],
   'artificial intelligence and data science': ['artificial intelligence and data science', 'artificial intelligence & data science', 'ai and data science', 'ai & data science', 'aids', 'artificial intelligence (ai) and data science'],
   'artificial intelligence and machine learning': ['artificial intelligence and machine learning', 'artificial intelligence & machine learning', 'ai and machine learning', 'ai & machine learning', 'aiml'],
+  // NOTE: no 'artificial intelligence' catch-all key — it would cause AiDS ↔ AiML cross-matching
 };
+
+// Category-specific dream tier threshold (how far below cutoff is still worth including)
+// SC/ST categories have larger cutoff discounts so we extend the dream window
+const CATEGORY_DREAM_WINDOW: Record<string, number> = {
+  GSCS: 10, GSTS: 12, LSCS: 10, LSTS: 12,   // SC/ST get wider window
+  GOBCS: 7, GSEBCS: 7, GNT1S: 7, GNT2S: 7, GNT3S: 7, GVJS: 7, // OBC/NT get moderate
+};
+const DEFAULT_DREAM_WINDOW = 5; // default for Open / EWS / TFWS
 
 function branchMatches(preference: string, collegeBranch: string): boolean {
   const pref = preference.toLowerCase().trim();
@@ -46,22 +55,19 @@ function assignTier(
   admissionChance: string,
   cutoff: number,
   studentPercentile: number,
+  category: string,
 ): 'safe' | 'target' | 'dream' | null {
-  const diff = studentPercentile - cutoff; // positive = student is above cutoff
+  const dreamWindow = CATEGORY_DREAM_WINDOW[category] ?? DEFAULT_DREAM_WINDOW;
+  const diff = studentPercentile - cutoff;
 
-  // Rule-based tier from percentile difference (always reliable)
   let ruleTier: 'safe' | 'target' | 'dream' | null;
   if (diff >= 3) ruleTier = 'safe';
   else if (diff >= 0) ruleTier = 'target';
-  else if (diff >= -5) ruleTier = 'dream';
-  else ruleTier = null; // too far below cutoff — exclude
+  else if (diff >= -dreamWindow) ruleTier = 'dream';
+  else ruleTier = null;
 
-  // ML band — only trust it when it's more optimistic or equally conservative
-  // Never let ML downgrade a rule-based safe/target to risky
   if (admissionBand === 'Safe' || admissionBand === 'Likely') return 'safe';
   if (admissionBand === 'Moderate') return ruleTier === 'safe' ? 'safe' : 'target';
-
-  // For 'Risky' or undefined ML band, fall back to rule-based
   return ruleTier;
 }
 
@@ -70,6 +76,7 @@ class FormFillingService {
     response: FormFillingResponse;
     mlUnavailable: boolean;
     budgetWarning: boolean;
+    categoryFallback: boolean;
   }> {
     const { percentile, category, capRound, branchPreferences, budget, preferredDistricts, priorityMode } = request;
 
@@ -90,9 +97,12 @@ class FormFillingService {
       });
     }
 
-    // Fallback 2: if still no results, relax to GOPENS group
+    // Fallback 2: if still no results, relax to GOPENS group.
+    // Tag each record so the response can warn the user that Open cutoffs are being shown.
+    let usedGopensFallback = false;
     if (candidates.length === 0) {
       logger.info(`FormFilling: no results for category=${category}, trying GOPENS fallback`);
+      usedGopensFallback = true;
       candidates = all.filter((c) => {
         if (!categoryMatches(c.category, 'GOPENS')) return false;
         return branchPreferences.some((pref) => branchMatches(pref, c.branchName));
@@ -111,11 +121,21 @@ class FormFillingService {
     candidates = [...bestPerCollegeBranch.values()];
 
     // ── 2. District filter (hard filter with fallback) ──
+    // Uses word-boundary matching: "pune" matches "pune" or "new pune" but not a
+    // field that merely contains "pune" as an arbitrary substring.
+    const matchesDistrictTerm = (field: string, term: string): boolean =>
+      field === term ||
+      field.startsWith(term + ' ') ||
+      field.endsWith(' ' + term) ||
+      field.includes(' ' + term + ' ');
+
     if (preferredDistricts.length > 0) {
       const districtLower = preferredDistricts.map((d) => d.toLowerCase().trim());
-      const inDistrict = candidates.filter((c) =>
-        districtLower.some((d) => c.district?.toLowerCase().includes(d) || c.location?.toLowerCase().includes(d))
-      );
+      const inDistrict = candidates.filter((c) => {
+        const cDist = c.district?.toLowerCase() ?? '';
+        const cLoc = c.location?.toLowerCase() ?? '';
+        return districtLower.some((d) => matchesDistrictTerm(cDist, d) || matchesDistrictTerm(cLoc, d));
+      });
       if (inDistrict.length > 0) {
         candidates = inDistrict;
         logger.info(`FormFilling: district filter kept ${candidates.length} colleges in [${preferredDistricts.join(', ')}]`);
@@ -129,9 +149,17 @@ class FormFillingService {
     if (budget != null && budget > 0) {
       const beforeBudget = candidates.length;
       candidates = candidates.filter((c) => {
-        const annual = parseAnnualFees(c.fees ? `₹${c.fees}` : null);
-        if (annual === null) return true; // unknown fees — include
-        return annual / 100000 <= budget; // budget is in Lakhs
+        if (!c.fees) return true; // unknown fees — include
+        // Guard against fees stored as a suspiciously small decimal (e.g. 1.5 meaning 1.5 LPA).
+        // parseAnnualFees expects a rupee-denominated string; values < 100 are likely LPA units.
+        // Treat them as already-in-lakhs to avoid dividing by 100000 a second time.
+        const feeRupees = c.fees;
+        const annual = feeRupees < 100
+          ? feeRupees                           // already in LPA — compare directly
+          : parseAnnualFees(`₹${feeRupees}`) ?? null;
+        if (annual === null) return true;
+        const annualLakhs = feeRupees < 100 ? annual : annual / 100000;
+        return annualLakhs <= budget;
       });
       if (candidates.length === 0 || candidates.length < 5) budgetWarning = true;
       if (beforeBudget > 0 && candidates.length < beforeBudget) {
@@ -181,14 +209,14 @@ class FormFillingService {
         recs[i].confidenceLabel = result.confidence_label;
         recs[i].topFactors = result.top_factors;
 
-        // Rule-based band — always reliable
-        const diff = recs[i].percentileDifference ?? 0;
-        const ruleBand: 'Safe' | 'Likely' | 'Moderate' | 'Risky' =
-          diff >= 5 ? 'Safe' : diff >= 2 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
-        const mlBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
-        const bandRank: Record<string, number> = { Safe: 3, Likely: 2, Moderate: 1, Risky: 0 };
-        // Use whichever is more optimistic
-        recs[i].admissionBand = (bandRank[mlBand] ?? 0) > (bandRank[ruleBand] ?? 0) ? mlBand : ruleBand;
+        // Trust the ML band when it's a real prediction (not a fallback).
+        // Only fall back to rule-based if ML returned a fallback_reason (no training data).
+        if (result.fallback_reason) {
+          const diff = recs[i].percentileDifference ?? 0;
+          recs[i].admissionBand = diff >= 10 ? 'Safe' : diff >= 5 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
+        } else {
+          recs[i].admissionBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
+        }
       });
     } catch {
       mlUnavailable = true;
@@ -210,7 +238,7 @@ class FormFillingService {
     const tiered: TieredEntry[] = [];
 
     for (const rec of recs) {
-      const tier = assignTier(rec.admissionBand, rec.admissionChance, rec.cutoffPercentile, percentile);
+      const tier = assignTier(rec.admissionBand, rec.admissionChance, rec.cutoffPercentile, percentile, category);
       if (!tier) continue;
 
       const score = computeWeightedScore(rec, maxAvgPackage);
@@ -256,9 +284,10 @@ class FormFillingService {
     const dreamPicks = allEntries.filter((e) => e.tier === 'dream').map(toEntry);
 
     return {
-      response: { safePicks, targetPicks, dreamPicks, mlAvailable: !mlUnavailable, budgetWarning },
+      response: { safePicks, targetPicks, dreamPicks, mlAvailable: !mlUnavailable, budgetWarning, categoryFallback: usedGopensFallback },
       mlUnavailable,
       budgetWarning,
+      categoryFallback: usedGopensFallback,
     };
   }
 }

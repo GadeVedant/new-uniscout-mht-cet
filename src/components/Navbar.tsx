@@ -7,10 +7,11 @@ import { Sparkles, Menu, X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const NAV_ITEMS = [
-  { label: 'Home',         route: '/'           },
-  { label: 'Predictor',    route: '/mht-cet'    },
-  { label: 'Form Filling', route: '/smart-form' },
-  { label: 'Compare',      route: '/compare'    },
+  { label: 'Home',         route: '/'              },
+  { label: 'Predictor',    route: '/mht-cet'       },
+  { label: 'Form Filling', route: '/smart-form'    },
+  { label: 'Compare',      route: '/compare'       },
+  { label: 'How it works', route: '/how-it-works'  },
 ];
 
 export function Navbar() {

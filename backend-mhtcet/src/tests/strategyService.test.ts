@@ -9,7 +9,10 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import fc from 'fast-check';
 
 vi.mock('../services/dataService.js', () => ({
-  dataService: { getAllColleges: vi.fn() },
+  dataService: {
+    getAllColleges: vi.fn(),
+    getAllYearsData: vi.fn(),
+  },
 }));
 vi.mock('../utils/logger.js', () => ({
   default: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
@@ -32,8 +35,14 @@ function makeCollege(overrides: Partial<CollegeRecommendation>): CollegeRecommen
 // ---------------------------------------------------------------------------
 // Task 2.10: Unit tests for StrategyService
 // ---------------------------------------------------------------------------
+const mirrorYearsData = () => {
+  vi.mocked(dataService.getAllYearsData).mockImplementation(
+    () => vi.mocked(dataService.getAllColleges).getMockImplementation()?.() ?? [],
+  );
+};
+
 describe('StrategyService.computeHistoricalAvgDelta', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
 
   it('returns null with only 1 year of paired data', () => {
     vi.mocked(dataService.getAllColleges).mockReturnValue([
@@ -56,7 +65,7 @@ describe('StrategyService.computeHistoricalAvgDelta', () => {
 });
 
 describe('StrategyService.computeMissedColleges', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
 
   it('excludes college when cutoff delta = 0 (not strictly above percentile)', () => {
     vi.mocked(dataService.getAllColleges).mockReturnValue([
@@ -107,6 +116,7 @@ describe('StrategyService.computeMissedColleges', () => {
 });
 
 describe('StrategyService.computeFreezeOrFloat', () => {
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
   it('returns Freeze with fallback reasoning when colleges array is empty', () => {
     vi.mocked(dataService.getAllColleges).mockReturnValue([]);
     const result = strategyService.computeFreezeOrFloat([], []);
@@ -134,6 +144,7 @@ describe('StrategyService.computeFreezeOrFloat', () => {
 });
 
 describe('StrategyService.computeRound2Opportunities', () => {
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
   it('result length is at most 20', () => {
     const rows: any[] = [];
     for (let i = 1; i <= 30; i++) {
@@ -172,6 +183,7 @@ describe('StrategyService.computeRound2Opportunities', () => {
 // Validates: Requirements 9.1
 // ---------------------------------------------------------------------------
 describe('Property 1: computeHistoricalAvgDelta minimum data requirement', () => {
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
   it('returns null when fewer than 2 paired years', () => {
     fc.assert(
       fc.property(
@@ -198,6 +210,7 @@ describe('Property 1: computeHistoricalAvgDelta minimum data requirement', () =>
 // Validates: Requirements 3.1
 // ---------------------------------------------------------------------------
 describe('Property 2: Missed college filter bounds', () => {
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
   it('all returned missed colleges have R1 cutoff delta in (0, 8]', () => {
     fc.assert(
       fc.property(
@@ -231,6 +244,7 @@ describe('Property 2: Missed college filter bounds', () => {
 // Validates: Requirements 3.2
 // ---------------------------------------------------------------------------
 describe('Property 3: round2Probability bounds', () => {
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
   it('round2Probability is always in [0, 100]', () => {
     fc.assert(
       fc.property(
@@ -261,6 +275,7 @@ describe('Property 3: round2Probability bounds', () => {
 // Validates: Requirements 4.2, 4.3
 // ---------------------------------------------------------------------------
 describe('Property 4: Float advice requires round2Probability >= 50', () => {
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
   it('Float is only recommended when a missedCollege has round2Probability >= 50', () => {
     fc.assert(
       fc.property(
@@ -292,6 +307,7 @@ describe('Property 4: Float advice requires round2Probability >= 50', () => {
 // Validates: Requirements 5.3, 5.7
 // ---------------------------------------------------------------------------
 describe('Property 5: Round 2 Opportunities sorted by expectedDrop desc', () => {
+  beforeEach(() => { vi.clearAllMocks(); mirrorYearsData(); });
   it('result is always sorted descending by expectedDrop', () => {
     fc.assert(
       fc.property(

@@ -65,10 +65,12 @@ export function CollegeCard({
   const band = college.admissionBand ||
     (college.admissionChance === 'High' ? 'Safe' : college.admissionChance === 'Medium' ? 'Moderate' : 'Risky');
 
-  // Use || instead of ?? so a probability of 0 (which the ML service emits
-  // for well-below-cutoff colleges) also falls back to the band-based estimate.
-  const probability = college.admissionProbability || 
-    (band === 'Safe' ? 90 : band === 'Likely' ? 75 : band === 'Moderate' ? 60 : 35);
+  // When ML probability is available use it (including near-zero values).
+  // When absent, fall back to a band-based estimate so the bar is never blank.
+  const hasMlProbability = college.admissionProbability != null && college.admissionProbability > 0;
+  const probability = hasMlProbability
+    ? college.admissionProbability!
+    : (band === 'Safe' ? 90 : band === 'Likely' ? 75 : band === 'Moderate' ? 60 : 35);
 
   const renderTrend = () => {
     switch (college.cutoffTrend) {
@@ -156,15 +158,15 @@ export function CollegeCard({
                 {college.cutoffPercentile?.toFixed(2)}%ile
               </div>
             </div>
-            {college.fees ? (
+            {college.fees && college.fees !== 'N/A' ? (
               <div>
                 <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Fees/yr</div>
                 <div className="text-sm font-semibold">{college.fees}</div>
               </div>
             ) : (
               <div>
-                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Category</div>
-                <div className="text-sm font-semibold text-muted-foreground">{college.category}</div>
+                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Fees/yr</div>
+                <div className="text-sm font-semibold text-muted-foreground" title="Fee data not available from DTE Maharashtra">Not reported</div>
               </div>
             )}
             {college.avgPackage ? (

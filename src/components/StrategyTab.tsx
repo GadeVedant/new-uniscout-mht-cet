@@ -37,7 +37,7 @@ export function StrategyTab({ percentile, category, branch, capRound }: Strategy
     const timeoutId = setTimeout(() => controller.abort(), 10_000);
 
     try {
-      const response = await api.getRound2Strategy({ percentile, category, branch, capRound });
+      const response = await api.getRound2Strategy({ percentile, category, branch, capRound }, controller.signal);
       clearTimeout(timeoutId);
 
       if (response.success && response.data) {

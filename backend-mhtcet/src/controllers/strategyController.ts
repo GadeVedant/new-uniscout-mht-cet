@@ -37,7 +37,17 @@ export const getRound2Strategy = (req: Request, res: Response): void => {
       return;
     }
 
-    const safeColleges: CollegeRecommendation[] = Array.isArray(colleges) ? colleges : [];
+    // Validate and sanitize the colleges array — reject malformed elements to prevent
+    // TypeErrors in computeFreezeOrFloat when fields like admissionBand are missing.
+    const safeColleges: CollegeRecommendation[] = Array.isArray(colleges)
+      ? colleges.filter(
+          (c): c is CollegeRecommendation =>
+            c != null &&
+            typeof c === 'object' &&
+            typeof c.name === 'string' &&
+            typeof c.admissionChance === 'string',
+        )
+      : [];
 
     const missedColleges = strategyService.computeMissedColleges(pct, String(category), String(branch));
     const freezeOrFloat = strategyService.computeFreezeOrFloat(safeColleges, missedColleges);

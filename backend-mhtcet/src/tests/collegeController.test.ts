@@ -11,6 +11,7 @@ import type { Request, Response } from 'express';
 vi.mock('../services/dataService.js', () => ({
   dataService: {
     getAllColleges: vi.fn(),
+    getAllYearsData: vi.fn(),
     getStats: vi.fn().mockReturnValue({ totalRecords: 100 }),
   },
 }));
@@ -46,6 +47,7 @@ function makeRes(): { res: Response; json: ReturnType<typeof vi.fn>; status: Ret
 describe('getCutoffHistory', () => {
   beforeEach(() => {
     vi.mocked(dataService.getAllColleges).mockReturnValue(SAMPLE_COLLEGES as any);
+    vi.mocked(dataService.getAllYearsData).mockReturnValue(SAMPLE_COLLEGES as any);
   });
 
   it('returns sorted ascending by year for valid request', () => {
@@ -64,8 +66,9 @@ describe('getCutoffHistory', () => {
     const { res, json } = makeRes();
     getCutoffHistory(req, res);
     const body = json.mock.calls[0][0];
+    // Controller keeps lowest cutoff per year (most conservative)
     const entry2024 = body.data.find((e: any) => e.year === 2024);
-    expect(entry2024.cutoffPercentile).toBe(87.2);
+    expect(entry2024.cutoffPercentile).toBe(84.0);
   });
 
   it('returns 3 entries for C001 (2022, 2023, 2024)', () => {
@@ -145,6 +148,7 @@ describe('getCutoffHistory', () => {
             ...r,
           }));
           vi.mocked(dataService.getAllColleges).mockReturnValue(colleges as any);
+          vi.mocked(dataService.getAllYearsData).mockReturnValue(colleges as any);
 
           const req = makeReq({ collegeCode: 'TEST' }, { branch: 'computer engineering', category: 'OPEN', capRound: 'II' });
           const { res, json } = makeRes();
@@ -185,6 +189,7 @@ describe('getCutoffHistory', () => {
             ...r,
           }));
           vi.mocked(dataService.getAllColleges).mockReturnValue(colleges as any);
+          vi.mocked(dataService.getAllYearsData).mockReturnValue(colleges as any);
 
           const req = makeReq({ collegeCode: 'TEST' }, { branch: 'computer engineering', category: 'OPEN', capRound: 'II' });
           const { res, json } = makeRes();
@@ -192,14 +197,15 @@ describe('getCutoffHistory', () => {
 
           const data: Array<{ year: number; cutoffPercentile: number }> = json.mock.calls[0][0].data;
 
-          // For each returned year, verify it equals the max cutoff in the input
+          // For each returned year, verify it equals the MIN cutoff in the input
+          // (controller keeps lowest cutoff per year — most conservative prediction)
           for (const entry of data) {
-            const maxForYear = Math.max(
+            const minForYear = Math.min(
               ...records
                 .filter((r) => parseInt(r.year) === entry.year)
                 .map((r) => r.cutoffPercentile),
             );
-            if (Math.abs(entry.cutoffPercentile - maxForYear) > 0.001) return false;
+            if (Math.abs(entry.cutoffPercentile - minForYear) > 0.001) return false;
           }
           return true;
         },

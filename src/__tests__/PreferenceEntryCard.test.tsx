@@ -7,6 +7,7 @@
  */
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { PreferenceEntryCard } from '../components/PreferenceEntryCard';
 import type { PreferenceEntry } from '../services/api';
 
@@ -24,65 +25,74 @@ function makeEntry(overrides: Partial<PreferenceEntry> = {}): PreferenceEntry {
   };
 }
 
+// Wrap with router since PreferenceEntryCard uses useNavigate
+function renderCard(entry: PreferenceEntry, tierAccent: 'safe' | 'target' | 'dream') {
+  return render(
+    <MemoryRouter>
+      <PreferenceEntryCard entry={entry} tierAccent={tierAccent} />
+    </MemoryRouter>,
+  );
+}
+
 describe('PreferenceEntryCard', () => {
   it('renders rank number', () => {
-    render(<PreferenceEntryCard entry={makeEntry({ rank: 5 })} tierAccent="safe" />);
+    renderCard(makeEntry({ rank: 5 }), 'safe');
     expect(screen.getByText('5')).toBeInTheDocument();
   });
 
   it('renders college name', () => {
-    render(<PreferenceEntryCard entry={makeEntry()} tierAccent="safe" />);
+    renderCard(makeEntry(), 'safe');
     expect(screen.getByText('Test College')).toBeInTheDocument();
   });
 
   it('renders branch name', () => {
-    render(<PreferenceEntryCard entry={makeEntry()} tierAccent="safe" />);
+    renderCard(makeEntry(), 'safe');
     expect(screen.getByText('Computer Engineering')).toBeInTheDocument();
   });
 
   it('renders cutoff percentile with 1 decimal', () => {
-    render(<PreferenceEntryCard entry={makeEntry({ cutoffPercentile: 85.3 })} tierAccent="safe" />);
+    renderCard(makeEntry({ cutoffPercentile: 85.3 }), 'safe');
     expect(screen.getByText(/85\.3/)).toBeInTheDocument();
   });
 
   it('renders admission band label', () => {
-    render(<PreferenceEntryCard entry={makeEntry({ admissionBand: 'Moderate' })} tierAccent="target" />);
+    renderCard(makeEntry({ admissionBand: 'Moderate' }), 'target');
     expect(screen.getByText('Moderate')).toBeInTheDocument();
   });
 
   it('renders admission probability', () => {
-    render(<PreferenceEntryCard entry={makeEntry({ admissionProbability: 75 })} tierAccent="safe" />);
+    renderCard(makeEntry({ admissionProbability: 75 }), 'safe');
     expect(screen.getByText(/75%/)).toBeInTheDocument();
   });
 
   it('renders fees', () => {
-    render(<PreferenceEntryCard entry={makeEntry({ fees: '₹50,000' })} tierAccent="safe" />);
+    renderCard(makeEntry({ fees: '₹50,000' }), 'safe');
     expect(screen.getByText(/₹50,000/)).toBeInTheDocument();
   });
 
   it('renders entryReason as italic subtitle', () => {
-    render(<PreferenceEntryCard entry={makeEntry()} tierAccent="safe" />);
+    renderCard(makeEntry(), 'safe');
     expect(screen.getByText(/Strong admission probability/)).toBeInTheDocument();
   });
 
   it('does NOT render raw weightedScore text', () => {
-    render(<PreferenceEntryCard entry={makeEntry()} tierAccent="safe" />);
+    renderCard(makeEntry(), 'safe');
     expect(screen.queryByText(/weightedScore/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/0\.\d{3,}/)).not.toBeInTheDocument();
   });
 
   it('Safe band gets emerald colour class', () => {
-    const { container } = render(<PreferenceEntryCard entry={makeEntry({ admissionBand: 'Safe' })} tierAccent="safe" />);
+    const { container } = renderCard(makeEntry({ admissionBand: 'Safe' }), 'safe');
     expect(container.innerHTML).toContain('emerald');
   });
 
   it('Moderate band gets amber colour class', () => {
-    const { container } = render(<PreferenceEntryCard entry={makeEntry({ admissionBand: 'Moderate' })} tierAccent="target" />);
+    const { container } = renderCard(makeEntry({ admissionBand: 'Moderate' }), 'target');
     expect(container.innerHTML).toContain('amber');
   });
 
   it('Risky band gets red colour class', () => {
-    const { container } = render(<PreferenceEntryCard entry={makeEntry({ admissionBand: 'Risky' })} tierAccent="dream" />);
+    const { container } = renderCard(makeEntry({ admissionBand: 'Risky' }), 'dream');
     expect(container.innerHTML).toContain('red');
   });
 });

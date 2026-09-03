@@ -1,9 +1,30 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Rocket, FlaskConical, BookOpen, Sparkles, Users, Building2, TrendingUp } from 'lucide-react';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 export function MhtCetSelector() {
   const navigate = useNavigate();
+  const [stats, setStats] = useState({ colleges: '386+', records: '93K+', accuracy: '4 Yrs' });
+
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/health`)
+      .then(r => r.json())
+      .then(d => {
+        if (d?.stats) {
+          const colleges = d.stats.totalColleges ? `${d.stats.totalColleges}+` : '386+';
+          const records = d.stats.totalRecords
+            ? d.stats.totalRecords >= 1000
+              ? `${Math.round(d.stats.totalRecords / 1000)}K+`
+              : `${d.stats.totalRecords}+`
+            : '93K+';
+          setStats({ colleges, records, accuracy: '4 Yrs' });
+        }
+      })
+      .catch(() => {}); // silently keep defaults on error
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col relative z-10">
@@ -49,9 +70,9 @@ export function MhtCetSelector() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <StatBadge icon={<Users className="w-4 h-4 text-purple-400" />} value="50,000+" label="Students Helped" />
-              <StatBadge icon={<Building2 className="w-4 h-4 text-purple-400" />} value="200+" label="Top Colleges" />
-              <StatBadge icon={<TrendingUp className="w-4 h-4 text-purple-400" />} value="95%" label="Accuracy Rate" />
+              <StatBadge icon={<Users className="w-4 h-4 text-purple-400" />} value={stats.colleges} label="Colleges Indexed" />
+              <StatBadge icon={<Building2 className="w-4 h-4 text-purple-400" />} value={stats.records} label="Historical Records" />
+              <StatBadge icon={<TrendingUp className="w-4 h-4 text-purple-400" />} value={stats.accuracy} label="Cutoff History" />
             </motion.div>
           </motion.div>
 
@@ -63,7 +84,10 @@ export function MhtCetSelector() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="p-8 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => navigate('/mht-cet/select')}
+              className="p-8 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col cursor-pointer hover:border-cyan-500/40 transition-all"
             >
               <Rocket className="w-9 h-9 text-white/80 mb-4" />
               <h2 className="text-2xl font-bold text-white mb-1">MHT CET Portal</h2>
@@ -100,7 +124,7 @@ export function MhtCetSelector() {
               </div>
 
               <button
-                onClick={() => navigate('/mht-cet/select')}
+                onClick={(e) => { e.stopPropagation(); navigate('/mht-cet/select'); }}
                 className="mt-auto w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold transition-all shadow-lg shadow-cyan-900/30"
               >
                 Explore Now →

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Sparkles, Bell, Brain, TrendingUp, BarChart2, ListChecks,
@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { useSEO } from '../seo/useSEO';
 import { SchemaOrg, faqSchema } from '../seo/SchemaOrg';
+import { api } from '../services/api';
 
 interface HomePageProps {
   onPortalSelect: (portal: 'mht-cet' | 'jee') => void;
@@ -33,7 +34,7 @@ const steps = [
   { num: '03', title: 'Build Your List',       desc: 'Curate your Safe, Target, and Dream picks. Export your counselling preference list as a PDF for the CAP Round.' },
 ];
 
-const stats = [
+const DEFAULT_STATS = [
   { value: '386+',  label: 'Colleges Indexed'    },
   { value: '93K+',  label: 'Historical Records'  },
   { value: '103',   label: 'Branches'            },
@@ -43,6 +44,21 @@ const stats = [
 export function HomePage({ onPortalSelect }: HomePageProps) {
   const navigate = useNavigate();
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [stats, setStats] = useState(DEFAULT_STATS);
+
+  // Hydrate stats from API on mount (best-effort — falls back to defaults on error)
+  useEffect(() => {
+    api.healthCheck().then(res => {
+      const s = (res as any)?.stats;
+      if (!s) return;
+      setStats([
+        { value: s.totalColleges ? `${s.totalColleges}+` : '386+', label: 'Colleges Indexed'   },
+        { value: s.totalRecords  ? `${Math.round(s.totalRecords / 1000)}K+` : '93K+', label: 'Historical Records' },
+        { value: s.totalBranches ? String(s.totalBranches) : '103', label: 'Branches'           },
+        { value: '2022–25', label: 'Cutoff History' },
+      ]);
+    }).catch(() => {/* keep defaults */});
+  }, []);
 
   const handlePredict = () => {
     onPortalSelect('mht-cet');
@@ -76,10 +92,11 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
 
           <div className="hidden md:flex items-center gap-0.5 flex-1">
             {[
-              { label: 'Home',        route: '/'           },
-              { label: 'Predictor',   route: '/mht-cet'    },
-              { label: 'Form Filling',route: '/smart-form' },
-              { label: 'Compare',     route: '/compare'    },
+              { label: 'Home',        route: '/'              },
+              { label: 'Predictor',   route: '/mht-cet'       },
+              { label: 'Form Filling',route: '/smart-form'    },
+              { label: 'Compare',     route: '/compare'       },
+              { label: 'How it works',route: '/how-it-works'  },
             ].map(item => (
               <button key={item.label} onClick={() => navigate(item.route)}
                 className="px-3.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-800 hover:text-slate-900 hover:bg-black/10 transition-all">
@@ -113,10 +130,11 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
         <div className="fixed top-[60px] left-0 right-0 z-40 bg-gradient-to-b from-[#4facfe] to-[#a78bfa] border-b border-white/20 shadow-xl md:hidden">
           <div className="flex flex-col px-4 py-3 gap-1">
             {[
-              { label: 'Home',        route: '/'           },
-              { label: 'Predictor',   route: '/mht-cet'    },
-              { label: 'Form Filling',route: '/smart-form' },
-              { label: 'Compare',     route: '/compare'    },
+              { label: 'Home',        route: '/'              },
+              { label: 'Predictor',   route: '/mht-cet'       },
+              { label: 'Form Filling',route: '/smart-form'    },
+              { label: 'Compare',     route: '/compare'       },
+              { label: 'How it works',route: '/how-it-works'  },
             ].map(item => (
               <button key={item.label} onClick={() => { navigate(item.route); setMobileMenu(false); }}
                 className="px-4 py-3 rounded-xl text-left text-[14px] font-semibold text-slate-900 hover:bg-black/10 transition-all">
@@ -158,9 +176,9 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               </span>
             </h1>
 
-            {/* Sponsored — directly under title, minimal gap */}
+            {/* Tagline — directly under title, minimal gap */}
             <p className="text-[11px] sm:text-xs font-semibold mb-4 bg-gradient-to-r from-[#6dd5fa] via-[#a78bfa] to-[#f093fb] bg-clip-text text-transparent">
-              Sponsored by A.G.O
+              An initiative by A.G.O Innovations
             </p>
 
             {/* Main heading */}
@@ -338,10 +356,11 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
               <h4 className="text-white font-semibold mb-5 text-base">Quick Links</h4>
               <ul className="space-y-3">
                 {[
-                  { label: 'Home',         route: '/'           },
-                  { label: 'Predictor',    route: '/mht-cet'    },
-                  { label: 'Form Filling', route: '/smart-form' },
-                  { label: 'Compare',      route: '/compare'    },
+                  { label: 'Home',         route: '/'              },
+                  { label: 'Predictor',    route: '/mht-cet'       },
+                  { label: 'Form Filling', route: '/smart-form'    },
+                  { label: 'Compare',      route: '/compare'       },
+                  { label: 'How it works', route: '/how-it-works'  },
                 ].map(link => (
                   <li key={link.route}>
                     <button

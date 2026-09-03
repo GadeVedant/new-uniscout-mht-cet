@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { useParams, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import {
   ChevronRight, MapPin, Building2, GraduationCap,
   DollarSign, Users, Award, TrendingUp, AlertCircle,
@@ -88,7 +88,7 @@ function HeroSection({ college }: { college: CollegeRecommendation }) {
             <h1 className="text-2xl font-semibold text-foreground mb-2 tracking-tight leading-tight">{college.name}</h1>
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5"><MapPin className="size-3.5" />{college.location}{college.district && college.district !== college.location ? `, ${college.district}` : ''}</span>
-              {college.collegeType && <span className="flex items-center gap-1.5"><Building2 className="size-3.5" />{college.collegeType}</span>}
+              {college.collegeType && <span data-testid="college-type-badge" className="flex items-center gap-1.5"><Building2 className="size-3.5" />{college.collegeType}</span>}
               <span className="px-1.5 py-0.5 rounded-md bg-white/[0.05] border border-white/10 text-[11px]">Code: {college.code}</span>
             </div>
           </div>
@@ -226,25 +226,91 @@ function ChancesSection({
 }
 
 // ---------------------------------------------------------------------------
-// Cutoff History Section
+// Cutoff History Section — multi-round view (TASK-22)
 // ---------------------------------------------------------------------------
 
+const CAP_ROUNDS_LIST = ['I', 'II', 'III'] as const;
+type CapRound = typeof CAP_ROUNDS_LIST[number];
+
 function CutoffHistorySection({
-  data,
-  loading,
-  error,
-  onRetry,
+  collegeCode,
+  branch,
+  category,
+  activeRound,
 }: {
-  data: CutoffHistoryEntry[];
-  loading: boolean;
-  error: string | null;
-  onRetry: () => void;
+  collegeCode: string;
+  branch: string;
+  category: string;
+  activeRound: string;
 }) {
+  // Track per-round data/loading/error state
+  const [selectedRound, setSelectedRound] = useState<CapRound>(
+    (CAP_ROUNDS_LIST.includes(activeRound as CapRound) ? activeRound : 'I') as CapRound,
+  );
+  const [roundData, setRoundData] = useState<Record<CapRound, CutoffHistoryEntry[] | null>>({
+    I: null, II: null, III: null,
+  });
+  const [roundLoading, setRoundLoading] = useState<Record<CapRound, boolean>>({
+    I: false, II: false, III: false,
+  });
+  const [roundError, setRoundError] = useState<Record<CapRound, string | null>>({
+    I: null, II: null, III: null,
+  });
+  const fetchedRef = useRef<Set<CapRound>>(new Set());
+
+  const fetchRound = useCallback(async (round: CapRound) => {
+    if (fetchedRef.current.has(round)) return;
+    fetchedRef.current.add(round);
+    setRoundLoading(prev => ({ ...prev, [round]: true }));
+    setRoundError(prev => ({ ...prev, [round]: null }));
+    try {
+      const res = await api.getCutoffHistory(collegeCode, branch, category, round);
+      if (res.success && res.data) {
+        setRoundData(prev => ({ ...prev, [round]: res.data! }));
+      } else {
+        setRoundError(prev => ({ ...prev, [round]: 'No data available.' }));
+      }
+    } catch {
+      setRoundError(prev => ({ ...prev, [round]: 'Could not load cutoff history.' }));
+    } finally {
+      setRoundLoading(prev => ({ ...prev, [round]: false }));
+    }
+  }, [collegeCode, branch, category]);
+
+  // Fetch active round on mount, then fetch others on tab click
+  useEffect(() => { fetchRound(selectedRound); }, [fetchRound, selectedRound]);
+
+  const handleTabClick = (round: CapRound) => {
+    setSelectedRound(round);
+    fetchRound(round);
+  };
+
+  const data = roundData[selectedRound] ?? [];
+  const loading = roundLoading[selectedRound];
+  const error = roundError[selectedRound];
   const domain = computeYAxisDomain(data);
 
   return (
     <SectionCard>
-      <SectionTitle>Cutoff History</SectionTitle>
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+        <h3 className="text-[15px] font-semibold text-foreground">Cutoff History</h3>
+        {/* Round tabs */}
+        <div className="flex gap-1 p-1 bg-white/5 rounded-xl border border-white/[0.07]">
+          {CAP_ROUNDS_LIST.map(r => (
+            <button
+              key={r}
+              onClick={() => handleTabClick(r)}
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                selectedRound === r
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+              }`}
+            >
+              Round {r}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {loading && (
         <div className="animate-pulse space-y-3" aria-label="Loading cutoff history">
@@ -258,7 +324,7 @@ function CutoffHistorySection({
           <AlertCircle className="w-8 h-8 text-red-400" />
           <p className="text-red-300 text-sm">{error}</p>
           <button
-            onClick={onRetry}
+            onClick={() => { fetchedRef.current.delete(selectedRound); fetchRound(selectedRound); }}
             className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm text-white transition-colors"
             aria-label="Retry loading cutoff history"
           >
@@ -274,34 +340,41 @@ function CutoffHistorySection({
       {!loading && !error && data.length === 1 && (
         <div className="py-4">
           <p className="text-white/70 text-sm mb-2">
-            2025 cutoff: <span className="text-cyan-300 font-bold">{data[0].cutoffPercentile.toFixed(2)}</span>
+            Latest cutoff: <span className="text-cyan-300 font-bold">{data[0].cutoffPercentile.toFixed(2)}</span>
           </p>
-          <p className="text-white/40 text-xs">Historical data for previous years is not yet available for this branch/category combination.</p>
+          <p className="text-white/40 text-xs">
+            This branch was introduced in {data[0].year}. Cutoff trend will build over time.
+          </p>
         </div>
       )}
 
       {!loading && !error && data.length > 1 && (
-        <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-            <XAxis dataKey="year" stroke="rgba(255,255,255,0.5)" tick={{ fontSize: 12 }} />
-            <YAxis domain={domain} stroke="rgba(255,255,255,0.5)" tick={{ fontSize: 12 }} />
-            <Tooltip
-              contentStyle={{ background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8 }}
-              labelStyle={{ color: '#94a3b8' }}
-              itemStyle={{ color: '#67e8f9' }}
-            />
-            <Line
-              type="monotone"
-              dataKey="cutoffPercentile"
-              stroke="#22d3ee"
-              strokeWidth={2}
-              dot={{ fill: '#22d3ee', r: 4 }}
-              activeDot={{ r: 6 }}
-              name="Cutoff %ile"
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+              <XAxis dataKey="year" stroke="rgba(255,255,255,0.5)" tick={{ fontSize: 12 }} />
+              <YAxis domain={domain} stroke="rgba(255,255,255,0.5)" tick={{ fontSize: 12 }} />
+              <Tooltip
+                contentStyle={{ background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8 }}
+                labelStyle={{ color: '#94a3b8' }}
+                itemStyle={{ color: '#67e8f9' }}
+              />
+              <Line
+                type="monotone"
+                dataKey="cutoffPercentile"
+                stroke="#22d3ee"
+                strokeWidth={2}
+                dot={{ fill: '#22d3ee', r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Cutoff %ile"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+          <p className="text-xs text-muted-foreground/50 mt-2 text-right">
+            {data.length} years of data · CAP Round {selectedRound}
+          </p>
+        </>
       )}
     </SectionCard>
   );
@@ -346,7 +419,7 @@ function PlacementSection({ college }: { college: CollegeRecommendation }) {
 
 function CollegeInfoSection({ college }: { college: CollegeRecommendation }) {
   const items = [
-    { icon: <DollarSign className="w-4 h-4 text-green-400" />, label: 'Fees', value: college.fees || 'Not available' },
+    { icon: <DollarSign className="w-4 h-4 text-green-400" />, label: 'Fees', value: college.fees || 'Not reported', title: 'Fee data not available from DTE Maharashtra' },
     { icon: <Users className="w-4 h-4 text-blue-400" />, label: 'Seats', value: college.seats ? String(college.seats) : 'Not available' },
     { icon: <Building2 className="w-4 h-4 text-purple-400" />, label: 'Branch', value: college.branch },
     { icon: <Award className="w-4 h-4 text-amber-400" />, label: 'Category', value: college.category },
@@ -357,12 +430,12 @@ function CollegeInfoSection({ college }: { college: CollegeRecommendation }) {
     <SectionCard>
       <SectionTitle>College Info</SectionTitle>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-        {items.map(({ icon, label, value }) => (
+        {items.map(({ icon, label, value, title }) => (
           <div key={label} className="bg-white/5 rounded-xl p-3 flex items-start gap-3">
             <span className="mt-0.5 shrink-0">{icon}</span>
             <div>
               <p className="text-xs text-white/50">{label}</p>
-              <p className="text-sm text-white font-medium">{value}</p>
+              <p className="text-sm text-white font-medium" title={title}>{value}</p>
             </div>
           </div>
         ))}
@@ -468,50 +541,14 @@ function CollegeFAQSection({ college }: { college: CollegeRecommendation }) {
 export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const college = colleges.find((c) => c.id === id);
 
-  const [cutoffHistory, setCutoffHistory] = useState<CutoffHistoryEntry[]>([]);
-  const [cutoffLoading, setCutoffLoading] = useState(true);
-  const [cutoffError, setCutoffError] = useState<string | null>(null);
+  // Where to go back: prefer the referrer stored in location.state.from,
+  // fall back to /results (handles direct URL access and Smart Form navigation).
+  const backTarget: string = (location.state as { from?: string } | null)?.from ?? '/results';
 
-  const fetchCutoffHistory = useCallback(async () => {
-    if (!college) return;
-    setCutoffLoading(true);
-    setCutoffError(null);
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10_000);
-
-    try {
-      const res = await api.getCutoffHistory(
-        college.code,
-        college.branch,
-        college.category,
-        college.capRound,
-        controller.signal,
-      );
-      if (res.success && res.data) {
-        setCutoffHistory(res.data);
-      } else {
-        setCutoffError('Could not load cutoff history.');
-      }
-    } catch (err: unknown) {
-      if (err instanceof Error && err.name === 'AbortError') {
-        setCutoffError('Request timed out. Please retry.');
-      } else {
-        setCutoffError('Could not load cutoff history.');
-      }
-    } finally {
-      clearTimeout(timeoutId);
-      setCutoffLoading(false);
-    }
-  }, [college?.code, college?.branch, college?.category, college?.capRound]);
-
-  useEffect(() => {
-    if (college) {
-      fetchCutoffHistory();
-    }
-  }, [fetchCutoffHistory, college]);
+  // Cutoff history is now managed internally by CutoffHistorySection (per-round lazy fetch)
 
   // SEO: dynamic title + meta per college page
   const seoTitle = college
@@ -546,7 +583,7 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
       {/* Back button — not sticky, scrolls away */}
       <div className="px-5 pt-4 pb-2 max-w-7xl mx-auto">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(backTarget)}
           className="flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30 text-[13px] font-medium transition-colors"
           aria-label="Back to results"
         >
@@ -564,7 +601,7 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
             {[
               { label: 'Avg Package', value: college.avgPackage ? `${college.avgPackage} LPA` : 'N/A', icon: Briefcase, color: 'text-blue-400' },
-              { label: 'Annual Fees',  value: college.fees || 'N/A',                                    icon: DollarSign, color: 'text-emerald-400' },
+              { label: 'Annual Fees',  value: college.fees || 'Not reported',                           icon: DollarSign, color: 'text-emerald-400', title: 'Fee data not available from DTE Maharashtra' },
               { label: 'Total Seats',  value: college.seats ? String(college.seats) : 'N/A',            icon: Users,     color: 'text-violet-400' },
               { label: 'Highest Pkg',  value: college.highestPackage ? `${college.highestPackage} LPA` : 'N/A', icon: Trophy, color: 'text-amber-400' },
             ].map(s => (
@@ -573,7 +610,7 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
                   <s.icon className={`size-3.5 ${s.color}`} />
                   <span className="text-[10px] text-muted-foreground uppercase tracking-wider">{s.label}</span>
                 </div>
-                <div className="text-base font-semibold text-foreground">{s.value}</div>
+                <div className="text-base font-semibold text-foreground" title={s.title}>{s.value}</div>
               </div>
             ))}
           </div>
@@ -586,7 +623,12 @@ export function CollegeDetailPage({ colleges }: CollegeDetailPageProps) {
           {/* Main column */}
           <div className="lg:col-span-2 space-y-5">
             <ChancesSection college={college} studentPercentile={studentPercentile} />
-            <CutoffHistorySection data={cutoffHistory} loading={cutoffLoading} error={cutoffError} onRetry={fetchCutoffHistory} />
+            <CutoffHistorySection 
+              collegeCode={college.code} 
+              branch={college.branch} 
+              category={college.category} 
+              activeRound={college.capRound} 
+            />
             <PlacementSection college={college} />
             <CollegeInfoSection college={college} />
             <Round2StrategySection college={college} />

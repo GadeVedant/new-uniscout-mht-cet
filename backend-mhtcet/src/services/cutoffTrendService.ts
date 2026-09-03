@@ -24,7 +24,9 @@ class CutoffTrendService {
     category: string,
     capRound: string,
   ): TrendResult {
-    const all = dataService.getAllColleges();
+    // getAllYearsData() provides multi-year records needed to compute trends.
+    // getAllColleges() is deduped to the latest year only — trend would always be 'stable'.
+    const all = dataService.getAllYearsData();
     const branchLower = branchName.toLowerCase();
     const catLower = category.toLowerCase();
 

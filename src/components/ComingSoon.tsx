@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Sparkles, BookOpen, Award, Users, Star } from 'lucide-react';
+import { ArrowLeft, Sparkles, BookOpen, Award, Users, Star, CheckCircle } from 'lucide-react';
+
+const APPS_SCRIPT_URL = import.meta.env.VITE_FEEDBACK_SCRIPT_URL ?? '';
 
 interface ComingSoonProps {
   portalType?: 'mht-cet' | 'ssc' | string;
@@ -12,6 +15,9 @@ interface ComingSoonProps {
 
 export function ComingSoon({ portalType, title, subtitle, backRoute: backRouteProp }: ComingSoonProps) {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const displayTitle = title || (portalType === 'ssc' ? '10th SSC / Diploma' : 'MHT CET Pharmacy');
   const displaySubtitle = subtitle || (portalType === 'ssc'
@@ -87,18 +93,71 @@ export function ComingSoon({ portalType, title, subtitle, backRoute: backRoutePr
           Exciting features and college predictions are on their way. Stay tuned to <span className="text-cyan-400 font-semibold">Uniscout</span> for updates!
         </motion.p>
 
-        {/* Launching Soon button */}
-        <motion.button
-          className="flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-base shadow-lg shadow-purple-900/40 transition-all mb-8"
+        {/* Notify Me form */}
+        <motion.div
+          className="w-full mb-8"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, type: 'spring' }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
         >
-          <Star className="w-5 h-5" />
-          Launching Soon
-        </motion.button>
+          {!submitted ? (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (!email.trim()) return;
+                setSubmitting(true);
+                try {
+                  await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      type: 'notify_me',
+                      portal: displayTitle,
+                      email: email.trim(),
+                      timestamp: new Date().toISOString(),
+                    }),
+                  });
+                } catch {} // no-cors — always swallow errors
+                setSubmitted(true);
+                setSubmitting(false);
+              }}
+              className="w-full flex flex-col gap-3"
+            >
+              <input
+                type="email"
+                required
+                placeholder="Enter your email for early access"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400 text-sm"
+                disabled={submitting}
+              />
+              <motion.button
+                type="submit"
+                disabled={submitting}
+                className="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-base shadow-lg shadow-purple-900/40 transition-all disabled:opacity-60"
+                whileHover={{ scale: submitting ? 1 : 1.05 }}
+                whileTap={{ scale: submitting ? 1 : 0.97 }}
+              >
+                <Star className="w-5 h-5" />
+                {submitting ? 'Saving...' : 'Notify Me When Live'}
+              </motion.button>
+            </form>
+          ) : (
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="flex flex-col items-center gap-2 py-4"
+            >
+              <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                <CheckCircle className="w-6 h-6 text-emerald-400" />
+              </div>
+              <p className="text-emerald-300 font-bold">You're on the list!</p>
+              <p className="text-slate-400 text-sm">We'll notify you when {displayTitle} launches.</p>
+            </motion.div>
+          )}
+        </motion.div>
 
         {/* Feature tiles */}
         <motion.div

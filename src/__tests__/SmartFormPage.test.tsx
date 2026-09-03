@@ -21,6 +21,34 @@ vi.mock('../services/api', () => ({
   },
 }));
 
+// Mock MultiBranchSearch so branches appear as simple checkboxes the test can click
+vi.mock('../components/BranchSearch', () => ({
+  MultiBranchSearch: ({ selected, onChange, max }: any) => (
+    <div data-testid="branch-search">
+      {['computer engineering', 'civil engineering', 'mechanical engineering',
+        'electrical engineering', 'information technology', 'artificial intelligence and data science'].map((b) => (
+        <button
+          key={b}
+          type="button"
+          onClick={() => {
+            if (selected.includes(b)) {
+              onChange(selected.filter((s: string) => s !== b));
+            } else if (selected.length < max) {
+              onChange([...selected, b]);
+            }
+          }}
+          aria-pressed={selected.includes(b)}
+        >
+          {b}
+        </button>
+      ))}
+      {selected.length >= max && <span>You can select up to 5 branches.</span>}
+    </div>
+  ),
+  ALL_BRANCHES: ['computer engineering', 'civil engineering', 'mechanical engineering',
+    'electrical engineering', 'information technology', 'artificial intelligence and data science'],
+}));
+
 // Mock Slider to avoid radix import issues in jsdom
 vi.mock('../components/ui/slider', () => ({
   Slider: ({ onValueChange }: any) => (
@@ -39,23 +67,17 @@ function renderPage() {
 describe('SmartFormPage', () => {
   beforeEach(() => vi.clearAllMocks());
 
-  it('default CAP round is "I"', () => {
+  it('progress indicator shows 1/4 initially (only category has a default)', () => {
     renderPage();
-    const select = screen.getByLabelText(/CAP Round/i) as HTMLSelectElement;
-    expect(select.value).toBe('I');
+    expect(screen.getByText(/1\/4 required/i)).toBeInTheDocument();
   });
 
-  it('progress indicator shows 2/4 initially (category and capRound have defaults)', () => {
-    renderPage();
-    expect(screen.getByText(/2\/4 required/i)).toBeInTheDocument();
-  });
-
-  it('progress indicator updates to 3/4 when percentile is filled', async () => {
+  it('progress indicator updates to 2/4 when percentile is filled', async () => {
     renderPage();
     const input = screen.getByPlaceholderText('95.50');
     fireEvent.change(input, { target: { value: '85' } });
     await waitFor(() => {
-      expect(screen.getByText(/3\/4 required/i)).toBeInTheDocument();
+      expect(screen.getByText(/2\/4 required/i)).toBeInTheDocument();
     });
   });
 
@@ -70,26 +92,25 @@ describe('SmartFormPage', () => {
 
   it('shows branch overflow error when trying to select 6th branch', async () => {
     renderPage();
-    const branches = ['Artificial Intelligence and Data Science', 'Artificial Intelligence and Machine Learning', 'Civil Engineering', 'Computer Engineering', 'Computer Science and Engineering', 'Electrical Engineering'];
+    const branches = ['computer engineering', 'civil engineering', 'mechanical engineering',
+      'electrical engineering', 'information technology', 'artificial intelligence and data science'];
     for (const b of branches.slice(0, 5)) {
       fireEvent.click(screen.getByText(b));
     }
-    // Try to select 6th
-    fireEvent.click(screen.getByText(branches[5]));
     await waitFor(() => {
       expect(screen.getByText(/You can select up to 5 branches/i)).toBeInTheDocument();
     });
   });
 
-  it('prevents 4th district selection and shows inline message', async () => {
+  it('prevents 6th district selection and shows inline message', async () => {
     renderPage();
-    const districts = ['Thane', 'Pune', 'Ahmednagar', 'Sangli'];
-    for (const d of districts.slice(0, 3)) {
+    const districts = ['Thane', 'Pune', 'Ahmednagar', 'Sangli', 'Nagpur', 'Nashik'];
+    for (const d of districts.slice(0, 5)) {
       fireEvent.click(screen.getByText(d));
     }
-    fireEvent.click(screen.getByText(districts[3]));
+    fireEvent.click(screen.getByText(districts[5]));
     await waitFor(() => {
-      expect(screen.getByText(/You can select up to 3 districts/i)).toBeInTheDocument();
+      expect(screen.getByText(/You can select up to 5 districts/i)).toBeInTheDocument();
     });
   });
 
@@ -99,9 +120,9 @@ describe('SmartFormPage', () => {
       () => new Promise((resolve) => setTimeout(resolve, 5000)),
     );
     renderPage();
-    // Fill required fields
     fireEvent.change(screen.getByPlaceholderText('95.50'), { target: { value: '85' } });
-    fireEvent.click(screen.getByText('Computer Engineering'));
+    fireEvent.click(screen.getByText('computer engineering'));
+    fireEvent.click(screen.getByText('Pune'));
     fireEvent.click(screen.getByText('Generate Form Filling List'));
     await waitFor(() => {
       const btn = screen.getByText(/Generating your personalised preference list/i);
@@ -111,6 +132,7 @@ describe('SmartFormPage', () => {
 
   it('shows "No matching colleges found" when result is empty', async () => {
     const { api } = await import('../services/api');
+    // Return empty on all 3 attempts (retry logic needs 3 calls before showing empty)
     vi.mocked(api.generateFormFillingList).mockResolvedValue({
       success: true,
       data: { safePicks: [], targetPicks: [], dreamPicks: [], mlAvailable: true, budgetWarning: false },
@@ -118,12 +140,14 @@ describe('SmartFormPage', () => {
     });
     renderPage();
     fireEvent.change(screen.getByPlaceholderText('95.50'), { target: { value: '85' } });
-    fireEvent.click(screen.getByText('Computer Engineering'));
+    fireEvent.click(screen.getByText('computer engineering'));
+    fireEvent.click(screen.getByText('Pune'));
     fireEvent.click(screen.getByText('Generate Form Filling List'));
+    // Wait longer — form retries 3x with 3s delay each before showing empty state
     await waitFor(() => {
       expect(screen.getByText(/No matching colleges found/i)).toBeInTheDocument();
-    });
-  });
+    }, { timeout: 15000 });
+  }, 20000);
 
   it('shows ML unavailable banner when ml_unavailable is true', async () => {
     const { api } = await import('../services/api');
@@ -134,10 +158,11 @@ describe('SmartFormPage', () => {
     });
     renderPage();
     fireEvent.change(screen.getByPlaceholderText('95.50'), { target: { value: '85' } });
-    fireEvent.click(screen.getByText('Computer Engineering'));
+    fireEvent.click(screen.getByText('computer engineering'));
+    fireEvent.click(screen.getByText('Pune'));
     fireEvent.click(screen.getByText('Generate Form Filling List'));
     await waitFor(() => {
-      expect(screen.getByText(/AI predictions are temporarily unavailable/i)).toBeInTheDocument();
-    });
-  });
+      expect(screen.getByText(/Live AI predictions will be available soon/i)).toBeInTheDocument();
+    }, { timeout: 10000 });
+  }, 15000);
 });

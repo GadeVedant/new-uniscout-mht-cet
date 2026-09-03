@@ -75,6 +75,21 @@ UniScout solves all of this in one place.
 
 ---
 
+## Infrastructure & Keep-Alive
+
+Render's free tier spins down services after 15 minutes of inactivity. Both the backend and ML service are kept warm via UptimeRobot cron jobs that ping their health endpoints every 5 minutes.
+
+| Service | Render Account | UptimeRobot Account | Health URL |
+|---------|---------------|---------------------|------------|
+| Backend (Node.js) | nkgadevedant@gmail.com | nkgadevedant@gmail.com | `https://uniscout-backend.onrender.com/health` |
+| ML Service (Python/FastAPI) | gadevedant04@gmail.com | gadevedant04@gmail.com | `https://uniscout-ml-226x.onrender.com/health` |
+
+> **Note:** UptimeRobot sends HEAD requests by default. The ML service `/health` endpoint was updated to accept both GET and HEAD (`@app.api_route("/health", methods=["GET", "HEAD"])`) to prevent 405 errors.
+
+The frontend also has a client-side fallback: `SmartFormPage.tsx` retries failed requests up to 3 times with a 3-second wait between attempts, handling the case where the server wakes up mid-request.
+
+---
+
 ## Technology Stack
 
 ### Frontend
@@ -95,7 +110,7 @@ UniScout solves all of this in one place.
 - **LightGBM** model (3 quantile regressors: P10, P50, P90)
 - **SHAP** for explainability (top factors)
 - Trained on 4 years of CAP data
-- Deployed on **Railway**
+- Deployed on **Render** (Web Service, account: gadevedant04@gmail.com)
 
 ---
 
@@ -108,12 +123,12 @@ Browser (React)
 Render Static Site (uniscout.co.in)
     │  REST API calls
     ▼
-Render Web Service (api.uniscout.co.in)
+Render Web Service (api.uniscout.co.in)  [account: nkgadevedant@gmail.com]
     │  Node.js + Express
     │  Loads CSV data on startup
     │  ML prediction calls
     ▼
-Railway (ML Service)
+Render Web Service (uniscout-ml-226x.onrender.com)  [account: gadevedant04@gmail.com]
     Python + FastAPI + LightGBM
 ```
 
@@ -128,7 +143,10 @@ The entire project uses **REST API** architecture — JSON over HTTP. The main b
 | GET | `/api/health` | Server health + data stats |
 | POST | `/api/recommendations` | College predictions |
 | GET | `/api/filters` | Available filter options |
-| GET | `/api/colleges/:code/cutoff-history` | 3-year cutoff chart |
+| GET | `/api/branches` | All branch names |
+| GET | `/api/locations` | All location names |
+| GET | `/api/categories` | All category codes |
+| GET | `/api/colleges/:code/cutoff-history` | Multi-year cutoff chart data |
 | POST | `/api/strategy/round2` | CAP Round 2 strategy |
 | POST | `/api/form-filling/generate` | Smart preference list |
 
@@ -167,3 +185,28 @@ Some colleges don't report SC/ST cutoffs to DTE. Rather than hiding these colleg
 - Push notifications for cutoff updates
 - User accounts to save preference lists
 - Comparison with previous year's allotment data
+
+---
+
+## Bug Fixes — August 2026
+
+Full detail in `UX_AUDIT.md` → *Bug-Fix Session — August 2026*. Summary of changes:
+
+| Area | Fix |
+|------|-----|
+| District filtering | Word-boundary matching replaces `field.includes(term)` across `recommendationService`, `formFillingService`, and sort step |
+| Category supplemental | Open-category fallback for reserved categories now applies the same district filter |
+| Branch matching | Removed `'artificial intelligence'` catch-all in `BRANCH_ALIASES` — was cross-matching AiDS ↔ AiML |
+| Cutoff trends | `cutoffTrendService` + all `strategyService` methods switched to `getAllYearsData()` — trends were always `'stable'` |
+| Round 2 strategy | `computeHistoricalAvgDelta` now includes rising cutoff years for an unbiased average |
+| Results fees sort | `parseFloat("₹1,20,000")` returned NaN — now strips non-numeric chars first |
+| Results stats | `b3` double-counted Medium colleges when ML unavailable; fixed to use `'Low'` |
+| PDF print | Blob URL revoked 1 s after `win.print()` instead of immediately — prevented blank print in Firefox/Safari |
+| GOPENS fallback | Reserved-category users now receive `categoryFallback: true` in the response metadata |
+| Budget filter | Guards against fee values stored as decimal LPA (e.g. `1.5`) being divided by 100,000 twice |
+| Form input validation | `budget` (≥ 0) and `priorityMode` now validated in `formFillingController` |
+| SmartFormPage UX | `IndianRupee` icon instead of `DollarSign`; retrying banner; Round I disclosure note |
+| CollegeComparisonPage | `onBack`/`onHome` props now correctly destructured and used; `computeBestPick` moved after empty-state guard |
+| StrategyTab | `AbortController.signal` threaded through to `fetch` — timeout now actually cancels the request |
+| CollegeCard | `admissionProbability != null` check instead of `> 0` — near-zero ML predictions no longer hidden |
+| strategyController | Malformed `colleges` array elements filtered before passing to service |

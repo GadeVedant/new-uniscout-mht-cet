@@ -9,7 +9,10 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import fc from 'fast-check';
 
 vi.mock('../services/dataService.js', () => ({
-  dataService: { getAllColleges: vi.fn() },
+  dataService: {
+    getAllColleges: vi.fn(),
+    getAllYearsData: vi.fn(),
+  },
 }));
 vi.mock('../utils/logger.js', () => ({
   default: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
@@ -40,7 +43,14 @@ function row(overrides: Partial<CollegeRow>): CollegeRow {
 // Task 5.4: Unit tests for CutoffTrendService
 // ---------------------------------------------------------------------------
 describe('CutoffTrendService unit tests', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    // Mirror getAllYearsData to getAllColleges so tests that mock getAllColleges
+    // work transparently — the service now calls getAllYearsData().
+    vi.mocked(dataService.getAllYearsData).mockImplementation(
+      () => vi.mocked(dataService.getAllColleges).getMockImplementation()?.() ?? [],
+    );
+  });
 
   it('returns "rising" when latest cutoff > prior by > 1.0', () => {
     vi.mocked(dataService.getAllColleges).mockReturnValue([
@@ -120,6 +130,12 @@ describe('CutoffTrendService unit tests', () => {
 // Validates: Requirements 2.2, 2.3
 // ---------------------------------------------------------------------------
 describe('Property 6: Trend computation threshold', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.mocked(dataService.getAllYearsData).mockImplementation(
+      () => vi.mocked(dataService.getAllColleges).getMockImplementation()?.() ?? [],
+    );
+  });
   it('delta > 1.0 → rising; delta < -1.0 → falling; else stable', () => {
     fc.assert(
       fc.property(
@@ -149,6 +165,12 @@ describe('Property 6: Trend computation threshold', () => {
 // Validates: Requirements 6.2, 6.3
 // ---------------------------------------------------------------------------
 describe('Property 13: Round 2 threshold computation', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.mocked(dataService.getAllYearsData).mockImplementation(
+      () => vi.mocked(dataService.getAllColleges).getMockImplementation()?.() ?? [],
+    );
+  });
   it('round2Opportunity true iff avg delta >= 3.0 with >= 2 distinct paired years', () => {
     fc.assert(
       fc.property(

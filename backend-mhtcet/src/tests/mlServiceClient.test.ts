@@ -69,13 +69,15 @@ describe('MLServiceClient', () => {
       );
     });
 
-    it('enforces 150ms timeout', async () => {
+    it('enforces configurable timeout (default 8000ms)', async () => {
       mockedAxios.post = vi.fn().mockResolvedValue({ data: { results: [SAMPLE_RESULT] } });
 
       await mlServiceClient.predictBatch([SAMPLE_REQUEST]);
 
       const [, , config] = (mockedAxios.post as ReturnType<typeof vi.fn>).mock.calls[0];
-      expect(config.timeout).toBe(150);
+      // Default is 8000ms to handle Render free-tier cross-region latency.
+      // Override via ML_TIMEOUT_MS env var.
+      expect(config.timeout).toBe(8000);
     });
 
     it('throws on network error', async () => {

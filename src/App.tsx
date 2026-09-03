@@ -17,6 +17,7 @@ const SmartFormPage = lazy(() => import('./components/SmartFormPage').then(m => 
 const ExamLandingPage = lazy(() => import('./components/ExamLandingPage').then(m => ({ default: m.ExamLandingPage })));
 const SscPortal = lazy(() => import('./components/SscPortal').then(m => ({ default: m.SscPortal })));
 const ComingSoon = lazy(() => import('./components/ComingSoon').then(m => ({ default: m.ComingSoon })));
+const MethodologyPage = lazy(() => import('./components/MethodologyPage').then(m => ({ default: m.MethodologyPage })));
 
 // Lazy-load exam configs only when needed
 const JEE_CONFIG_PROMISE = import('./components/examConfigs').then(m => m.JEE_CONFIG);
@@ -185,6 +186,9 @@ export default function App() {
             <Route path="/dse" element={<ComingSoon portalType="mht-cet" onBack={() => {}} />} />
             <Route path="/pharmacy" element={<ComingSoon portalType="mht-cet" onBack={() => {}} />} />
             <Route path="/neet" element={<ComingSoon portalType="mht-cet" onBack={() => {}} />} />
+
+            {/* Methodology / transparency */}
+            <Route path="/how-it-works" element={<MethodologyPage />} />
 
             {/* Catch-all redirect */}
             <Route path="*" element={<Navigate to="/" replace />} />

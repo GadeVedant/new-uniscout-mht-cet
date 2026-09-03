@@ -247,18 +247,42 @@ class Predictor:
 
     def _build_input_df(self, request: Any) -> pd.DataFrame:
         """Build a single-row DataFrame from a PredictionRequest."""
+        from app.data_loader import parse_category_code, normalise_college_code
+
         current_year = datetime.now().year
+
+        # Map cap_round letter to numeric (feature engineer uses numeric round)
+        round_map = {"I": 1, "II": 2, "III": 3}
+        round_num = round_map.get(request.cap_round, 1)
+
+        # Decompose category code into sub-fields (same as DataLoader does at train time)
+        gender, reservation_category, university_scope, special_quota = parse_category_code(request.category)
+
+        # Normalise college code to zero-padded 5-digit string (same as training)
+        college_code_norm = normalise_college_code(request.college_code)
+
+        # Normalise branch name (lowercase strip — same as training)
+        branch_name_norm = request.branch_name.strip().lower()
+
         return pd.DataFrame([{
-            "college_code": request.college_code,
-            "branch_name": request.branch_name,
-            "category": request.category,
-            "cap_round": request.cap_round,
-            "year": current_year,
-            "cutoff_percentile": request.student_percentile,
-            "exam_type": request.exam_type,
-            "district": request.district,
-            "location": request.district,  # use district as location proxy
-            "intake": None,
+            "college_code":          college_code_norm,
+            "branch_code":           branch_name_norm,   # use branch_name as proxy — label encoder handles unseen
+            "branch_name":           branch_name_norm,
+            "branch_name_norm":      branch_name_norm,
+            "category":              request.category,
+            "gender":                gender,
+            "reservation_category":  reservation_category,
+            "university_scope":      university_scope,
+            "special_quota":         special_quota,
+            "cap_round":             request.cap_round,
+            "round":                 round_num,
+            "year":                  current_year,
+            "cutoff_percentile":     request.student_percentile,
+            "exam_type":             request.exam_type,
+            "district":              request.district if request.district else "unknown",
+            "location":              request.district if request.district else "unknown",
+            "total_seats":           None,
+            "intake":                None,
         }])
 
     def _get_sample_size(self, college_code: str, branch_name: str, category: str) -> int:

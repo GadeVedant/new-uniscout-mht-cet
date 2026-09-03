@@ -25,6 +25,7 @@ const BRANCH_ALIASES: Record<string, string[]> = {
   'electrical engineering': ['electrical engineering', 'electrical engg'],
   'artificial intelligence and data science': ['artificial intelligence and data science', 'artificial intelligence & data science', 'ai and data science', 'ai & data science', 'aids', 'artificial intelligence (ai) and data science'],
   'artificial intelligence and machine learning': ['artificial intelligence and machine learning', 'artificial intelligence & machine learning', 'ai and machine learning', 'ai & machine learning', 'aiml'],
+  // NOTE: no 'artificial intelligence' catch-all key — it would cause AiDS ↔ AiML cross-matching
 };
 
 // Cached model version fetched at startup
@@ -54,6 +55,16 @@ class RecommendationService {
     const { percentile, year, capRound, category, branchPreference, location } = request;
     logger.info(`MHT-CET recommendation: percentile=${percentile}, year=${year}, capRound=${capRound}, category=${category}, requestId=${requestId}`);
 
+    // Word-boundary match: "panvel" matches "panvel", "new panvel", "panvel city"
+    // but NOT "navi mumbai" when term is "mumbai" used alone.
+    // The plain field.includes(term) fallback was removed because it caused
+    // short district names (e.g. "Nashik") to match unrelated location strings.
+    const matchesLocTerm = (field: string, term: string): boolean =>
+      field === term ||
+      field.startsWith(term + ' ') ||
+      field.endsWith(' ' + term) ||
+      field.includes(' ' + term + ' ');
+
     // ---- Rule-based filter ----
     const applyFilters = (withLocation: boolean) => dataService.getAllColleges().filter(c => {
       if (capRound && c.capRound !== capRound) return false;
@@ -67,15 +78,7 @@ class RecommendationService {
         if (locs.length > 0) {
           const cLoc = c.location.toLowerCase();
           const cDist = c.district.toLowerCase();
-          // Use word-boundary matching to avoid "Panvel" matching "New Panvel" incorrectly
-          // while still allowing "New Panvel" to match when user selects "Panvel"
-          const matchesLoc = (field: string, term: string) =>
-            field === term ||
-            field.startsWith(term + ' ') ||
-            field.endsWith(' ' + term) ||
-            field.includes(' ' + term + ' ') ||
-            field.includes(term); // keep substring as last resort for "New Panvel" → "panvel"
-          if (!locs.some(l => matchesLoc(cLoc, l) || matchesLoc(cDist, l))) return false;
+          if (!locs.some(l => matchesLocTerm(cLoc, l) || matchesLocTerm(cDist, l))) return false;
         }
       }
       return true;
@@ -106,11 +109,20 @@ class RecommendationService {
     if (isReservedCategory && category) {
       const discount = getCategoryDiscount(category);
       const codesWithCategoryData = new Set(filtered.map(c => `${c.collegeCode}|${c.branchName}`));
-      // Get Open-category records for colleges that have NO reserved-category data
+      // Get Open-category records for colleges that have NO reserved-category data.
+      // Apply the same location filter so supplemental records honour the selected district.
+      const suppLocs = !locationFallback && location
+        ? location.split(',').map(l => l.trim().toLowerCase()).filter(Boolean)
+        : [];
       const openRecords = dataService.getAllColleges().filter(c => {
         if (capRound && c.capRound !== capRound) return false;
         if (!categoryMatches(c.category, 'GOPENS')) return false;
         if (branchPreference && !this.branchMatches(branchPreference, c.branchName)) return false;
+        if (suppLocs.length > 0) {
+          const cLoc = c.location.toLowerCase();
+          const cDist = c.district.toLowerCase();
+          if (!suppLocs.some(l => matchesLocTerm(cLoc, l) || matchesLocTerm(cDist, l))) return false;
+        }
         return !codesWithCategoryData.has(`${c.collegeCode}|${c.branchName}`);
       });
       // Apply discount to estimate reserved-category cutoff
@@ -143,9 +155,9 @@ class RecommendationService {
     const recommendations = [...bestPerCollegeBranch.values()]
       .sort((a, b) => {
         const order = { High: 0, Medium: 1, Low: 2 };
-        // Location-matching colleges come first
-        const aInLoc = locList.length > 0 ? locList.some(l => a.location.toLowerCase().includes(l) || a.district.toLowerCase().includes(l)) : false;
-        const bInLoc = locList.length > 0 ? locList.some(l => b.location.toLowerCase().includes(l) || b.district.toLowerCase().includes(l)) : false;
+        // Location-matching colleges come first (use word-boundary match, same as applyFilters)
+        const aInLoc = locList.length > 0 ? locList.some(l => matchesLocTerm(a.location.toLowerCase(), l) || matchesLocTerm(a.district.toLowerCase(), l)) : false;
+        const bInLoc = locList.length > 0 ? locList.some(l => matchesLocTerm(b.location.toLowerCase(), l) || matchesLocTerm(b.district.toLowerCase(), l)) : false;
         if (aInLoc !== bInLoc) return aInLoc ? -1 : 1;
         const diff = order[a.admissionChance] - order[b.admissionChance];
         return diff !== 0 ? diff : b.cutoffPercentile - a.cutoffPercentile;
@@ -248,16 +260,16 @@ class RecommendationService {
     rec.confidenceLabel = result.confidence_label;
     rec.topFactors = result.top_factors;
 
-    // Rule-based band from percentile difference — always reliable
-    const diff = rec.percentileDifference ?? 0;
-    const ruleBand: 'Safe' | 'Likely' | 'Moderate' | 'Risky' =
-      diff >= 5 ? 'Safe' : diff >= 2 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
-
     const mlBand = result.admission_band as 'Safe' | 'Likely' | 'Moderate' | 'Risky';
-    const bandRank: Record<string, number> = { Safe: 3, Likely: 2, Moderate: 1, Risky: 0 };
 
-    // Use whichever band is MORE optimistic — never let ML downgrade a good rule-based result
-    rec.admissionBand = (bandRank[mlBand] ?? 0) > (bandRank[ruleBand] ?? 0) ? mlBand : ruleBand;
+    // Trust the ML band when it's a real prediction (not a fallback).
+    // Only fall back to rule-based if ML returned a fallback_reason (i.e. no training data).
+    if (result.fallback_reason) {
+      const diff = rec.percentileDifference ?? 0;
+      rec.admissionBand = diff >= 10 ? 'Safe' : diff >= 5 ? 'Likely' : diff >= 0 ? 'Moderate' : 'Risky';
+    } else {
+      rec.admissionBand = mlBand;
+    }
 
     // Sync admissionChance with final band
     if (rec.admissionBand === 'Safe' || rec.admissionBand === 'Likely') rec.admissionChance = 'High';
@@ -279,7 +291,7 @@ class RecommendationService {
   // ---------------------------------------------------------------------------
   private buildRecommendation(college: CollegeData, percentile: number): CollegeRecommendation {
     const diff = parseFloat((percentile - college.cutoffPercentile).toFixed(2));
-    const chance: 'High' | 'Medium' | 'Low' = diff >= 3 ? 'High' : diff >= 0 ? 'Medium' : 'Low';
+    const chance: 'High' | 'Medium' | 'Low' = diff >= 10 ? 'High' : diff >= 0 ? 'Medium' : 'Low';
     return {
       id: `${college.collegeCode}-${college.branchCode}-${college.category}`,
       name: college.collegeName,
