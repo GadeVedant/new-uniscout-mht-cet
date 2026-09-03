@@ -52,7 +52,10 @@ export function ResultsPage({
     noIndex: true, // results are session-specific, not for indexing
   });
 
-  const mlAvailable = colleges.some(c => c.admissionBand);
+  // mlAvailable is true only when ALL colleges have been ML-enriched.
+  // Using some() was causing partial enrichment to flip the UI into ML mode
+  // while most colleges still returned legacy band names (High/Medium/Low).
+  const mlAvailable = colleges.length > 0 && colleges.every(c => c.admissionBand);
   const bandsAvailable = mlAvailable ? ['Safe', 'Likely', 'Moderate', 'Risky'] : ['High', 'Medium', 'Low'];
 
   // Process and sort colleges
@@ -86,16 +89,17 @@ export function ResultsPage({
     });
   }, [colleges, sortBy, filterBand]);
 
-  // Statistics
+  // Statistics — count both ML band names and legacy names so the totals
+  // are always correct even when only some colleges got ML enrichment.
   const stats = useMemo(() => {
     return {
       total: colleges.length,
-      b1: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Safe' : 'High')).length,
-      b2: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Likely' : 'Medium')).length,
-      b3: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Moderate' : 'Medium')).length,
-      b4: colleges.filter(c => getAdmissionBand(c) === (mlAvailable ? 'Risky' : 'Low')).length,
+      b1: colleges.filter(c => { const b = getAdmissionBand(c); return b === 'Safe'     || b === 'High';   }).length,
+      b2: colleges.filter(c =>   getAdmissionBand(c) === 'Likely'                                          ).length,
+      b3: colleges.filter(c => { const b = getAdmissionBand(c); return b === 'Moderate' || b === 'Medium'; }).length,
+      b4: colleges.filter(c => { const b = getAdmissionBand(c); return b === 'Risky'    || b === 'Low';    }).length,
     };
-  }, [colleges, mlAvailable]);
+  }, [colleges]);
 
   const handleCompareToggle = (college: CollegeRecommendation, checked: boolean | 'indeterminate') => {
     if (checked) {

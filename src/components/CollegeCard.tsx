@@ -65,8 +65,10 @@ export function CollegeCard({
   const band = college.admissionBand ||
     (college.admissionChance === 'High' ? 'Safe' : college.admissionChance === 'Medium' ? 'Moderate' : 'Risky');
 
-  const probability = college.admissionProbability
-    ?? (band === 'Safe' ? 90 : band === 'Likely' ? 75 : band === 'Moderate' ? 60 : 35);
+  // Use || instead of ?? so a probability of 0 (which the ML service emits
+  // for well-below-cutoff colleges) also falls back to the band-based estimate.
+  const probability = college.admissionProbability || 
+    (band === 'Safe' ? 90 : band === 'Likely' ? 75 : band === 'Moderate' ? 60 : 35);
 
   const renderTrend = () => {
     switch (college.cutoffTrend) {
@@ -130,10 +132,12 @@ export function CollegeCard({
           <div className="mb-4">
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-xs text-muted-foreground">Admission Probability</span>
-              {college.admissionProbabilityP10 && college.admissionProbabilityP90 && (
+              {college.admissionProbabilityP10 && college.admissionProbabilityP90 ? (
                 <span className="text-xs text-muted-foreground/60 font-mono">
                   {Math.round(college.admissionProbabilityP10)}%–{Math.round(college.admissionProbabilityP90)}%
                 </span>
+              ) : (
+                <span className="text-xs text-muted-foreground/40 font-mono" title="Estimated from cutoff band">~est</span>
               )}
             </div>
             <ProbBar value={probability} category={band} />
