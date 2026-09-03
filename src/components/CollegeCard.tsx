@@ -65,10 +65,12 @@ export function CollegeCard({
   const band = college.admissionBand ||
     (college.admissionChance === 'High' ? 'Safe' : college.admissionChance === 'Medium' ? 'Moderate' : 'Risky');
 
-  // Show probability bar for any value the ML model returned, including 0%.
-  // The previous `> 0` guard hid legitimate near-zero predictions.
-  const hasMlProbability = college.admissionProbability != null;
-  const probability = hasMlProbability ? college.admissionProbability! : null;
+  // When ML probability is available use it (including near-zero values).
+  // When absent, fall back to a band-based estimate so the bar is never blank.
+  const hasMlProbability = college.admissionProbability != null && college.admissionProbability > 0;
+  const probability = hasMlProbability
+    ? college.admissionProbability!
+    : (band === 'Safe' ? 90 : band === 'Likely' ? 75 : band === 'Moderate' ? 60 : 35);
 
   const renderTrend = () => {
     switch (college.cutoffTrend) {
@@ -132,20 +134,15 @@ export function CollegeCard({
           <div className="mb-4">
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-xs text-muted-foreground">Admission Probability</span>
-              {college.admissionProbabilityP10 && college.admissionProbabilityP90 && (
+              {college.admissionProbabilityP10 && college.admissionProbabilityP90 ? (
                 <span className="text-xs text-muted-foreground/60 font-mono">
                   {Math.round(college.admissionProbabilityP10)}%–{Math.round(college.admissionProbabilityP90)}%
                 </span>
+              ) : (
+                <span className="text-xs text-muted-foreground/40 font-mono" title="Estimated from cutoff band">~est</span>
               )}
             </div>
-            {probability != null ? (
-              <ProbBar value={probability} category={band} />
-            ) : (
-              <div className="flex items-center gap-2.5">
-                <div className="flex-1 h-1.5 bg-white/[0.08] rounded-full" />
-                <span className="text-xs font-medium tabular-nums w-8 text-right text-muted-foreground/40">—</span>
-              </div>
-            )}
+            <ProbBar value={probability} category={band} />
           </div>
 
           {/* Stats */}
