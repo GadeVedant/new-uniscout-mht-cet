@@ -452,7 +452,11 @@ export function HomePage({ onPortalSelect }: HomePageProps) {
             </div>
             <div className="border-t border-white/[0.06] pt-6">
               <p className="text-white font-bold text-base mb-1">© 2025 A.G.O Innovations. All rights reserved.</p>
-              <p className="text-muted-foreground text-sm">Made with <span className="text-red-400">♡</span> in India</p>
+              <p className="text-muted-foreground text-sm flex items-center gap-2 mt-1">
+                <span>📞</span>
+                <a href="tel:+918668856417" className="hover:text-white transition-colors">+91 86688 56417</a>
+              </p>
+              <p className="text-muted-foreground text-sm mt-1">Made with <span className="text-red-400">♡</span> in India</p>
             </div>
           </div>
 

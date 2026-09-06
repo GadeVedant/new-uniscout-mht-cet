@@ -32,9 +32,11 @@ class PharmacyDataService {
       return;
     }
 
+<<<<<<< HEAD
+    // Pharmacy cutoff files — load only 2025 files (most recent year).
     // Pharmacy cutoff files — 2025 only.
-    // Pharmacy has no cutoff-history chart or Round 2 strategy feature yet,
-    // so older years are not needed and would waste RAM on the free tier.
+    // Older years are not needed since dedup already keeps latest year per college+branch+category+capRound.
+    // This keeps memory usage low on Render's free tier.
     const cutoffFiles = fs.readdirSync(dataDir)
       .filter(f =>
         f.endsWith('.csv') &&
