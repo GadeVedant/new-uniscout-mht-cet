@@ -32,10 +32,13 @@ class PharmacyDataService {
       return;
     }
 
-    // Pharmacy cutoff files — match BPHARMA and DPHARMACY patterns
+    // Pharmacy cutoff files — 2025 only.
+    // Pharmacy has no cutoff-history chart or Round 2 strategy feature yet,
+    // so older years are not needed and would waste RAM on the free tier.
     const cutoffFiles = fs.readdirSync(dataDir)
       .filter(f =>
         f.endsWith('.csv') &&
+        f.startsWith('2025') &&
         (f.toUpperCase().includes('BPHARMA') || f.toUpperCase().includes('DPHARMACY'))
       )
       .sort();
@@ -90,6 +93,7 @@ class PharmacyDataService {
     const files = fs.readdirSync(dataDir)
       .filter(f =>
         f.endsWith('.csv') &&
+        f.startsWith('2025') &&           // 2025 only — matches data loaded above
         (
           f.toLowerCase().includes('seatmatrix') ||
           f.toLowerCase().includes('seat_matrix')
