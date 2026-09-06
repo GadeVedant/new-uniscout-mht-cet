@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: uniscout-backend
+    runtime: node
+    rootDir: backend-mhtcet
+    buildCommand: npm install && npm run build
+    startCommand: node --max-old-space-size=512 dist/server.js
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: "5001"
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        value: https://uniscout.in
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "900000"
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: "200"
+      # Set this in the Render dashboard — do not commit the real value
+      - key: ML_SERVICE_URL
+        sync: false

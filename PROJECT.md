@@ -81,7 +81,7 @@ Render's free tier spins down services after 15 minutes of inactivity. Both the 
 
 | Service | Render Account | UptimeRobot Account | Health URL |
 |---------|---------------|---------------------|------------|
-| Backend (Node.js) | nkgadevedant@gmail.com | nkgadevedant@gmail.com | `https://uniscout-backend.onrender.com/health` |
+| Backend (Node.js) | kirtane.vedant1@gmail.com | kirtane.vedant1@gmail.com | `https://uniscout-backend.onrender.com/health` |
 | ML Service (Python/FastAPI) | gadevedant04@gmail.com | gadevedant04@gmail.com | `https://uniscout-ml-226x.onrender.com/health` |
 
 > **Note:** UptimeRobot sends HEAD requests by default. The ML service `/health` endpoint was updated to accept both GET and HEAD (`@app.api_route("/health", methods=["GET", "HEAD"])`) to prevent 405 errors.
@@ -123,7 +123,7 @@ Browser (React)
 Render Static Site (uniscout.co.in)
     │  REST API calls
     ▼
-Render Web Service (api.uniscout.co.in)  [account: nkgadevedant@gmail.com]
+Render Web Service (api.uniscout.co.in)  [account: kirtane.vedant1@gmail.com]
     │  Node.js + Express
     │  Loads CSV data on startup
     │  ML prediction calls
