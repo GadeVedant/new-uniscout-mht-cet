@@ -16,7 +16,7 @@ interface HomePageProps {
 const exams = [
   { id: 'mhtcet-eng',  name: 'MHT-CET Engineering', desc: 'Maharashtra PCM Based',  available: true,  route: '/mht-cet'   },
   { id: 'dse-eng',     name: 'DSE Engineering',      desc: 'Direct Second Year',     available: false, route: '/dse'       },
-  { id: 'mhtcet-pharm',name: 'MHT-CET Pharmacy',     desc: 'Maharashtra PCB Based',  available: false, route: '/pharmacy'  },
+  { id: 'mhtcet-pharm',name: 'MHT-CET Pharmacy',     desc: 'Maharashtra PCB Based',  available: true,  route: '/mht-cet/pharmacy'  },
   { id: 'jee-main',    name: 'JEE Main',             desc: 'National Level Entrance',available: false, route: '/jee-college-predictor' },
   { id: 'neet',        name: 'NEET',                 desc: 'Medical Admissions',     available: false, route: '/neet'      },
 ];

@@ -111,15 +111,15 @@ export function MhtCetSelector() {
                 </div>
 
                 {/* Pharmacy */}
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-purple-500/10 border border-purple-500/30">
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-pink-500/10 border border-pink-500/30">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center shrink-0">
                     <FlaskConical className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
                     <div className="text-white font-semibold text-sm">MHT CET Pharmacy</div>
-                    <div className="text-purple-300 text-xs">PCB Students · Coming Soon</div>
+                    <div className="text-pink-300 text-xs">PCB Students · 100+ Colleges</div>
                   </div>
-                  <span className="text-xs px-2 py-0.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full font-semibold">SOON</span>
+                  <span className="text-xs px-2 py-0.5 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full font-semibold">LIVE</span>
                 </div>
               </div>
 
