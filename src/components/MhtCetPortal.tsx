@@ -403,7 +403,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     if (formData.categories.length === 0) { setError('Please select at least one category.'); return; }
     setIsLoading(true); setError(null);
     // Show warm-up banner if server takes > 5s (Render free tier cold start)
-    const warmupTimer = setTimeout(() => setShowWarmupBanner(true), 5000);
+    const warmupTimer = setTimeout(() => setShowWarmupBanner(true), 3000);
     try {
       const allResults: CollegeRecommendation[] = [];
       const locationStr = formData.locations.includes('ALL') ? '' : formData.locations.join(',');
@@ -573,7 +573,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
                   className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 flex items-center gap-2.5 text-amber-300 text-sm"
                 >
                   <ServerCrash className="w-4 h-4 shrink-0" />
-                  <span>Server is warming up — this takes ~30 seconds on first request. Please wait...</span>
+                  <span>Server is warming up (Render cold start ~30s). Retrying automatically — please wait...</span>
                 </motion.div>
               )}
             </AnimatePresence>

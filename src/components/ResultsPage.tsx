@@ -22,7 +22,7 @@ import { useSEO } from '../seo/useSEO';
 interface ResultsPageProps {
   colleges: CollegeRecommendation[];
   lastQuery: QueryWithMeta | null;
-  portalType: 'mht-cet' | 'jee';
+  portalType: 'mht-cet' | 'jee' | 'pharmacy';
   comparisonSelection: CollegeRecommendation[];
   setComparisonSelection: React.Dispatch<React.SetStateAction<CollegeRecommendation[]>>;
 }
@@ -36,7 +36,7 @@ export function getAdmissionBand(college: CollegeRecommendation): string {
 }
 
 export function ResultsPage({ 
-  colleges, lastQuery, comparisonSelection, setComparisonSelection 
+  colleges, lastQuery, portalType, comparisonSelection, setComparisonSelection 
 }: ResultsPageProps) {
   const navigate = useNavigate();
   const [sortBy, setSortBy] = useState<SortOption>('chance');
@@ -46,12 +46,15 @@ export function ResultsPage({
 
   const branch = lastQuery?.branchPreference ?? 'Engineering';
   const percentile = lastQuery?.percentile;
+  const isPharmacy = portalType === 'pharmacy';
   useSEO({
     title: percentile
       ? `${branch} Colleges for ${percentile} Percentile MHT CET | Uniscout`
       : 'MHT CET College Results | Uniscout',
-    description: `${colleges.length} Maharashtra engineering colleges matching your MHT CET profile. Sorted by admission probability with cutoff trends and CAP round strategy.`,
-    noIndex: true, // results are session-specific, not for indexing
+    description: isPharmacy
+      ? `${colleges.length} Maharashtra pharmacy colleges matching your MHT CET PCB profile.`
+      : `${colleges.length} Maharashtra engineering colleges matching your MHT CET profile. Sorted by admission probability with cutoff trends and CAP round strategy.`,
+    noIndex: true,
   });
 
   // mlAvailable is true only when ALL colleges have been ML-enriched.
@@ -234,8 +237,12 @@ export function ResultsPage({
             {/* Left — Back button */}
             <div className="flex items-center gap-2 flex-wrap">
               <button
-                onClick={() => navigate('/mht-cet/engineering')}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30 text-[12px] font-medium transition-colors"
+                onClick={() => navigate(isPharmacy ? '/mht-cet/pharmacy' : '/mht-cet/engineering')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-medium transition-colors ${
+                  isPharmacy
+                    ? 'bg-pink-500/20 border border-pink-400/40 text-pink-300 hover:text-white hover:bg-pink-500/30'
+                    : 'bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:text-white hover:bg-cyan-500/30'
+                }`}
               >
                 <ArrowLeft className="size-3.5" />
                 Back
@@ -344,7 +351,7 @@ export function ResultsPage({
             </div>
             <TabsContent value="results" className="mt-0 outline-none">
               <ResultsContent 
-                {...{ stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, comparisonSelection, handleCompareToggle, navigate }} 
+                {...{ stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, comparisonSelection, handleCompareToggle, navigate, isPharmacy }} 
               />
             </TabsContent>
             <TabsContent value="strategy" className="mt-0 outline-none">
@@ -358,7 +365,7 @@ export function ResultsPage({
           </Tabs>
         ) : (
           <ResultsContent 
-            {...{ stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, comparisonSelection, handleCompareToggle, navigate }} 
+            {...{ stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, comparisonSelection, handleCompareToggle, navigate, isPharmacy }} 
           />
         )}
       </main>
@@ -375,7 +382,7 @@ export function ResultsPage({
 function ResultsContent({
   stats, mlAvailable, bandsAvailable, filterBand, setFilterBand,
   sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, navigate,
-  comparisonSelection, handleCompareToggle
+  comparisonSelection, handleCompareToggle, isPharmacy
 }: any) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -383,7 +390,8 @@ function ResultsContent({
     { value: 'chance',      label: 'Admission Chance' },
     { value: 'cutoff-high', label: 'Cutoff: High → Low' },
     { value: 'cutoff-low',  label: 'Cutoff: Low → High' },
-    { value: 'fees',        label: 'Fees' },
+    ...(!isPharmacy ? [{ value: 'fees', label: 'Fees' }] : []),
+    { value: 'seats',       label: 'Seats Available' },
     { value: 'name',        label: 'College Name' },
   ];
 

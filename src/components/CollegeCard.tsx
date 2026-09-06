@@ -163,6 +163,11 @@ export function CollegeCard({
                 <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Fees/yr</div>
                 <div className="text-sm font-semibold">{college.fees}</div>
               </div>
+            ) : college.seats ? (
+              <div>
+                <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Seats</div>
+                <div className="text-sm font-semibold">{college.seats}</div>
+              </div>
             ) : (
               <div>
                 <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Fees/yr</div>
@@ -174,7 +179,7 @@ export function CollegeCard({
                 <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Avg Pkg</div>
                 <div className="text-sm font-semibold text-emerald-400">{college.avgPackage} LPA</div>
               </div>
-            ) : college.seats ? (
+            ) : (college.fees && college.fees !== 'N/A' && college.seats) ? (
               <div>
                 <div className="text-[10px] text-muted-foreground mb-0.5 uppercase tracking-wider">Seats</div>
                 <div className="text-sm font-semibold">{college.seats}</div>

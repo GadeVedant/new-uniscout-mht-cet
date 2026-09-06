@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar';
 
 // Lazy-loaded routes — only downloaded when the user navigates to them
 const MhtCetPortal = lazy(() => import('./components/MhtCetPortal').then(m => ({ default: m.MhtCetPortal })));
+const MhtCetPharmacyPortal = lazy(() => import('./components/MhtCetPharmacyPortal').then(m => ({ default: m.MhtCetPharmacyPortal })));
 const MhtCetSelector = lazy(() => import('./components/MhtCetSelector').then(m => ({ default: m.MhtCetSelector })));
 const MhtCetSubSelector = lazy(() => import('./components/MhtCetSubSelector').then(m => ({ default: m.MhtCetSubSelector })));
 const JeePortal = lazy(() => import('./components/JeePortal').then(m => ({ default: m.JeePortal })));
@@ -79,7 +80,7 @@ function CatLandingRoute() {
 }
 
 export default function App() {
-  const [portalType, setPortalType] = useState<'mht-cet' | 'jee'>('mht-cet');
+  const [portalType, setPortalType] = useState<'mht-cet' | 'jee' | 'pharmacy'>('mht-cet');
 
   // Restore colleges from sessionStorage on hard reload (e.g. direct /college/:id navigation)
   const [colleges, setColleges] = useState<CollegeRecommendation[]>(() => {
@@ -134,6 +135,7 @@ export default function App() {
               <MhtCetPortal
                 onBack={() => {}}
                 onRecommendationsReady={(results, query) => {
+                  setPortalType('mht-cet');
                   setCollegesAndPersist(results);
                   setLastQueryAndPersist(query);
                 }}
@@ -141,7 +143,14 @@ export default function App() {
             } />
 
             <Route path="/mht-cet/pharmacy" element={
-              <ComingSoon portalType="mht-cet" title="MHT CET Pharmacy" subtitle="Pharmacy college admissions for PCB students" backRoute="/mht-cet/select" />
+              <MhtCetPharmacyPortal
+                onBack={() => {}}
+                onRecommendationsReady={(results, query) => {
+                  setPortalType('pharmacy');
+                  setCollegesAndPersist(results);
+                  setLastQueryAndPersist(query);
+                }}
+              />
             } />
 
             <Route path="/jee" element={
