@@ -74,7 +74,6 @@ export function MhtCetSubSelector() {
               </button>
             </motion.div>
 
-            {/* Pharmacy */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -82,18 +81,18 @@ export function MhtCetSubSelector() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => navigate('/mht-cet/pharmacy')}
-              className="p-8 rounded-2xl border border-purple-500/30 bg-white/5 backdrop-blur-md flex flex-col cursor-pointer hover:border-purple-400/60 hover:bg-purple-500/5 transition-all"
+              className="p-8 rounded-2xl border border-pink-500/30 bg-white/5 backdrop-blur-md flex flex-col cursor-pointer hover:border-pink-400/60 hover:bg-pink-500/5 transition-all"
             >
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center mb-5 shadow-lg shadow-pink-900/40">
                 <FlaskConical className="w-7 h-7 text-white" />
               </div>
               <div className="flex items-center gap-2 mb-2">
                 <h2 className="text-xl font-bold text-white">MHT CET Pharmacy</h2>
-                <span className="text-[10px] px-2 py-0.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full font-bold">SOON</span>
+                <span className="text-[10px] px-2 py-0.5 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full font-bold">LIVE</span>
               </div>
               <p className="text-pink-300 text-sm font-medium mb-3">PCB Students</p>
               <p className="text-purple-200 text-sm mb-6">
-                Discover the best pharmacy colleges based on your MHT CET PCB percentile. Coming soon with full predictions.
+                Discover the best pharmacy colleges based on your MHT CET PCB percentile with full predictions.
               </p>
               <ul className="space-y-1 mb-6">
                 {['100+ Pharmacy Colleges', 'PCB Stream Analysis', 'Merit-based Sorting'].map(f => (
@@ -104,7 +103,7 @@ export function MhtCetSubSelector() {
                 ))}
               </ul>
               <button className="mt-auto w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 text-white font-semibold transition-all shadow-lg shadow-pink-900/30">
-                Coming Soon →
+                Open Predictor →
               </button>
             </motion.div>
 

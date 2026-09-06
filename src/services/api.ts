@@ -159,17 +159,50 @@ export interface FormFillingResponse {
 }
 
 // API Functions
+
+/** Sleep helper for retry backoff */
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+/**
+ * Fetch with automatic retry on transient failures (network errors, 503, 404 cold-start).
+ * Retries up to `maxRetries` times with exponential backoff.
+ */
+async function fetchWithRetry(
+  url: string,
+  options: RequestInit,
+  maxRetries = 3,
+): Promise<Response> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const res = await fetch(url, options);
+      // Retry on server-side transient codes (cold-start 404/503/502/504)
+      if (attempt < maxRetries && [404, 502, 503, 504].includes(res.status)) {
+        await sleep(2000 * (attempt + 1)); // 2s, 4s, 6s
+        continue;
+      }
+      return res;
+    } catch (err) {
+      lastError = err;
+      if (attempt < maxRetries) {
+        await sleep(2000 * (attempt + 1));
+        continue;
+      }
+    }
+  }
+  throw lastError ?? new Error('Network request failed after retries');
+}
+
 export const api = {
   /**
-   * Get college recommendations based on user criteria
+   * Get college recommendations based on user criteria.
+   * Automatically retries on network errors and cold-start 404/503s.
    */
   async getRecommendations(request: RecommendationRequest): Promise<ApiResponse<CollegeRecommendation[]>> {
     try {
-      const response = await fetch(`${API_BASE_URL}/recommendations`, {
+      const response = await fetchWithRetry(`${API_BASE_URL}/recommendations`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(request),
       });
 
@@ -181,6 +214,36 @@ export const api = {
       return await response.json();
     } catch (error) {
       console.error('Error fetching recommendations:', error);
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        throw new Error('Network error — please check your connection and try again.');
+      }
+      throw error;
+    }
+  },
+
+  /**
+   * Get pharmacy college recommendations (PCB — B Pharmacy / D Pharmacy).
+   * Uses a separate backend dataset that never mixes with engineering data.
+   */
+  async getPharmacyRecommendations(request: RecommendationRequest): Promise<ApiResponse<CollegeRecommendation[]>> {
+    try {
+      const response = await fetchWithRetry(`${API_BASE_URL}/pharmacy/recommendations`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(request),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching pharmacy recommendations:', error);
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        throw new Error('Network error — please check your connection and try again.');
+      }
       throw error;
     }
   },
