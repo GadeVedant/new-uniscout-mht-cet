@@ -32,11 +32,14 @@ class PharmacyDataService {
       return;
     }
 
-    // Pharmacy cutoff files — match BPHARMA and DPHARMACY patterns
+    // Pharmacy cutoff files — load only 2025 files (most recent year).
+    // Older years are not needed since dedup already keeps latest year per college+branch+category+capRound.
+    // This keeps memory usage low on Render's free tier.
     const cutoffFiles = fs.readdirSync(dataDir)
       .filter(f =>
         f.endsWith('.csv') &&
-        (f.toUpperCase().includes('BPHARMA') || f.toUpperCase().includes('DPHARMACY'))
+        (f.toUpperCase().includes('BPHARMA') || f.toUpperCase().includes('DPHARMACY')) &&
+        f.startsWith('2025')   // only most recent year
       )
       .sort();
 
