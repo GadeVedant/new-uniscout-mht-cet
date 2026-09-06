@@ -6,7 +6,7 @@
 
 ## What is UniScout?
 
-UniScout is an AI-powered college prediction and counselling assistant for Maharashtra engineering admissions (MHT CET). It helps students make smarter decisions during the CAP (Centralized Admission Process) by predicting which colleges they are likely to get into, generating optimized preference lists, and providing round-wise strategy.
+UniScout is an AI-powered college prediction and counselling assistant for Maharashtra engineering and pharmacy admissions (MHT CET / PCB). It helps students make smarter decisions during the CAP (Centralized Admission Process) by predicting which colleges they are likely to get into, generating optimized preference lists, and providing round-wise strategy.
 
 ---
 
@@ -60,18 +60,27 @@ UniScout solves all of this in one place.
 - **AI Best Pick** — recommends the best option based on weighted scoring
 - Mobile-optimized: stacked cards on phone, table on desktop
 
+### 6. MHT-CET Pharmacy Predictor (B Pharmacy / D Pharmacy)
+- Separate portal for PCB students — completely isolated from the engineering dataset
+- Supports B Pharmacy and D Pharmacy branches
+- All reservation categories supported (GOPENS, GSCS, GSTS, OBC, SEBC, EWS, NT, VJ/DT, TFWS, LOPEN, etc.)
+- 4 years of pharmacy CAP cutoff data (2022–2025, all 3 rounds)
+- Returns ranked college list with cutoff, seat intake, admission chance band, and location
+
 ---
 
 ## Data Coverage
 
 | Data Type | Coverage |
 |-----------|----------|
-| CAP cutoff data | 2022–23, 2023–24, 2024–25, 2025–26 (all 3 rounds) |
-| Colleges | 386 colleges |
-| Seat intake | 385/386 colleges (99.7%) |
+| CAP cutoff data (Engineering) | 2022–23, 2023–24, 2024–25, 2025–26 (all 3 rounds) |
+| CAP cutoff data (B Pharmacy) | 2022–23, 2023–24, 2024–25, 2025–26 (all 3 rounds) |
+| CAP cutoff data (D Pharmacy) | 2023–24, 2024–25, 2025–26 (all 3 rounds) |
+| Engineering colleges | 386 colleges |
+| Seat intake (Engineering) | 385/386 colleges (99.7%) |
 | Fees data | ~255 colleges (66%) |
 | Placement data | ~94 colleges (24%) |
-| Branches | 103 unique branches |
+| Branches (Engineering) | 103 unique branches |
 
 ---
 
@@ -101,9 +110,10 @@ The frontend also has a client-side fallback: `SmartFormPage.tsx` retries failed
 
 ### Backend
 - **Node.js** + **Express.js** + **TypeScript**
-- REST API with 8 endpoints
-- In-memory data store — loads ~93,000 records on startup
-- Deployed on **Render** (Web Service)
+- REST API with 10 endpoints
+- Two in-memory data stores — engineering (~93,000 records) and pharmacy loaded on startup
+- `allYearsData` accumulation pattern avoids redundant array copies — keeps peak RSS within 512MB free tier
+- Deployed on **Render** (Web Service, account: kirtane.vedant1@gmail.com)
 
 ### ML Service
 - **Python** + **FastAPI** (a Python REST API framework)
@@ -141,7 +151,7 @@ The entire project uses **REST API** architecture — JSON over HTTP. The main b
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/health` | Server health + data stats |
-| POST | `/api/recommendations` | College predictions |
+| POST | `/api/recommendations` | Engineering college predictions |
 | GET | `/api/filters` | Available filter options |
 | GET | `/api/branches` | All branch names |
 | GET | `/api/locations` | All location names |
@@ -149,6 +159,7 @@ The entire project uses **REST API** architecture — JSON over HTTP. The main b
 | GET | `/api/colleges/:code/cutoff-history` | Multi-year cutoff chart data |
 | POST | `/api/strategy/round2` | CAP Round 2 strategy |
 | POST | `/api/form-filling/generate` | Smart preference list |
+| POST | `/api/pharmacy/recommendations` | Pharmacy college predictions (B Pharmacy / D Pharmacy) |
 
 ---
 
@@ -182,6 +193,7 @@ Some colleges don't report SC/ST cutoffs to DTE. Rather than hiding these colleg
 
 - JEE Main college predictor (data ready, UI in progress)
 - NEET and CAT predictors
+- Pharmacy cutoff history chart (data already loaded in `allYearsData`)
 - Push notifications for cutoff updates
 - User accounts to save preference lists
 - Comparison with previous year's allotment data
@@ -255,3 +267,4 @@ Full detail in `UX_AUDIT.md` → *Bug-Fix Session — August 2026*. Summary of c
 | StrategyTab | `AbortController.signal` threaded through to `fetch` — timeout now actually cancels the request |
 | CollegeCard | `admissionProbability != null` check instead of `> 0` — near-zero ML predictions no longer hidden |
 | strategyController | Malformed `colleges` array elements filtered before passing to service |
+| OOM on Render free tier | Both `dataService` and `pharmacyDataService` previously spread `allYearsData = [...collegeData]` — a full duplicate array — before deduplication. Fix: accumulate directly into `allYearsData`; derive `collegeData` via dedup Map. Eliminates one full copy of each dataset from peak RSS, keeping both services within the 512MB free-tier limit. |
