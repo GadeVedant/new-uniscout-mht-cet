@@ -5,4 +5,4 @@ cmds = ["npm install"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "node --max-old-space-size=450 dist/server.js"
+cmd = "node --max-old-space-size=512 dist/server.js"

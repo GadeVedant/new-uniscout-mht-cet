@@ -81,7 +81,7 @@ Render's free tier spins down services after 15 minutes of inactivity. Both the 
 
 | Service | Render Account | UptimeRobot Account | Health URL |
 |---------|---------------|---------------------|------------|
-| Backend (Node.js) | nkgadevedant@gmail.com | nkgadevedant@gmail.com | `https://uniscout-backend.onrender.com/health` |
+| Backend (Node.js) | kirtane.vedant1@gmail.com | kirtane.vedant1@gmail.com | `https://uniscout-backend.onrender.com/health` |
 | ML Service (Python/FastAPI) | gadevedant04@gmail.com | gadevedant04@gmail.com | `https://uniscout-ml-226x.onrender.com/health` |
 
 > **Note:** UptimeRobot sends HEAD requests by default. The ML service `/health` endpoint was updated to accept both GET and HEAD (`@app.api_route("/health", methods=["GET", "HEAD"])`) to prevent 405 errors.
@@ -123,7 +123,7 @@ Browser (React)
 Render Static Site (uniscout.co.in)
     │  REST API calls
     ▼
-Render Web Service (api.uniscout.co.in)  [account: nkgadevedant@gmail.com]
+Render Web Service (api.uniscout.co.in)  [account: kirtane.vedant1@gmail.com]
     │  Node.js + Express
     │  Loads CSV data on startup
     │  ML prediction calls
@@ -188,7 +188,52 @@ Some colleges don't report SC/ST cutoffs to DTE. Rather than hiding these colleg
 
 ---
 
-## Bug Fixes — August 2026
+## Test Suite
+
+**Runner:** Vitest (both backend and frontend share the same `vitest` config at the project root)
+
+**Total: 223 tests across 18 files — all passing as of August 2026**
+
+### Backend (`backend-mhtcet/src/tests/`)
+
+| File | What it covers |
+|---|---|
+| `collegeController.test.ts` | Cutoff history endpoint, filter/branch/location endpoints |
+| `cutoffTrendService.test.ts` | Trend direction (rising/falling/stable), Round 2 opportunity flag, property-based threshold tests |
+| `formFillingController.test.ts` | Input validation (percentile, category, capRound, branchPreferences, budget, priorityMode) |
+| `formFillingService.test.ts` | Tier assignment, district filter, budget filter, ML enrichment, GOPENS fallback |
+| `mlPredictionCache.test.ts` | Cache hit/miss, TTL expiry, SHA-256 key generation |
+| `mlServiceClient.test.ts` | HTTP batch predict, timeout handling, error propagation |
+| `placementLoader.test.ts` | CSV loading, code-based and name-based lookup, missing data handling |
+| `recommendationService.test.ts` | ML enrichment pipeline, graceful fallback on ML failure, cache integration |
+| `strategyController.test.ts` | Strategy endpoint validation, response shape, malformed colleges array |
+| `strategyService.test.ts` | `computeHistoricalAvgDelta`, `computeMissedColleges`, `computeFreezeOrFloat`, `computeRound2Opportunities`, property-based bound tests |
+
+### Frontend (`src/__tests__/`)
+
+| File | What it covers |
+|---|---|
+| `collegeComparison.test.ts` | `computeBestPick`, `computeBestValueHighlights`, tie handling |
+| `CollegeDetailPage.test.tsx` | Detail page rendering, cutoff chart, placement section, back navigation |
+| `CopyButton.test.tsx` | Clipboard copy, toast feedback, visibility when empty |
+| `enhancedResultsPage.test.ts` | Band filter, sort order, stats bar counts |
+| `PreferenceEntryCard.test.tsx` | All required fields rendered, correct band colour class |
+| `scoring.test.ts` | `parseAnnualFees`, `parsePackageLPA`, `computeWeightedScore`, `generateEntryReason` |
+| `SmartFormPage.test.tsx` | Form validation, district cap, branch cap, submission flow, retry banner |
+| `strategyProperties.test.ts` | Property-based tests for FreezeFloatCard and MissedCollegeList |
+
+### Running tests
+
+```bash
+# From project root — runs all 18 test files
+npm run test -- --run
+```
+
+### Test mock note (August 2026)
+
+After switching `cutoffTrendService` and `strategyService` from `getAllColleges()` to `getAllYearsData()`, the `dataService` mocks in `cutoffTrendService.test.ts`, `strategyService.test.ts`, and `recommendationService.test.ts` were updated to expose `getAllYearsData` alongside `getAllColleges`, mirroring the same data so existing test expectations remain valid.
+
+---
 
 Full detail in `UX_AUDIT.md` → *Bug-Fix Session — August 2026*. Summary of changes:
 
