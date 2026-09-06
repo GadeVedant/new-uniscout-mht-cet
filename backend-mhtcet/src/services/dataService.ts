@@ -27,28 +27,27 @@ class DataService {
 
       logger.info(`Loading ${files.length} data file(s) from: ${config.dataDir}`);
       let totalRows = 0;
+      // Accumulate directly into allYearsData — needed for cutoff history
       for (const file of files) {
         const filePath = path.join(config.dataDir, file);
         const t0 = Date.now();
         let parsed: CollegeData[];
         if (file.endsWith('.csv')) {
-          parsed = this.parseCsvToCollegeData(filePath, this.collegeData.length, feesMap, feesByName, seatMap);
+          parsed = this.parseCsvToCollegeData(filePath, this.allYearsData.length, feesMap, feesByName, seatMap);
         } else {
           const rows = this.readExcelFile(filePath);
-          parsed = this.parseExcelData(rows, this.collegeData.length);
+          parsed = this.parseExcelData(rows, this.allYearsData.length);
         }
-        this.collegeData.push(...parsed);
+        this.allYearsData.push(...parsed);
         totalRows += parsed.length;
         logger.info(`  → ${file}: ${parsed.length} records (${Date.now() - t0}ms)`);
       }
       logger.info(`Total: ${totalRows} rows loaded`);
 
-      // Save all years before dedup — needed for cutoff history
-      this.allYearsData = [...this.collegeData];
-
       // Deduplicate: keep only the most recent year's record per college+branch+category+capRound
+      // collegeData is derived from allYearsData via Map — no array spread copy
       const best = new Map<string, CollegeData>();
-      for (const row of this.collegeData) {
+      for (const row of this.allYearsData) {
         const key = `${row.collegeCode}|${row.branchName}|${row.category}|${row.capRound}`;
         const existing = best.get(key);
         if (!existing || (row.year ?? '') > (existing.year ?? '')) {

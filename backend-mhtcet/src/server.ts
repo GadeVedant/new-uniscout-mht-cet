@@ -39,7 +39,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use(morgan('combined', { stream: { write: (msg) => logger.http(msg.trim()) } }));
 
 app.use('/api', routes);
-app.get('/', (_req, res) => res.json({ success: true, message: 'UNISCOUT MHT-CET Backend', version: '1.0.0' }));
+app.get('/', (_req, res) => res.json({ success: true, message: 'UniScout Backend — MHT-CET + Pharmacy', version: '1.0.0' }));
 // Convenience shortcut — Render health checks use /health
 app.get('/health', (_req, res) => res.redirect('/api/health'));
 app.use(notFoundHandler);
@@ -55,7 +55,7 @@ async function start() {
     await placementLoader.load(process.env.PLACEMENT_DATA_PATH ?? './data/placement_data_2025_26.csv');
     app.listen(config.port, () => {
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-      const msg = `MHT-CET backend running on port ${config.port} (started in ${elapsed}s)`;
+      const msg = `UniScout backend running on port ${config.port} — MHT-CET + Pharmacy (started in ${elapsed}s)`;
       logger.info(msg);
       // Also write directly to stdout so it always appears in terminal
       process.stdout.write(`\n✅ ${msg}\n\n`);

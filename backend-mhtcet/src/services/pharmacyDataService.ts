@@ -32,14 +32,16 @@ class PharmacyDataService {
       return;
     }
 
+<<<<<<< HEAD
     // Pharmacy cutoff files — load only 2025 files (most recent year).
+    // Pharmacy cutoff files — 2025 only.
     // Older years are not needed since dedup already keeps latest year per college+branch+category+capRound.
     // This keeps memory usage low on Render's free tier.
     const cutoffFiles = fs.readdirSync(dataDir)
       .filter(f =>
         f.endsWith('.csv') &&
-        (f.toUpperCase().includes('BPHARMA') || f.toUpperCase().includes('DPHARMACY')) &&
-        f.startsWith('2025')   // only most recent year
+        f.startsWith('2025') &&
+        (f.toUpperCase().includes('BPHARMA') || f.toUpperCase().includes('DPHARMACY'))
       )
       .sort();
 
@@ -53,23 +55,21 @@ class PharmacyDataService {
 
     logger.info(`PharmacyDataService: loading ${cutoffFiles.length} cutoff file(s)`);
     let totalRows = 0;
-
+    // Accumulate directly into allYearsData — no separate copy needed
     for (const file of cutoffFiles) {
       const filePath = path.join(dataDir, file);
       const t0 = Date.now();
-      const parsed = this.parseCsvToCollegeData(filePath, this.collegeData.length, seatMap);
-      this.collegeData.push(...parsed);
+      const parsed = this.parseCsvToCollegeData(filePath, this.allYearsData.length, seatMap);
+      this.allYearsData.push(...parsed);
       totalRows += parsed.length;
       logger.info(`  → ${file}: ${parsed.length} records (${Date.now() - t0}ms)`);
     }
     logger.info(`PharmacyDataService: ${totalRows} rows loaded`);
 
-    // Keep all years before dedup (for future cutoff-history support)
-    this.allYearsData = [...this.collegeData];
-
     // Dedup — keep most recent year per college+branch+category+capRound
+    // collegeData is derived from allYearsData via Map; no array spread copy
     const best = new Map<string, CollegeData>();
-    for (const row of this.collegeData) {
+    for (const row of this.allYearsData) {
       const key = `${row.collegeCode}|${row.branchName}|${row.category}|${row.capRound}`;
       const existing = best.get(key);
       if (!existing || (row.year ?? '') > (existing.year ?? '')) {
@@ -95,6 +95,7 @@ class PharmacyDataService {
     const files = fs.readdirSync(dataDir)
       .filter(f =>
         f.endsWith('.csv') &&
+        f.startsWith('2025') &&           // 2025 only — matches data loaded above
         (
           f.toLowerCase().includes('seatmatrix') ||
           f.toLowerCase().includes('seat_matrix')
