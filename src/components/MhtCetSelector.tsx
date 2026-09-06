@@ -171,6 +171,8 @@ export function MhtCetSelector() {
       <footer className="w-full border-t border-white/10 bg-white/5 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-6 py-6 text-sm text-purple-400 text-center">
           © {new Date().getFullYear()} Uniscout. All rights reserved.
+          <span className="mx-2">·</span>
+          <a href="tel:+918668856417" className="hover:text-white transition-colors">📞 +91 86688 56417</a>
         </div>
       </footer>
     </div>
