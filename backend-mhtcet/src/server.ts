@@ -55,7 +55,7 @@ async function start() {
     await placementLoader.load(process.env.PLACEMENT_DATA_PATH ?? './data/placement_data_2025_26.csv');
     app.listen(config.port, () => {
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-      const msg = `MHT-CET backend running on port ${config.port} (started in ${elapsed}s)`;
+      const msg = `UniScout backend running on port ${config.port} — MHT-CET + Pharmacy (started in ${elapsed}s)`;
       logger.info(msg);
       // Also write directly to stdout so it always appears in terminal
       process.stdout.write(`\n✅ ${msg}\n\n`);
