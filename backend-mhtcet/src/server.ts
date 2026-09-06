@@ -39,7 +39,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use(morgan('combined', { stream: { write: (msg) => logger.http(msg.trim()) } }));
 
 app.use('/api', routes);
-app.get('/', (_req, res) => res.json({ success: true, message: 'UNISCOUT MHT-CET Backend', version: '1.0.0' }));
+app.get('/', (_req, res) => res.json({ success: true, message: 'UniScout Backend — MHT-CET + Pharmacy', version: '1.0.0' }));
 // Convenience shortcut — Render health checks use /health
 app.get('/health', (_req, res) => res.redirect('/api/health'));
 app.use(notFoundHandler);
