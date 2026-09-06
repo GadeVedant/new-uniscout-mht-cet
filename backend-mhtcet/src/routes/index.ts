@@ -3,6 +3,7 @@ import { getRecommendations, getFilterOptions, healthCheck, getBranches, getLoca
 import { getCutoffHistory } from '../controllers/collegeController.js';
 import { getRound2Strategy } from '../controllers/strategyController.js';
 import { generateFormFillingList } from '../controllers/formFillingController.js';
+import { getPharmacyRecommendations } from '../controllers/pharmacyController.js';
 import { recommendationValidation, handleValidationErrors } from '../middleware/validation.js';
 
 const router = Router();
@@ -16,5 +17,8 @@ router.post('/recommendations', recommendationValidation, handleValidationErrors
 router.get('/colleges/:collegeCode/cutoff-history', getCutoffHistory);
 router.post('/strategy/round2', getRound2Strategy);
 router.post('/form-filling/generate', generateFormFillingList);
+
+// ── Pharmacy (PCB) — separate dataset, no collision with engineering ──────
+router.post('/pharmacy/recommendations', getPharmacyRecommendations);
 
 export default router;
