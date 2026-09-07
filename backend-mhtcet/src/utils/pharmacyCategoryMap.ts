@@ -172,13 +172,63 @@ export const PHARMACY_CATEGORY_DISCOUNT: Record<string, number> = {
   TFWS:0, MI:0, ORPHAN:0,
 };
 
-/** Expand a user-selected category code to all matching CSV codes. */
-export function expandPharmacyCategory(category: string): string[] {
-  const upper = category.trim().toUpperCase();
-  return PHARMACY_CATEGORY_GROUPS[upper] ?? [upper];
+/**
+ * Pharmacy uses EXACT category matching — each code (GOPENS, GOPENH, GOPENO,
+ * LOPENH etc.) has distinct cutoff data and must NOT be grouped together.
+ *
+ * The only mappings needed are for D Pharmacy bare codes that appear in the CSV
+ * without a suffix (e.g. "GOPEN" in D Pharmacy CSVs should match "GOPEN" rows,
+ * and when the user selects a suffixed code like "GOPENS" we check for both
+ * the exact code and the bare-code equivalent).
+ */
+
+// D Pharmacy bare codes → their suffixed equivalents (for cross-matching)
+const BARE_TO_SUFFIXED: Record<string, string[]> = {
+  GOPEN:  ['GOPEN','GOPENS','GOPENH','GOPENO'],
+  LOPEN:  ['LOPEN','LOPENS','LOPENH','LOPENO'],
+  GSC:    ['GSC','GSCS','GSCH','GSCO'],
+  LSC:    ['LSC','LSCS','LSCH','LSCO'],
+  GST:    ['GST','GSTS','GSTH','GSTO'],
+  LST:    ['LST','LSTS','LSTH','LSTO'],
+  GOBC:   ['GOBC','GOBCS','GOBCH','GOBCO'],
+  LOBC:   ['LOBC','LOBCS','LOBCH','LOBCO'],
+  GSEBC:  ['GSEBC','GSEBCS','GSEBCH','GSEBCO'],
+  LSEBC:  ['LSEBC','LSEBCS','LSEBCH','LSEBCO'],
+  GNTA:   ['GNTA','GNT1S','GNT1H','GNT1O'],
+  GNTB:   ['GNTB','GNT2S','GNT2H','GNT2O'],
+  GNTC:   ['GNTC','GNT3S','GNT3H','GNT3O'],
+  LNTA:   ['LNTA','LNT1S','LNT1H','LNT1O'],
+  LNTB:   ['LNTB','LNT2S','LNT2H','LNT2O'],
+  LNTC:   ['LNTC','LNT3S','LNT3H','LNT3O'],
+};
+
+// Reverse map: suffixed → bare (so selecting GOPENS also hits GOPEN rows in D Pharmacy CSVs)
+const SUFFIXED_TO_BARE: Record<string, string> = {};
+for (const [bare, suffixed] of Object.entries(BARE_TO_SUFFIXED)) {
+  for (const s of suffixed) {
+    if (s !== bare) SUFFIXED_TO_BARE[s] = bare;
+  }
 }
 
-/** True if a CSV row's category matches the user-selected category. */
+/** Expand a user-selected category to all CSV codes it should match. */
+export function expandPharmacyCategory(category: string): string[] {
+  const upper = category.trim().toUpperCase();
+  const codes = new Set<string>([upper]);
+  // If this is a bare D Pharmacy code, also match its suffixed variants
+  if (BARE_TO_SUFFIXED[upper]) {
+    BARE_TO_SUFFIXED[upper].forEach(c => codes.add(c));
+  }
+  // If this is a suffixed code, also match the bare D Pharmacy code
+  if (SUFFIXED_TO_BARE[upper]) {
+    codes.add(SUFFIXED_TO_BARE[upper]);
+    // Also add sibling suffixed codes so GOPEN row is matched by GOPENS selection
+    const bare = SUFFIXED_TO_BARE[upper];
+    if (BARE_TO_SUFFIXED[bare]) BARE_TO_SUFFIXED[bare].forEach(c => codes.add(c));
+  }
+  return [...codes];
+}
+
+/** True if a CSV row's category matches the user-selected category (exact + bare-code bridge). */
 export function pharmacyCategoryMatches(csvCategory: string, userCategory: string): boolean {
   const expanded = expandPharmacyCategory(userCategory);
   return expanded.includes(csvCategory.trim().toUpperCase());
