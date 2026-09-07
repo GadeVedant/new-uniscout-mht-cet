@@ -66,7 +66,13 @@ class RecommendationService {
       field.includes(' ' + term + ' ');
 
     // ---- Rule-based filter ----
-    const applyFilters = (withLocation: boolean) => dataService.getAllColleges().filter(c => {
+    // Use allYearsData so the user-selected year is respected exactly.
+    // The year from the request is in "YYYY-YY" format (e.g. "2024-25").
+    const sourceData = year
+      ? dataService.getAllYearsData().filter(c => c.year === year)
+      : dataService.getAllYearsData();
+
+    const applyFilters = (withLocation: boolean) => sourceData.filter(c => {
       if (capRound && c.capRound !== capRound) return false;
       if (category) {
         if (!categoryMatches(c.category, category)) return false;
@@ -114,7 +120,7 @@ class RecommendationService {
       const suppLocs = !locationFallback && location
         ? location.split(',').map(l => l.trim().toLowerCase()).filter(Boolean)
         : [];
-      const openRecords = dataService.getAllColleges().filter(c => {
+      const openRecords = sourceData.filter(c => {
         if (capRound && c.capRound !== capRound) return false;
         if (!categoryMatches(c.category, 'GOPENS')) return false;
         if (branchPreference && !this.branchMatches(branchPreference, c.branchName)) return false;
@@ -138,8 +144,7 @@ class RecommendationService {
     }
 
     const allRecs = [...filtered, ...supplemental]
-      .map(c => this.buildRecommendation(c, percentile))
-      .filter(r => r.percentileDifference >= -5);
+      .map(c => this.buildRecommendation(c, percentile));
 
     // Dedup: keep one record per college+branch — the one with the lowest cutoff
     // (most accessible entry point for the student's category group)

@@ -20,8 +20,8 @@ class PharmacyRecommendationService {
     locationFallback: boolean;
   }> {
     const requestId = randomUUID();
-    const { percentile, capRound, category, branchPreference, location } = request;
-    logger.info(`Pharmacy recommendation: percentile=${percentile}, capRound=${capRound}, category=${category}, branch=${branchPreference}, requestId=${requestId}`);
+    const { percentile, year, capRound, category, branchPreference, location } = request;
+    logger.info(`Pharmacy recommendation: percentile=${percentile}, year=${year}, capRound=${capRound}, category=${category}, branch=${branchPreference}, requestId=${requestId}`);
 
     // Word-boundary location match (same as engineering)
     const matchesLocTerm = (field: string, term: string): boolean =>
@@ -31,8 +31,14 @@ class PharmacyRecommendationService {
       field.includes(' ' + term + ' ');
 
     // ── Rule-based filter ────────────────────────────────────────────────────
+    // Use allYearsData filtered to the exact requested year so the user-selected
+    // year is respected and data from other years never bleeds in.
+    const sourceData = year
+      ? pharmacyDataService.getAllYearsData().filter(c => c.year === year)
+      : pharmacyDataService.getAllYearsData();
+
     const applyFilters = (withLocation: boolean) =>
-      pharmacyDataService.getAllColleges().filter(c => {
+      sourceData.filter(c => {
         if (capRound && c.capRound !== capRound) return false;
         if (category && !pharmacyCategoryMatches(c.category, category)) return false;
         if (branchPreference) {
@@ -75,7 +81,7 @@ class PharmacyRecommendationService {
         ? location.split(',').map(l => l.trim().toLowerCase()).filter(Boolean)
         : [];
 
-      const openRecords = pharmacyDataService.getAllColleges().filter(c => {
+      const openRecords = sourceData.filter(c => {
         if (capRound && c.capRound !== capRound) return false;
         if (!pharmacyCategoryMatches(c.category, 'GOPENS')) return false;
         if (branchPreference) {
@@ -101,8 +107,7 @@ class PharmacyRecommendationService {
 
     // ── Build + filter recommendations ───────────────────────────────────────
     const allRecs = [...filtered, ...supplemental]
-      .map(c => this.buildRecommendation(c, percentile))
-      .filter(r => r.percentileDifference >= -5);
+      .map(c => this.buildRecommendation(c, percentile));
 
     // Dedup — keep lowest cutoff per college+branch
     const best = new Map<string, CollegeRecommendation>();
