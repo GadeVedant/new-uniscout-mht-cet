@@ -214,17 +214,19 @@ for (const [bare, suffixed] of Object.entries(BARE_TO_SUFFIXED)) {
 export function expandPharmacyCategory(category: string): string[] {
   const upper = category.trim().toUpperCase();
   const codes = new Set<string>([upper]);
-  // If this is a bare D Pharmacy code, also match its suffixed variants
+
+  // If this is a bare D Pharmacy code (e.g. GOPEN), also match it exactly
+  // but do NOT expand to siblings — GOPEN in D Pharmacy CSVs is its own code
   if (BARE_TO_SUFFIXED[upper]) {
-    BARE_TO_SUFFIXED[upper].forEach(c => codes.add(c));
+    codes.add(upper); // already added, just explicit
   }
-  // If this is a suffixed code, also match the bare D Pharmacy code
+
+  // If this is a suffixed code (e.g. GOPENH), also match the bare code
+  // so D Pharmacy rows with just "GOPEN" are included — but NO siblings
   if (SUFFIXED_TO_BARE[upper]) {
     codes.add(SUFFIXED_TO_BARE[upper]);
-    // Also add sibling suffixed codes so GOPEN row is matched by GOPENS selection
-    const bare = SUFFIXED_TO_BARE[upper];
-    if (BARE_TO_SUFFIXED[bare]) BARE_TO_SUFFIXED[bare].forEach(c => codes.add(c));
   }
+
   return [...codes];
 }
 
