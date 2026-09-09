@@ -32,7 +32,6 @@ class PharmacyDataService {
       return;
     }
 
-<<<<<<< HEAD
     // Pharmacy cutoff files — load 2024 and 2025 data.
     // 2022/2023 are excluded to keep memory low on Render's free tier.
     // The year filter at query time will serve the exact year the user selects.
