@@ -744,25 +744,6 @@ export function MhtCetPharmacyPortal({ onRecommendationsReady }: PharmacyPortalP
                 className="w-full bg-pink-950/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-pink-500/60 transition-colors" />
             </div>
 
-            {/* Year Selection */}
-            <div className="space-y-2">
-              <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                <BookMarked className="w-4 h-4 text-slate-400" /> Exam Year
-              </label>
-              <div className="flex gap-2">
-                {['2022','2023','2024','2025'].map(yr => (
-                  <button key={yr} type="button" disabled={isLoading}
-                    onClick={() => setFormData(p => ({ ...p, year: yr }))}
-                    className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border
-                      ${formData.year === yr
-                        ? 'bg-pink-500 border-pink-400 text-white shadow-lg shadow-pink-900/40'
-                        : 'bg-pink-950/40 border-white/10 text-slate-400 hover:border-white/25 hover:text-slate-200'}`}>
-                    {yr}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             {/* CAP Round */}
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
