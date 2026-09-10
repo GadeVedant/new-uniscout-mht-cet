@@ -504,21 +504,6 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               />
             </div>
 
-            {/* Year Selection */}
-            <div className="space-y-2">
-              <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                <BookMarked className="w-4 h-4 text-slate-400" /> Exam Year
-              </label>
-              <div className="flex gap-2">
-                {['2022','2023','2024','2025'].map(yr => (
-                  <button key={yr} type="button" disabled={isLoading}
-                    onClick={() => setFormData(p => ({ ...p, year: yr }))}
-                    className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border ${formData.year === yr ? 'bg-cyan-500 border-cyan-400 text-white shadow-lg shadow-cyan-900/40' : 'bg-indigo-950/80 border-white/10 text-slate-400 hover:border-white/25 hover:text-slate-200'}`}>
-                    {yr}
-                  </button>
-                ))}
-              </div>
-            </div>
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
