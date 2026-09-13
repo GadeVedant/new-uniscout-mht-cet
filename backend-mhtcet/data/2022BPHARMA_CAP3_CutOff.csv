@@ -1,4 +1,4 @@
-Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Category,Seat_Type,Gender,Rank,Percentile
+﻿Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Category,Seat_Type,Gender,Rank,Percentile
 2022-23,B Pharmacy,CAP Round III,01003,"Government College of Pharmacy, Amravati",Amravati,Government,GOPENH,Home University,Any,3738,94.9959604
 2022-23,B Pharmacy,CAP Round III,01003,"Government College of Pharmacy, Amravati",Amravati,Government,LOPENH,Home University,Ladies,4121,94.5983237
 2022-23,B Pharmacy,CAP Round III,01003,"Government College of Pharmacy, Amravati",Amravati,Government,LOBCH,Home University,Ladies,4404,94.2772446
@@ -1706,28 +1706,28 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2022-23,B Pharmacy,CAP Round III,03510,"Lokmanya Tilak Institute of Pharmacy, Kharghar, Navi Mumbai",Mumbai,Unaided,LSCO,Other than Home University,Ladies,9062,89.380298
 2022-23,B Pharmacy,CAP Round III,03510,"Lokmanya Tilak Institute of Pharmacy, Kharghar, Navi Mumbai",Mumbai,Unaided,LOBCO,Other than Home University,Ladies,14495,83.6007767
 2022-23,B Pharmacy,CAP Round III,03510,"Lokmanya Tilak Institute of Pharmacy, Kharghar, Navi Mumbai",Mumbai,Unaided,EWS,Special,Any,5357,93.1709503
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,16170,81.8131453
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,20914,76.9711042
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,34811,61.2725248
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GVJH,Home University,Any,19181,78.6119711
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GNT1H,Home University,Any,26293,71.3054695
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GNT2H,Home University,Any,21670,76.1782917
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GNT3H,Home University,Any,23459,74.3958197
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,21507,76.5304004
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,14839,83.102493
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,19198,78.6119711
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LSTH,Home University,Ladies,37870,57.3474437
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,14070,83.9142978
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,PWDOPENH,Home University,Any,23123,74.5697509
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,38936,55.4822462
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,44664,47.4045407
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,46211,43.9883434
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,28771,68.6228206
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LSCO,Other than Home University,Ladies,45665,44.452279
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,57087,14.0247678
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GSTO,Other than Home University,Any,43594,48.3555779
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,11665,86.4654282
-2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,EWS,Special,Any,21353,76.5966408
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GOPENH,Home University,Any,16170,81.8131453
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GSCH,Home University,Any,20914,76.9711042
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GSTH,Home University,Any,34811,61.2725248
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GVJH,Home University,Any,19181,78.6119711
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GNT1H,Home University,Any,26293,71.3054695
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GNT2H,Home University,Any,21670,76.1782917
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GNT3H,Home University,Any,23459,74.3958197
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GOBCH,Home University,Any,21507,76.5304004
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LOPENH,Home University,Ladies,14839,83.102493
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LSCH,Home University,Ladies,19198,78.6119711
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LSTH,Home University,Ladies,37870,57.3474437
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LOBCH,Home University,Ladies,14070,83.9142978
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,PWDOPENH,Home University,Any,23123,74.5697509
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GOPENO,Other than Home University,Any,38936,55.4822462
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GSCO,Other than Home University,Any,44664,47.4045407
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GOBCO,Other than Home University,Any,46211,43.9883434
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LOPENO,Other than Home University,Ladies,28771,68.6228206
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LSCO,Other than Home University,Ladies,45665,44.452279
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LOBCO,Other than Home University,Ladies,57087,14.0247678
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GSTO,Other than Home University,Any,43594,48.3555779
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,TFWS,Special,Any,11665,86.4654282
+2022-23,B Pharmacy,CAP Round III,03531,B.R. Harne College of Pharmacy,Thane,Unaided,EWS,Special,Any,21353,76.5966408
 2022-23,B Pharmacy,CAP Round III,04006,"Department of Pharmacutical Sciences, R. T. M. Nagpur University, Nagpur",Nagpur,University Department,LOPENH,Home University,Ladies,1126,98.2074328
 2022-23,B Pharmacy,CAP Round III,04006,"Department of Pharmacutical Sciences, R. T. M. Nagpur University, Nagpur",Nagpur,University Department,GOPENO,Other than Home University,Any,726,98.7649321
 2022-23,B Pharmacy,CAP Round III,04006,"Department of Pharmacutical Sciences, R. T. M. Nagpur University, Nagpur",Nagpur,University Department,GSTO,Other than Home University,Any,12536,85.5417956

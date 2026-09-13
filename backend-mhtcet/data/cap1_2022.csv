@@ -1,4 +1,4 @@
-Year,CAP_Round,College_Code,College_Name,Location,College_Type,Branch_Code,Branch_Name,Category,Seat_Type,Gender,Rank,Percentile
+﻿Year,CAP_Round,College_Code,College_Name,Location,College_Type,Branch_Code,Branch_Name,Category,Seat_Type,Gender,Rank,Percentile
 2022-23,CAP Round III,01002,"Government College of Engineering, Amravati",Amravati,Government,100219110,Civil Engineering,GOPENS,State Level,Any,40678,77.8495773
 2022-23,CAP Round III,01002,"Government College of Engineering, Amravati",Amravati,Government,100219110,Civil Engineering,GSCS,State Level,Any,55830,68.2985361
 2022-23,CAP Round III,01002,"Government College of Engineering, Amravati",Amravati,Government,100219110,Civil Engineering,GSTS,State Level,Any,86718,43.3167495
@@ -6366,21 +6366,21 @@ Year,CAP_Round,College_Code,College_Name,Location,College_Type,Branch_Code,Branc
 2022-23,CAP Round III,03423,"Shree L.R. Tiwari College of Engineering, Mira Road, Mumbai",Mumbai,Unaided,342390010,Electronics and Computer Science,LOPENO,Other than Home University,Ladies,59279,65.7244332
 2022-23,CAP Round III,03423,"Shree L.R. Tiwari College of Engineering, Mira Road, Mumbai",Mumbai,Unaided,342390010,Electronics and Computer Science,MI,Special,Any,90596,39.8713522
 2022-23,CAP Round III,03423,"Shree L.R. Tiwari College of Engineering, Mira Road, Mumbai",Mumbai,Unaided,342390010,Electronics and Computer Science,TFWS,Special,Any,39639,78.2814198
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,GOPENH,Home University,Any,74519,54.1780657
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,GSCH,Home University,Any,119060,6.4853556
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,GNT2H,Home University,Any,95849,35.6598862
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,GNT3H,Home University,Any,87746,42.8034319
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,GOBCH,Home University,Any,89236,42.0206383
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,LOPENH,Home University,Ladies,81002,48.9390238
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,LSCH,Home University,Ladies,84454,45.9884082
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,LOBCH,Home University,Ladies,106030,23.9542468
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,GOPENO,Other than Home University,Any,97512,33.083064
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,GSCO,Other than Home University,Any,120337,4.2387378
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,GOBCO,Other than Home University,Any,115063,12.4299468
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,LOPENO,Other than Home University,Ladies,79861,50.5614783
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,LSCO,Other than Home University,Ladies,92407,39.1582539
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,LOBCO,Other than Home University,Ladies,91530,39.4227966
-2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Tal-Ambernath.,Unaided,343624510,Computer Engineering,EWS,Special,Any,119482,5.5595051
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,GOPENH,Home University,Any,74519,54.1780657
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,GSCH,Home University,Any,119060,6.4853556
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,GNT2H,Home University,Any,95849,35.6598862
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,GNT3H,Home University,Any,87746,42.8034319
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,GOBCH,Home University,Any,89236,42.0206383
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,LOPENH,Home University,Ladies,81002,48.9390238
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,LSCH,Home University,Ladies,84454,45.9884082
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,LOBCH,Home University,Ladies,106030,23.9542468
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,GOPENO,Other than Home University,Any,97512,33.083064
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,GSCO,Other than Home University,Any,120337,4.2387378
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,GOBCO,Other than Home University,Any,115063,12.4299468
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,LOPENO,Other than Home University,Ladies,79861,50.5614783
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,LSCO,Other than Home University,Ladies,92407,39.1582539
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,LOBCO,Other than Home University,Ladies,91530,39.4227966
+2022-23,CAP Round III,03436,"B.R. Harne College of Engineering & Technology, Karav, Tal-Ambernath.",Thane,Unaided,343624510,Computer Engineering,EWS,Special,Any,119482,5.5595051
 2022-23,CAP Round III,03439,"Anjuman-I-Islam's Kalsekar Technical Campus, Panvel",Panvel,Unaided,343919110,Civil Engineering,LOPENH,Home University,Ladies,85713,44.9304271
 2022-23,CAP Round III,03439,"Anjuman-I-Islam's Kalsekar Technical Campus, Panvel",Panvel,Unaided,343919110,Civil Engineering,MI,Special,Any,120611,3.6006941
 2022-23,CAP Round III,03439,"Anjuman-I-Islam's Kalsekar Technical Campus, Panvel",Panvel,Unaided,343924510,Computer Engineering,GOPENH,Home University,Any,38598,79.0746326

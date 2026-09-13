@@ -1,4 +1,4 @@
-college_code,college_name,branch_name,category,cap_round,year,intake,filled_seats
+﻿college_code,college_name,branch_name,category,cap_round,year,intake,filled_seats
 01003,"Government College of Pharmacy, Amravati",Pharmacy,OPEN,CAP Round I,2025-26,6,3
 01003,"Government College of Pharmacy, Amravati",Pharmacy,SC,CAP Round I,2025-26,6,1
 01003,"Government College of Pharmacy, Amravati",Pharmacy,ST,CAP Round I,2025-26,6,1
@@ -1803,18 +1803,18 @@ college_code,college_name,branch_name,category,cap_round,year,intake,filled_seat
 03510,"Lokmanya Tilak Institute of Pharmacy, Kharghar, Navi Mumbai",Pharmacy,OBC,CAP Round I,2025-26,6,2
 03510,"Lokmanya Tilak Institute of Pharmacy, Kharghar, Navi Mumbai",Pharmacy,SEBC,CAP Round I,2025-26,6,1
 03510,"Lokmanya Tilak Institute of Pharmacy, Kharghar, Navi Mumbai",Pharmacy,EWS,CAP Round I,2025-26,6,3
-03531,B.R. Harne College of Pharmacy,Pharmacy,OPEN,CAP Round I,2025-26,10,20
-03531,B.R. Harne College of Pharmacy,Pharmacy,SC,CAP Round I,2025-26,10,7
-03531,B.R. Harne College of Pharmacy,Pharmacy,ST,CAP Round I,2025-26,10,4
-03531,B.R. Harne College of Pharmacy,Pharmacy,VJ/DT,CAP Round I,2025-26,10,2
-03531,B.R. Harne College of Pharmacy,Pharmacy,NTB,CAP Round I,2025-26,10,1
-03531,B.R. Harne College of Pharmacy,Pharmacy,NTC,CAP Round I,2025-26,10,2
-03531,B.R. Harne College of Pharmacy,Pharmacy,NTD,CAP Round I,2025-26,10,1
-03531,B.R. Harne College of Pharmacy,Pharmacy,OBC,CAP Round I,2025-26,10,10
-03531,B.R. Harne College of Pharmacy,Pharmacy,SEBC,CAP Round I,2025-26,10,5
-03531,B.R. Harne College of Pharmacy,Pharmacy,PWD,CAP Round I,2025-26,10,4
-03531,B.R. Harne College of Pharmacy,Pharmacy,DEF,CAP Round I,2025-26,10,4
-03531,B.R. Harne College of Pharmacy,Pharmacy,EWS,CAP Round I,2025-26,10,11
+03531,B.R. Harne College of Pharmacy,Thane,OPEN,CAP Round I,2025-26,10,20
+03531,B.R. Harne College of Pharmacy,Thane,SC,CAP Round I,2025-26,10,7
+03531,B.R. Harne College of Pharmacy,Thane,ST,CAP Round I,2025-26,10,4
+03531,B.R. Harne College of Pharmacy,Thane,VJ/DT,CAP Round I,2025-26,10,2
+03531,B.R. Harne College of Pharmacy,Thane,NTB,CAP Round I,2025-26,10,1
+03531,B.R. Harne College of Pharmacy,Thane,NTC,CAP Round I,2025-26,10,2
+03531,B.R. Harne College of Pharmacy,Thane,NTD,CAP Round I,2025-26,10,1
+03531,B.R. Harne College of Pharmacy,Thane,OBC,CAP Round I,2025-26,10,10
+03531,B.R. Harne College of Pharmacy,Thane,SEBC,CAP Round I,2025-26,10,5
+03531,B.R. Harne College of Pharmacy,Thane,PWD,CAP Round I,2025-26,10,4
+03531,B.R. Harne College of Pharmacy,Thane,DEF,CAP Round I,2025-26,10,4
+03531,B.R. Harne College of Pharmacy,Thane,EWS,CAP Round I,2025-26,10,11
 03532,"Dnyandeep Shikshan Prasarak Mandal's Dnyandeep College of Pharmacy, At, Boraj, Khed",Pharmacy,OPEN,CAP Round I,2025-26,6,5
 03532,"Dnyandeep Shikshan Prasarak Mandal's Dnyandeep College of Pharmacy, At, Boraj, Khed",Pharmacy,SC,CAP Round I,2025-26,6,1
 03532,"Dnyandeep Shikshan Prasarak Mandal's Dnyandeep College of Pharmacy, At, Boraj, Khed",Pharmacy,ST,CAP Round I,2025-26,6,1

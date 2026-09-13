@@ -1,4 +1,4 @@
-college_code,college_name,branch_name,category,cap_round,year,intake,filled_seats
+﻿college_code,college_name,branch_name,category,cap_round,year,intake,filled_seats
 03016,"Bombay College of Pharmacy, Santacruz(E), Mumbai",Pharmacy,OPEN,CAP Round I,2024-25,60,22
 03016,"Bombay College of Pharmacy, Santacruz(E), Mumbai",Pharmacy,SC,CAP Round I,2024-25,60,8
 03016,"Bombay College of Pharmacy, Santacruz(E), Mumbai",Pharmacy,ST,CAP Round I,2024-25,60,4
@@ -1059,9 +1059,9 @@ college_code,college_name,branch_name,category,cap_round,year,intake,filled_seat
 03509,"Indala Institute of Pharmacy, Bapsai, Kalyan",Pharmacy,DEF,CAP Round I,2024-25,60,2
 03509,"Indala Institute of Pharmacy, Bapsai, Kalyan",Pharmacy,EWS,CAP Round I,2024-25,60,6
 03509,"Indala Institute of Pharmacy, Bapsai, Kalyan",Pharmacy,TFWS,CAP Round I,2024-25,60,3
-03531,B.R. Harne College of Pharmacy,Pharmacy,PWD,CAP Round I,2024-25,100,2
-03531,B.R. Harne College of Pharmacy,Pharmacy,DEF,CAP Round I,2024-25,100,2
-03531,B.R. Harne College of Pharmacy,Pharmacy,EWS,CAP Round I,2024-25,100,10
+03531,B.R. Harne College of Pharmacy,Thane,PWD,CAP Round I,2024-25,100,2
+03531,B.R. Harne College of Pharmacy,Thane,DEF,CAP Round I,2024-25,100,2
+03531,B.R. Harne College of Pharmacy,Thane,EWS,CAP Round I,2024-25,100,10
 03532,"Dnyandeep Shikshan Prasarak Mandal's Dnyandeep College of Pharmacy, At, Boraj, Khed",Pharmacy,PWD,CAP Round I,2024-25,60,1
 03532,"Dnyandeep Shikshan Prasarak Mandal's Dnyandeep College of Pharmacy, At, Boraj, Khed",Pharmacy,DEF,CAP Round I,2024-25,60,1
 03532,"Dnyandeep Shikshan Prasarak Mandal's Dnyandeep College of Pharmacy, At, Boraj, Khed",Pharmacy,EWS,CAP Round I,2024-25,60,6
