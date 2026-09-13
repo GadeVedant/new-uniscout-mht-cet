@@ -1,4 +1,4 @@
-Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Category,Seat_Type,Gender,Rank,Percentile
+﻿Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Category,Seat_Type,Gender,Rank,Percentile
 2023-24,D Pharmacy,CAP Round II,01008,"Government Polytechnic, Amravati",Amravati,Government,GOPEN,State Level,Any,1398,86.33
 2023-24,D Pharmacy,CAP Round II,01008,"Government Polytechnic, Amravati",Amravati,Government,GSC,State Level,Any,4081,80.67
 2023-24,D Pharmacy,CAP Round II,01008,"Government Polytechnic, Amravati",Amravati,Government,GST,State Level,Any,7086,76.33
@@ -2068,18 +2068,18 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2023-24,D Pharmacy,CAP Round II,03511,"DPO's Nett College of Pharmacy, Thane",Thane,Unaided,GOBC,State Level,Any,44512,37.33
 2023-24,D Pharmacy,CAP Round II,03511,"DPO's Nett College of Pharmacy, Thane",Thane,Unaided,LST,State Level,Ladies,41614,39.67
 2023-24,D Pharmacy,CAP Round II,03511,"DPO's Nett College of Pharmacy, Thane",Thane,Unaided,LOBC,State Level,Ladies,42798,38.67
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GOPEN,State Level,Any,44879,37.0
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GNTC,State Level,Any,46368,35.0
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LOPEN,State Level,Ladies,42307,39.0
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LSC,State Level,Ladies,45506,36.33
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,43611,38.0
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,PWDOPEN,State Level,Any,44998,36.67
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,DEFOPEN,State Level,Any,45146,36.67
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GNTB,State Level,Any,45303,36.33
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GNTD,State Level,Any,45662,36.0
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,GOBC,State Level,Any,46376,35.0
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LNTB,State Level,Ladies,45412,36.33
-2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Pharmacy,Unaided,LOBC,State Level,Ladies,46102,35.67
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GOPEN,State Level,Any,44879,37.0
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GNTC,State Level,Any,46368,35.0
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LOPEN,State Level,Ladies,42307,39.0
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LSC,State Level,Ladies,45506,36.33
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,TFWS,Special,Any,43611,38.0
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,PWDOPEN,State Level,Any,44998,36.67
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,DEFOPEN,State Level,Any,45146,36.67
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GNTB,State Level,Any,45303,36.33
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GNTD,State Level,Any,45662,36.0
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,GOBC,State Level,Any,46376,35.0
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LNTB,State Level,Ladies,45412,36.33
+2023-24,D Pharmacy,CAP Round II,03531,B.R. Harne College of Pharmacy,Thane,Unaided,LOBC,State Level,Ladies,46102,35.67
 2023-24,D Pharmacy,CAP Round II,03535,"Deep College of Pharmacy, Boisar",Mumbai,Unaided,GOPEN,State Level,Any,30882,50.33
 2023-24,D Pharmacy,CAP Round II,03535,"Deep College of Pharmacy, Boisar",Mumbai,Unaided,GSC,State Level,Any,43870,38.0
 2023-24,D Pharmacy,CAP Round II,03535,"Deep College of Pharmacy, Boisar",Mumbai,Unaided,GST,State Level,Any,40667,40.67
