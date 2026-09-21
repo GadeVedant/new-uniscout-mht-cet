@@ -30,7 +30,7 @@ const CATEGORY_GROUPS = [
     ],
   },
   {
-    group: 'LOPEN — Local Open',
+    group: 'LOPEN — Ladies Open',
     items: [
       { label: 'Open – State',       value: 'LOPENS' },
       { label: 'Open – Home Univ',   value: 'LOPENH' },
@@ -46,7 +46,7 @@ const CATEGORY_GROUPS = [
     ],
   },
   {
-    group: 'LSC — Local SC',
+    group: 'LSC — Ladies SC',
     items: [
       { label: 'SC – State',         value: 'LSCS' },
       { label: 'SC – Home Univ',     value: 'LSCH' },
@@ -62,7 +62,7 @@ const CATEGORY_GROUPS = [
     ],
   },
   {
-    group: 'LST — Local ST',
+    group: 'LST — Ladies ST',
     items: [
       { label: 'ST – State',         value: 'LSTS' },
       { label: 'ST – Home Univ',     value: 'LSTH' },
@@ -78,7 +78,7 @@ const CATEGORY_GROUPS = [
     ],
   },
   {
-    group: 'LOBC — Local OBC',
+    group: 'LOBC — Ladies OBC',
     items: [
       { label: 'OBC – State',        value: 'LOBCS' },
       { label: 'OBC – Home Univ',    value: 'LOBCH' },
@@ -94,7 +94,7 @@ const CATEGORY_GROUPS = [
     ],
   },
   {
-    group: 'LSEBC — Local SEBC',
+    group: 'LSEBC — Ladies SEBC',
     items: [
       { label: 'SEBC – State',       value: 'LSEBCS' },
       { label: 'SEBC – Home Univ',   value: 'LSEBCH' },
@@ -110,7 +110,7 @@ const CATEGORY_GROUPS = [
     ],
   },
   {
-    group: 'LVJ — Local VJ',
+    group: 'LVJ — Ladies VJ',
     items: [
       { label: 'VJ – State',         value: 'LVJS' },
       { label: 'VJ – Home Univ',     value: 'LVJH' },
@@ -132,7 +132,7 @@ const CATEGORY_GROUPS = [
     ],
   },
   {
-    group: 'LNT — Local NT',
+    group: 'LNT — Ladies NT',
     items: [
       { label: 'NT 1 – State',       value: 'LNT1S' },
       { label: 'NT 1 – Home Univ',   value: 'LNT1H' },
