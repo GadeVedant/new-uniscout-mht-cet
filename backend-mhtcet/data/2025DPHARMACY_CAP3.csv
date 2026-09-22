@@ -86,9 +86,9 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,01296,"Dr. Rajendra Gode College Of Pharmacy, Amravati",Amravati,Unaided,GOPEN,State Level,Any,32328,41.67
 2024-25,D Pharmacy,CAP Round III,01296,"Dr. Rajendra Gode College Of Pharmacy, Amravati",Amravati,Unaided,LOPEN,State Level,Ladies,32250,41.67
 2024-25,D Pharmacy,CAP Round III,01296,"Dr. Rajendra Gode College Of Pharmacy, Amravati",Amravati,Unaided,TFWS,Special,Any,16856,61.33
-2024-25,D Pharmacy,CAP Round III,01300,Laxminarayan College of Pharmacy,Pharmacy,Unaided,GOPEN,State Level,Any,23523,52.67
-2024-25,D Pharmacy,CAP Round III,01300,Laxminarayan College of Pharmacy,Pharmacy,Unaided,LOPEN,State Level,Ladies,32714,41.33
-2024-25,D Pharmacy,CAP Round III,01300,Laxminarayan College of Pharmacy,Pharmacy,Unaided,EWS,Special,Any,27798,47.33
+2024-25,D Pharmacy,CAP Round III,01300,Laxminarayan College of Pharmacy,Amravati,Unaided,GOPEN,State Level,Any,23523,52.67
+2024-25,D Pharmacy,CAP Round III,01300,Laxminarayan College of Pharmacy,Amravati,Unaided,LOPEN,State Level,Ladies,32714,41.33
+2024-25,D Pharmacy,CAP Round III,01300,Laxminarayan College of Pharmacy,Amravati,Unaided,EWS,Special,Any,27798,47.33
 2024-25,D Pharmacy,CAP Round III,01303,"Satpuda Institute of Pharmacy, Shegaon",Buldhana,Unaided,GOPEN,State Level,Any,21637,55.33
 2024-25,D Pharmacy,CAP Round III,01303,"Satpuda Institute of Pharmacy, Shegaon",Buldhana,Unaided,GST,State Level,Any,21674,55.33
 2024-25,D Pharmacy,CAP Round III,01303,"Satpuda Institute of Pharmacy, Shegaon",Buldhana,Unaided,LSEBC,State Level,Ladies,21683,55.33
@@ -107,13 +107,13 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,01311,"Late Shri. S. B Purushottam College of Pharmacy, Patur, Dist-Akola",Akola,Unaided,LOPEN,State Level,Ladies,17816,60.33
 2024-25,D Pharmacy,CAP Round III,01311,"Late Shri. S. B Purushottam College of Pharmacy, Patur, Dist-Akola",Akola,Unaided,LSC,State Level,Ladies,34816,38.67
 2024-25,D Pharmacy,CAP Round III,01311,"Late Shri. S. B Purushottam College of Pharmacy, Patur, Dist-Akola",Akola,Unaided,EWS,Special,Any,34649,38.67
-2024-25,D Pharmacy,CAP Round III,01341,Sumatidevi Tompe Institute of Pharmaceutical Science & Research,Research,Unaided,GOPEN,State Level,Any,12901,67.0
-2024-25,D Pharmacy,CAP Round III,01341,Sumatidevi Tompe Institute of Pharmaceutical Science & Research,Research,Unaided,GST,State Level,Any,25408,50.33
-2024-25,D Pharmacy,CAP Round III,01341,Sumatidevi Tompe Institute of Pharmaceutical Science & Research,Research,Unaided,GOBC,State Level,Any,27660,47.33
-2024-25,D Pharmacy,CAP Round III,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GOBC,State Level,Any,29060,45.67
-2024-25,D Pharmacy,CAP Round III,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LOPEN,State Level,Ladies,35525,37.67
-2024-25,D Pharmacy,CAP Round III,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,PWDOPEN,State Level,Any,798,87.33
-2024-25,D Pharmacy,CAP Round III,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,DEFOPEN,State Level,Any,35588,37.67
+2024-25,D Pharmacy,CAP Round III,01341,Sumatidevi Tompe Institute of Pharmaceutical Science & Research,Amravati,Unaided,GOPEN,State Level,Any,12901,67.0
+2024-25,D Pharmacy,CAP Round III,01341,Sumatidevi Tompe Institute of Pharmaceutical Science & Research,Amravati,Unaided,GST,State Level,Any,25408,50.33
+2024-25,D Pharmacy,CAP Round III,01341,Sumatidevi Tompe Institute of Pharmaceutical Science & Research,Amravati,Unaided,GOBC,State Level,Any,27660,47.33
+2024-25,D Pharmacy,CAP Round III,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GOBC,State Level,Any,29060,45.67
+2024-25,D Pharmacy,CAP Round III,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LOPEN,State Level,Ladies,35525,37.67
+2024-25,D Pharmacy,CAP Round III,01343,Savitridevi College of Pharmacy,Amravati,Unaided,PWDOPEN,State Level,Any,798,87.33
+2024-25,D Pharmacy,CAP Round III,01343,Savitridevi College of Pharmacy,Amravati,Unaided,DEFOPEN,State Level,Any,35588,37.67
 2024-25,D Pharmacy,CAP Round III,02023,"Jai Bhavani Shikshan Prasarak Mandal's Institute Of Pharmacy, Gadhi Georai",Beed,Aided,GOPEN,State Level,Any,25849,49.67
 2024-25,D Pharmacy,CAP Round III,02023,"Jai Bhavani Shikshan Prasarak Mandal's Institute Of Pharmacy, Gadhi Georai",Beed,Aided,LOPEN,State Level,Ladies,9862,71.0
 2024-25,D Pharmacy,CAP Round III,02023,"Jai Bhavani Shikshan Prasarak Mandal's Institute Of Pharmacy, Gadhi Georai",Beed,Aided,EWS,Special,Any,14006,65.33
@@ -205,9 +205,9 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,PWDOPEN,State Level,Any,25170,50.67
 2024-25,D Pharmacy,CAP Round III,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,DEFOPEN,State Level,Any,27422,47.67
 2024-25,D Pharmacy,CAP Round III,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,GSC,State Level,Any,31225,43.0
-2024-25,D Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GOPEN,State Level,Any,25428,50.33
-2024-25,D Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,LOPEN,State Level,Ladies,24235,52.0
-2024-25,D Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,LSC,State Level,Ladies,36110,36.67
+2024-25,D Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GOPEN,State Level,Any,25428,50.33
+2024-25,D Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,LOPEN,State Level,Ladies,24235,52.0
+2024-25,D Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,LSC,State Level,Ladies,36110,36.67
 2024-25,D Pharmacy,CAP Round III,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,EWS,Special,Any,21828,55.0
 2024-25,D Pharmacy,CAP Round III,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,PWDOPEN,State Level,Any,1147,86.0
 2024-25,D Pharmacy,CAP Round III,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,GOBC,State Level,Any,20724,56.33
@@ -256,16 +256,16 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,02646,"J K College of Pharmacy, Limbala, Hingoli",Hingoli,Unaided,GOPEN,State Level,Any,32974,41.0
 2024-25,D Pharmacy,CAP Round III,02646,"J K College of Pharmacy, Limbala, Hingoli",Hingoli,Unaided,LOPEN,State Level,Ladies,9446,71.67
 2024-25,D Pharmacy,CAP Round III,02646,"J K College of Pharmacy, Limbala, Hingoli",Hingoli,Unaided,TFWS,Special,Any,16657,61.67
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,GOPEN,State Level,Any,4403,79.0
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,GSC,State Level,Any,6176,76.33
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,GNTA,State Level,Any,6464,76.0
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,GNTB,State Level,Any,8993,72.33
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,GNTC,State Level,Any,9126,72.0
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,GNTD,State Level,Any,11977,68.33
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,GOBC,State Level,Any,18378,59.67
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,GSEBC,State Level,Any,22214,54.67
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,LOBC,State Level,Ladies,20988,56.0
-2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Pharmacy,Unaided,LSEBC,State Level,Ladies,22478,54.33
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,GOPEN,State Level,Any,4403,79.0
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,GSC,State Level,Any,6176,76.33
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,GNTA,State Level,Any,6464,76.0
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,GNTB,State Level,Any,8993,72.33
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,GNTC,State Level,Any,9126,72.0
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,GNTD,State Level,Any,11977,68.33
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,GOBC,State Level,Any,18378,59.67
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,GSEBC,State Level,Any,22214,54.67
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,LOBC,State Level,Ladies,20988,56.0
+2024-25,D Pharmacy,CAP Round III,02652,Oyster College of Pharmacy,Osmanabad,Unaided,LSEBC,State Level,Ladies,22478,54.33
 2024-25,D Pharmacy,CAP Round III,02658,"R.G. Institute of Pharmacy, Aurala",Chhatrapati Sambhajinagar,Unaided,GOPEN,State Level,Any,31371,42.67
 2024-25,D Pharmacy,CAP Round III,02658,"R.G. Institute of Pharmacy, Aurala",Chhatrapati Sambhajinagar,Unaided,LSC,State Level,Ladies,22000,54.67
 2024-25,D Pharmacy,CAP Round III,02658,"R.G. Institute of Pharmacy, Aurala",Chhatrapati Sambhajinagar,Unaided,LOBC,State Level,Ladies,13518,66.0
@@ -321,17 +321,17 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,03508,"B.K. Patil Institute of Pharmacy, Taloja, Panvel",Raigad,Unaided,GOPEN,State Level,Any,30852,43.33
 2024-25,D Pharmacy,CAP Round III,03508,"B.K. Patil Institute of Pharmacy, Taloja, Panvel",Raigad,Unaided,EWS,Special,Any,29458,45.0
 2024-25,D Pharmacy,CAP Round III,03508,"B.K. Patil Institute of Pharmacy, Taloja, Panvel",Raigad,Unaided,GSC,State Level,Any,32770,41.0
-2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Research,Unaided,GOPEN,State Level,Any,33061,40.67
-2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Research,Unaided,LOPEN,State Level,Ladies,28122,47.0
-2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Research,Unaided,TFWS,Special,Any,31543,42.67
-2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Research,Unaided,GSC,State Level,Any,35746,37.33
-2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Research,Unaided,GST,State Level,Any,36049,36.67
-2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Pharmacy,Unaided,GSC,State Level,Any,35867,37.0
-2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Pharmacy,Unaided,GSC,State Level,Any,27521,47.67
-2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Pharmacy,Unaided,GST,State Level,Any,35709,37.33
-2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Pharmacy,Unaided,GNTA,State Level,Any,36115,36.67
-2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Pharmacy,Unaided,LST,State Level,Ladies,36008,36.67
-2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Pharmacy,Unaided,LNTB,State Level,Ladies,36613,35.33
+2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Mumbai,Unaided,GOPEN,State Level,Any,33061,40.67
+2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Mumbai,Unaided,LOPEN,State Level,Ladies,28122,47.0
+2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Mumbai,Unaided,TFWS,Special,Any,31543,42.67
+2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Mumbai,Unaided,GSC,State Level,Any,35746,37.33
+2024-25,D Pharmacy,CAP Round III,03542,Bombay Institute of Pharmacy & Research,Mumbai,Unaided,GST,State Level,Any,36049,36.67
+2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Raigad,Unaided,GSC,State Level,Any,35867,37.0
+2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Raigad,Unaided,GSC,State Level,Any,27521,47.67
+2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Raigad,Unaided,GST,State Level,Any,35709,37.33
+2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Raigad,Unaided,GNTA,State Level,Any,36115,36.67
+2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Raigad,Unaided,LST,State Level,Ladies,36008,36.67
+2024-25,D Pharmacy,CAP Round III,03544,A.C. Patil Institute of Pharmacy,Raigad,Unaided,LNTB,State Level,Ladies,36613,35.33
 2024-25,D Pharmacy,CAP Round III,04019,"Nagar Yuvak Shikshan Sanstha Adv. V.R.Manohar Institute Of Diploma In Pharmacy, Nagpur",Nagpur,Aided,GOPEN,State Level,Any,30537,43.67
 2024-25,D Pharmacy,CAP Round III,04019,"Nagar Yuvak Shikshan Sanstha Adv. V.R.Manohar Institute Of Diploma In Pharmacy, Nagpur",Nagpur,Aided,GSC,State Level,Any,34826,38.67
 2024-25,D Pharmacy,CAP Round III,04019,"Nagar Yuvak Shikshan Sanstha Adv. V.R.Manohar Institute Of Diploma In Pharmacy, Nagpur",Nagpur,Aided,GOBC,State Level,Any,32029,42.0
@@ -362,9 +362,9 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,04206,"Amar Seva Mandal's, Kamla Nehru College of Pharmacy, Butibori, Nagpur",Nagpur,Unaided,GNTC,State Level,Any,35942,37.0
 2024-25,D Pharmacy,CAP Round III,04206,"Amar Seva Mandal's, Kamla Nehru College of Pharmacy, Butibori, Nagpur",Nagpur,Unaided,GSEBC,State Level,Any,36321,36.0
 2024-25,D Pharmacy,CAP Round III,04206,"Amar Seva Mandal's, Kamla Nehru College of Pharmacy, Butibori, Nagpur",Nagpur,Unaided,LSC,State Level,Ladies,26428,49.0
-2024-25,D Pharmacy,CAP Round III,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GOPEN,State Level,Any,34689,38.67
-2024-25,D Pharmacy,CAP Round III,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,LOBC,State Level,Ladies,33810,40.0
-2024-25,D Pharmacy,CAP Round III,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GSEBC,State Level,Any,35952,37.0
+2024-25,D Pharmacy,CAP Round III,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GOPEN,State Level,Any,34689,38.67
+2024-25,D Pharmacy,CAP Round III,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,LOBC,State Level,Ladies,33810,40.0
+2024-25,D Pharmacy,CAP Round III,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GSEBC,State Level,Any,35952,37.0
 2024-25,D Pharmacy,CAP Round III,04261,"Shri Bhawabhuti Shikshan Sanstha's Shri Laxmanrao Mankar Institute Of Pharmacy, Amgoan",Gondia,Unaided,GOPEN,State Level,Any,27115,48.0
 2024-25,D Pharmacy,CAP Round III,04261,"Shri Bhawabhuti Shikshan Sanstha's Shri Laxmanrao Mankar Institute Of Pharmacy, Amgoan",Gondia,Unaided,GOBC,State Level,Any,31753,42.33
 2024-25,D Pharmacy,CAP Round III,04261,"Shri Bhawabhuti Shikshan Sanstha's Shri Laxmanrao Mankar Institute Of Pharmacy, Amgoan",Gondia,Unaided,GNTA,State Level,Any,34271,39.33
@@ -392,31 +392,31 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,04669,"J.V.Institute of Pharmacy, Khamona",Yavatmal,Unaided,GOBC,State Level,Any,33855,39.67
 2024-25,D Pharmacy,CAP Round III,04669,"J.V.Institute of Pharmacy, Khamona",Yavatmal,Unaided,GSEBC,State Level,Any,35571,37.67
 2024-25,D Pharmacy,CAP Round III,04669,"J.V.Institute of Pharmacy, Khamona",Yavatmal,Unaided,ORPHAN,Special,Any,35991,37.0
-2024-25,D Pharmacy,CAP Round III,04680,"The Royal Gondwana College of Pharmacy,Â Nagpur",Â Nagpur,Unaided,GST,State Level,Any,25165,50.67
-2024-25,D Pharmacy,CAP Round III,04680,"The Royal Gondwana College of Pharmacy,Â Nagpur",Â Nagpur,Unaided,GOBC,State Level,Any,35567,37.67
-2024-25,D Pharmacy,CAP Round III,04680,"The Royal Gondwana College of Pharmacy,Â Nagpur",Â Nagpur,Unaided,GOBC,State Level,Any,21651,55.33
-2024-25,D Pharmacy,CAP Round III,04680,"The Royal Gondwana College of Pharmacy,Â Nagpur",Â Nagpur,Unaided,GSC,State Level,Any,6632,75.67
-2024-25,D Pharmacy,CAP Round III,04691,Somayya Diploma in Pharmacy,Pharmacy,Unaided,LOPEN,State Level,Ladies,30820,43.33
-2024-25,D Pharmacy,CAP Round III,04691,Somayya Diploma in Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,35690,37.33
-2024-25,D Pharmacy,CAP Round III,04691,Somayya Diploma in Pharmacy,Pharmacy,Unaided,DEFOPEN,State Level,Any,32105,42.0
-2024-25,D Pharmacy,CAP Round III,04691,Somayya Diploma in Pharmacy,Pharmacy,Unaided,GNTC,State Level,Any,35635,37.33
-2024-25,D Pharmacy,CAP Round III,04697,Ramratan School of Pharmacy,Pharmacy,Unaided,GOBC,State Level,Any,36309,36.33
-2024-25,D Pharmacy,CAP Round III,04697,Ramratan School of Pharmacy,Pharmacy,Unaided,PWDOPEN,State Level,Any,10983,69.67
-2024-25,D Pharmacy,CAP Round III,04697,Ramratan School of Pharmacy,Pharmacy,Unaided,DEFOPEN,State Level,Any,28735,46.0
-2024-25,D Pharmacy,CAP Round III,04697,Ramratan School of Pharmacy,Pharmacy,Unaided,GSC,State Level,Any,31857,42.33
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,GOPEN,State Level,Any,31559,42.67
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,GSC,State Level,Any,36026,36.67
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,GST,State Level,Any,34175,39.33
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,GOBC,State Level,Any,35804,37.33
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,LOPEN,State Level,Ladies,16042,62.67
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,LSC,State Level,Ladies,20099,57.33
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,LNTC,State Level,Ladies,29924,44.67
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,LOBC,State Level,Ladies,22446,54.33
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,33114,40.67
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,PWDOPEN,State Level,Any,33333,40.33
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,DEFOPEN,State Level,Any,34044,39.67
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,GSC,State Level,Any,36284,36.33
-2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,GST,State Level,Any,36701,35.0
+2024-25,D Pharmacy,CAP Round III,04680,"The Royal Gondwana College of Pharmacy,Â Nagpur",Nagpur,Unaided,GST,State Level,Any,25165,50.67
+2024-25,D Pharmacy,CAP Round III,04680,"The Royal Gondwana College of Pharmacy,Â Nagpur",Nagpur,Unaided,GOBC,State Level,Any,35567,37.67
+2024-25,D Pharmacy,CAP Round III,04680,"The Royal Gondwana College of Pharmacy,Â Nagpur",Nagpur,Unaided,GOBC,State Level,Any,21651,55.33
+2024-25,D Pharmacy,CAP Round III,04680,"The Royal Gondwana College of Pharmacy,Â Nagpur",Nagpur,Unaided,GSC,State Level,Any,6632,75.67
+2024-25,D Pharmacy,CAP Round III,04691,Somayya Diploma in Pharmacy,Nagpur,Unaided,LOPEN,State Level,Ladies,30820,43.33
+2024-25,D Pharmacy,CAP Round III,04691,Somayya Diploma in Pharmacy,Nagpur,Unaided,TFWS,Special,Any,35690,37.33
+2024-25,D Pharmacy,CAP Round III,04691,Somayya Diploma in Pharmacy,Nagpur,Unaided,DEFOPEN,State Level,Any,32105,42.0
+2024-25,D Pharmacy,CAP Round III,04691,Somayya Diploma in Pharmacy,Nagpur,Unaided,GNTC,State Level,Any,35635,37.33
+2024-25,D Pharmacy,CAP Round III,04697,Ramratan School of Pharmacy,Nagpur,Unaided,GOBC,State Level,Any,36309,36.33
+2024-25,D Pharmacy,CAP Round III,04697,Ramratan School of Pharmacy,Nagpur,Unaided,PWDOPEN,State Level,Any,10983,69.67
+2024-25,D Pharmacy,CAP Round III,04697,Ramratan School of Pharmacy,Nagpur,Unaided,DEFOPEN,State Level,Any,28735,46.0
+2024-25,D Pharmacy,CAP Round III,04697,Ramratan School of Pharmacy,Nagpur,Unaided,GSC,State Level,Any,31857,42.33
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,GOPEN,State Level,Any,31559,42.67
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,GSC,State Level,Any,36026,36.67
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,GST,State Level,Any,34175,39.33
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,GOBC,State Level,Any,35804,37.33
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,LOPEN,State Level,Ladies,16042,62.67
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,LSC,State Level,Ladies,20099,57.33
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,LNTC,State Level,Ladies,29924,44.67
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,LOBC,State Level,Ladies,22446,54.33
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,TFWS,Special,Any,33114,40.67
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,PWDOPEN,State Level,Any,33333,40.33
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,DEFOPEN,State Level,Any,34044,39.67
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,GSC,State Level,Any,36284,36.33
+2024-25,D Pharmacy,CAP Round III,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,GST,State Level,Any,36701,35.0
 2024-25,D Pharmacy,CAP Round III,05005,"NDMVP Samaj's College of Pharmacy, Nashik",Nashik,Unaided,GOPEN,State Level,Any,17638,60.67
 2024-25,D Pharmacy,CAP Round III,05005,"NDMVP Samaj's College of Pharmacy, Nashik",Nashik,Unaided,GOBC,State Level,Any,22680,54.0
 2024-25,D Pharmacy,CAP Round III,05005,"NDMVP Samaj's College of Pharmacy, Nashik",Nashik,Unaided,GNTD,State Level,Any,23365,53.0
@@ -458,9 +458,9 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,05407,"J.E.S.S. College of Pharmacy, Nandurbar",Nandurbar,Unaided,LSC,State Level,Ladies,21233,55.67
 2024-25,D Pharmacy,CAP Round III,05407,"J.E.S.S. College of Pharmacy, Nandurbar",Nandurbar,Unaided,GOBC,State Level,Any,24459,51.67
 2024-25,D Pharmacy,CAP Round III,05407,"J.E.S.S. College of Pharmacy, Nandurbar",Nandurbar,Unaided,GSEBC,State Level,Any,34584,39.0
-2024-25,D Pharmacy,CAP Round III,05429,Nimgaon Gramin Shikshan Prasarak Mandal's Institute of Pharmacy D.Pharmacy,D.Pharmacy,Unaided,GST,State Level,Any,28402,46.67
-2024-25,D Pharmacy,CAP Round III,05429,Nimgaon Gramin Shikshan Prasarak Mandal's Institute of Pharmacy D.Pharmacy,D.Pharmacy,Unaided,GNTB,State Level,Any,30696,43.67
-2024-25,D Pharmacy,CAP Round III,05429,Nimgaon Gramin Shikshan Prasarak Mandal's Institute of Pharmacy D.Pharmacy,D.Pharmacy,Unaided,LST,State Level,Ladies,29662,45.0
+2024-25,D Pharmacy,CAP Round III,05429,Nimgaon Gramin Shikshan Prasarak Mandal's Institute of Pharmacy D.Pharmacy,Ahmednagar,Unaided,GST,State Level,Any,28402,46.67
+2024-25,D Pharmacy,CAP Round III,05429,Nimgaon Gramin Shikshan Prasarak Mandal's Institute of Pharmacy D.Pharmacy,Ahmednagar,Unaided,GNTB,State Level,Any,30696,43.67
+2024-25,D Pharmacy,CAP Round III,05429,Nimgaon Gramin Shikshan Prasarak Mandal's Institute of Pharmacy D.Pharmacy,Ahmednagar,Unaided,LST,State Level,Ladies,29662,45.0
 2024-25,D Pharmacy,CAP Round III,05435,"Prof. Ravindra Nikam College of Pharmacy, Gondur, Dhule",Dhule,Unaided,GOBC,State Level,Any,15655,63.33
 2024-25,D Pharmacy,CAP Round III,05435,"Prof. Ravindra Nikam College of Pharmacy, Gondur, Dhule",Dhule,Unaided,GNTD,State Level,Any,34748,38.67
 2024-25,D Pharmacy,CAP Round III,05435,"Prof. Ravindra Nikam College of Pharmacy, Gondur, Dhule",Dhule,Unaided,LNTB,State Level,Ladies,16205,62.33
@@ -494,15 +494,15 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,05514,"Hon. Tukaramsheth S. Baviskar Institute of Pharmaceutical Education & Research, Dahiwad, Shirpur",Dhule,Unaided,GSEBC,State Level,Any,14489,64.67
 2024-25,D Pharmacy,CAP Round III,05514,"Hon. Tukaramsheth S. Baviskar Institute of Pharmaceutical Education & Research, Dahiwad, Shirpur",Dhule,Unaided,LOBC,State Level,Ladies,36028,36.67
 2024-25,D Pharmacy,CAP Round III,05514,"Hon. Tukaramsheth S. Baviskar Institute of Pharmaceutical Education & Research, Dahiwad, Shirpur",Dhule,Unaided,LSEBC,State Level,Ladies,15342,63.67
-2024-25,D Pharmacy,CAP Round III,05519,Ashok College of Pharmacy,Pharmacy,Unaided,DEFOPEN,State Level,Any,24092,52.0
-2024-25,D Pharmacy,CAP Round III,05519,Ashok College of Pharmacy,Pharmacy,Unaided,GSEBC,State Level,Any,24234,52.0
-2024-25,D Pharmacy,CAP Round III,05519,Ashok College of Pharmacy,Pharmacy,Unaided,LSEBC,State Level,Ladies,36504,35.67
-2024-25,D Pharmacy,CAP Round III,05531,MKD College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,16755,61.67
-2024-25,D Pharmacy,CAP Round III,05531,MKD College of Pharmacy,Pharmacy,Unaided,GOBC,State Level,Any,28877,46.0
-2024-25,D Pharmacy,CAP Round III,05531,MKD College of Pharmacy,Pharmacy,Unaided,LNTA,State Level,Ladies,22329,54.33
-2024-25,D Pharmacy,CAP Round III,05532,Saisiddhi College of Pharmacy,Pharmacy,Unaided,GOPEN,State Level,Any,19087,58.67
-2024-25,D Pharmacy,CAP Round III,05532,Saisiddhi College of Pharmacy,Pharmacy,Unaided,LOPEN,State Level,Ladies,18376,59.67
-2024-25,D Pharmacy,CAP Round III,05532,Saisiddhi College of Pharmacy,Pharmacy,Unaided,EWS,Special,Any,20643,56.67
+2024-25,D Pharmacy,CAP Round III,05519,Ashok College of Pharmacy,Nashik,Unaided,DEFOPEN,State Level,Any,24092,52.0
+2024-25,D Pharmacy,CAP Round III,05519,Ashok College of Pharmacy,Nashik,Unaided,GSEBC,State Level,Any,24234,52.0
+2024-25,D Pharmacy,CAP Round III,05519,Ashok College of Pharmacy,Nashik,Unaided,LSEBC,State Level,Ladies,36504,35.67
+2024-25,D Pharmacy,CAP Round III,05531,MKD College of Pharmacy,Nashik,Unaided,TFWS,Special,Any,16755,61.67
+2024-25,D Pharmacy,CAP Round III,05531,MKD College of Pharmacy,Nashik,Unaided,GOBC,State Level,Any,28877,46.0
+2024-25,D Pharmacy,CAP Round III,05531,MKD College of Pharmacy,Nashik,Unaided,LNTA,State Level,Ladies,22329,54.33
+2024-25,D Pharmacy,CAP Round III,05532,Saisiddhi College of Pharmacy,Nashik,Unaided,GOPEN,State Level,Any,19087,58.67
+2024-25,D Pharmacy,CAP Round III,05532,Saisiddhi College of Pharmacy,Nashik,Unaided,LOPEN,State Level,Ladies,18376,59.67
+2024-25,D Pharmacy,CAP Round III,05532,Saisiddhi College of Pharmacy,Nashik,Unaided,EWS,Special,Any,20643,56.67
 2024-25,D Pharmacy,CAP Round III,05537,"Shantiwan Institute of Pharmacy, Shewali",Pune,Unaided,GOPEN,State Level,Any,14880,64.33
 2024-25,D Pharmacy,CAP Round III,05537,"Shantiwan Institute of Pharmacy, Shewali",Pune,Unaided,GST,State Level,Any,21695,55.33
 2024-25,D Pharmacy,CAP Round III,05537,"Shantiwan Institute of Pharmacy, Shewali",Pune,Unaided,GNTC,State Level,Any,20916,56.33
@@ -582,12 +582,12 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2024-25,D Pharmacy,CAP Round III,06482,"Shri. Balasaheb Mane Shikshan Prasarak Mandal Ambap's, Ashokrao Mane Institute of Diploma in Pharmacy, Vadgaon",Pune,Unaided,EWS,Special,Any,20257,57.0
 2024-25,D Pharmacy,CAP Round III,06482,"Shri. Balasaheb Mane Shikshan Prasarak Mandal Ambap's, Ashokrao Mane Institute of Diploma in Pharmacy, Vadgaon",Pune,Unaided,GST,State Level,Any,30098,44.33
 2024-25,D Pharmacy,CAP Round III,06482,"Shri. Balasaheb Mane Shikshan Prasarak Mandal Ambap's, Ashokrao Mane Institute of Diploma in Pharmacy, Vadgaon",Pune,Unaided,GOBC,State Level,Any,31760,42.33
-2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GOPEN,State Level,Any,32488,41.33
-2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GNTB,State Level,Any,34960,38.33
-2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,DEFOPEN,State Level,Any,32914,41.0
-2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GSEBC,State Level,Any,33858,39.67
-2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LSEBC,State Level,Ladies,34067,39.33
-2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,ORPHAN,Special,Any,34238,39.33
+2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GOPEN,State Level,Any,32488,41.33
+2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GNTB,State Level,Any,34960,38.33
+2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,DEFOPEN,State Level,Any,32914,41.0
+2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GSEBC,State Level,Any,33858,39.67
+2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LSEBC,State Level,Ladies,34067,39.33
+2024-25,D Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,ORPHAN,Special,Any,34238,39.33
 2024-25,D Pharmacy,CAP Round III,06489,"Gourishankar Education Society's College Of Pharmacy (D.Pharm.), Degaon, Satara",Satara,Unaided,GOPEN,State Level,Any,15220,63.67
 2024-25,D Pharmacy,CAP Round III,06489,"Gourishankar Education Society's College Of Pharmacy (D.Pharm.), Degaon, Satara",Satara,Unaided,GSC,State Level,Any,28012,47.0
 2024-25,D Pharmacy,CAP Round III,06489,"Gourishankar Education Society's College Of Pharmacy (D.Pharm.), Degaon, Satara",Satara,Unaided,LSC,State Level,Ladies,32220,41.67
