@@ -1,4 +1,4 @@
-﻿Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Category,Seat_Type,Gender,Rank,Percentile
+Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Category,Seat_Type,Gender,Rank,Percentile
 2025-26,B Pharmacy,CAP Round II,01003,"Government College of Pharmacy, Amravati",Amravati,Government,GOPENH,Home University,Any,2088,95.0999267
 2025-26,B Pharmacy,CAP Round II,01003,"Government College of Pharmacy, Amravati",Amravati,Government,GOBCH,Home University,Any,2789,93.9452319
 2025-26,B Pharmacy,CAP Round II,01003,"Government College of Pharmacy, Amravati",Amravati,Government,LVJH,Home University,Ladies,42315,34.9775785
@@ -258,19 +258,19 @@
 2025-26,B Pharmacy,CAP Round II,01280,"Gawande College of Pharmacy, Sakharkherda",Buldhana,Unaided,GOPENO,Other than Home University,Any,39573,41.2166844
 2025-26,B Pharmacy,CAP Round II,01280,"Gawande College of Pharmacy, Sakharkherda",Buldhana,Unaided,LOPENO,Other than Home University,Ladies,44397,29.9110168
 2025-26,B Pharmacy,CAP Round II,01280,"Gawande College of Pharmacy, Sakharkherda",Buldhana,Unaided,LOBCO,Other than Home University,Ladies,37992,43.8930412
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,GOPENH,Home University,Any,23892,65.8001021
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,GOBCH,Home University,Any,52388,0.702111
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,LOBCH,Home University,Ladies,25165,63.6875635
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,GNT2H,Home University,Any,48785,17.2977155
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,GNT3H,Home University,Any,49930,12.5776664
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,LSTH,Home University,Ladies,49129,15.8249622
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,LSEBCH,Home University,Ladies,50718,9.7070702
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,GOPENO,Other than Home University,Any,38965,41.9711821
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,GOBCO,Other than Home University,Any,50512,10.4152841
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,LNT1O,Other than Home University,Ladies,13826,78.3357644
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,DEFOPENS,State Level,Any,15034,76.8973331
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,TFWS,Special,Any,50045,12.29618
-2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Research,Unaided,EWS,Special,Any,16382,75.1716925
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,GOPENH,Home University,Any,23892,65.8001021
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,GOBCH,Home University,Any,52388,0.702111
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,LOBCH,Home University,Ladies,25165,63.6875635
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,GNT2H,Home University,Any,48785,17.2977155
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,GNT3H,Home University,Any,49930,12.5776664
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,LSTH,Home University,Ladies,49129,15.8249622
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,LSEBCH,Home University,Ladies,50718,9.7070702
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,GOPENO,Other than Home University,Any,38965,41.9711821
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,GOBCO,Other than Home University,Any,50512,10.4152841
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,LNT1O,Other than Home University,Ladies,13826,78.3357644
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,DEFOPENS,State Level,Any,15034,76.8973331
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,TFWS,Special,Any,50045,12.29618
+2025-26,B Pharmacy,CAP Round II,01281,Takshashila Institute of Pharmaceutical Education And Research,Amravati,Unaided,EWS,Special,Any,16382,75.1716925
 2025-26,B Pharmacy,CAP Round II,01282,"Laddhad College of Pharmacy, Yelgaon, Buldhana",Buldhana,Unaided,GOPENH,Home University,Any,19360,71.6607627
 2025-26,B Pharmacy,CAP Round II,01282,"Laddhad College of Pharmacy, Yelgaon, Buldhana",Buldhana,Unaided,GNT1H,Home University,Any,39839,40.2286531
 2025-26,B Pharmacy,CAP Round II,01282,"Laddhad College of Pharmacy, Yelgaon, Buldhana",Buldhana,Unaided,GOBCH,Home University,Any,40353,39.7546871
@@ -540,40 +540,40 @@
 2025-26,B Pharmacy,CAP Round II,01304,"Mahatma Phule Pharmacy College, Babhulgaon Dist. Akola",Akola,Unaided,ORPHAN,Special,Any,34653,49.9151415
 2025-26,B Pharmacy,CAP Round II,01305,"Cambridge College of Pharmacy, Yelgaon Dist. Buldhana",Buldhana,Unaided,LVJH,Home University,Ladies,41532,36.7852077
 2025-26,B Pharmacy,CAP Round II,01305,"Cambridge College of Pharmacy, Yelgaon Dist. Buldhana",Buldhana,Unaided,GOPENO,Other than Home University,Any,48838,17.2160325
-2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,50096,12.1179946
-2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,32946,52.692926
-2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,17582,73.6896707
-2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Pharmacy,Unaided,LSCO,Other than Home University,Ladies,40939,38.0222081
-2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,24293,65.5771809
-2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Pharmacy,Unaided,EWS,Special,Any,45980,25.5886333
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,50878,8.672418
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,48612,17.6361357
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LSTH,Home University,Ladies,48812,17.2977155
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,41848,36.0308374
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,50463,10.7673267
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,45973,25.7272727
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GNT3H,Home University,Any,45815,26.1410027
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,52245,1.6593326
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,38798,42.1921516
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,22516,67.7388049
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,51697,4.6802429
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GVJH,Home University,Any,51914,3.5860562
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GNT1H,Home University,Any,47610,21.1612777
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GNT2H,Home University,Any,49575,14.4695006
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,50456,10.7673267
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,52326,1.1976048
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,48782,17.2977155
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,27914,60.4146599
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GSTO,Other than Home University,Any,44112,30.7454264
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GVJO,Other than Home University,Any,44039,30.8543219
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,44742,28.9205044
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,9190,84.3005134
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LSCO,Other than Home University,Ladies,18894,72.1363369
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,17618,73.6896707
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,45897,26.0264691
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GNT2O,Other than Home University,Any,44994,28.5525608
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,GSEBCO,Other than Home University,Any,46704,23.6870847
-2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Pharmacy,Unaided,EWS,Special,Any,47886,20.2903241
+2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Amravati,Unaided,GOPENH,Home University,Any,50096,12.1179946
+2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Amravati,Unaided,LOPENH,Home University,Ladies,32946,52.692926
+2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Amravati,Unaided,LOPENH,Home University,Ladies,17582,73.6896707
+2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Amravati,Unaided,LSCO,Other than Home University,Ladies,40939,38.0222081
+2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Amravati,Unaided,TFWS,Special,Any,24293,65.5771809
+2025-26,B Pharmacy,CAP Round II,01306,Rajashri College of Pharmacy,Amravati,Unaided,EWS,Special,Any,45980,25.5886333
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GOPENH,Home University,Any,50878,8.672418
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LOPENH,Home University,Ladies,48612,17.6361357
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LSTH,Home University,Ladies,48812,17.2977155
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GOPENH,Home University,Any,41848,36.0308374
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GSCH,Home University,Any,50463,10.7673267
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GSTH,Home University,Any,45973,25.7272727
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GNT3H,Home University,Any,45815,26.1410027
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GOBCH,Home University,Any,52245,1.6593326
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LSCH,Home University,Ladies,38798,42.1921516
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LOBCH,Home University,Ladies,22516,67.7388049
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GSCH,Home University,Any,51697,4.6802429
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GVJH,Home University,Any,51914,3.5860562
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GNT1H,Home University,Any,47610,21.1612777
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GNT2H,Home University,Any,49575,14.4695006
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GOBCH,Home University,Any,50456,10.7673267
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GSEBCH,Home University,Any,52326,1.1976048
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LSEBCH,Home University,Ladies,48782,17.2977155
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GOPENO,Other than Home University,Any,27914,60.4146599
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GSTO,Other than Home University,Any,44112,30.7454264
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GVJO,Other than Home University,Any,44039,30.8543219
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GOBCO,Other than Home University,Any,44742,28.9205044
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LOPENO,Other than Home University,Ladies,9190,84.3005134
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LSCO,Other than Home University,Ladies,18894,72.1363369
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,LOBCO,Other than Home University,Ladies,17618,73.6896707
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GSCO,Other than Home University,Any,45897,26.0264691
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GNT2O,Other than Home University,Any,44994,28.5525608
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,GSEBCO,Other than Home University,Any,46704,23.6870847
+2025-26,B Pharmacy,CAP Round II,01343,Savitridevi College of Pharmacy,Amravati,Unaided,EWS,Special,Any,47886,20.2903241
 2025-26,B Pharmacy,CAP Round II,02009,"Government College of Pharmacy, Aurangabad",Chhatrapati Sambhajinagar,Government,GOPENH,Home University,Any,909,97.4101577
 2025-26,B Pharmacy,CAP Round II,02009,"Government College of Pharmacy, Aurangabad",Chhatrapati Sambhajinagar,Government,LOPENH,Home University,Ladies,2669,94.1234925
 2025-26,B Pharmacy,CAP Round II,02009,"Government College of Pharmacy, Aurangabad",Chhatrapati Sambhajinagar,Government,LSCH,Home University,Ladies,15546,76.1597181
@@ -609,9 +609,9 @@
 2025-26,B Pharmacy,CAP Round II,02009,"Government College of Pharmacy, Aurangabad",Chhatrapati Sambhajinagar,Government,TFWS,Special,Any,863,97.5201687
 2025-26,B Pharmacy,CAP Round II,02009,"Government College of Pharmacy, Aurangabad",Chhatrapati Sambhajinagar,Government,EWS,Special,Any,4637,90.8128841
 2025-26,B Pharmacy,CAP Round II,02009,"Government College of Pharmacy, Aurangabad",Chhatrapati Sambhajinagar,Government,ORPHAN,Special,Any,1343,96.5096389
-2025-26,B Pharmacy,CAP Round II,02027,"Adarsh Shikshan Prasarak Mandal's Diploma In Pharmacy Institute, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,51743,4.6715257
-2025-26,B Pharmacy,CAP Round II,02027,"Adarsh Shikshan Prasarak Mandal's Diploma In Pharmacy Institute, Osmanabad",Dharashiv,Unaided,GOPENO,Other than Home University,Any,49871,13.2012293
-2025-26,B Pharmacy,CAP Round II,02027,"Adarsh Shikshan Prasarak Mandal's Diploma In Pharmacy Institute, Osmanabad",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,51658,4.817857
+2025-26,B Pharmacy,CAP Round II,02027,"Adarsh Shikshan Prasarak Mandal's Diploma In Pharmacy Institute, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,51743,4.6715257
+2025-26,B Pharmacy,CAP Round II,02027,"Adarsh Shikshan Prasarak Mandal's Diploma In Pharmacy Institute, Osmanabad",Osmanabad,Unaided,GOPENO,Other than Home University,Any,49871,13.2012293
+2025-26,B Pharmacy,CAP Round II,02027,"Adarsh Shikshan Prasarak Mandal's Diploma In Pharmacy Institute, Osmanabad",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,51658,4.817857
 2025-26,B Pharmacy,CAP Round II,02029,"School of Pharmacy,Swami Ramanand Teerth,Marathwada University,Nanded",Nanded,University Department,GOPENH,Home University,Any,4099,91.7047923
 2025-26,B Pharmacy,CAP Round II,02029,"School of Pharmacy,Swami Ramanand Teerth,Marathwada University,Nanded",Nanded,University Department,GSCH,Home University,Any,6271,88.4214646
 2025-26,B Pharmacy,CAP Round II,02029,"School of Pharmacy,Swami Ramanand Teerth,Marathwada University,Nanded",Nanded,University Department,GSTH,Home University,Any,10692,82.1525949
@@ -634,18 +634,18 @@
 2025-26,B Pharmacy,CAP Round II,02118,"Shree Bhairavnath Nisarg Mandal.'S Diploma In Pharmacy Institute, Hatta, Tal.Basmat",Hingoli,Unaided,LOPENH,Home University,Ladies,30356,56.8634536
 2025-26,B Pharmacy,CAP Round II,02118,"Shree Bhairavnath Nisarg Mandal.'S Diploma In Pharmacy Institute, Hatta, Tal.Basmat",Hingoli,Unaided,GOPENO,Other than Home University,Any,37997,43.8930412
 2025-26,B Pharmacy,CAP Round II,02118,"Shree Bhairavnath Nisarg Mandal.'S Diploma In Pharmacy Institute, Hatta, Tal.Basmat",Hingoli,Unaided,LOPENO,Other than Home University,Ladies,38394,43.4652257
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,44660,29.0442453
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GOBCH,Home University,Any,46157,25.146658
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GSEBCH,Home University,Any,49954,12.5570261
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,LOPENH,Home University,Ladies,38267,43.6896345
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GNT1H,Home University,Any,50726,9.7070702
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GNT3H,Home University,Any,52415,0.4691024
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,LSTH,Home University,Ladies,51873,3.9126646
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,LNT1H,Home University,Ladies,51621,5.1475981
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GOPENO,Other than Home University,Any,47053,22.4248107
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,45347,27.6080743
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GSEBCO,Other than Home University,Any,48763,17.4868433
-2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,TFWS,Special,Any,28978,58.8994542
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,44660,29.0442453
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GOBCH,Home University,Any,46157,25.146658
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GSEBCH,Home University,Any,49954,12.5570261
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,LOPENH,Home University,Ladies,38267,43.6896345
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GNT1H,Home University,Any,50726,9.7070702
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GNT3H,Home University,Any,52415,0.4691024
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,LSTH,Home University,Ladies,51873,3.9126646
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,LNT1H,Home University,Ladies,51621,5.1475981
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GOPENO,Other than Home University,Any,47053,22.4248107
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,45347,27.6080743
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GSEBCO,Other than Home University,Any,48763,17.4868433
+2025-26,B Pharmacy,CAP Round II,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,TFWS,Special,Any,28978,58.8994542
 2025-26,B Pharmacy,CAP Round II,02147,"Maharashtra College of Pharmacy, Nilanga",Latur,Unaided,GOBCH,Home University,Any,22797,67.365978
 2025-26,B Pharmacy,CAP Round II,02147,"Maharashtra College of Pharmacy, Nilanga",Latur,Unaided,LSCH,Home University,Ladies,37675,44.9102382
 2025-26,B Pharmacy,CAP Round II,02147,"Maharashtra College of Pharmacy, Nilanga",Latur,Unaided,GSTH,Home University,Any,15948,75.6075065
@@ -673,23 +673,23 @@
 2025-26,B Pharmacy,CAP Round II,02149,"Sharda Bhavan Education Society's Nanded Pharmacy College, Nanded",Nanded,Unaided,GSCO,Other than Home University,Any,21462,68.7032705
 2025-26,B Pharmacy,CAP Round II,02149,"Sharda Bhavan Education Society's Nanded Pharmacy College, Nanded",Nanded,Unaided,GOBCO,Other than Home University,Any,5244,89.8797642
 2025-26,B Pharmacy,CAP Round II,02149,"Sharda Bhavan Education Society's Nanded Pharmacy College, Nanded",Nanded,Unaided,EWS,Special,Any,11509,81.1959887
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,32833,52.8151445
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOPENH,Home University,Ladies,14540,77.3843096
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GSCH,Home University,Any,31463,54.7167217
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCH,Home University,Any,22267,68.1117918
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,LSCH,Home University,Ladies,23807,65.8092176
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,LNT1H,Home University,Ladies,17292,74.1785747
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENO,Other than Home University,Any,7945,85.9323432
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCO,Other than Home University,Any,16824,74.556213
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GSEBCO,Other than Home University,Any,19858,70.8178524
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,17565,73.6896707
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,37837,44.5303298
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOPENH,Home University,Ladies,28048,60.234823
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOBCH,Home University,Ladies,34011,50.8248995
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENO,Other than Home University,Any,31228,54.7510694
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,23827,65.8092176
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GSEBCO,Other than Home University,Any,46123,25.4595013
-2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GNT2O,Other than Home University,Any,29487,57.746608
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,32833,52.8151445
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOPENH,Home University,Ladies,14540,77.3843096
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GSCH,Home University,Any,31463,54.7167217
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCH,Home University,Any,22267,68.1117918
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,LSCH,Home University,Ladies,23807,65.8092176
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,LNT1H,Home University,Ladies,17292,74.1785747
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENO,Other than Home University,Any,7945,85.9323432
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCO,Other than Home University,Any,16824,74.556213
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GSEBCO,Other than Home University,Any,19858,70.8178524
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,17565,73.6896707
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,37837,44.5303298
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOPENH,Home University,Ladies,28048,60.234823
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOBCH,Home University,Ladies,34011,50.8248995
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENO,Other than Home University,Any,31228,54.7510694
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,23827,65.8092176
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GSEBCO,Other than Home University,Any,46123,25.4595013
+2025-26,B Pharmacy,CAP Round II,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GNT2O,Other than Home University,Any,29487,57.746608
 2025-26,B Pharmacy,CAP Round II,02152,"Shivlingeshwar College of Pharmacy, Almala, Dist. Latur",Latur,Unaided,LOPENH,Home University,Ladies,5496,89.4829526
 2025-26,B Pharmacy,CAP Round II,02152,"Shivlingeshwar College of Pharmacy, Almala, Dist. Latur",Latur,Unaided,LSCH,Home University,Ladies,48377,18.5475444
 2025-26,B Pharmacy,CAP Round II,02152,"Shivlingeshwar College of Pharmacy, Almala, Dist. Latur",Latur,Unaided,LSTH,Home University,Ladies,41955,35.9964718
@@ -829,7 +829,7 @@
 2025-26,B Pharmacy,CAP Round II,02158,"Ramchandra Sanskritik Krida Mandal's R.D. Bhakt College of Pharmacy, Jalna",Jalna,Unaided,GOPENO,Other than Home University,Any,40487,39.2328654
 2025-26,B Pharmacy,CAP Round II,02158,"Ramchandra Sanskritik Krida Mandal's R.D. Bhakt College of Pharmacy, Jalna",Jalna,Unaided,LOPENO,Other than Home University,Ladies,28441,59.8249375
 2025-26,B Pharmacy,CAP Round II,02158,"Ramchandra Sanskritik Krida Mandal's R.D. Bhakt College of Pharmacy, Jalna",Jalna,Unaided,LOPENO,Other than Home University,Ladies,51585,5.4943548
-2025-26,B Pharmacy,CAP Round II,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Pharmacy,Unaided,MI,Special,Any,47558,21.3037657
+2025-26,B Pharmacy,CAP Round II,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Nandurbar,Unaided,MI,Special,Any,47558,21.3037657
 2025-26,B Pharmacy,CAP Round II,02202,"Sayli Charitable Trust's College Of Pharmacy, Mitmita, Aurangabad.",Chhatrapati Sambhajinagar,Unaided,GOPENH,Home University,Any,28440,59.8249375
 2025-26,B Pharmacy,CAP Round II,02202,"Sayli Charitable Trust's College Of Pharmacy, Mitmita, Aurangabad.",Chhatrapati Sambhajinagar,Unaided,GSCH,Home University,Any,50256,11.8673884
 2025-26,B Pharmacy,CAP Round II,02202,"Sayli Charitable Trust's College Of Pharmacy, Mitmita, Aurangabad.",Chhatrapati Sambhajinagar,Unaided,GNT1H,Home University,Any,29900,57.3825038
@@ -862,10 +862,10 @@
 2025-26,B Pharmacy,CAP Round II,02219,"Shree Bhairavnath Nisarga Mandal's D. Pharmacy College, Aalani",Ahmednagar,Unaided,LOBCH,Home University,Ladies,41682,36.1161649
 2025-26,B Pharmacy,CAP Round II,02219,"Shree Bhairavnath Nisarga Mandal's D. Pharmacy College, Aalani",Ahmednagar,Unaided,GSTO,Other than Home University,Any,50154,11.9485358
 2025-26,B Pharmacy,CAP Round II,02219,"Shree Bhairavnath Nisarga Mandal's D. Pharmacy College, Aalani",Ahmednagar,Unaided,GNT3O,Other than Home University,Any,42182,35.9295868
-2025-26,B Pharmacy,CAP Round II,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,PWDOPENH,Home University,Any,42898,33.7257555
-2025-26,B Pharmacy,CAP Round II,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GOPENH,Home University,Any,43802,31.9226076
-2025-26,B Pharmacy,CAP Round II,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GOPENO,Other than Home University,Any,29689,57.5692865
-2025-26,B Pharmacy,CAP Round II,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,LSEBCO,Other than Home University,Ladies,11393,81.392446
+2025-26,B Pharmacy,CAP Round II,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,PWDOPENH,Home University,Any,42898,33.7257555
+2025-26,B Pharmacy,CAP Round II,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GOPENH,Home University,Any,43802,31.9226076
+2025-26,B Pharmacy,CAP Round II,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GOPENO,Other than Home University,Any,29689,57.5692865
+2025-26,B Pharmacy,CAP Round II,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,LSEBCO,Other than Home University,Ladies,11393,81.392446
 2025-26,B Pharmacy,CAP Round II,02223,"Vivekvardhini Sevabhavi Sanstha's Diploma Pharmacy College, Pingali",Parbhani,Unaided,LOPENH,Home University,Ladies,21750,68.4448259
 2025-26,B Pharmacy,CAP Round II,02223,"Vivekvardhini Sevabhavi Sanstha's Diploma Pharmacy College, Pingali",Parbhani,Unaided,GOPENH,Home University,Any,11452,81.2551197
 2025-26,B Pharmacy,CAP Round II,02223,"Vivekvardhini Sevabhavi Sanstha's Diploma Pharmacy College, Pingali",Parbhani,Unaided,LOPENH,Home University,Ladies,6534,87.9789493
@@ -1062,9 +1062,9 @@
 2025-26,B Pharmacy,CAP Round II,02561,"Rajesh Bhaiyya Tope College of B Pharmacy, Nipani, Aurangbad",Chhatrapati Sambhajinagar,Unaided,GOPENO,Other than Home University,Any,45777,26.1410027
 2025-26,B Pharmacy,CAP Round II,02561,"Rajesh Bhaiyya Tope College of B Pharmacy, Nipani, Aurangbad",Chhatrapati Sambhajinagar,Unaided,LNT3O,Other than Home University,Ladies,43258,32.7104632
 2025-26,B Pharmacy,CAP Round II,02561,"Rajesh Bhaiyya Tope College of B Pharmacy, Nipani, Aurangbad",Chhatrapati Sambhajinagar,Unaided,TFWS,Special,Any,19369,71.6607627
-2025-26,B Pharmacy,CAP Round II,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,31233,54.7510694
-2025-26,B Pharmacy,CAP Round II,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,TFWS,Special,Any,46456,24.5067546
-2025-26,B Pharmacy,CAP Round II,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,EWS,Special,Any,41430,37.3550741
+2025-26,B Pharmacy,CAP Round II,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,31233,54.7510694
+2025-26,B Pharmacy,CAP Round II,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,TFWS,Special,Any,46456,24.5067546
+2025-26,B Pharmacy,CAP Round II,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,EWS,Special,Any,41430,37.3550741
 2025-26,B Pharmacy,CAP Round II,02564,"Shri. Dhaneshwari Manav Vikas Mandal's S.V.P. College of Pharmacy, Hingoli",Hingoli,Unaided,GOPENH,Home University,Any,33135,52.4458405
 2025-26,B Pharmacy,CAP Round II,02564,"Shri. Dhaneshwari Manav Vikas Mandal's S.V.P. College of Pharmacy, Hingoli",Hingoli,Unaided,LOPENH,Home University,Ladies,15195,76.6089109
 2025-26,B Pharmacy,CAP Round II,02564,"Shri. Dhaneshwari Manav Vikas Mandal's S.V.P. College of Pharmacy, Hingoli",Hingoli,Unaided,LOPENO,Other than Home University,Ladies,37925,43.8930412
@@ -1242,13 +1242,13 @@
 2025-26,B Pharmacy,CAP Round II,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,GOPENO,Other than Home University,Any,27278,60.7838611
 2025-26,B Pharmacy,CAP Round II,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,LOPENO,Other than Home University,Ladies,48635,17.6361357
 2025-26,B Pharmacy,CAP Round II,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,LOPENO,Other than Home University,Ladies,34756,49.4400512
-2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GOPENH,Home University,Any,49916,12.9554081
-2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,LOPENH,Home University,Ladies,32122,53.7591782
-2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GOBCH,Home University,Any,51957,3.4342622
-2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,LSCH,Home University,Ladies,49566,14.4695006
-2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,LSTH,Home University,Ladies,50322,11.5879038
-2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,LOBCH,Home University,Ladies,48157,19.2944893
-2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GOPENO,Other than Home University,Any,45966,25.7272727
+2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GOPENH,Home University,Any,49916,12.9554081
+2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,LOPENH,Home University,Ladies,32122,53.7591782
+2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GOBCH,Home University,Any,51957,3.4342622
+2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,LSCH,Home University,Ladies,49566,14.4695006
+2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,LSTH,Home University,Ladies,50322,11.5879038
+2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,LOBCH,Home University,Ladies,48157,19.2944893
+2025-26,B Pharmacy,CAP Round II,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GOPENO,Other than Home University,Any,45966,25.7272727
 2025-26,B Pharmacy,CAP Round II,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,GOPENH,Home University,Any,33500,51.5172351
 2025-26,B Pharmacy,CAP Round II,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,GSCH,Home University,Any,50448,10.7673267
 2025-26,B Pharmacy,CAP Round II,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,GOBCH,Home University,Any,50451,10.7673267
@@ -1373,7 +1373,7 @@
 2025-26,B Pharmacy,CAP Round II,02618,"Shri Sambhaji College Of Pharmacy, Nanded",Nanded,Unaided,LSTO,Other than Home University,Ladies,27012,61.195309
 2025-26,B Pharmacy,CAP Round II,02618,"Shri Sambhaji College Of Pharmacy, Nanded",Nanded,Unaided,TFWS,Special,Any,3793,92.1613886
 2025-26,B Pharmacy,CAP Round II,02618,"Shri Sambhaji College Of Pharmacy, Nanded",Nanded,Unaided,ORPHAN,Special,Any,26101,62.9242587
-2025-26,B Pharmacy,CAP Round II,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Dharashiv,Unaided,LOPENH,Home University,Ladies,35642,48.2581591
+2025-26,B Pharmacy,CAP Round II,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Osmanabad,Unaided,LOPENH,Home University,Ladies,35642,48.2581591
 2025-26,B Pharmacy,CAP Round II,02620,"Rashtriya College of Pharmacy, Hatnoor, Kannad",Chhatrapati Sambhajinagar,Unaided,TFWS,Special,Any,9898,83.2555776
 2025-26,B Pharmacy,CAP Round II,02626,"Jay Bharat College of Pharmacy Dapka, Taluka Nilanga, Dist.Latur",Latur,Unaided,GOPENH,Home University,Any,39036,41.9711821
 2025-26,B Pharmacy,CAP Round II,02626,"Jay Bharat College of Pharmacy Dapka, Taluka Nilanga, Dist.Latur",Latur,Unaided,GSCH,Home University,Any,40423,39.3601986
@@ -1388,7 +1388,7 @@
 2025-26,B Pharmacy,CAP Round II,02626,"Jay Bharat College of Pharmacy Dapka, Taluka Nilanga, Dist.Latur",Latur,Unaided,LOPENO,Other than Home University,Ladies,42995,33.6908691
 2025-26,B Pharmacy,CAP Round II,02626,"Jay Bharat College of Pharmacy Dapka, Taluka Nilanga, Dist.Latur",Latur,Unaided,LOBCO,Other than Home University,Ladies,45616,26.9003977
 2025-26,B Pharmacy,CAP Round II,02626,"Jay Bharat College of Pharmacy Dapka, Taluka Nilanga, Dist.Latur",Latur,Unaided,TFWS,Special,Any,25282,63.4714222
-2025-26,B Pharmacy,CAP Round II,02627,"Madhavrao Patil College of Pharmacy, Murum",Dharashiv,Unaided,GOPENO,Other than Home University,Any,45046,28.3463753
+2025-26,B Pharmacy,CAP Round II,02627,"Madhavrao Patil College of Pharmacy, Murum",Osmanabad,Unaided,GOPENO,Other than Home University,Any,45046,28.3463753
 2025-26,B Pharmacy,CAP Round II,02628,"Saraswati Institute of Pharmacy, Pangri, Dist.Nanded",Nanded,Unaided,GOPENH,Home University,Any,42568,34.3906435
 2025-26,B Pharmacy,CAP Round II,02628,"Saraswati Institute of Pharmacy, Pangri, Dist.Nanded",Nanded,Unaided,GOBCH,Home University,Any,51400,6.120421
 2025-26,B Pharmacy,CAP Round II,02628,"Saraswati Institute of Pharmacy, Pangri, Dist.Nanded",Nanded,Unaided,GSEBCH,Home University,Any,49003,16.4389068
@@ -1425,24 +1425,24 @@
 2025-26,B Pharmacy,CAP Round II,02640,"Shriram Pratishtan Aditya Institute of Pharmacy, Sailu",Parbhani,Unaided,GOPENH,Home University,Any,46459,24.5067546
 2025-26,B Pharmacy,CAP Round II,02640,"Shriram Pratishtan Aditya Institute of Pharmacy, Sailu",Parbhani,Unaided,GOPENH,Home University,Any,21796,68.4448259
 2025-26,B Pharmacy,CAP Round II,02640,"Shriram Pratishtan Aditya Institute of Pharmacy, Sailu",Parbhani,Unaided,GOPENO,Other than Home University,Any,18512,72.5648601
-2025-26,B Pharmacy,CAP Round II,02645,Dr. Narayanrao Chate College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,20121,70.7395498
+2025-26,B Pharmacy,CAP Round II,02645,Dr. Narayanrao Chate College of Pharmacy,Nanded,Unaided,LOPENO,Other than Home University,Ladies,20121,70.7395498
 2025-26,B Pharmacy,CAP Round II,02647,"Bordikar College of Pharmacy, Mathala, Jintur, Dist.Parbhani",Parbhani,Unaided,GOPENH,Home University,Any,31777,54.1858367
 2025-26,B Pharmacy,CAP Round II,02653,"Vithai D.Pharmacy College, Beed",Beed,Unaided,GOPENH,Home University,Any,46994,22.5110011
 2025-26,B Pharmacy,CAP Round II,02653,"Vithai D.Pharmacy College, Beed",Beed,Unaided,LOPENH,Home University,Ladies,3717,92.2408301
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,39679,40.9382185
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,38149,43.8509833
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,28291,60.0433624
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,38915,41.9711821
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,22194,68.1357922
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,36346,46.5997873
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,43408,32.3397569
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,44455,29.9110168
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,45658,26.6274079
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,45890,26.0264691
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,LSTH,Home University,Ladies,44274,30.2026036
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,7656,86.3326782
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,51287,6.9235509
-2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Pharmacy,Unaided,LSTO,Other than Home University,Ladies,51511,6.0265127
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,LSEBCH,Home University,Ladies,39679,40.9382185
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,GOPENO,Other than Home University,Any,38149,43.8509833
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,28291,60.0433624
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,LOBCO,Other than Home University,Ladies,38915,41.9711821
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,TFWS,Special,Any,22194,68.1357922
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,GOPENH,Home University,Any,36346,46.5997873
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,GOBCH,Home University,Any,43408,32.3397569
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,GSEBCH,Home University,Any,44455,29.9110168
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,GSCH,Home University,Any,45658,26.6274079
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,GSTH,Home University,Any,45890,26.0264691
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,LSTH,Home University,Ladies,44274,30.2026036
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,7656,86.3326782
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,GSCO,Other than Home University,Any,51287,6.9235509
+2025-26,B Pharmacy,CAP Round II,02655,Shri. Chhatrapati Shivaji College of Pharmacy,Osmanabad,Unaided,LSTO,Other than Home University,Ladies,51511,6.0265127
 2025-26,B Pharmacy,CAP Round II,02661,"MAEER Pune's Maharashtra Institute of Pharmaceutical sciences, Latur",Latur,Unaided,GOPENH,Home University,Any,36850,45.910738
 2025-26,B Pharmacy,CAP Round II,02661,"MAEER Pune's Maharashtra Institute of Pharmaceutical sciences, Latur",Latur,Unaided,GSCH,Home University,Any,38005,43.8509833
 2025-26,B Pharmacy,CAP Round II,02661,"MAEER Pune's Maharashtra Institute of Pharmaceutical sciences, Latur",Latur,Unaided,GOBCH,Home University,Any,40821,38.082995
@@ -1457,11 +1457,11 @@
 2025-26,B Pharmacy,CAP Round II,02761,"JSPM's Shivajirao Patil Kavekar College of Pharmacy, Latur",Latur,Unaided,GOPENH,Home University,Any,50024,12.3989094
 2025-26,B Pharmacy,CAP Round II,02761,"JSPM's Shivajirao Patil Kavekar College of Pharmacy, Latur",Latur,Unaided,LOPENO,Other than Home University,Ladies,33564,51.5172351
 2025-26,B Pharmacy,CAP Round II,02763,"Siddheshwar College of Pharmacy, Latur",Latur,Unaided,LOPENO,Other than Home University,Ladies,30326,56.8634536
-2025-26,B Pharmacy,CAP Round II,02764,Gurukul Institute of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,19859,70.8178524
-2025-26,B Pharmacy,CAP Round II,02764,Gurukul Institute of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,35254,48.6959628
-2025-26,B Pharmacy,CAP Round II,02764,Gurukul Institute of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,51450,6.0585055
-2025-26,B Pharmacy,CAP Round II,02797,Sant Ramdas College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,23111,67.0861525
-2025-26,B Pharmacy,CAP Round II,02797,Sant Ramdas College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,29854,57.3825038
+2025-26,B Pharmacy,CAP Round II,02764,Gurukul Institute of Pharmacy,Nanded,Unaided,GOPENH,Home University,Any,19859,70.8178524
+2025-26,B Pharmacy,CAP Round II,02764,Gurukul Institute of Pharmacy,Nanded,Unaided,GOBCH,Home University,Any,35254,48.6959628
+2025-26,B Pharmacy,CAP Round II,02764,Gurukul Institute of Pharmacy,Nanded,Unaided,LSEBCH,Home University,Ladies,51450,6.0585055
+2025-26,B Pharmacy,CAP Round II,02797,Sant Ramdas College of Pharmacy,Osmanabad,Unaided,GOPENH,Home University,Any,23111,67.0861525
+2025-26,B Pharmacy,CAP Round II,02797,Sant Ramdas College of Pharmacy,Osmanabad,Unaided,LOPENH,Home University,Ladies,29854,57.3825038
 2025-26,B Pharmacy,CAP Round II,03005,"Government College of Pharmacy, Ratnagiri",Ratnagiri,Government,GOPENH,Home University,Any,2225,94.8518878
 2025-26,B Pharmacy,CAP Round II,03005,"Government College of Pharmacy, Ratnagiri",Ratnagiri,Government,GSCH,Home University,Any,8611,85.0232092
 2025-26,B Pharmacy,CAP Round II,03005,"Government College of Pharmacy, Ratnagiri",Ratnagiri,Government,GSTH,Home University,Any,10540,82.4532453
@@ -2022,28 +2022,28 @@
 2025-26,B Pharmacy,CAP Round II,03536,"Yashodeep College of Pharmacy, At Post Saralgaon, Taluka Murbad",Thane,Unaided,GOPENO,Other than Home University,Any,51882,3.896223
 2025-26,B Pharmacy,CAP Round II,03536,"Yashodeep College of Pharmacy, At Post Saralgaon, Taluka Murbad",Thane,Unaided,LOPENO,Other than Home University,Ladies,31386,54.7317884
 2025-26,B Pharmacy,CAP Round II,03536,"Yashodeep College of Pharmacy, At Post Saralgaon, Taluka Murbad",Thane,Unaided,TFWS,Special,Any,25306,63.4191092
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,20369,70.3663846
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,31416,54.7317884
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,26854,62.0305788
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,13356,78.8385191
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,32789,52.8500251
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LSTH,Home University,Ladies,40598,38.8701401
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,22097,68.156812
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,22594,67.5605061
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,26240,62.8968351
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LVJH,Home University,Ladies,14003,77.9830709
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,38763,42.2674623
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,44929,28.6057581
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,20611,70.0246042
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,35800,47.7647277
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GNT1O,Other than Home University,Any,38056,43.8509833
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,24820,64.8344034
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LSCO,Other than Home University,Ladies,30665,56.3371325
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LNT2O,Other than Home University,Ladies,43161,33.1516467
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,21046,69.5128552
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,GSEBCO,Other than Home University,Any,22913,67.3218449
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,LSTO,Other than Home University,Ladies,24538,65.1406207
-2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,11183,81.6303793
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GOPENH,Home University,Any,20369,70.3663846
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GSCH,Home University,Any,31416,54.7317884
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GOBCH,Home University,Any,26854,62.0305788
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LOPENH,Home University,Ladies,13356,78.8385191
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LSCH,Home University,Ladies,32789,52.8500251
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LSTH,Home University,Ladies,40598,38.8701401
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LOBCH,Home University,Ladies,22097,68.156812
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GSTH,Home University,Any,22594,67.5605061
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GSEBCH,Home University,Any,26240,62.8968351
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LVJH,Home University,Ladies,14003,77.9830709
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GOPENO,Other than Home University,Any,38763,42.2674623
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LOPENO,Other than Home University,Ladies,44929,28.6057581
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GOPENO,Other than Home University,Any,20611,70.0246042
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GSCO,Other than Home University,Any,35800,47.7647277
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GNT1O,Other than Home University,Any,38056,43.8509833
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GOBCO,Other than Home University,Any,24820,64.8344034
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LSCO,Other than Home University,Ladies,30665,56.3371325
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LNT2O,Other than Home University,Ladies,43161,33.1516467
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LOBCO,Other than Home University,Ladies,21046,69.5128552
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,GSEBCO,Other than Home University,Any,22913,67.3218449
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,LSTO,Other than Home University,Ladies,24538,65.1406207
+2025-26,B Pharmacy,CAP Round II,03537,Vaishalitai Jondhale College of Pharmacy,Thane,Unaided,TFWS,Special,Any,11183,81.6303793
 2025-26,B Pharmacy,CAP Round II,03541,"AIMS College of Pharmacy, Vadavali, Kalyan",Thane,Unaided,GOPENH,Home University,Any,10418,82.5872894
 2025-26,B Pharmacy,CAP Round II,03541,"AIMS College of Pharmacy, Vadavali, Kalyan",Thane,Unaided,GSCH,Home University,Any,16773,74.6963201
 2025-26,B Pharmacy,CAP Round II,03541,"AIMS College of Pharmacy, Vadavali, Kalyan",Thane,Unaided,GSTH,Home University,Any,38516,42.7072257
@@ -2112,76 +2112,76 @@
 2025-26,B Pharmacy,CAP Round II,03543,"St. Wilfred's Institute of Pharmaceutical Science & Research, Mira Road(E), Thane",Thane,Unaided,GSEBCO,Other than Home University,Any,8254,85.4590925
 2025-26,B Pharmacy,CAP Round II,03543,"St. Wilfred's Institute of Pharmaceutical Science & Research, Mira Road(E), Thane",Thane,Unaided,TFWS,Special,Any,6249,88.4271364
 2025-26,B Pharmacy,CAP Round II,03543,"St. Wilfred's Institute of Pharmaceutical Science & Research, Mira Road(E), Thane",Thane,Unaided,ORPHAN,Special,Any,7473,86.6244668
-2025-26,B Pharmacy,CAP Round II,03545,Siddharth College of Pharmacy & Research Centre,Centre,Unaided,GOPENH,Home University,Any,48517,18.1100586
-2025-26,B Pharmacy,CAP Round II,03545,Siddharth College of Pharmacy & Research Centre,Centre,Unaided,LOPENH,Home University,Ladies,28908,59.0974179
-2025-26,B Pharmacy,CAP Round II,03545,Siddharth College of Pharmacy & Research Centre,Centre,Unaided,LOPENO,Other than Home University,Ladies,48408,18.1855975
-2025-26,B Pharmacy,CAP Round II,03545,Siddharth College of Pharmacy & Research Centre,Centre,Unaided,GOPENO,Other than Home University,Any,45837,26.0264691
-2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Science,Unaided,GOPENH,Home University,Any,5732,89.1917721
-2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Science,Unaided,LOPENH,Home University,Ladies,3951,91.8198654
-2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Science,Unaided,GOPENO,Other than Home University,Any,23428,66.3142831
-2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Science,Unaided,LOPENO,Other than Home University,Ladies,5666,89.2346044
-2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Science,Unaided,MI,Special,Any,7176,87.0696428
-2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Science,Unaided,TFWS,Special,Any,4506,90.9926555
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,33272,51.7065623
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,50788,9.4948128
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,29564,57.6089924
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,39196,41.5673068
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,52358,0.9244373
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,PWDOPENH,Home University,Any,35819,47.7647277
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GNT2H,Home University,Any,48731,17.4868433
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,45263,28.0445019
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,34682,49.9151415
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,31272,54.7510694
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,PWDOBCH,Home University,Any,50316,11.6988417
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,40773,38.3392226
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,49399,14.7225981
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,30159,57.0754935
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,45270,28.0445019
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,47667,20.9507451
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,20120,70.7395498
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,LSCO,Other than Home University,Ladies,41021,37.9104747
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,39175,41.7471281
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GSTO,Other than Home University,Any,36851,45.910738
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GVJO,Other than Home University,Any,38585,42.7072257
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,GSEBCO,Other than Home University,Any,42863,33.7257555
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,40793,38.2479385
-2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Pharmacy,Unaided,DEFOBCS,State Level,Any,44982,28.5525608
-2025-26,B Pharmacy,CAP Round II,03712,Shree Ramraje College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,48479,18.1100586
-2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Research,Unaided,GOPENH,Home University,Any,21333,69.1681078
-2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Research,Unaided,LOPENH,Home University,Ladies,16396,75.1620214
-2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Research,Unaided,GOPENO,Other than Home University,Any,19226,71.7088376
-2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Research,Unaided,LOPENO,Other than Home University,Ladies,13342,78.8385191
-2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Research,Unaided,MI,Special,Any,29933,57.3825038
-2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Research,Unaided,TFWS,Special,Any,15589,75.9827531
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,26920,61.6834321
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,45849,26.0264691
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,52375,0.8191499
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,17134,74.2729203
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,17389,74.0094972
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,22003,68.156812
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,PWDOPENH,Home University,Any,48988,16.4425946
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,51737,4.6715257
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,47526,21.4011738
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GVJH,Home University,Any,48067,19.7741921
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GNT1H,Home University,Any,37038,45.8518078
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GNT2H,Home University,Any,43127,33.1516467
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,31377,54.7317884
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,49430,14.7225981
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LSTH,Home University,Ladies,34271,50.3112314
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LVJH,Home University,Ladies,34564,49.9151415
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LNT3H,Home University,Ladies,31782,54.1858367
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,35979,47.6641123
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,PWDOBCH,Home University,Any,49793,13.2993926
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,46984,22.5110011
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,30332,56.8634536
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,14399,77.7045034
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LNT2O,Other than Home University,Ladies,32729,52.8500251
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,29870,57.3825038
-2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,50924,8.5212688
-2025-26,B Pharmacy,CAP Round II,03716,Theem College of Pharmacy & Research,Research,Unaided,GOPENH,Home University,Any,23250,66.3547544
-2025-26,B Pharmacy,CAP Round II,03716,Theem College of Pharmacy & Research,Research,Unaided,LOPENH,Home University,Ladies,18966,71.937236
-2025-26,B Pharmacy,CAP Round II,03716,Theem College of Pharmacy & Research,Research,Unaided,GOPENO,Other than Home University,Any,19549,71.5546007
-2025-26,B Pharmacy,CAP Round II,03716,Theem College of Pharmacy & Research,Research,Unaided,MI,Special,Any,33178,52.4458405
+2025-26,B Pharmacy,CAP Round II,03545,Siddharth College of Pharmacy & Research Centre,Thane,Unaided,GOPENH,Home University,Any,48517,18.1100586
+2025-26,B Pharmacy,CAP Round II,03545,Siddharth College of Pharmacy & Research Centre,Thane,Unaided,LOPENH,Home University,Ladies,28908,59.0974179
+2025-26,B Pharmacy,CAP Round II,03545,Siddharth College of Pharmacy & Research Centre,Thane,Unaided,LOPENO,Other than Home University,Ladies,48408,18.1855975
+2025-26,B Pharmacy,CAP Round II,03545,Siddharth College of Pharmacy & Research Centre,Thane,Unaided,GOPENO,Other than Home University,Any,45837,26.0264691
+2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Mumbai,Unaided,GOPENH,Home University,Any,5732,89.1917721
+2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Mumbai,Unaided,LOPENH,Home University,Ladies,3951,91.8198654
+2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Mumbai,Unaided,GOPENO,Other than Home University,Any,23428,66.3142831
+2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Mumbai,Unaided,LOPENO,Other than Home University,Ladies,5666,89.2346044
+2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Mumbai,Unaided,MI,Special,Any,7176,87.0696428
+2025-26,B Pharmacy,CAP Round II,03710,SIES School of Pharmaceutical Science,Mumbai,Unaided,TFWS,Special,Any,4506,90.9926555
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GOPENH,Home University,Any,33272,51.7065623
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GSCH,Home University,Any,50788,9.4948128
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,LOPENH,Home University,Ladies,29564,57.6089924
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,LSCH,Home University,Ladies,39196,41.5673068
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,LOBCH,Home University,Ladies,52358,0.9244373
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,PWDOPENH,Home University,Any,35819,47.7647277
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GNT2H,Home University,Any,48731,17.4868433
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GOBCH,Home University,Any,45263,28.0445019
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GSEBCH,Home University,Any,34682,49.9151415
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,LSEBCH,Home University,Ladies,31272,54.7510694
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,PWDOBCH,Home University,Any,50316,11.6988417
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GOPENO,Other than Home University,Any,40773,38.3392226
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,LOPENO,Other than Home University,Ladies,49399,14.7225981
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GOPENO,Other than Home University,Any,30159,57.0754935
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GSCO,Other than Home University,Any,45270,28.0445019
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GOBCO,Other than Home University,Any,47667,20.9507451
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,LOPENO,Other than Home University,Ladies,20120,70.7395498
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,LSCO,Other than Home University,Ladies,41021,37.9104747
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,LOBCO,Other than Home University,Ladies,39175,41.7471281
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GSTO,Other than Home University,Any,36851,45.910738
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GVJO,Other than Home University,Any,38585,42.7072257
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,GSEBCO,Other than Home University,Any,42863,33.7257555
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,TFWS,Special,Any,40793,38.2479385
+2025-26,B Pharmacy,CAP Round II,03711,Devi Mahalaxmi College of Pharmacy,Thane,Unaided,DEFOBCS,State Level,Any,44982,28.5525608
+2025-26,B Pharmacy,CAP Round II,03712,Shree Ramraje College of Pharmacy,Thane,Unaided,GOPENH,Home University,Any,48479,18.1100586
+2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Thane,Unaided,GOPENH,Home University,Any,21333,69.1681078
+2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Thane,Unaided,LOPENH,Home University,Ladies,16396,75.1620214
+2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Thane,Unaided,GOPENO,Other than Home University,Any,19226,71.7088376
+2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Thane,Unaided,LOPENO,Other than Home University,Ladies,13342,78.8385191
+2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Thane,Unaided,MI,Special,Any,29933,57.3825038
+2025-26,B Pharmacy,CAP Round II,03714,Aldel College of Pharmacy & Research,Thane,Unaided,TFWS,Special,Any,15589,75.9827531
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GOPENH,Home University,Any,26920,61.6834321
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GSCH,Home University,Any,45849,26.0264691
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GOBCH,Home University,Any,52375,0.8191499
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LOPENH,Home University,Ladies,17134,74.2729203
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LSCH,Home University,Ladies,17389,74.0094972
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LOBCH,Home University,Ladies,22003,68.156812
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,PWDOPENH,Home University,Any,48988,16.4425946
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GSCH,Home University,Any,51737,4.6715257
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GSTH,Home University,Any,47526,21.4011738
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GVJH,Home University,Any,48067,19.7741921
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GNT1H,Home University,Any,37038,45.8518078
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GNT2H,Home University,Any,43127,33.1516467
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GOBCH,Home University,Any,31377,54.7317884
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GSEBCH,Home University,Any,49430,14.7225981
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LSTH,Home University,Ladies,34271,50.3112314
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LVJH,Home University,Ladies,34564,49.9151415
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LNT3H,Home University,Ladies,31782,54.1858367
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LSEBCH,Home University,Ladies,35979,47.6641123
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,PWDOBCH,Home University,Any,49793,13.2993926
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LOPENO,Other than Home University,Ladies,46984,22.5110011
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GOPENO,Other than Home University,Any,30332,56.8634536
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LOPENO,Other than Home University,Ladies,14399,77.7045034
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LNT2O,Other than Home University,Ladies,32729,52.8500251
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,LOBCO,Other than Home University,Ladies,29870,57.3825038
+2025-26,B Pharmacy,CAP Round II,03715,Dnyan Ganga College of Pharmacy,Thane,Unaided,GSCO,Other than Home University,Any,50924,8.5212688
+2025-26,B Pharmacy,CAP Round II,03716,Theem College of Pharmacy & Research,Thane,Unaided,GOPENH,Home University,Any,23250,66.3547544
+2025-26,B Pharmacy,CAP Round II,03716,Theem College of Pharmacy & Research,Thane,Unaided,LOPENH,Home University,Ladies,18966,71.937236
+2025-26,B Pharmacy,CAP Round II,03716,Theem College of Pharmacy & Research,Thane,Unaided,GOPENO,Other than Home University,Any,19549,71.5546007
+2025-26,B Pharmacy,CAP Round II,03716,Theem College of Pharmacy & Research,Thane,Unaided,MI,Special,Any,33178,52.4458405
 2025-26,B Pharmacy,CAP Round II,03728,"Shiv Niketan Trust's Shri. Jagannath Laxmibai Sakharam Shinde College of Pharmacy, Khadavali(E), Taluka. Kalyan, Dist.Thane",Thane,Unaided,GOPENH,Home University,Any,39485,41.2166844
 2025-26,B Pharmacy,CAP Round II,03728,"Shiv Niketan Trust's Shri. Jagannath Laxmibai Sakharam Shinde College of Pharmacy, Khadavali(E), Taluka. Kalyan, Dist.Thane",Thane,Unaided,LOPENH,Home University,Ladies,43775,31.9280223
 2025-26,B Pharmacy,CAP Round II,03728,"Shiv Niketan Trust's Shri. Jagannath Laxmibai Sakharam Shinde College of Pharmacy, Khadavali(E), Taluka. Kalyan, Dist.Thane",Thane,Unaided,LSCH,Home University,Ladies,44808,28.8537986
@@ -2372,25 +2372,25 @@
 2025-26,B Pharmacy,CAP Round II,04206,"Amar Seva Mandal's, Kamla Nehru College of Pharmacy, Butibori, Nagpur",Nagpur,Unaided,LSEBCO,Other than Home University,Ladies,10625,82.2763176
 2025-26,B Pharmacy,CAP Round II,04206,"Amar Seva Mandal's, Kamla Nehru College of Pharmacy, Butibori, Nagpur",Nagpur,Unaided,TFWS,Special,Any,11113,81.7390139
 2025-26,B Pharmacy,CAP Round II,04206,"Amar Seva Mandal's, Kamla Nehru College of Pharmacy, Butibori, Nagpur",Nagpur,Unaided,EWS,Special,Any,43012,33.6908691
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GOPENH,Home University,Any,3678,92.2709967
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GOBCH,Home University,Any,5091,90.1398286
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,LSCH,Home University,Ladies,3552,92.6139984
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,LNT2H,Home University,Ladies,41670,36.1811489
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,LOBCH,Home University,Ladies,2188,94.9410542
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,LSEBCH,Home University,Ladies,29016,58.6907687
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,PWDOPENH,Home University,Any,30880,56.2645701
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GNT3H,Home University,Any,4939,90.385776
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GSEBCH,Home University,Any,6042,88.7167442
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GSEBCH,Home University,Any,31391,54.7317884
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GSTO,Other than Home University,Any,2739,94.0234551
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GOBCO,Other than Home University,Any,5929,88.9290818
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GSEBCO,Other than Home University,Any,13375,78.8385191
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,LOPENO,Other than Home University,Ladies,3151,93.2144672
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,LOBCO,Other than Home University,Ladies,5325,89.7606262
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,GSEBCO,Other than Home University,Any,4350,91.2348019
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,DEFOPENS,State Level,Any,12475,80.080325
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,EWS,Special,Any,20058,70.7395498
-2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,PHARMACY,Unaided,ORPHAN,Special,Any,6179,88.465628
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GOPENH,Home University,Any,3678,92.2709967
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GOBCH,Home University,Any,5091,90.1398286
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,LSCH,Home University,Ladies,3552,92.6139984
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,LNT2H,Home University,Ladies,41670,36.1811489
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,LOBCH,Home University,Ladies,2188,94.9410542
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,LSEBCH,Home University,Ladies,29016,58.6907687
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,PWDOPENH,Home University,Any,30880,56.2645701
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GNT3H,Home University,Any,4939,90.385776
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GSEBCH,Home University,Any,6042,88.7167442
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GSEBCH,Home University,Any,31391,54.7317884
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GSTO,Other than Home University,Any,2739,94.0234551
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GOBCO,Other than Home University,Any,5929,88.9290818
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GSEBCO,Other than Home University,Any,13375,78.8385191
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,LOPENO,Other than Home University,Ladies,3151,93.2144672
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,LOBCO,Other than Home University,Ladies,5325,89.7606262
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,GSEBCO,Other than Home University,Any,4350,91.2348019
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,DEFOPENS,State Level,Any,12475,80.080325
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,EWS,Special,Any,20058,70.7395498
+2025-26,B Pharmacy,CAP Round II,04207,DADASAHEB BALPANDE COLLEGE OF PHARMACY,Nagpur,Unaided,ORPHAN,Special,Any,6179,88.465628
 2025-26,B Pharmacy,CAP Round II,04208,"Shri Sachhidanand Shikshan Sanstha Taywade College of Pharmacy, Nagpur",Nagpur,Unaided,GOPENH,Home University,Any,14972,76.9346803
 2025-26,B Pharmacy,CAP Round II,04208,"Shri Sachhidanand Shikshan Sanstha Taywade College of Pharmacy, Nagpur",Nagpur,Unaided,GSCH,Home University,Any,20531,70.3527345
 2025-26,B Pharmacy,CAP Round II,04208,"Shri Sachhidanand Shikshan Sanstha Taywade College of Pharmacy, Nagpur",Nagpur,Unaided,GSTH,Home University,Any,25720,63.1058313
@@ -2790,59 +2790,59 @@
 2025-26,B Pharmacy,CAP Round II,04680,"The Royal Gondwana College of Pharmacy, Nagpur",Nagpur,Unaided,GSEBCO,Other than Home University,Any,44248,30.2026036
 2025-26,B Pharmacy,CAP Round II,04680,"The Royal Gondwana College of Pharmacy, Nagpur",Nagpur,Unaided,TFWS,Special,Any,26804,62.0305788
 2025-26,B Pharmacy,CAP Round II,04680,"The Royal Gondwana College of Pharmacy, Nagpur",Nagpur,Unaided,ORPHAN,Special,Any,44435,29.9110168
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,35580,48.2581591
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,38633,42.6339209
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,38307,43.658874
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,18462,72.7087944
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,22711,67.3841748
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,27133,60.9090909
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,39782,40.2286531
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,40785,38.2479385
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LNT2H,Home University,Ladies,39752,40.2286531
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,39906,40.0480614
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,50933,8.5212688
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,33592,51.2464223
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,32199,53.7016125
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,41275,37.4724972
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,37895,43.8930412
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,26198,62.8968351
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GSTO,Other than Home University,Any,43685,32.0746007
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GVJO,Other than Home University,Any,45123,28.2159603
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GNT2O,Other than Home University,Any,47228,22.0199648
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GNT3O,Other than Home University,Any,47422,21.5575777
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,GSEBCO,Other than Home University,Any,45795,26.1410027
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LSTO,Other than Home University,Ladies,41878,36.0308374
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,LSEBCO,Other than Home University,Ladies,42004,35.9964718
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,42690,33.9204624
-2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Pharmacy,Unaided,ORPHAN,Special,Any,46345,24.7839549
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GOPENH,Home University,Any,41952,35.9964718
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,LOPENH,Home University,Ladies,26320,62.8958439
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GSCH,Home University,Any,48765,17.2977155
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GSTH,Home University,Any,50061,12.29618
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GNT1H,Home University,Any,45695,26.4668133
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GNT2H,Home University,Any,46698,23.6870847
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GNT3H,Home University,Any,46763,23.6423723
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GSEBCH,Home University,Any,50610,9.8836673
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,LVJH,Home University,Ladies,45272,28.0445019
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,LSEBCH,Home University,Ladies,45683,26.4668133
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,LOPENO,Other than Home University,Ladies,43641,32.0876468
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GSTO,Other than Home University,Any,51147,7.6772549
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,GSEBCO,Other than Home University,Any,51333,6.4874627
-2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Research,Unaided,ORPHAN,Special,Any,51376,6.2872729
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GOPENH,Home University,Any,43738,32.0746007
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GSCH,Home University,Any,46457,24.5067546
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,LOPENH,Home University,Ladies,37371,45.1033039
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GSCH,Home University,Any,49708,13.6901769
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GSTH,Home University,Any,50209,11.9273265
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GVJH,Home University,Any,50936,8.5212688
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GNT1H,Home University,Any,52085,2.6636506
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GNT2H,Home University,Any,48265,19.0083024
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GNT3H,Home University,Any,49398,14.7225981
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GSEBCH,Home University,Any,51936,3.5592281
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,LSEBCH,Home University,Ladies,48101,19.7741921
-2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),(D.Pharm),Unaided,GOPENO,Other than Home University,Any,34671,49.9151415
-2025-26,B Pharmacy,CAP Round II,04690,Dr. Babasaheb Ambedkar College Brambhapuri (D.Pharm),(D.Pharm),Unaided,GOPENH,Home University,Any,50947,8.3381964
-2025-26,B Pharmacy,CAP Round II,04690,Dr. Babasaheb Ambedkar College Brambhapuri (D.Pharm),(D.Pharm),Unaided,GOPENO,Other than Home University,Any,28225,60.0433624
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GOPENH,Home University,Any,35580,48.2581591
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GSCH,Home University,Any,38633,42.6339209
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GOBCH,Home University,Any,38307,43.658874
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LOPENH,Home University,Ladies,18462,72.7087944
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LSCH,Home University,Ladies,22711,67.3841748
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LOBCH,Home University,Ladies,27133,60.9090909
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GSTH,Home University,Any,39782,40.2286531
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GSEBCH,Home University,Any,40785,38.2479385
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LNT2H,Home University,Ladies,39752,40.2286531
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LSEBCH,Home University,Ladies,39906,40.0480614
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GOPENO,Other than Home University,Any,50933,8.5212688
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LOPENO,Other than Home University,Ladies,33592,51.2464223
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GOPENO,Other than Home University,Any,32199,53.7016125
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GSCO,Other than Home University,Any,41275,37.4724972
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GOBCO,Other than Home University,Any,37895,43.8930412
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LOBCO,Other than Home University,Ladies,26198,62.8968351
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GSTO,Other than Home University,Any,43685,32.0746007
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GVJO,Other than Home University,Any,45123,28.2159603
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GNT2O,Other than Home University,Any,47228,22.0199648
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GNT3O,Other than Home University,Any,47422,21.5575777
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,GSEBCO,Other than Home University,Any,45795,26.1410027
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LSTO,Other than Home University,Ladies,41878,36.0308374
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,LSEBCO,Other than Home University,Ladies,42004,35.9964718
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,TFWS,Special,Any,42690,33.9204624
+2025-26,B Pharmacy,CAP Round II,04682,St. Paul College of Pharmacy,Nagpur,Unaided,ORPHAN,Special,Any,46345,24.7839549
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GOPENH,Home University,Any,41952,35.9964718
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,LOPENH,Home University,Ladies,26320,62.8958439
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GSCH,Home University,Any,48765,17.2977155
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GSTH,Home University,Any,50061,12.29618
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GNT1H,Home University,Any,45695,26.4668133
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GNT2H,Home University,Any,46698,23.6870847
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GNT3H,Home University,Any,46763,23.6423723
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GSEBCH,Home University,Any,50610,9.8836673
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,LVJH,Home University,Ladies,45272,28.0445019
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,LSEBCH,Home University,Ladies,45683,26.4668133
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,LOPENO,Other than Home University,Ladies,43641,32.0876468
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GSTO,Other than Home University,Any,51147,7.6772549
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,GSEBCO,Other than Home University,Any,51333,6.4874627
+2025-26,B Pharmacy,CAP Round II,04685,Dr. K.R. College of Pharmacy & Research,Gondia,Unaided,ORPHAN,Special,Any,51376,6.2872729
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GOPENH,Home University,Any,43738,32.0746007
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GSCH,Home University,Any,46457,24.5067546
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,LOPENH,Home University,Ladies,37371,45.1033039
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GSCH,Home University,Any,49708,13.6901769
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GSTH,Home University,Any,50209,11.9273265
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GVJH,Home University,Any,50936,8.5212688
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GNT1H,Home University,Any,52085,2.6636506
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GNT2H,Home University,Any,48265,19.0083024
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GNT3H,Home University,Any,49398,14.7225981
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GSEBCH,Home University,Any,51936,3.5592281
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,LSEBCH,Home University,Ladies,48101,19.7741921
+2025-26,B Pharmacy,CAP Round II,04688,Manwatkar College of Pharmacy (D.Pharm),Nagpur,Unaided,GOPENO,Other than Home University,Any,34671,49.9151415
+2025-26,B Pharmacy,CAP Round II,04690,Dr. Babasaheb Ambedkar College Brambhapuri (D.Pharm),Chandrapur,Unaided,GOPENH,Home University,Any,50947,8.3381964
+2025-26,B Pharmacy,CAP Round II,04690,Dr. Babasaheb Ambedkar College Brambhapuri (D.Pharm),Chandrapur,Unaided,GOPENO,Other than Home University,Any,28225,60.0433624
 2025-26,B Pharmacy,CAP Round II,04692,"Shri. Gurudev Institute of Pharmaceutical Education & Research, Temni Road, Chulod, District Gondia",Gondia,Unaided,GOPENH,Home University,Any,38181,43.6896345
 2025-26,B Pharmacy,CAP Round II,04692,"Shri. Gurudev Institute of Pharmaceutical Education & Research, Temni Road, Chulod, District Gondia",Gondia,Unaided,GSTH,Home University,Any,48285,19.0083024
 2025-26,B Pharmacy,CAP Round II,04692,"Shri. Gurudev Institute of Pharmaceutical Education & Research, Temni Road, Chulod, District Gondia",Gondia,Unaided,GOBCH,Home University,Any,49058,16.1743072
@@ -2885,7 +2885,7 @@
 2025-26,B Pharmacy,CAP Round II,04695,"Chandrapur College of Pharmacy, Chandrapur",Chandrapur,Unaided,LOPENO,Other than Home University,Ladies,43322,32.6791073
 2025-26,B Pharmacy,CAP Round II,04695,"Chandrapur College of Pharmacy, Chandrapur",Chandrapur,Unaided,LOBCO,Other than Home University,Ladies,47001,22.5110011
 2025-26,B Pharmacy,CAP Round II,04695,"Chandrapur College of Pharmacy, Chandrapur",Chandrapur,Unaided,TFWS,Special,Any,46110,25.4595013
-2025-26,B Pharmacy,CAP Round II,04697,Ramratan School of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,34668,49.9151415
+2025-26,B Pharmacy,CAP Round II,04697,Ramratan School of Pharmacy,Nagpur,Unaided,LOPENO,Other than Home University,Ladies,34668,49.9151415
 2025-26,B Pharmacy,CAP Round II,04698,"Prabhat Institute of Pharmacy, Rui, Bramhapuri, Chandrapur",Chandrapur,Unaided,GOPENH,Home University,Any,50952,8.3381964
 2025-26,B Pharmacy,CAP Round II,04698,"Prabhat Institute of Pharmacy, Rui, Bramhapuri, Chandrapur",Chandrapur,Unaided,LOPENH,Home University,Ladies,48434,18.1855975
 2025-26,B Pharmacy,CAP Round II,04698,"Prabhat Institute of Pharmacy, Rui, Bramhapuri, Chandrapur",Chandrapur,Unaided,LSTH,Home University,Ladies,50318,11.6988417
@@ -2908,8 +2908,8 @@
 2025-26,B Pharmacy,CAP Round II,04751,"Tulaskar College of Pharmacy, Hinganghat, Wardha",Wardha,Unaided,GSEBCO,Other than Home University,Any,47383,21.5882968
 2025-26,B Pharmacy,CAP Round II,04751,"Tulaskar College of Pharmacy, Hinganghat, Wardha",Wardha,Unaided,LSCO,Other than Home University,Ladies,46187,25.146658
 2025-26,B Pharmacy,CAP Round II,04751,"Tulaskar College of Pharmacy, Hinganghat, Wardha",Wardha,Unaided,ORPHAN,Special,Any,47937,20.2903241
-2025-26,B Pharmacy,CAP Round II,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,41790,36.0691344
-2025-26,B Pharmacy,CAP Round II,04756,Somayya Institute of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,17730,73.6131099
+2025-26,B Pharmacy,CAP Round II,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,LOPENH,Home University,Ladies,41790,36.0691344
+2025-26,B Pharmacy,CAP Round II,04756,Somayya Institute of Pharmacy,Nagpur,Unaided,LOPENO,Other than Home University,Ladies,17730,73.6131099
 2025-26,B Pharmacy,CAP Round II,05005,"NDMVP Samaj's College of Pharmacy, Nashik",Nashik,Aided,GOPENH,Home University,Any,1834,95.598909
 2025-26,B Pharmacy,CAP Round II,05005,"NDMVP Samaj's College of Pharmacy, Nashik",Nashik,Aided,GNT1H,Home University,Any,2036,95.1912968
 2025-26,B Pharmacy,CAP Round II,05005,"NDMVP Samaj's College of Pharmacy, Nashik",Nashik,Aided,GOBCH,Home University,Any,2006,95.2306413
@@ -3506,19 +3506,19 @@
 2025-26,B Pharmacy,CAP Round II,05294,"Godavari Shikshan Mandal's Asian Institute of Pharmacy, Nashik.",Nashik,Unaided,GOPENH,Home University,Any,41873,36.0308374
 2025-26,B Pharmacy,CAP Round II,05294,"Godavari Shikshan Mandal's Asian Institute of Pharmacy, Nashik.",Nashik,Unaided,LOPENH,Home University,Ladies,47807,20.4969509
 2025-26,B Pharmacy,CAP Round II,05294,"Godavari Shikshan Mandal's Asian Institute of Pharmacy, Nashik.",Nashik,Unaided,GOPENO,Other than Home University,Any,49372,14.8551896
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GOPENH,Home University,Any,27780,60.422115
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GOBCH,Home University,Any,34262,50.3112314
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,LOBCH,Home University,Ladies,24737,64.9677744
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,LNT3H,Home University,Ladies,44793,28.9205044
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GSCH,Home University,Any,34392,50.1132634
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GSTH,Home University,Any,36117,47.3912843
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GOBCO,Other than Home University,Any,36909,45.910738
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,LOPENO,Other than Home University,Ladies,26246,62.8968351
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,LVJO,Other than Home University,Ladies,46231,25.0722391
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GSCO,Other than Home University,Any,36324,46.5997873
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GSTO,Other than Home University,Any,36879,45.910738
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,TFWS,Special,Any,16078,75.5600721
-2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,ORPHAN,Special,Any,38443,43.031473
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GOPENH,Home University,Any,27780,60.422115
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GOBCH,Home University,Any,34262,50.3112314
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,LOBCH,Home University,Ladies,24737,64.9677744
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,LNT3H,Home University,Ladies,44793,28.9205044
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GSCH,Home University,Any,34392,50.1132634
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GSTH,Home University,Any,36117,47.3912843
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GOBCO,Other than Home University,Any,36909,45.910738
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,LOPENO,Other than Home University,Ladies,26246,62.8968351
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,LVJO,Other than Home University,Ladies,46231,25.0722391
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GSCO,Other than Home University,Any,36324,46.5997873
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GSTO,Other than Home University,Any,36879,45.910738
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,TFWS,Special,Any,16078,75.5600721
+2025-26,B Pharmacy,CAP Round II,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,ORPHAN,Special,Any,38443,43.031473
 2025-26,B Pharmacy,CAP Round II,05391,"Sandip Institute of Pharmaceutical Science, Nashik.",Nashik,Unaided,GOPENH,Home University,Any,18322,72.8590432
 2025-26,B Pharmacy,CAP Round II,05391,"Sandip Institute of Pharmaceutical Science, Nashik.",Nashik,Unaided,GSCH,Home University,Any,33171,52.4458405
 2025-26,B Pharmacy,CAP Round II,05391,"Sandip Institute of Pharmaceutical Science, Nashik.",Nashik,Unaided,GSTH,Home University,Any,28275,60.0433624
@@ -3972,41 +3972,41 @@
 2025-26,B Pharmacy,CAP Round II,05506,"Vishwabharati Academys, College of Pharmacy, Saroda baddi, Ahmednagar",Ahmednagar,Unaided,GOPENH,Home University,Any,41403,37.3550741
 2025-26,B Pharmacy,CAP Round II,05507,"P. V. Belhekar College of Pharmacy, Bhanshiware",Solapur,Unaided,LSCH,Home University,Ladies,49308,15.0006932
 2025-26,B Pharmacy,CAP Round II,05514,"Hon. Tukaramsheth S. Baviskar Institute of Pharmaceutical Education & Research, Dahiwad, Shirpur",Dhule,Unaided,TFWS,Special,Any,38017,43.8509833
-2025-26,B Pharmacy,CAP Round II,05518,Shri. Sai Samarth Pharmacy College & Research Centre,Centre,Unaided,GOPENO,Other than Home University,Any,46638,23.7760621
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,42781,33.7278107
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,GNT2H,Home University,Any,43868,31.6541622
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,51037,7.9006981
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,GNT3H,Home University,Any,50043,12.29618
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,46238,25.0722391
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,LSTH,Home University,Ladies,46429,24.7167509
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,46109,25.4595013
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,48288,19.0083024
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,44696,28.984931
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,28886,59.0974179
-2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,15044,76.8973331
-2025-26,B Pharmacy,CAP Round II,05520,OBVS Nikam College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,32645,53.2228937
-2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,28976,58.8994542
-2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,41351,37.4724972
-2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,25147,63.6875635
-2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,50270,11.8673884
-2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,14663,77.2685027
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,46759,23.6423723
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,GNT3H,Home University,Any,44286,30.2026036
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,44374,30.0628412
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,48881,17.2160325
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,44159,30.7454264
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,51324,6.6281628
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,LSCO,Other than Home University,Ladies,47215,22.0346747
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,48885,17.2160325
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,GVJO,Other than Home University,Any,50555,10.0094855
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,GSEBCO,Other than Home University,Any,50930,8.5212688
-2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Pharmacy,Unaided,ORPHAN,Special,Any,51098,7.7832694
+2025-26,B Pharmacy,CAP Round II,05518,Shri. Sai Samarth Pharmacy College & Research Centre,Nashik,Unaided,GOPENO,Other than Home University,Any,46638,23.7760621
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,GOPENH,Home University,Any,42781,33.7278107
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,GNT2H,Home University,Any,43868,31.6541622
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,GSCH,Home University,Any,51037,7.9006981
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,GNT3H,Home University,Any,50043,12.29618
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,LSCH,Home University,Ladies,46238,25.0722391
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,LSTH,Home University,Ladies,46429,24.7167509
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,LOBCH,Home University,Ladies,46109,25.4595013
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,LSEBCH,Home University,Ladies,48288,19.0083024
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,GOPENO,Other than Home University,Any,44696,28.984931
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,LOPENO,Other than Home University,Ladies,28886,59.0974179
+2025-26,B Pharmacy,CAP Round II,05519,Ashok College of Pharmacy,Nashik,Unaided,TFWS,Special,Any,15044,76.8973331
+2025-26,B Pharmacy,CAP Round II,05520,OBVS Nikam College of Pharmacy,Nashik,Unaided,GOBCH,Home University,Any,32645,53.2228937
+2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Ahmednagar,Unaided,GOPENH,Home University,Any,28976,58.8994542
+2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Ahmednagar,Unaided,GSCH,Home University,Any,41351,37.4724972
+2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Ahmednagar,Unaided,LOPENH,Home University,Ladies,25147,63.6875635
+2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Ahmednagar,Unaided,GSCO,Other than Home University,Any,50270,11.8673884
+2025-26,B Pharmacy,CAP Round II,05522,Adsul College of Pharmacy,Ahmednagar,Unaided,LOPENO,Other than Home University,Ladies,14663,77.2685027
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,GSCH,Home University,Any,46759,23.6423723
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,GNT3H,Home University,Any,44286,30.2026036
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,GOBCH,Home University,Any,44374,30.0628412
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,GSEBCH,Home University,Any,48881,17.2160325
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,LSEBCH,Home University,Ladies,44159,30.7454264
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,GOBCO,Other than Home University,Any,51324,6.6281628
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,LSCO,Other than Home University,Ladies,47215,22.0346747
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,GSCO,Other than Home University,Any,48885,17.2160325
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,GVJO,Other than Home University,Any,50555,10.0094855
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,GSEBCO,Other than Home University,Any,50930,8.5212688
+2025-26,B Pharmacy,CAP Round II,05531,MKD College of Pharmacy,Nashik,Unaided,ORPHAN,Special,Any,51098,7.7832694
 2025-26,B Pharmacy,CAP Round II,05533,"Late Devrao Digamber Varat College of Pharmacy, Sakat Tal. Jamkhed Dist. Ahmednagar",Ahmednagar,Unaided,GOPENH,Home University,Any,51823,4.4095995
 2025-26,B Pharmacy,CAP Round II,05533,"Late Devrao Digamber Varat College of Pharmacy, Sakat Tal. Jamkhed Dist. Ahmednagar",Ahmednagar,Unaided,LOPENH,Home University,Ladies,25592,63.3582471
 2025-26,B Pharmacy,CAP Round II,05533,"Late Devrao Digamber Varat College of Pharmacy, Sakat Tal. Jamkhed Dist. Ahmednagar",Ahmednagar,Unaided,GOPENO,Other than Home University,Any,52118,2.5430236
 2025-26,B Pharmacy,CAP Round II,05533,"Late Devrao Digamber Varat College of Pharmacy, Sakat Tal. Jamkhed Dist. Ahmednagar",Ahmednagar,Unaided,LOPENO,Other than Home University,Ladies,50013,12.3989094
-2025-26,B Pharmacy,CAP Round II,05536,Shinde Institute of Pharmacy & Research,Research,Unaided,GOPENH,Home University,Any,26129,62.9242587
-2025-26,B Pharmacy,CAP Round II,05536,Shinde Institute of Pharmacy & Research,Research,Unaided,LOBCH,Home University,Ladies,43763,31.9280223
+2025-26,B Pharmacy,CAP Round II,05536,Shinde Institute of Pharmacy & Research,Nashik,Unaided,GOPENH,Home University,Any,26129,62.9242587
+2025-26,B Pharmacy,CAP Round II,05536,Shinde Institute of Pharmacy & Research,Nashik,Unaided,LOBCH,Home University,Ladies,43763,31.9280223
 2025-26,B Pharmacy,CAP Round II,05540,"Shri. Laxmanrao Tryambakrao Nakade Pharmacy College, Dhorjalgaon-NE",Ahmednagar,Unaided,LOPENH,Home University,Ladies,26529,62.7969418
 2025-26,B Pharmacy,CAP Round II,05540,"Shri. Laxmanrao Tryambakrao Nakade Pharmacy College, Dhorjalgaon-NE",Ahmednagar,Unaided,LOBCO,Other than Home University,Ladies,41666,36.1811489
 2025-26,B Pharmacy,CAP Round II,05541,"Trimurti Gramin Pharmacy College, Khadke",Nagpur,Unaided,GOPENH,Home University,Any,25367,63.4191092
@@ -4028,9 +4028,9 @@
 2025-26,B Pharmacy,CAP Round II,05653,"Matoshri College of Pharmacy, Mhasrul",Nashik,Unaided,EWS,Special,Any,48145,19.2944893
 2025-26,B Pharmacy,CAP Round II,05653,"Matoshri College of Pharmacy, Mhasrul",Nashik,Unaided,ORPHAN,Special,Any,49940,12.5570261
 2025-26,B Pharmacy,CAP Round II,05656,"Indira Institute College of Pharmacy, Sakat",Ahmednagar,Unaided,LOPENO,Other than Home University,Ladies,34750,49.4400512
-2025-26,B Pharmacy,CAP Round II,05658,G.D. Burkule Institute of Research & Education in Pharmaceutical Sciences,Sciences,Unaided,GOPENH,Home University,Any,45344,27.6080743
-2025-26,B Pharmacy,CAP Round II,05658,G.D. Burkule Institute of Research & Education in Pharmaceutical Sciences,Sciences,Unaided,LOBCH,Home University,Ladies,26668,62.1017507
-2025-26,B Pharmacy,CAP Round II,05658,G.D. Burkule Institute of Research & Education in Pharmaceutical Sciences,Sciences,Unaided,LOPENO,Other than Home University,Ladies,38420,43.1964993
+2025-26,B Pharmacy,CAP Round II,05658,G.D. Burkule Institute of Research & Education in Pharmaceutical Sciences,Solapur,Unaided,GOPENH,Home University,Any,45344,27.6080743
+2025-26,B Pharmacy,CAP Round II,05658,G.D. Burkule Institute of Research & Education in Pharmaceutical Sciences,Solapur,Unaided,LOBCH,Home University,Ladies,26668,62.1017507
+2025-26,B Pharmacy,CAP Round II,05658,G.D. Burkule Institute of Research & Education in Pharmaceutical Sciences,Solapur,Unaided,LOPENO,Other than Home University,Ladies,38420,43.1964993
 2025-26,B Pharmacy,CAP Round II,05664,"Shri Vile Parle Kelavani Mandal's College of Pharmacy, Shirpur",Dhule,Unaided,GOPENH,Home University,Any,42960,33.6908691
 2025-26,B Pharmacy,CAP Round II,05664,"Shri Vile Parle Kelavani Mandal's College of Pharmacy, Shirpur",Dhule,Unaided,LOPENH,Home University,Ladies,28498,59.8249375
 2025-26,B Pharmacy,CAP Round II,05664,"Shri Vile Parle Kelavani Mandal's College of Pharmacy, Shirpur",Dhule,Unaided,GOPENO,Other than Home University,Any,41554,36.7852077
@@ -4724,9 +4724,9 @@
 2025-26,B Pharmacy,CAP Round II,06395,"Gourishankar Education Society's Satara College of Pharmacy, Satara",Satara,Unaided,GOPENO,Other than Home University,Any,47730,20.6428039
 2025-26,B Pharmacy,CAP Round II,06395,"Gourishankar Education Society's Satara College of Pharmacy, Satara",Satara,Unaided,LVJO,Other than Home University,Ladies,41406,37.3550741
 2025-26,B Pharmacy,CAP Round II,06395,"Gourishankar Education Society's Satara College of Pharmacy, Satara",Satara,Unaided,TFWS,Special,Any,36754,46.0996432
-2025-26,B Pharmacy,CAP Round II,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Silvassa,Unaided,GOPENS,State Level,Any,10951,81.9274345
-2025-26,B Pharmacy,CAP Round II,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Silvassa,Unaided,GSEBCS,State Level,Any,40899,38.082995
-2025-26,B Pharmacy,CAP Round II,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Silvassa,Unaided,LSCS,State Level,Ladies,45644,26.7336064
+2025-26,B Pharmacy,CAP Round II,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Palghar,Unaided,GOPENS,State Level,Any,10951,81.9274345
+2025-26,B Pharmacy,CAP Round II,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Palghar,Unaided,GSEBCS,State Level,Any,40899,38.082995
+2025-26,B Pharmacy,CAP Round II,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Palghar,Unaided,LSCS,State Level,Ladies,45644,26.7336064
 2025-26,B Pharmacy,CAP Round II,06397,"Shri. Vitthal Edu. & Research's College of Pharmacy, Gopalpur, Pandharpur",Solapur,Unaided,GSCH,Home University,Any,15743,75.8450325
 2025-26,B Pharmacy,CAP Round II,06397,"Shri. Vitthal Edu. & Research's College of Pharmacy, Gopalpur, Pandharpur",Solapur,Unaided,GVJH,Home University,Any,27590,60.5335534
 2025-26,B Pharmacy,CAP Round II,06397,"Shri. Vitthal Edu. & Research's College of Pharmacy, Gopalpur, Pandharpur",Solapur,Unaided,GOBCH,Home University,Any,16704,74.6963201
@@ -4768,25 +4768,25 @@
 2025-26,B Pharmacy,CAP Round II,06400,"D.S.T.S.Mandal's College of Pharmacy, Solapur",Solapur,Unaided,GOPENO,Other than Home University,Any,18716,72.3729832
 2025-26,B Pharmacy,CAP Round II,06400,"D.S.T.S.Mandal's College of Pharmacy, Solapur",Solapur,Unaided,LOPENO,Other than Home University,Ladies,5003,90.2640569
 2025-26,B Pharmacy,CAP Round II,06400,"D.S.T.S.Mandal's College of Pharmacy, Solapur",Solapur,Unaided,MI,Special,Any,45665,26.4668133
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GOPENH,Home University,Any,27416,60.6332111
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GSCH,Home University,Any,43418,32.3397569
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GNT2H,Home University,Any,29309,57.8168696
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GSEBCH,Home University,Any,46000,25.5886333
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LOPENH,Home University,Ladies,14928,76.9346803
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LSCH,Home University,Ladies,26048,62.9242587
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LSEBCH,Home University,Ladies,31192,54.7510694
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GSTH,Home University,Any,28116,60.159031
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GVJH,Home University,Any,28486,59.8249375
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GNT3H,Home University,Any,29551,57.6089924
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LSTH,Home University,Ladies,28323,60.0433624
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LNT3H,Home University,Ladies,26892,61.796967
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GOPENO,Other than Home University,Any,26225,62.8968351
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GSTO,Other than Home University,Any,33174,52.4458405
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LSTO,Other than Home University,Ladies,37769,44.6186138
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GSCO,Other than Home University,Any,42011,35.9964718
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LOPENO,Other than Home University,Ladies,12307,80.2182054
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,TFWS,Special,Any,3994,91.7720943
-2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,ORPHAN,Special,Any,28734,59.2540111
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GOPENH,Home University,Any,27416,60.6332111
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GSCH,Home University,Any,43418,32.3397569
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GNT2H,Home University,Any,29309,57.8168696
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GSEBCH,Home University,Any,46000,25.5886333
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LOPENH,Home University,Ladies,14928,76.9346803
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LSCH,Home University,Ladies,26048,62.9242587
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LSEBCH,Home University,Ladies,31192,54.7510694
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GSTH,Home University,Any,28116,60.159031
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GVJH,Home University,Any,28486,59.8249375
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GNT3H,Home University,Any,29551,57.6089924
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LSTH,Home University,Ladies,28323,60.0433624
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LNT3H,Home University,Ladies,26892,61.796967
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GOPENO,Other than Home University,Any,26225,62.8968351
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GSTO,Other than Home University,Any,33174,52.4458405
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LSTO,Other than Home University,Ladies,37769,44.6186138
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GSCO,Other than Home University,Any,42011,35.9964718
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LOPENO,Other than Home University,Ladies,12307,80.2182054
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,TFWS,Special,Any,3994,91.7720943
+2025-26,B Pharmacy,CAP Round II,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,ORPHAN,Special,Any,28734,59.2540111
 2025-26,B Pharmacy,CAP Round II,06488,Mayani Bhag Shikshan Prasark Mandal's College Of Pharmacy (D.Pharm.) Mayani Tal-Khatav Dist-Satara,Satara,Unaided,GOPENH,Home University,Any,37718,44.6186138
 2025-26,B Pharmacy,CAP Round II,06488,Mayani Bhag Shikshan Prasark Mandal's College Of Pharmacy (D.Pharm.) Mayani Tal-Khatav Dist-Satara,Satara,Unaided,GSCH,Home University,Any,52443,0.244815
 2025-26,B Pharmacy,CAP Round II,06488,Mayani Bhag Shikshan Prasark Mandal's College Of Pharmacy (D.Pharm.) Mayani Tal-Khatav Dist-Satara,Satara,Unaided,GNT2H,Home University,Any,39547,41.2166844
@@ -5153,23 +5153,23 @@
 2025-26,B Pharmacy,CAP Round II,06900,"Yashwant Redekar College Of Pharmacy B. Pharm. And D. Pharm., Nesari",Kolhapur,Unaided,LNT3H,Home University,Ladies,51421,6.0659219
 2025-26,B Pharmacy,CAP Round II,06900,"Yashwant Redekar College Of Pharmacy B. Pharm. And D. Pharm., Nesari",Kolhapur,Unaided,LOBCH,Home University,Ladies,52347,1.0819823
 2025-26,B Pharmacy,CAP Round II,06900,"Yashwant Redekar College Of Pharmacy B. Pharm. And D. Pharm., Nesari",Kolhapur,Unaided,GOPENO,Other than Home University,Any,47530,21.4011738
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GOPENH,Home University,Any,14675,77.2685027
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GSCH,Home University,Any,51006,7.976339
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GOBCH,Home University,Any,46032,25.5886333
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,LSEBCH,Home University,Ladies,29095,57.9355554
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GSTH,Home University,Any,28934,59.0974179
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GSEBCH,Home University,Any,36838,45.910738
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,LSTH,Home University,Ladies,28864,59.0974179
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,LSEBCH,Home University,Ladies,34625,49.9151415
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GOPENO,Other than Home University,Any,28753,59.2540111
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,LOPENO,Other than Home University,Ladies,32296,53.6729693
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,LOBCO,Other than Home University,Ladies,48600,17.6786167
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GSTO,Other than Home University,Any,36762,46.0996432
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GSEBCO,Other than Home University,Any,36482,46.4050519
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GNT1O,Other than Home University,Any,36783,45.9816283
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,GSTO,Other than Home University,Any,36869,45.910738
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,LSEBCO,Other than Home University,Ladies,37803,44.6186138
-2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Research,Unaided,ORPHAN,Special,Any,34523,49.9435386
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GOPENH,Home University,Any,14675,77.2685027
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GSCH,Home University,Any,51006,7.976339
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GOBCH,Home University,Any,46032,25.5886333
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,LSEBCH,Home University,Ladies,29095,57.9355554
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GSTH,Home University,Any,28934,59.0974179
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GSEBCH,Home University,Any,36838,45.910738
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,LSTH,Home University,Ladies,28864,59.0974179
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,LSEBCH,Home University,Ladies,34625,49.9151415
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GOPENO,Other than Home University,Any,28753,59.2540111
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,LOPENO,Other than Home University,Ladies,32296,53.6729693
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,LOBCO,Other than Home University,Ladies,48600,17.6786167
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GSTO,Other than Home University,Any,36762,46.0996432
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GSEBCO,Other than Home University,Any,36482,46.4050519
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GNT1O,Other than Home University,Any,36783,45.9816283
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,GSTO,Other than Home University,Any,36869,45.910738
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,LSEBCO,Other than Home University,Ladies,37803,44.6186138
+2025-26,B Pharmacy,CAP Round II,06902,Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharamaceutical Education & Research,Pune,Unaided,ORPHAN,Special,Any,34523,49.9435386
 2025-26,B Pharmacy,CAP Round II,06904,"Anandi Pharmacy College, Kalambe Tarf Kale",Kolhapur,Unaided,GOPENH,Home University,Any,51557,5.7555255
 2025-26,B Pharmacy,CAP Round II,06904,"Anandi Pharmacy College, Kalambe Tarf Kale",Kolhapur,Unaided,LSEBCH,Home University,Ladies,3158,93.2144672
 2025-26,B Pharmacy,CAP Round II,06904,"Anandi Pharmacy College, Kalambe Tarf Kale",Kolhapur,Unaided,GOPENO,Other than Home University,Any,27420,60.6332111
@@ -5287,11 +5287,11 @@
 2025-26,B Pharmacy,CAP Round II,06923,"Padmini College of Pharmacy, Atpadi, Sangli",Sangli,Unaided,GOPENO,Other than Home University,Any,21118,69.5128552
 2025-26,B Pharmacy,CAP Round II,06923,"Padmini College of Pharmacy, Atpadi, Sangli",Sangli,Unaided,LOPENO,Other than Home University,Ladies,12483,80.080325
 2025-26,B Pharmacy,CAP Round II,06923,"Padmini College of Pharmacy, Atpadi, Sangli",Sangli,Unaided,LSCO,Other than Home University,Ladies,21327,69.1681078
-2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,40486,39.2328654
-2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,34107,50.4913264
-2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,32359,53.6729693
-2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,26964,61.195309
-2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,42518,34.762536
+2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,GOPENH,Home University,Any,40486,39.2328654
+2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,LOPENH,Home University,Ladies,34107,50.4913264
+2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,GOPENO,Other than Home University,Any,32359,53.6729693
+2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,LOPENO,Other than Home University,Ladies,26964,61.195309
+2025-26,B Pharmacy,CAP Round II,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,TFWS,Special,Any,42518,34.762536
 2025-26,B Pharmacy,CAP Round II,06930,"Delonix Society's Baramati College Of Pharmacy, Barhanpur",Amravati,Unaided,GOPENH,Home University,Any,24863,64.7148712
 2025-26,B Pharmacy,CAP Round II,06930,"Delonix Society's Baramati College Of Pharmacy, Barhanpur",Amravati,Unaided,GSCH,Home University,Any,41654,36.1811489
 2025-26,B Pharmacy,CAP Round II,06930,"Delonix Society's Baramati College Of Pharmacy, Barhanpur",Amravati,Unaided,GNT1H,Home University,Any,39280,41.5673068
@@ -5425,10 +5425,10 @@
 2025-26,B Pharmacy,CAP Round II,06951,Mandesh Institute Of Pharmaceutical Science And Research Centre Mhaswad,Satara,Unaided,LOPENH,Home University,Ladies,22366,67.9680609
 2025-26,B Pharmacy,CAP Round II,06951,Mandesh Institute Of Pharmaceutical Science And Research Centre Mhaswad,Satara,Unaided,GOPENO,Other than Home University,Any,49461,14.674342
 2025-26,B Pharmacy,CAP Round II,06951,Mandesh Institute Of Pharmaceutical Science And Research Centre Mhaswad,Satara,Unaided,LOPENO,Other than Home University,Ladies,39300,41.5673068
-2025-26,B Pharmacy,CAP Round II,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,GOPENH,Home University,Any,50704,9.7070702
-2025-26,B Pharmacy,CAP Round II,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,LOPENH,Home University,Ladies,30777,56.2929777
-2025-26,B Pharmacy,CAP Round II,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,LOPENH,Home University,Ladies,15874,75.8217373
-2025-26,B Pharmacy,CAP Round II,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,GOPENO,Other than Home University,Any,45586,26.9003977
+2025-26,B Pharmacy,CAP Round II,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,GOPENH,Home University,Any,50704,9.7070702
+2025-26,B Pharmacy,CAP Round II,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,LOPENH,Home University,Ladies,30777,56.2929777
+2025-26,B Pharmacy,CAP Round II,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,LOPENH,Home University,Ladies,15874,75.8217373
+2025-26,B Pharmacy,CAP Round II,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,GOPENO,Other than Home University,Any,45586,26.9003977
 2025-26,B Pharmacy,CAP Round II,06953,Varvand Gram Shikshan Sansthas Eknath Sitaram Divekar College Of Pharmacy Varvand,Pune,Unaided,GOPENH,Home University,Any,29470,57.746608
 2025-26,B Pharmacy,CAP Round II,06953,Varvand Gram Shikshan Sansthas Eknath Sitaram Divekar College Of Pharmacy Varvand,Pune,Unaided,GSCH,Home University,Any,43141,33.1516467
 2025-26,B Pharmacy,CAP Round II,06953,Varvand Gram Shikshan Sansthas Eknath Sitaram Divekar College Of Pharmacy Varvand,Pune,Unaided,GNT2H,Home University,Any,37226,45.2168691
@@ -5548,23 +5548,23 @@
 2025-26,B Pharmacy,CAP Round II,06965,"Shivraj College of Pharmacy, Gadhinglaj",Kolhapur,Unaided,LOPENO,Other than Home University,Ladies,48790,17.2977155
 2025-26,B Pharmacy,CAP Round II,06965,"Shivraj College of Pharmacy, Gadhinglaj",Kolhapur,Unaided,GOPENO,Other than Home University,Any,40721,38.5656169
 2025-26,B Pharmacy,CAP Round II,06965,"Shivraj College of Pharmacy, Gadhinglaj",Kolhapur,Unaided,LOPENO,Other than Home University,Ladies,34712,49.7291102
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,46147,25.146658
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,46650,23.7760621
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,47248,22.0199648
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GNT1H,Home University,Any,45066,28.3031822
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,45515,27.0683535
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,LVJH,Home University,Ladies,43038,33.6209084
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,44614,29.3820478
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GSTO,Other than Home University,Any,48261,19.0083024
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GNT3O,Other than Home University,Any,50654,9.8434108
-2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,ORPHAN,Special,Any,49452,14.674342
-2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,40365,39.6653303
-2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,52001,3.1802973
-2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GNT3H,Home University,Any,47756,20.6352137
-2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,49373,14.7567322
-2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,47627,21.1612777
-2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,42791,33.7278107
-2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,EWS,Special,Any,24703,64.9677744
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,GSCH,Home University,Any,46147,25.146658
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,GSCH,Home University,Any,46650,23.7760621
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,GSTH,Home University,Any,47248,22.0199648
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,GNT1H,Home University,Any,45066,28.3031822
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,GOBCH,Home University,Any,45515,27.0683535
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,LVJH,Home University,Ladies,43038,33.6209084
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,LOPENO,Other than Home University,Ladies,44614,29.3820478
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,GSTO,Other than Home University,Any,48261,19.0083024
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,GNT3O,Other than Home University,Any,50654,9.8434108
+2025-26,B Pharmacy,CAP Round II,06980,Jaihind College of Pharmacy,Pune,Unaided,ORPHAN,Special,Any,49452,14.674342
+2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GOPENH,Home University,Any,40365,39.6653303
+2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GSCH,Home University,Any,52001,3.1802973
+2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GNT3H,Home University,Any,47756,20.6352137
+2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GOBCH,Home University,Any,49373,14.7567322
+2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,LSCH,Home University,Ladies,47627,21.1612777
+2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,LOBCH,Home University,Ladies,42791,33.7278107
+2025-26,B Pharmacy,CAP Round II,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,EWS,Special,Any,24703,64.9677744
 2025-26,B Pharmacy,CAP Round II,06982,"New College of Pharmacy, Kolhapur",Kolhapur,Unaided,GOPENH,Home University,Any,17573,73.6896707
 2025-26,B Pharmacy,CAP Round II,06982,"New College of Pharmacy, Kolhapur",Kolhapur,Unaided,GSCH,Home University,Any,38258,43.6896345
 2025-26,B Pharmacy,CAP Round II,06982,"New College of Pharmacy, Kolhapur",Kolhapur,Unaided,GOBCH,Home University,Any,40431,39.3601986
@@ -5586,9 +5586,9 @@
 2025-26,B Pharmacy,CAP Round II,06989,"SEF’s Suryadatta College of Pharmacy, Healthcare, & Research (SCPHR), Bavdhan, Pune",Pune,Unaided,GOPENH,Home University,Any,17206,74.2314271
 2025-26,B Pharmacy,CAP Round II,06989,"SEF’s Suryadatta College of Pharmacy, Healthcare, & Research (SCPHR), Bavdhan, Pune",Pune,Unaided,GOPENO,Other than Home University,Any,20536,70.3527345
 2025-26,B Pharmacy,CAP Round II,06989,"SEF’s Suryadatta College of Pharmacy, Healthcare, & Research (SCPHR), Bavdhan, Pune",Pune,Unaided,LOPENO,Other than Home University,Ladies,16058,75.5600721
-2025-26,B Pharmacy,CAP Round II,16103,Chetana College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,50152,11.9485358
-2025-26,B Pharmacy,CAP Round II,16103,Chetana College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,50576,10.0094855
-2025-26,B Pharmacy,CAP Round II,16103,Chetana College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,30898,56.2645701
+2025-26,B Pharmacy,CAP Round II,16103,Chetana College of Pharmacy,Pune,Unaided,GOPENO,Other than Home University,Any,50152,11.9485358
+2025-26,B Pharmacy,CAP Round II,16103,Chetana College of Pharmacy,Pune,Unaided,LOBCO,Other than Home University,Ladies,50576,10.0094855
+2025-26,B Pharmacy,CAP Round II,16103,Chetana College of Pharmacy,Pune,Unaided,GOPENO,Other than Home University,Any,30898,56.2645701
 2025-26,B Pharmacy,CAP Round II,16104,"Bharati Vidyapeeth College of Pharmacy, Palus",Sangli,Unaided,GOPENH,Home University,Any,40217,39.9409103
 2025-26,B Pharmacy,CAP Round II,16104,"Bharati Vidyapeeth College of Pharmacy, Palus",Sangli,Unaided,GNT2H,Home University,Any,44451,29.9110168
 2025-26,B Pharmacy,CAP Round II,16104,"Bharati Vidyapeeth College of Pharmacy, Palus",Sangli,Unaided,LOPENH,Home University,Ladies,33352,51.7065623
@@ -5621,18 +5621,18 @@
 2025-26,B Pharmacy,CAP Round II,16107,"YSPM's Yashoda College of Pharmacy, Satara",Satara,Unaided,GOBCO,Other than Home University,Any,43581,32.0876468
 2025-26,B Pharmacy,CAP Round II,16107,"YSPM's Yashoda College of Pharmacy, Satara",Satara,Unaided,TFWS,Special,Any,14969,76.9346803
 2025-26,B Pharmacy,CAP Round II,16107,"YSPM's Yashoda College of Pharmacy, Satara",Satara,Unaided,ORPHAN,Special,Any,32191,53.7016125
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,34030,50.8248995
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,45888,26.0264691
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,45224,28.0445019
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,45235,28.0445019
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,GVJH,Home University,Any,47375,21.5882968
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,45089,28.2789485
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,LNT1H,Home University,Ladies,43548,32.0884521
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,LNT3H,Home University,Ladies,44426,29.9110168
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,41373,37.3550741
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,50179,11.9307342
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,49738,13.3124347
-2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,3620,92.3881037
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,GOPENH,Home University,Any,34030,50.8248995
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,GSEBCH,Home University,Any,45888,26.0264691
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,GSCH,Home University,Any,45224,28.0445019
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,GSTH,Home University,Any,45235,28.0445019
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,GVJH,Home University,Any,47375,21.5882968
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,GOBCH,Home University,Any,45089,28.2789485
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,LNT1H,Home University,Ladies,43548,32.0884521
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,LNT3H,Home University,Ladies,44426,29.9110168
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,GOPENO,Other than Home University,Any,41373,37.3550741
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,GOBCO,Other than Home University,Any,50179,11.9307342
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,LOBCO,Other than Home University,Ladies,49738,13.3124347
+2025-26,B Pharmacy,CAP Round II,16109,Dalit Mitra Kadam Guruji College of Pharmacy,Nashik,Unaided,TFWS,Special,Any,3620,92.3881037
 2025-26,B Pharmacy,CAP Round II,16110,"S.B. Patil College of Pharmacy, Indapur",Pune,Unaided,GOPENH,Home University,Any,38800,42.1921516
 2025-26,B Pharmacy,CAP Round II,16110,"S.B. Patil College of Pharmacy, Indapur",Pune,Unaided,GNT2H,Home University,Any,42387,34.9775785
 2025-26,B Pharmacy,CAP Round II,16110,"S.B. Patil College of Pharmacy, Indapur",Pune,Unaided,GOBCH,Home University,Any,51014,7.976339
@@ -5657,18 +5657,18 @@
 2025-26,B Pharmacy,CAP Round II,16112,"Dr. Ashok Gujar Institute of Pharmacy, Vidyanagar Extn. Banawadi, Tal-Karad Dist-Satata",Satara,Unaided,LNT3H,Home University,Ladies,52129,2.4831562
 2025-26,B Pharmacy,CAP Round II,16112,"Dr. Ashok Gujar Institute of Pharmacy, Vidyanagar Extn. Banawadi, Tal-Karad Dist-Satata",Satara,Unaided,GOPENO,Other than Home University,Any,50811,9.4338928
 2025-26,B Pharmacy,CAP Round II,16112,"Dr. Ashok Gujar Institute of Pharmacy, Vidyanagar Extn. Banawadi, Tal-Karad Dist-Satata",Satara,Unaided,TFWS,Special,Any,40373,39.6653303
-2025-26,B Pharmacy,CAP Round II,16116,Late Shree Fakirbhai Pansare Education Foundation College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,48476,18.1100586
-2025-26,B Pharmacy,CAP Round II,16116,Late Shree Fakirbhai Pansare Education Foundation College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,48464,18.1456181
-2025-26,B Pharmacy,CAP Round II,16116,Late Shree Fakirbhai Pansare Education Foundation College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,12335,80.1947756
-2025-26,B Pharmacy,CAP Round II,16116,Late Shree Fakirbhai Pansare Education Foundation College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,11710,80.9504151
-2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,46935,22.9939635
-2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,17907,73.410431
-2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Pharmacy,Unaided,LSCH,Home University,Ladies,39534,41.2166844
-2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,43390,32.3446384
-2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,36167,47.3563218
-2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,49169,15.8249622
-2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,21528,68.7032705
-2025-26,B Pharmacy,CAP Round II,16335,Dr.B.B.Khaladkar College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,40320,39.902473
+2025-26,B Pharmacy,CAP Round II,16116,Late Shree Fakirbhai Pansare Education Foundation College of Pharmacy,Nashik,Unaided,GOPENH,Home University,Any,48476,18.1100586
+2025-26,B Pharmacy,CAP Round II,16116,Late Shree Fakirbhai Pansare Education Foundation College of Pharmacy,Nashik,Unaided,LOPENH,Home University,Ladies,48464,18.1456181
+2025-26,B Pharmacy,CAP Round II,16116,Late Shree Fakirbhai Pansare Education Foundation College of Pharmacy,Nashik,Unaided,GOPENO,Other than Home University,Any,12335,80.1947756
+2025-26,B Pharmacy,CAP Round II,16116,Late Shree Fakirbhai Pansare Education Foundation College of Pharmacy,Nashik,Unaided,LOPENO,Other than Home University,Ladies,11710,80.9504151
+2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Satara,Unaided,GOPENH,Home University,Any,46935,22.9939635
+2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Satara,Unaided,LOPENH,Home University,Ladies,17907,73.410431
+2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Satara,Unaided,LSCH,Home University,Ladies,39534,41.2166844
+2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Satara,Unaided,LOBCH,Home University,Ladies,43390,32.3446384
+2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Satara,Unaided,LSEBCH,Home University,Ladies,36167,47.3563218
+2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Satara,Unaided,GOPENO,Other than Home University,Any,49169,15.8249622
+2025-26,B Pharmacy,CAP Round II,16117,Balasaheb Desai College of Pharmacy,Satara,Unaided,LOPENO,Other than Home University,Ladies,21528,68.7032705
+2025-26,B Pharmacy,CAP Round II,16335,Dr.B.B.Khaladkar College of Pharmacy,Nagpur,Unaided,GOPENH,Home University,Any,40320,39.902473
 2025-26,B Pharmacy,CAP Round II,16336,"Chandrabhaga College of Pharmacy,Katphal,Baramati",Pune,Unaided,GOPENH,Home University,Any,47066,22.4248107
 2025-26,B Pharmacy,CAP Round II,16336,"Chandrabhaga College of Pharmacy,Katphal,Baramati",Pune,Unaided,LOPENH,Home University,Ladies,27433,60.6332111
 2025-26,B Pharmacy,CAP Round II,16336,"Chandrabhaga College of Pharmacy,Katphal,Baramati",Pune,Unaided,LSCH,Home University,Ladies,45213,28.0445019
@@ -5688,13 +5688,13 @@
 2025-26,B Pharmacy,CAP Round II,16337,"Anekant Education Society's College of Pharmacy, Baramati",Pune,Unaided,GOPENO,Other than Home University,Any,19642,71.5546007
 2025-26,B Pharmacy,CAP Round II,16337,"Anekant Education Society's College of Pharmacy, Baramati",Pune,Unaided,LOPENO,Other than Home University,Ladies,15623,75.9827531
 2025-26,B Pharmacy,CAP Round II,16337,"Anekant Education Society's College of Pharmacy, Baramati",Pune,Unaided,MI,Special,Any,27283,60.7838611
-2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Research,Unaided,GNT1H,Home University,Any,44573,29.3820478
-2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Research,Unaided,GOBCH,Home University,Any,50609,9.8836673
-2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Research,Unaided,LSTH,Home University,Ladies,42338,34.9775785
-2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Research,Unaided,LVJH,Home University,Ladies,43498,32.3397569
-2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Research,Unaided,LOBCH,Home University,Ladies,41332,37.4724972
-2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Research,Unaided,GOPENO,Other than Home University,Any,16657,74.9664957
-2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Research,Unaided,GOPENO,Other than Home University,Any,13766,78.4816319
+2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Nagpur,Unaided,GNT1H,Home University,Any,44573,29.3820478
+2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Nagpur,Unaided,GOBCH,Home University,Any,50609,9.8836673
+2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Nagpur,Unaided,LSTH,Home University,Ladies,42338,34.9775785
+2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Nagpur,Unaided,LVJH,Home University,Ladies,43498,32.3397569
+2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Nagpur,Unaided,LOBCH,Home University,Ladies,41332,37.4724972
+2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Nagpur,Unaided,GOPENO,Other than Home University,Any,16657,74.9664957
+2025-26,B Pharmacy,CAP Round II,16338,Priyadarshani Institute of Pharmaceutical Science & Research,Nagpur,Unaided,GOPENO,Other than Home University,Any,13766,78.4816319
 2025-26,B Pharmacy,CAP Round II,16339,"Jayawant Institute of Pharmaceutical Sciences & Research, Bavdhan, Pune",Pune,Unaided,GOPENH,Home University,Any,15245,76.5981152
 2025-26,B Pharmacy,CAP Round II,16339,"Jayawant Institute of Pharmaceutical Sciences & Research, Bavdhan, Pune",Pune,Unaided,GSCH,Home University,Any,37551,44.9853319
 2025-26,B Pharmacy,CAP Round II,16339,"Jayawant Institute of Pharmaceutical Sciences & Research, Bavdhan, Pune",Pune,Unaided,GOBCH,Home University,Any,35181,48.9491431
@@ -5749,26 +5749,26 @@
 2025-26,B Pharmacy,CAP Round II,16341,"SNBP College of Pharmacy, Chikhali, Pune",Pune,Unaided,TFWS,Special,Any,20671,70.0246042
 2025-26,B Pharmacy,CAP Round II,16341,"SNBP College of Pharmacy, Chikhali, Pune",Pune,Unaided,EWS,Special,Any,25310,63.4191092
 2025-26,B Pharmacy,CAP Round II,16341,"SNBP College of Pharmacy, Chikhali, Pune",Pune,Unaided,ORPHAN,Special,Any,17020,74.2992711
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,GNT1H,Home University,Any,42416,34.9775785
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,23948,65.8001021
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,51315,6.6281628
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,51397,6.120421
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,GNT3H,Home University,Any,45872,26.0264691
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,46614,24.2498384
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,LSTH,Home University,Ladies,44967,28.5525608
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,LVJH,Home University,Ladies,45842,26.0264691
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,52338,1.1892861
-2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,52084,2.6636506
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,28935,59.0974179
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,44805,28.9205044
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,GSTH,Home University,Any,48463,18.1456181
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,44598,29.3820478
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,GSEBCH,Home University,Any,49648,14.0584844
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,LSTH,Home University,Ladies,41997,35.9964718
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,LSEBCH,Home University,Ladies,42491,34.762536
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,50953,8.3381964
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,15592,75.9827531
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,LSCO,Other than Home University,Ladies,43745,32.0746007
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,20140,70.7395498
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,GNT3O,Other than Home University,Any,50363,11.3086803
-2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,51268,7.1444896
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,GNT1H,Home University,Any,42416,34.9775785
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,GOBCH,Home University,Any,23948,65.8001021
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,GSCH,Home University,Any,51315,6.6281628
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,GSTH,Home University,Any,51397,6.120421
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,GNT3H,Home University,Any,45872,26.0264691
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,GOBCH,Home University,Any,46614,24.2498384
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,LSTH,Home University,Ladies,44967,28.5525608
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,LVJH,Home University,Ladies,45842,26.0264691
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,GSCO,Other than Home University,Any,52338,1.1892861
+2025-26,B Pharmacy,CAP Round II,16343,Shri Dhanaji Shelke College of Pharmacy,Nashik,Unaided,GOBCO,Other than Home University,Any,52084,2.6636506
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GOPENH,Home University,Any,28935,59.0974179
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GSCH,Home University,Any,44805,28.9205044
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GSTH,Home University,Any,48463,18.1456181
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GOBCH,Home University,Any,44598,29.3820478
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GSEBCH,Home University,Any,49648,14.0584844
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,LSTH,Home University,Ladies,41997,35.9964718
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,LSEBCH,Home University,Ladies,42491,34.762536
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,LOPENO,Other than Home University,Ladies,50953,8.3381964
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GOPENO,Other than Home University,Any,15592,75.9827531
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,LSCO,Other than Home University,Ladies,43745,32.0746007
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,LOBCO,Other than Home University,Ladies,20140,70.7395498
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GNT3O,Other than Home University,Any,50363,11.3086803
+2025-26,B Pharmacy,CAP Round II,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GOBCO,Other than Home University,Any,51268,7.1444896

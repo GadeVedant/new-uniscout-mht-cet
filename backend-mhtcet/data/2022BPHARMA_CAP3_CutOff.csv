@@ -1,4 +1,4 @@
-﻿Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Category,Seat_Type,Gender,Rank,Percentile
+Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Category,Seat_Type,Gender,Rank,Percentile
 2022-23,B Pharmacy,CAP Round III,01003,"Government College of Pharmacy, Amravati",Amravati,Government,GOPENH,Home University,Any,3738,94.9959604
 2022-23,B Pharmacy,CAP Round III,01003,"Government College of Pharmacy, Amravati",Amravati,Government,LOPENH,Home University,Ladies,4121,94.5983237
 2022-23,B Pharmacy,CAP Round III,01003,"Government College of Pharmacy, Amravati",Amravati,Government,LOBCH,Home University,Ladies,4404,94.2772446
@@ -372,15 +372,15 @@
 2022-23,B Pharmacy,CAP Round III,02118,"Shree Bhairavnath Nisarg Mandal.'S Diploma In Pharmacy Institute, Hatta, Tal.Basmat",Hingoli,Unaided,LOBCO,Other than Home University,Ladies,39068,55.1706725
 2022-23,B Pharmacy,CAP Round III,02118,"Shree Bhairavnath Nisarg Mandal.'S Diploma In Pharmacy Institute, Hatta, Tal.Basmat",Hingoli,Unaided,TFWS,Special,Any,24100,73.6866312
 2022-23,B Pharmacy,CAP Round III,02118,"Shree Bhairavnath Nisarg Mandal.'S Diploma In Pharmacy Institute, Hatta, Tal.Basmat",Hingoli,Unaided,EWS,Special,Any,23989,73.7174308
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,24291,73.4107327
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GSCH,Home University,Any,25009,72.7226281
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GOBCH,Home University,Any,37484,57.8957946
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GSTH,Home University,Any,26197,71.3054695
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GOPENO,Other than Home University,Any,24925,72.7226281
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GNT2O,Other than Home University,Any,27893,69.5920016
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,GOBCO,Other than Home University,Any,29876,67.3946876
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,23497,74.3958197
-2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Dharashiv,Unaided,EWS,Special,Any,26473,70.9735165
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,24291,73.4107327
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GSCH,Home University,Any,25009,72.7226281
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GOBCH,Home University,Any,37484,57.8957946
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GSTH,Home University,Any,26197,71.3054695
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GOPENO,Other than Home University,Any,24925,72.7226281
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GNT2O,Other than Home University,Any,27893,69.5920016
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,GOBCO,Other than Home University,Any,29876,67.3946876
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,23497,74.3958197
+2022-23,B Pharmacy,CAP Round III,02130,"Terna Public Charitable Trust's College of Engineering, Osmanabad",Osmanabad,Unaided,EWS,Special,Any,26473,70.9735165
 2022-23,B Pharmacy,CAP Round III,02147,"Maharashtra College of Pharmacy, Nilanga",Latur,Unaided,GOPENH,Home University,Any,12569,85.5417956
 2022-23,B Pharmacy,CAP Round III,02147,"Maharashtra College of Pharmacy, Nilanga",Latur,Unaided,GVJH,Home University,Any,28640,68.7095245
 2022-23,B Pharmacy,CAP Round III,02147,"Maharashtra College of Pharmacy, Nilanga",Latur,Unaided,GOBCH,Home University,Any,19555,78.5061053
@@ -402,21 +402,21 @@
 2022-23,B Pharmacy,CAP Round III,02149,"Sharda Bhavan Education Society's Nanded Pharmacy College, Nanded",Nanded,Unaided,GSTO,Other than Home University,Any,24242,73.4107327
 2022-23,B Pharmacy,CAP Round III,02149,"Sharda Bhavan Education Society's Nanded Pharmacy College, Nanded",Nanded,Unaided,GOBCO,Other than Home University,Any,7890,90.5642365
 2022-23,B Pharmacy,CAP Round III,02149,"Sharda Bhavan Education Society's Nanded Pharmacy College, Nanded",Nanded,Unaided,LOPENO,Other than Home University,Ladies,3086,95.7583354
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,30452,66.7762502
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GSTH,Home University,Any,50662,35.3312462
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GNT1H,Home University,Any,7597,90.8124092
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCH,Home University,Any,31428,65.2995738
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCO,Other than Home University,Any,10283,87.9411764
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,EWS,Special,Any,5693,92.7977839
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,15298,82.8227625
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCH,Home University,Any,43699,48.2193247
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOPENH,Home University,Ladies,13749,84.2304584
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GSTH,Home University,Any,24127,73.6866312
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENO,Other than Home University,Any,15488,82.5490196
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCO,Other than Home University,Any,24084,73.6866312
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,TFWS,Special,Any,10059,88.0979149
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,EWS,Special,Any,13175,84.8830663
-2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Dharashiv,Unaided,ORPHAN,Special,Any,22493,75.1754385
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,30452,66.7762502
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GSTH,Home University,Any,50662,35.3312462
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GNT1H,Home University,Any,7597,90.8124092
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCH,Home University,Any,31428,65.2995738
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCO,Other than Home University,Any,10283,87.9411764
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,EWS,Special,Any,5693,92.7977839
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,15298,82.8227625
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCH,Home University,Any,43699,48.2193247
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOPENH,Home University,Ladies,13749,84.2304584
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GSTH,Home University,Any,24127,73.6866312
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENO,Other than Home University,Any,15488,82.5490196
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCO,Other than Home University,Any,24084,73.6866312
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,TFWS,Special,Any,10059,88.0979149
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,EWS,Special,Any,13175,84.8830663
+2022-23,B Pharmacy,CAP Round III,02151,"Adarsha Shikshan Prasarak Mandal's K.T. Patil College of Pharmacy, Osmanabad",Osmanabad,Unaided,ORPHAN,Special,Any,22493,75.1754385
 2022-23,B Pharmacy,CAP Round III,02152,"Shivlingeshwar College of Pharmacy, Almala, Dist. Latur",Latur,Unaided,GSTH,Home University,Any,36111,59.2078215
 2022-23,B Pharmacy,CAP Round III,02152,"Shivlingeshwar College of Pharmacy, Almala, Dist. Latur",Latur,Unaided,GOBCH,Home University,Any,43851,48.1071926
 2022-23,B Pharmacy,CAP Round III,02152,"Shivlingeshwar College of Pharmacy, Almala, Dist. Latur",Latur,Unaided,LOPENH,Home University,Ladies,29315,67.7864517
@@ -504,11 +504,11 @@
 2022-23,B Pharmacy,CAP Round III,02158,"Ramchandra Sanskritik Krida Mandal's R.D. Bhakt College of Pharmacy, Jalna",Jalna,Unaided,LSCO,Other than Home University,Ladies,23980,73.7174308
 2022-23,B Pharmacy,CAP Round III,02158,"Ramchandra Sanskritik Krida Mandal's R.D. Bhakt College of Pharmacy, Jalna",Jalna,Unaided,TFWS,Special,Any,19483,78.5685361
 2022-23,B Pharmacy,CAP Round III,02158,"Ramchandra Sanskritik Krida Mandal's R.D. Bhakt College of Pharmacy, Jalna",Jalna,Unaided,EWS,Special,Any,44284,47.769552
-2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,40751,52.3709902
-2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,45695,44.452279
-2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,43096,49.556541
-2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,36303,58.8614063
-2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Pharmacy,Unaided,MI,Special,Any,58694,5.6336545
+2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Nandurbar,Unaided,GOPENH,Home University,Any,40751,52.3709902
+2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Nandurbar,Unaided,LOPENH,Home University,Ladies,45695,44.452279
+2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Nandurbar,Unaided,GOPENO,Other than Home University,Any,43096,49.556541
+2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Nandurbar,Unaided,LOPENO,Other than Home University,Ladies,36303,58.8614063
+2022-23,B Pharmacy,CAP Round III,02201,Umer Bin Khattab Welfare Trust Vastanvi College of Pharmacy,Nandurbar,Unaided,MI,Special,Any,58694,5.6336545
 2022-23,B Pharmacy,CAP Round III,02202,"Sayli Charitable Trust's College Of Pharmacy, Mitmita, Aurangabad.",Chhatrapati Sambhajinagar,Unaided,GOPENH,Home University,Any,22954,74.7801821
 2022-23,B Pharmacy,CAP Round III,02202,"Sayli Charitable Trust's College Of Pharmacy, Mitmita, Aurangabad.",Chhatrapati Sambhajinagar,Unaided,GSCH,Home University,Any,33798,62.1505917
 2022-23,B Pharmacy,CAP Round III,02202,"Sayli Charitable Trust's College Of Pharmacy, Mitmita, Aurangabad.",Chhatrapati Sambhajinagar,Unaided,GOBCH,Home University,Any,31714,64.7780105
@@ -525,22 +525,22 @@
 2022-23,B Pharmacy,CAP Round III,02219,"Shree Bhairavnath Nisarga Mandal's D. Pharmacy College, Aalani",Ahmednagar,Unaided,GSCH,Home University,Any,48596,39.6594427
 2022-23,B Pharmacy,CAP Round III,02219,"Shree Bhairavnath Nisarga Mandal's D. Pharmacy College, Aalani",Ahmednagar,Unaided,GSCO,Other than Home University,Any,41891,51.6068052
 2022-23,B Pharmacy,CAP Round III,02219,"Shree Bhairavnath Nisarga Mandal's D. Pharmacy College, Aalani",Ahmednagar,Unaided,LOBCO,Other than Home University,Ladies,45068,45.7909011
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GOPENH,Home University,Any,53021,28.2597691
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GNT2H,Home University,Any,53688,27.0197939
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,LOPENH,Home University,Ladies,43620,48.3555779
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GNT1H,Home University,Any,54460,24.1973571
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GSCH,Home University,Any,56384,17.2251467
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,LSCH,Home University,Ladies,45443,44.7418375
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GSTH,Home University,Any,54748,23.5347204
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GVJH,Home University,Any,57319,13.261469
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GOBCH,Home University,Any,54418,24.1973571
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,LOBCH,Home University,Ladies,57521,12.0624527
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GOPENO,Other than Home University,Any,28160,69.4461048
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GSCO,Other than Home University,Any,55798,19.739283
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,50757,34.8425981
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,GSTO,Other than Home University,Any,52621,30.0742378
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,TFWS,Special,Any,28671,68.7024004
-2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Dharashiv,Unaided,EWS,Special,Any,44672,47.4045407
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GOPENH,Home University,Any,53021,28.2597691
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GNT2H,Home University,Any,53688,27.0197939
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,LOPENH,Home University,Ladies,43620,48.3555779
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GNT1H,Home University,Any,54460,24.1973571
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GSCH,Home University,Any,56384,17.2251467
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,LSCH,Home University,Ladies,45443,44.7418375
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GSTH,Home University,Any,54748,23.5347204
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GVJH,Home University,Any,57319,13.261469
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GOBCH,Home University,Any,54418,24.1973571
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,LOBCH,Home University,Ladies,57521,12.0624527
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GOPENO,Other than Home University,Any,28160,69.4461048
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GSCO,Other than Home University,Any,55798,19.739283
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,50757,34.8425981
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,GSTO,Other than Home University,Any,52621,30.0742378
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,TFWS,Special,Any,28671,68.7024004
+2022-23,B Pharmacy,CAP Round III,02220,"Anandgram Krushi Vikas Mandals Late Maharudra Bappa Mote College of Pharmacy, Girwali Tal. Bhoom",Osmanabad,Unaided,EWS,Special,Any,44672,47.4045407
 2022-23,B Pharmacy,CAP Round III,02223,"Vivekvardhini Sevabhavi Sanstha's Diploma Pharmacy College, Pingali",Parbhani,Unaided,GOPENH,Home University,Any,52401,30.4343494
 2022-23,B Pharmacy,CAP Round III,02223,"Vivekvardhini Sevabhavi Sanstha's Diploma Pharmacy College, Pingali",Parbhani,Unaided,GSCH,Home University,Any,56647,16.5204311
 2022-23,B Pharmacy,CAP Round III,02223,"Vivekvardhini Sevabhavi Sanstha's Diploma Pharmacy College, Pingali",Parbhani,Unaided,LOBCH,Home University,Ladies,13690,84.4789798
@@ -861,19 +861,19 @@
 2022-23,B Pharmacy,CAP Round III,02561,"Rajesh Bhaiyya Tope College of B Pharmacy, Nipani, Aurangbad",Chhatrapati Sambhajinagar,Unaided,GSTO,Other than Home University,Any,37091,58.3419796
 2022-23,B Pharmacy,CAP Round III,02561,"Rajesh Bhaiyya Tope College of B Pharmacy, Nipani, Aurangbad",Chhatrapati Sambhajinagar,Unaided,TFWS,Special,Any,16204,81.782762
 2022-23,B Pharmacy,CAP Round III,02561,"Rajesh Bhaiyya Tope College of B Pharmacy, Nipani, Aurangbad",Chhatrapati Sambhajinagar,Unaided,EWS,Special,Any,22226,75.4241567
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENH,Home University,Any,36852,58.5992728
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCH,Home University,Any,37149,58.3419796
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOPENH,Home University,Ladies,35296,60.8702205
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,GSTH,Home University,Any,37743,57.4413646
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,GNT1H,Home University,Any,51228,32.6331241
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCH,Home University,Any,54947,22.9132251
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOBCH,Home University,Ladies,52906,28.4801717
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOPENO,Other than Home University,Any,35673,60.4403267
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,GOBCO,Other than Home University,Any,49045,39.4152221
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,28474,69.1685966
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,TFWS,Special,Any,5581,92.9155726
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,EWS,Special,Any,34037,61.8560915
-2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Dharashiv,Unaided,ORPHAN,Special,Any,35836,59.899698
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENH,Home University,Any,36852,58.5992728
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCH,Home University,Any,37149,58.3419796
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOPENH,Home University,Ladies,35296,60.8702205
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,GSTH,Home University,Any,37743,57.4413646
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,GNT1H,Home University,Any,51228,32.6331241
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCH,Home University,Any,54947,22.9132251
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOBCH,Home University,Ladies,52906,28.4801717
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOPENO,Other than Home University,Any,35673,60.4403267
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,GOBCO,Other than Home University,Any,49045,39.4152221
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,28474,69.1685966
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,TFWS,Special,Any,5581,92.9155726
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,EWS,Special,Any,34037,61.8560915
+2022-23,B Pharmacy,CAP Round III,02563,"Shri Sai Janvikas Pratisthan's R.P. College of Pharmacy, Osmanabad",Osmanabad,Unaided,ORPHAN,Special,Any,35836,59.899698
 2022-23,B Pharmacy,CAP Round III,02564,"Shri. Dhaneshwari Manav Vikas Mandal's S.V.P. College of Pharmacy, Hingoli",Hingoli,Unaided,GOPENH,Home University,Any,43167,48.9390238
 2022-23,B Pharmacy,CAP Round III,02564,"Shri. Dhaneshwari Manav Vikas Mandal's S.V.P. College of Pharmacy, Hingoli",Hingoli,Unaided,GVJH,Home University,Any,51646,32.0755664
 2022-23,B Pharmacy,CAP Round III,02564,"Shri. Dhaneshwari Manav Vikas Mandal's S.V.P. College of Pharmacy, Hingoli",Hingoli,Unaided,LOPENH,Home University,Ladies,30406,66.7762502
@@ -1152,12 +1152,12 @@
 2022-23,B Pharmacy,CAP Round III,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,LOBCO,Other than Home University,Ladies,37410,57.8957946
 2022-23,B Pharmacy,CAP Round III,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,GNT1O,Other than Home University,Any,51785,31.8325394
 2022-23,B Pharmacy,CAP Round III,02592,"GAJANAN MAHARAJ COLLEGE OF PHARMACY, NIPANI, AURANGABAD",Chhatrapati Sambhajinagar,Unaided,EWS,Special,Any,42034,51.489598
-2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GOPENH,Home University,Any,40447,53.8514189
-2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GSCH,Home University,Any,45677,44.452279
-2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GOBCH,Home University,Any,49784,36.24276
-2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GOPENO,Other than Home University,Any,36139,59.2078215
-2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,GSCO,Other than Home University,Any,40218,53.8671795
-2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Dharashiv,Unaided,LOBCO,Other than Home University,Ladies,36333,58.8614063
+2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GOPENH,Home University,Any,40447,53.8514189
+2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GSCH,Home University,Any,45677,44.452279
+2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GOBCH,Home University,Any,49784,36.24276
+2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GOPENO,Other than Home University,Any,36139,59.2078215
+2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,GSCO,Other than Home University,Any,40218,53.8671795
+2022-23,B Pharmacy,CAP Round III,02594,"Tatyaraoji More College of Pharmacy, Umerga",Osmanabad,Unaided,LOBCO,Other than Home University,Ladies,36333,58.8614063
 2022-23,B Pharmacy,CAP Round III,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,GOPENH,Home University,Any,17160,80.9526202
 2022-23,B Pharmacy,CAP Round III,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,GSCH,Home University,Any,58916,4.1752499
 2022-23,B Pharmacy,CAP Round III,02596,"Institute of Pharmacy, Badnapur",Jalna,Unaided,LOBCH,Home University,Ladies,47015,43.3051128
@@ -1173,18 +1173,18 @@
 2022-23,B Pharmacy,CAP Round III,02597,"MDA School of Pharmacy, Kolpa",Latur,Unaided,GOPENO,Other than Home University,Any,44107,47.8470482
 2022-23,B Pharmacy,CAP Round III,02597,"MDA School of Pharmacy, Kolpa",Latur,Unaided,LOBCO,Other than Home University,Ladies,39683,54.8108325
 2022-23,B Pharmacy,CAP Round III,02597,"MDA School of Pharmacy, Kolpa",Latur,Unaided,EWS,Special,Any,32362,64.5526156
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GOPENH,Home University,Any,49683,36.3808258
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GSCH,Home University,Any,52641,30.0742378
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GOBCH,Home University,Any,54519,24.1403974
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,LOPENH,Home University,Ladies,45722,44.452279
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GNT1H,Home University,Any,51417,32.3691741
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GNT3H,Home University,Any,54177,24.8098715
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GOBCH,Home University,Any,58387,7.5817406
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GOPENO,Other than Home University,Any,52960,28.4801717
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,58099,9.284718
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GSCO,Other than Home University,Any,54493,24.1403974
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,GOBCO,Other than Home University,Any,57094,14.0247678
-2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Dharashiv,Unaided,EWS,Special,Any,46026,44.0466572
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GOPENH,Home University,Any,49683,36.3808258
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GSCH,Home University,Any,52641,30.0742378
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GOBCH,Home University,Any,54519,24.1403974
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,LOPENH,Home University,Ladies,45722,44.452279
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GNT1H,Home University,Any,51417,32.3691741
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GNT3H,Home University,Any,54177,24.8098715
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GOBCH,Home University,Any,58387,7.5817406
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GOPENO,Other than Home University,Any,52960,28.4801717
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,58099,9.284718
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GSCO,Other than Home University,Any,54493,24.1403974
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,GOBCO,Other than Home University,Any,57094,14.0247678
+2022-23,B Pharmacy,CAP Round III,02598,"Shivai Charitable Trust's College of Pharmacy, Koregaonwadi, Umerga",Osmanabad,Unaided,EWS,Special,Any,46026,44.0466572
 2022-23,B Pharmacy,CAP Round III,02601,"Raosaheb Patil Danve College Of Pharmacy, Badnapur",Jalna,Unaided,GOPENH,Home University,Any,52499,30.0854613
 2022-23,B Pharmacy,CAP Round III,02601,"Raosaheb Patil Danve College Of Pharmacy, Badnapur",Jalna,Unaided,GOBCH,Home University,Any,56977,14.4828291
 2022-23,B Pharmacy,CAP Round III,02601,"Raosaheb Patil Danve College Of Pharmacy, Badnapur",Jalna,Unaided,LOPENH,Home University,Ladies,52990,28.4801717
@@ -1347,13 +1347,13 @@
 2022-23,B Pharmacy,CAP Round III,02618,"Shri Sambhaji College Of Pharmacy, Nanded",Nanded,Unaided,LOBCO,Other than Home University,Ladies,29239,67.8690032
 2022-23,B Pharmacy,CAP Round III,02618,"Shri Sambhaji College Of Pharmacy, Nanded",Nanded,Unaided,TFWS,Special,Any,5588,92.9155726
 2022-23,B Pharmacy,CAP Round III,02618,"Shri Sambhaji College Of Pharmacy, Nanded",Nanded,Unaided,EWS,Special,Any,18098,79.9176003
-2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Dharashiv,Unaided,GOPENH,Home University,Any,40198,53.8671795
-2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Dharashiv,Unaided,GOBCH,Home University,Any,57431,12.7833785
-2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Dharashiv,Unaided,GVJH,Home University,Any,46067,44.0466572
-2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Dharashiv,Unaided,GNT3H,Home University,Any,52348,30.5619889
-2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Dharashiv,Unaided,GOPENO,Other than Home University,Any,52338,31.2007675
-2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Dharashiv,Unaided,LOPENO,Other than Home University,Ladies,42414,51.0887512
-2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Dharashiv,Unaided,EWS,Special,Any,41133,52.2301039
+2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Osmanabad,Unaided,GOPENH,Home University,Any,40198,53.8671795
+2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Osmanabad,Unaided,GOBCH,Home University,Any,57431,12.7833785
+2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Osmanabad,Unaided,GVJH,Home University,Any,46067,44.0466572
+2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Osmanabad,Unaided,GNT3H,Home University,Any,52348,30.5619889
+2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Osmanabad,Unaided,GOPENO,Other than Home University,Any,52338,31.2007675
+2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Osmanabad,Unaided,LOPENO,Other than Home University,Ladies,42414,51.0887512
+2022-23,B Pharmacy,CAP Round III,02619,"Shramjivi Shikshan Prasarak Mandals Shramjivi College Of Pharmacy, Umerga",Osmanabad,Unaided,EWS,Special,Any,41133,52.2301039
 2022-23,B Pharmacy,CAP Round III,02620,"Rashtriya College of Pharmacy, Hatnoor, Kannad",Chhatrapati Sambhajinagar,Unaided,GOPENH,Home University,Any,44858,46.1222555
 2022-23,B Pharmacy,CAP Round III,02620,"Rashtriya College of Pharmacy, Hatnoor, Kannad",Chhatrapati Sambhajinagar,Unaided,GOBCH,Home University,Any,49518,36.7787001
 2022-23,B Pharmacy,CAP Round III,02620,"Rashtriya College of Pharmacy, Hatnoor, Kannad",Chhatrapati Sambhajinagar,Unaided,GNT2H,Home University,Any,49985,36.1553534
@@ -2454,15 +2454,15 @@
 2022-23,B Pharmacy,CAP Round III,05300,"Shraddha Rural Medical Social Welfare & Education's Sahakar Maharshi Kisanrao Varal Patil College Of Pharmacy, Nighoj, Tal.Parner, Dist. Ahmednagar",Ahmednagar,Unaided,GSTO,Other than Home University,Any,46415,43.7836222
 2022-23,B Pharmacy,CAP Round III,05300,"Shraddha Rural Medical Social Welfare & Education's Sahakar Maharshi Kisanrao Varal Patil College Of Pharmacy, Nighoj, Tal.Parner, Dist. Ahmednagar",Ahmednagar,Unaided,TFWS,Special,Any,32622,64.0075195
 2022-23,B Pharmacy,CAP Round III,05300,"Shraddha Rural Medical Social Welfare & Education's Sahakar Maharshi Kisanrao Varal Patil College Of Pharmacy, Nighoj, Tal.Parner, Dist. Ahmednagar",Ahmednagar,Unaided,EWS,Special,Any,31425,65.2995738
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GSCH,Home University,Any,31760,64.7780105
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GOBCH,Home University,Any,16210,81.782762
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,LOPENH,Home University,Ladies,7543,90.8147405
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GVJH,Home University,Any,17251,80.6876217
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GNT2O,Other than Home University,Any,24683,72.8974176
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,GOBCO,Other than Home University,Any,31181,65.380482
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,LSTO,Other than Home University,Ladies,24257,73.4107327
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,DEFOPENS,State Level,Any,42226,51.3695787
-2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",,Unaided,EWS,Special,Any,19475,78.5685361
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GSCH,Home University,Any,31760,64.7780105
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GOBCH,Home University,Any,16210,81.782762
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,LOPENH,Home University,Ladies,7543,90.8147405
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GVJH,Home University,Any,17251,80.6876217
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GNT2O,Other than Home University,Any,24683,72.8974176
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,GOBCO,Other than Home University,Any,31181,65.380482
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,LSTO,Other than Home University,Ladies,24257,73.4107327
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,DEFOPENS,State Level,Any,42226,51.3695787
+2022-23,B Pharmacy,CAP Round III,05303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",Ahmednagar,Unaided,EWS,Special,Any,19475,78.5685361
 2022-23,B Pharmacy,CAP Round III,05391,"Sandip Institute of Pharmaceutical Science, Nashik.",Nashik,Unaided,GOPENH,Home University,Any,11580,86.4863518
 2022-23,B Pharmacy,CAP Round III,05391,"Sandip Institute of Pharmaceutical Science, Nashik.",Nashik,Unaided,GSCH,Home University,Any,14986,82.9305676
 2022-23,B Pharmacy,CAP Round III,05391,"Sandip Institute of Pharmaceutical Science, Nashik.",Nashik,Unaided,GSTH,Home University,Any,31979,64.7332379
@@ -3394,11 +3394,11 @@
 2022-23,B Pharmacy,CAP Round III,06395,"Gourishankar Education Society's Satara College of Pharmacy, Satara",Satara,Unaided,GSTO,Other than Home University,Any,22299,75.4190515
 2022-23,B Pharmacy,CAP Round III,06395,"Gourishankar Education Society's Satara College of Pharmacy, Satara",Satara,Unaided,DEFOPENS,State Level,Any,58858,4.7080497
 2022-23,B Pharmacy,CAP Round III,06395,"Gourishankar Education Society's Satara College of Pharmacy, Satara",Satara,Unaided,EWS,Special,Any,11982,86.1344749
-2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Silvassa,Unaided,GOPENS,State Level,Any,9836,88.3987338
-2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Silvassa,Unaided,GSCS,State Level,Any,38439,56.3628587
-2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Silvassa,Unaided,GOBCS,State Level,Any,26486,70.9735165
-2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Silvassa,Unaided,LOPENS,State Level,Ladies,8480,89.9489285
-2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Silvassa,Unaided,EWS,Special,Any,39735,54.8108325
+2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Palghar,Unaided,GOPENS,State Level,Any,9836,88.3987338
+2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Palghar,Unaided,GSCS,State Level,Any,38439,56.3628587
+2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Palghar,Unaided,GOBCS,State Level,Any,26486,70.9735165
+2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Palghar,Unaided,LOPENS,State Level,Ladies,8480,89.9489285
+2022-23,B Pharmacy,CAP Round III,06396,"Swargeeya Sanjibhai Rupjibhai Memorial Trust S.S.R. College of Pharmacy, Silvassa",Palghar,Unaided,EWS,Special,Any,39735,54.8108325
 2022-23,B Pharmacy,CAP Round III,06397,"Shri. Vitthal Edu. & Research's College of Pharmacy, Gopalpur, Pandharpur",Solapur,Unaided,GOPENH,Home University,Any,6834,91.5873658
 2022-23,B Pharmacy,CAP Round III,06397,"Shri. Vitthal Edu. & Research's College of Pharmacy, Gopalpur, Pandharpur",Solapur,Unaided,LOBCO,Other than Home University,Ladies,13154,84.8830663
 2022-23,B Pharmacy,CAP Round III,06397,"Shri. Vitthal Edu. & Research's College of Pharmacy, Gopalpur, Pandharpur",Solapur,Unaided,EWS,Special,Any,10077,88.0979149
@@ -3421,17 +3421,17 @@
 2022-23,B Pharmacy,CAP Round III,06400,"D.S.T.S.Mandal's College of Pharmacy, Solapur",Solapur,Unaided,LOPENH,Home University,Ladies,2781,96.1300309
 2022-23,B Pharmacy,CAP Round III,06400,"D.S.T.S.Mandal's College of Pharmacy, Solapur",Solapur,Unaided,LOPENO,Other than Home University,Ladies,8272,90.1042721
 2022-23,B Pharmacy,CAP Round III,06400,"D.S.T.S.Mandal's College of Pharmacy, Solapur",Solapur,Unaided,TFWS,Special,Any,6864,91.5138421
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GOPENH,Home University,Any,10854,87.239422
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GNT3H,Home University,Any,33357,63.088298
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LOPENH,Home University,Ladies,7885,90.5642365
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GSTH,Home University,Any,11854,86.362008
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GOPENO,Other than Home University,Any,22873,74.7801821
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,LOPENO,Other than Home University,Ladies,19357,78.6103817
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GSTO,Other than Home University,Any,23510,74.3958197
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,GNT1O,Other than Home University,Any,17137,80.9526202
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,TFWS,Special,Any,5111,93.5087719
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,EWS,Special,Any,10344,87.8921242
-2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,College,Unaided,ORPHAN,Special,Any,11034,87.1697167
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GOPENH,Home University,Any,10854,87.239422
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GNT3H,Home University,Any,33357,63.088298
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LOPENH,Home University,Ladies,7885,90.5642365
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GSTH,Home University,Any,11854,86.362008
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GOPENO,Other than Home University,Any,22873,74.7801821
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,LOPENO,Other than Home University,Ladies,19357,78.6103817
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GSTO,Other than Home University,Any,23510,74.3958197
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,GNT1O,Other than Home University,Any,17137,80.9526202
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,TFWS,Special,Any,5111,93.5087719
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,EWS,Special,Any,10344,87.8921242
+2022-23,B Pharmacy,CAP Round III,06483,Dr. J. J. Magdum Charitable Trust's Dr. J.J. Magdum Pharmacy College,Kolhapur,Unaided,ORPHAN,Special,Any,11034,87.1697167
 2022-23,B Pharmacy,CAP Round III,06488,Mayani Bhag Shikshan Prasark Mandal's College Of Pharmacy (D.Pharm.) Mayani Tal-Khatav Dist-Satara,Satara,Unaided,LOPENH,Home University,Ladies,29711,67.5237902
 2022-23,B Pharmacy,CAP Round III,06488,Mayani Bhag Shikshan Prasark Mandal's College Of Pharmacy (D.Pharm.) Mayani Tal-Khatav Dist-Satara,Satara,Unaided,LSTH,Home University,Ladies,30714,66.6615067
 2022-23,B Pharmacy,CAP Round III,06488,Mayani Bhag Shikshan Prasark Mandal's College Of Pharmacy (D.Pharm.) Mayani Tal-Khatav Dist-Satara,Satara,Unaided,GOPENO,Other than Home University,Any,31214,65.380482
@@ -3623,11 +3623,11 @@
 2022-23,B Pharmacy,CAP Round III,06900,"Yashwant Redekar College Of Pharmacy B. Pharm. And D. Pharm., Nesari",Kolhapur,Unaided,TFWS,Special,Any,34068,61.8560915
 2022-23,B Pharmacy,CAP Round III,06900,"Yashwant Redekar College Of Pharmacy B. Pharm. And D. Pharm., Nesari",Kolhapur,Unaided,EWS,Special,Any,39073,55.1706725
 2022-23,B Pharmacy,CAP Round III,06900,"Yashwant Redekar College Of Pharmacy B. Pharm. And D. Pharm., Nesari",Kolhapur,Unaided,ORPHAN,Special,Any,36741,58.7288611
-2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Research,Unaided,GNT3H,Home University,Any,18821,79.1225871
-2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Research,Unaided,LOPENH,Home University,Ladies,13277,84.6831342
-2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Research,Unaided,LOBCH,Home University,Ladies,13512,84.5666394
-2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Research,Unaided,GOPENO,Other than Home University,Any,13492,84.5666394
-2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Research,Unaided,EWS,Special,Any,8263,90.1042721
+2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Pune,Unaided,GNT3H,Home University,Any,18821,79.1225871
+2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Pune,Unaided,LOPENH,Home University,Ladies,13277,84.6831342
+2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Pune,Unaided,LOBCH,Home University,Ladies,13512,84.5666394
+2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Pune,Unaided,GOPENO,Other than Home University,Any,13492,84.5666394
+2022-23,B Pharmacy,CAP Round III,06902,Indrayani Vidya Mandir's Indrayani Institute of Pharamaceutical Education & Research,Pune,Unaided,EWS,Special,Any,8263,90.1042721
 2022-23,B Pharmacy,CAP Round III,06904,"Anandi Pharmacy College, Kalambe Tarf Kale",Kolhapur,Unaided,GOPENH,Home University,Any,22823,74.8939866
 2022-23,B Pharmacy,CAP Round III,06904,"Anandi Pharmacy College, Kalambe Tarf Kale",Kolhapur,Unaided,GOBCH,Home University,Any,26017,71.6782502
 2022-23,B Pharmacy,CAP Round III,06904,"Anandi Pharmacy College, Kalambe Tarf Kale",Kolhapur,Unaided,LOPENH,Home University,Ladies,16766,81.2361139
@@ -3724,10 +3724,10 @@
 2022-23,B Pharmacy,CAP Round III,06923,"Padmini College of Pharmacy, Atpadi, Sangli",Sangli,Unaided,LSTH,Home University,Ladies,21533,76.5304004
 2022-23,B Pharmacy,CAP Round III,06923,"Padmini College of Pharmacy, Atpadi, Sangli",Sangli,Unaided,TFWS,Special,Any,23604,74.2899544
 2022-23,B Pharmacy,CAP Round III,06923,"Padmini College of Pharmacy, Atpadi, Sangli",Sangli,Unaided,EWS,Special,Any,26432,70.9735165
-2022-23,B Pharmacy,CAP Round III,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,17392,80.5383552
-2022-23,B Pharmacy,CAP Round III,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,13490,84.5666394
-2022-23,B Pharmacy,CAP Round III,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,15553,82.3620243
-2022-23,B Pharmacy,CAP Round III,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pharmacy,Unaided,MI,Special,Any,43455,48.40556
+2022-23,B Pharmacy,CAP Round III,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,LOPENH,Home University,Ladies,17392,80.5383552
+2022-23,B Pharmacy,CAP Round III,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,GOPENO,Other than Home University,Any,13490,84.5666394
+2022-23,B Pharmacy,CAP Round III,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,LOPENO,Other than Home University,Ladies,15553,82.3620243
+2022-23,B Pharmacy,CAP Round III,06927,S.S.P Shikshan Sansthas Siddhi College Of Pharmacy,Pune,Unaided,MI,Special,Any,43455,48.40556
 2022-23,B Pharmacy,CAP Round III,06930,"Delonix Society's Baramati College Of Pharmacy, Barhanpur",Amravati,Unaided,GNT3H,Home University,Any,32529,64.5120469
 2022-23,B Pharmacy,CAP Round III,06930,"Delonix Society's Baramati College Of Pharmacy, Barhanpur",Amravati,Unaided,LOPENH,Home University,Ladies,13451,84.618163
 2022-23,B Pharmacy,CAP Round III,06930,"Delonix Society's Baramati College Of Pharmacy, Barhanpur",Amravati,Unaided,GSTH,Home University,Any,17015,81.027097
@@ -3827,19 +3827,19 @@
 2022-23,B Pharmacy,CAP Round III,06951,Mandesh Institute Of Pharmaceutical Science And Research Centre Mhaswad,Satara,Unaided,LOBCO,Other than Home University,Ladies,42402,51.0887512
 2022-23,B Pharmacy,CAP Round III,06951,Mandesh Institute Of Pharmaceutical Science And Research Centre Mhaswad,Satara,Unaided,TFWS,Special,Any,12400,85.6655803
 2022-23,B Pharmacy,CAP Round III,06951,Mandesh Institute Of Pharmaceutical Science And Research Centre Mhaswad,Satara,Unaided,EWS,Special,Any,29446,67.6961644
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,GOPENH,Home University,Any,25141,72.6096766
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,GNT1H,Home University,Any,39181,55.1706725
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,GOBCH,Home University,Any,28397,69.246646
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,LOBCH,Home University,Ladies,18581,79.408203
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,GSTH,Home University,Any,26442,70.9735165
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,LSTH,Home University,Ladies,23973,73.7174308
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,GOPENO,Other than Home University,Any,26231,71.3054695
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,GVJO,Other than Home University,Any,26867,70.5363888
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,LOPENO,Other than Home University,Ladies,12332,85.7106701
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,LSCO,Other than Home University,Ladies,17086,81.027097
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,TFWS,Special,Any,16854,81.2142273
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,EWS,Special,Any,23931,73.7174308
-2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Research,Unaided,ORPHAN,Special,Any,26586,70.7330553
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,GOPENH,Home University,Any,25141,72.6096766
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,GNT1H,Home University,Any,39181,55.1706725
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,GOBCH,Home University,Any,28397,69.246646
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,LOBCH,Home University,Ladies,18581,79.408203
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,GSTH,Home University,Any,26442,70.9735165
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,LSTH,Home University,Ladies,23973,73.7174308
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,GOPENO,Other than Home University,Any,26231,71.3054695
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,GVJO,Other than Home University,Any,26867,70.5363888
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,LOPENO,Other than Home University,Ladies,12332,85.7106701
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,LSCO,Other than Home University,Ladies,17086,81.027097
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,TFWS,Special,Any,16854,81.2142273
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,EWS,Special,Any,23931,73.7174308
+2022-23,B Pharmacy,CAP Round III,06952,Mahadev Kanchan College Of Pharmaceutical Education And Research,Solapur,Unaided,ORPHAN,Special,Any,26586,70.7330553
 2022-23,B Pharmacy,CAP Round III,06953,Varvand Gram Shikshan Sansthas Eknath Sitaram Divekar College Of Pharmacy Varvand,Pune,Unaided,GNT3H,Home University,Any,43522,48.40556
 2022-23,B Pharmacy,CAP Round III,06953,Varvand Gram Shikshan Sansthas Eknath Sitaram Divekar College Of Pharmacy Varvand,Pune,Unaided,LOPENH,Home University,Ladies,28374,69.246646
 2022-23,B Pharmacy,CAP Round III,06953,Varvand Gram Shikshan Sansthas Eknath Sitaram Divekar College Of Pharmacy Varvand,Pune,Unaided,GNT1H,Home University,Any,30767,66.2395008
@@ -3946,24 +3946,24 @@
 2022-23,B Pharmacy,CAP Round III,06965,"Shivraj College of Pharmacy, Gadhinglaj",Kolhapur,Unaided,GSTO,Other than Home University,Any,41999,51.489598
 2022-23,B Pharmacy,CAP Round III,06965,"Shivraj College of Pharmacy, Gadhinglaj",Kolhapur,Unaided,TFWS,Special,Any,24668,72.8974176
 2022-23,B Pharmacy,CAP Round III,06965,"Shivraj College of Pharmacy, Gadhinglaj",Kolhapur,Unaided,EWS,Special,Any,27660,70.0767794
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,21826,76.1307033
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GNT3H,Home University,Any,56148,17.8380677
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,27347,70.1959981
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,LOPENH,Home University,Ladies,21704,76.1782917
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GOPENO,Other than Home University,Any,22074,76.0641764
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GOBCO,Other than Home University,Any,34480,61.7753989
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,20819,76.9730546
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,GSTO,Other than Home University,Any,24644,72.942663
-2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pharmacy,Unaided,EWS,Special,Any,25561,72.3248554
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GOPENH,Home University,Any,30910,66.2296635
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GSCH,Home University,Any,34370,61.7753989
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GVJH,Home University,Any,38485,55.8886939
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GNT1H,Home University,Any,47632,41.3848957
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GOBCH,Home University,Any,37805,57.3474437
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,LOBCH,Home University,Ladies,21905,76.1141536
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GNT3H,Home University,Any,53301,27.7966976
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,GSCO,Other than Home University,Any,27492,70.1862725
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,LOPENO,Other than Home University,Ladies,18639,79.2794636
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,LOBCO,Other than Home University,Ladies,32129,64.6814691
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,TFWS,Special,Any,31975,64.7332379
-2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pharmacy,Unaided,EWS,Special,Any,21369,76.5966408
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,GSCH,Home University,Any,21826,76.1307033
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,GNT3H,Home University,Any,56148,17.8380677
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,GOBCH,Home University,Any,27347,70.1959981
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,LOPENH,Home University,Ladies,21704,76.1782917
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,GOPENO,Other than Home University,Any,22074,76.0641764
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,GOBCO,Other than Home University,Any,34480,61.7753989
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,LOPENO,Other than Home University,Ladies,20819,76.9730546
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,GSTO,Other than Home University,Any,24644,72.942663
+2022-23,B Pharmacy,CAP Round III,06980,Jaihind College of Pharmacy,Pune,Unaided,EWS,Special,Any,25561,72.3248554
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GOPENH,Home University,Any,30910,66.2296635
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GSCH,Home University,Any,34370,61.7753989
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GVJH,Home University,Any,38485,55.8886939
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GNT1H,Home University,Any,47632,41.3848957
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GOBCH,Home University,Any,37805,57.3474437
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,LOBCH,Home University,Ladies,21905,76.1141536
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GNT3H,Home University,Any,53301,27.7966976
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,GSCO,Other than Home University,Any,27492,70.1862725
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,LOPENO,Other than Home University,Ladies,18639,79.2794636
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,LOBCO,Other than Home University,Ladies,32129,64.6814691
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,TFWS,Special,Any,31975,64.7332379
+2022-23,B Pharmacy,CAP Round III,06981,Vitthal Pratishthan College of Pharmacy,Pune,Unaided,EWS,Special,Any,21369,76.5966408
