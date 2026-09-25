@@ -267,11 +267,18 @@ export function ResultsPage({
                 {/* Form fill summary */}
                 {lastQuery && (
                   <div className="flex items-center gap-1.5 flex-wrap mt-1">
-                    {lastQuery.category && (
-                      <span className="px-2 py-0.5 rounded-full bg-violet-500/15 border border-violet-500/25 text-violet-300 text-[11px] font-medium">
-                        {lastQuery.category}
-                      </span>
-                    )}
+                    {lastQuery.category && lastQuery.category.split(', ').map(cat => {
+                      // cat can be "GOPENS — Open – State" (engineering) or "GOPENS" (legacy)
+                      const parts = cat.split(' — ');
+                      const code = parts[0]?.trim();
+                      const label = parts[1]?.trim();
+                      return (
+                        <span key={cat} className="px-2 py-0.5 rounded-full bg-violet-500/15 border border-violet-500/25 text-violet-300 text-[11px] font-medium flex items-center gap-1">
+                          <span className="font-mono opacity-75">{code}</span>
+                          {label && <><span className="opacity-40">·</span><span>{label}</span></>}
+                        </span>
+                      );
+                    })}
                     {lastQuery.branchPreference && (
                       <span className="px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/25 text-cyan-300 text-[11px] font-medium capitalize">
                         {lastQuery.branchPreference}
@@ -282,11 +289,11 @@ export function ResultsPage({
                         Round {lastQuery.capRound}
                       </span>
                     )}
-                    {lastQuery.location && !lastQuery.locationFallback && (
-                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-300 text-[11px] font-medium">
-                        {lastQuery.location}
+                    {lastQuery.location && !lastQuery.locationFallback && lastQuery.location.split(',').map(loc => loc.trim()).filter(Boolean).map(loc => (
+                      <span key={loc} className="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-300 text-[11px] font-medium">
+                        {loc}
                       </span>
-                    )}
+                    ))}
                     {lastQuery.year && (
                       <span className="px-2 py-0.5 rounded-full bg-slate-500/15 border border-slate-500/25 text-slate-400 text-[11px] font-medium">
                         CAP {lastQuery.year}

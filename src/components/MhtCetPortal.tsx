@@ -12,18 +12,195 @@ interface MhtCetPortalProps {
   onRecommendationsReady: (results: CollegeRecommendation[], query: any) => void;
 }
 
-const CATEGORIES = [
-  { label: 'Open (General)', value: 'GOPENS' },
-  { label: 'SC', value: 'GSCS' },
-  { label: 'ST', value: 'GSTS' },
-  { label: 'OBC', value: 'GOBCS' },
-  { label: 'SEBC (EBC)', value: 'GSEBCS' },
-  { label: 'EWS', value: 'EWS' },
-  { label: 'TFWS', value: 'TFWS' },
-  { label: 'NT1', value: 'GNT1S' },
-  { label: 'NT2', value: 'GNT2S' },
-  { label: 'NT3', value: 'GNT3S' },
-  { label: 'VJ/DT', value: 'GVJS' },
+// ── Grouped categories (mirrors PCB form) ────────────────────────────────
+const CATEGORY_GROUPS = [
+  {
+    group: 'GOPEN — General Open',
+    items: [
+      { label: 'Open – State',      value: 'GOPENS' },
+      { label: 'Open – Home Univ',  value: 'GOPENH' },
+      { label: 'Open – Other Univ', value: 'GOPENO' },
+    ],
+  },
+  {
+    group: 'LOPEN — Ladies Open',
+    items: [
+      { label: 'Open – State',      value: 'LOPENS' },
+      { label: 'Open – Home Univ',  value: 'LOPENH' },
+      { label: 'Open – Other Univ', value: 'LOPENO' },
+    ],
+  },
+  {
+    group: 'GSC — General SC',
+    items: [
+      { label: 'SC – State',        value: 'GSCS' },
+      { label: 'SC – Home Univ',    value: 'GSCH' },
+      { label: 'SC – Other Univ',   value: 'GSCO' },
+    ],
+  },
+  {
+    group: 'LSC — Ladies SC',
+    items: [
+      { label: 'SC – State',        value: 'LSCS' },
+      { label: 'SC – Home Univ',    value: 'LSCH' },
+      { label: 'SC – Other Univ',   value: 'LSCO' },
+    ],
+  },
+  {
+    group: 'GST — General ST',
+    items: [
+      { label: 'ST – State',        value: 'GSTS' },
+      { label: 'ST – Home Univ',    value: 'GSTH' },
+      { label: 'ST – Other Univ',   value: 'GSTO' },
+    ],
+  },
+  {
+    group: 'LST — Ladies ST',
+    items: [
+      { label: 'ST – State',        value: 'LSTS' },
+      { label: 'ST – Home Univ',    value: 'LSTH' },
+      { label: 'ST – Other Univ',   value: 'LSTO' },
+    ],
+  },
+  {
+    group: 'GOBC — General OBC',
+    items: [
+      { label: 'OBC – State',       value: 'GOBCS' },
+      { label: 'OBC – Home Univ',   value: 'GOBCH' },
+      { label: 'OBC – Other Univ',  value: 'GOBCO' },
+    ],
+  },
+  {
+    group: 'LOBC — Ladies OBC',
+    items: [
+      { label: 'OBC – State',       value: 'LOBCS' },
+      { label: 'OBC – Home Univ',   value: 'LOBCH' },
+      { label: 'OBC – Other Univ',  value: 'LOBCO' },
+    ],
+  },
+  {
+    group: 'GSEBC — General SEBC',
+    items: [
+      { label: 'SEBC – State',      value: 'GSEBCS' },
+      { label: 'SEBC – Home Univ',  value: 'GSEBCH' },
+      { label: 'SEBC – Other Univ', value: 'GSEBCO' },
+    ],
+  },
+  {
+    group: 'LSEBC — Ladies SEBC',
+    items: [
+      { label: 'SEBC – State',      value: 'LSEBCS' },
+      { label: 'SEBC – Home Univ',  value: 'LSEBCH' },
+      { label: 'SEBC – Other Univ', value: 'LSEBCO' },
+    ],
+  },
+  {
+    group: 'GVJ — General VJ',
+    items: [
+      { label: 'VJ – State',        value: 'GVJS' },
+      { label: 'VJ – Home Univ',    value: 'GVJH' },
+      { label: 'VJ – Other Univ',   value: 'GVJO' },
+    ],
+  },
+  {
+    group: 'LVJ — Ladies VJ',
+    items: [
+      { label: 'VJ – State',        value: 'LVJS' },
+      { label: 'VJ – Home Univ',    value: 'LVJH' },
+      { label: 'VJ – Other Univ',   value: 'LVJO' },
+    ],
+  },
+  {
+    group: 'GNT — Nomadic Tribes',
+    items: [
+      { label: 'NT 1 – State',      value: 'GNT1S' },
+      { label: 'NT 1 – Home Univ',  value: 'GNT1H' },
+      { label: 'NT 1 – Other Univ', value: 'GNT1O' },
+      { label: 'NT 2 – State',      value: 'GNT2S' },
+      { label: 'NT 2 – Home Univ',  value: 'GNT2H' },
+      { label: 'NT 2 – Other Univ', value: 'GNT2O' },
+      { label: 'NT 3 – State',      value: 'GNT3S' },
+      { label: 'NT 3 – Home Univ',  value: 'GNT3H' },
+      { label: 'NT 3 – Other Univ', value: 'GNT3O' },
+    ],
+  },
+  {
+    group: 'LNT — Ladies NT',
+    items: [
+      { label: 'NT 1 – State',      value: 'LNT1S' },
+      { label: 'NT 1 – Home Univ',  value: 'LNT1H' },
+      { label: 'NT 1 – Other Univ', value: 'LNT1O' },
+      { label: 'NT 2 – State',      value: 'LNT2S' },
+      { label: 'NT 2 – Home Univ',  value: 'LNT2H' },
+      { label: 'NT 2 – Other Univ', value: 'LNT2O' },
+      { label: 'NT 3 – State',      value: 'LNT3S' },
+      { label: 'NT 3 – Home Univ',  value: 'LNT3H' },
+      { label: 'NT 3 – Other Univ', value: 'LNT3O' },
+    ],
+  },
+  {
+    group: 'EWS',
+    items: [
+      { label: 'Economically Weaker Section', value: 'EWS' },
+    ],
+  },
+  {
+    group: 'DEF — Defence',
+    items: [
+      { label: 'DEF – Open State',        value: 'DEFOPENS'  },
+      { label: 'DEF – OBC State',         value: 'DEFOBCS'   },
+      { label: 'DEF – SC State',          value: 'DEFSCS'    },
+      { label: 'DEF – SEBC State',        value: 'DEFSEBCS'  },
+      { label: 'DEF – ST State',          value: 'DEFSTS'    },
+      { label: 'DEF – R OBC State',       value: 'DEFROBCS'  },
+      { label: 'DEF – R SC State',        value: 'DEFRSCS'   },
+      { label: 'DEF – R SEBC State',      value: 'DEFRSEBC'  },
+      { label: 'DEF – R ST State',        value: 'DEFRSTS'   },
+      { label: 'DEF – R VJ State',        value: 'DEFRVJS'   },
+      { label: 'DEF – R NT1 State',       value: 'DEFRNT1S'  },
+      { label: 'DEF – R NT2 State',       value: 'DEFRNT2S'  },
+      { label: 'DEF – R NT3 State',       value: 'DEFRNT3S'  },
+    ],
+  },
+  {
+    group: 'PWD — Persons with Disabilities',
+    items: [
+      { label: 'PWD – Open State',        value: 'PWDOPENS'  },
+      { label: 'PWD – Open Home',         value: 'PWDOPENH'  },
+      { label: 'PWD – OBC State',         value: 'PWDOBCS'   },
+      { label: 'PWD – OBC Home',          value: 'PWDOBCH'   },
+      { label: 'PWD – R OBC',             value: 'PWDROBC'   },
+      { label: 'PWD – R OBC State',       value: 'PWDROBCS'  },
+      { label: 'PWD – R OBC Home',        value: 'PWDROBCH'  },
+      { label: 'PWD – SC State',          value: 'PWDSCS'    },
+      { label: 'PWD – SC Home',           value: 'PWDSCH'    },
+      { label: 'PWD – R SC State',        value: 'PWDRSCS'   },
+      { label: 'PWD – R SC Home',         value: 'PWDRSCH'   },
+      { label: 'PWD – SEBC State',        value: 'PWDSEBCS'  },
+      { label: 'PWD – SEBC Home',         value: 'PWDSEBCH'  },
+      { label: 'PWD – R SEBC',            value: 'PWDRSEBC'  },
+      { label: 'PWD – R SEBC State',      value: 'PWDRSEBCS' },
+      { label: 'PWD – R SEBC Home',       value: 'PWDRSEBCH' },
+      { label: 'PWD – ST State',          value: 'PWDSTS'    },
+      { label: 'PWD – R ST Home',         value: 'PWDRSTH'   },
+      { label: 'PWD – R ST State',        value: 'PWDRSTS'   },
+      { label: 'PWD – R VJ Home',         value: 'PWDRVJH'   },
+      { label: 'PWD – R VJ State',        value: 'PWDRVJS'   },
+      { label: 'PWD – R NT1 State',       value: 'PWDRNT1S'  },
+      { label: 'PWD – R NT1 Home',        value: 'PWDRNT1H'  },
+      { label: 'PWD – R NT2 State',       value: 'PWDRNT2S'  },
+      { label: 'PWD – R NT2 Home',        value: 'PWDRNT2H'  },
+      { label: 'PWD – R NT3 State',       value: 'PWDRNT3S'  },
+    ],
+  },
+  {
+    group: 'Special Categories',
+    items: [
+      { label: 'Minority (MI)',             value: 'MI'     },
+      { label: 'Orphan',                    value: 'ORPHAN' },
+      { label: 'Tuition Fee Waiver (TFWS)', value: 'TFWS'   },
+    ],
+  },
 ];
 
 const CAP_ROUNDS = [
@@ -32,13 +209,41 @@ const CAP_ROUNDS = [
   { label: 'Round III', value: 'III' },
 ];
 
+// Exact 32 districts present in engineering CSV Location column
 const DISTRICTS = [
   'All Maharashtra',
-  'Ahmednagar','Akola','Amravati','Aurangabad','Beed','Bhandara','Buldhana',
-  'Chandrapur','Dhule','Gadhinglaj','Jalgaon','Jalna','Kolhapur','Latur','Mumbai',
-  'Nagpur','Nanded','Nandurbar','Nashik','Navi Mumbai','Osmanabad','Palghar',
-  'Panvel','Parbhani','Pune','Raigad','Ratnagiri','Sangli','Satara','Sindhudurg',
-  'Solapur','Thane','Ulhasnagar','Vasai','Wardha','Washim','Yavatmal',
+  'Ahmednagar',
+  'Akola',
+  'Amravati',
+  'Beed',
+  'Bhandara',
+  'Buldhana',
+  'Chandrapur',
+  'Chhatrapati Sambhajinagar',
+  'Dhule',
+  'Jalgaon',
+  'Jalna',
+  'Kolhapur',
+  'Latur',
+  'Mumbai',
+  'Nagpur',
+  'Nanded',
+  'Nandurbar',
+  'Nashik',
+  'Osmanabad',
+  'Palghar',
+  'Parbhani',
+  'Pune',
+  'Raigad',
+  'Ratnagiri',
+  'Sangli',
+  'Satara',
+  'Sindhudurg',
+  'Solapur',
+  'Thane',
+  'Wardha',
+  'Washim',
+  'Yavatmal',
 ];
 
 function toLabel(b: string) {
@@ -65,6 +270,168 @@ function useIsMobile() {
     return () => window.removeEventListener('resize', handler);
   }, []);
   return isMobile;
+}
+
+// ── Category Selector — group dropdown + subcategory tiles (cyan theme) ──
+function CategorySelector({
+  selected,
+  onChange,
+  disabled,
+}: {
+  selected: string;
+  onChange: (val: string) => void;
+  disabled?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const [selectedGroup, setSelectedGroup] = useState<string | null>(() => {
+    if (!selected) return null;
+    return CATEGORY_GROUPS.find(g => g.items.some(i => i.value === selected))?.group ?? null;
+  });
+  const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+
+  useEffect(() => {
+    if (isMobile) return;
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile && open) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobile, open]);
+
+  const activeGroup = CATEGORY_GROUPS.find(g => g.group === selectedGroup) ?? null;
+
+  const GroupList = (
+    <div className="overflow-y-auto">
+      {CATEGORY_GROUPS.map(group => {
+        const isActive = selectedGroup === group.group;
+        const hasSelection = group.items.some(i => i.value === selected);
+        return (
+          <div
+            key={group.group}
+            onMouseDown={e => { if (!isMobile) e.preventDefault(); }}
+            onClick={() => { setSelectedGroup(group.group); setOpen(false); }}
+            className={`px-4 py-3 text-sm flex items-center justify-between cursor-pointer transition-colors select-none
+              ${isActive ? 'bg-cyan-500/20 text-cyan-300' : 'text-slate-300 hover:bg-white/10'}`}
+          >
+            <span className="font-medium">{group.group}</span>
+            {hasSelection && (
+              <span className="text-[10px] px-2 py-0.5 bg-cyan-500/30 text-cyan-300 rounded-full font-semibold">✓</span>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+
+  const Trigger = (
+    <div
+      onClick={() => !disabled && setOpen(o => !o)}
+      className={`flex items-center justify-between w-full bg-indigo-950/80 border border-white/10 rounded-xl px-4 py-3 cursor-pointer transition-all
+        ${open && !isMobile ? 'border-cyan-500/60' : 'hover:border-white/25'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+    >
+      <span className={`text-sm truncate ${!selectedGroup ? 'text-slate-500' : 'text-white'}`}>
+        {selectedGroup ?? 'Select category'}
+      </span>
+      <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 ml-2 transition-transform ${open && !isMobile ? 'rotate-180' : ''}`} />
+    </div>
+  );
+
+  return (
+    <div>
+      {/* Group dropdown */}
+      <div ref={ref} className="relative">
+        {Trigger}
+        {/* Desktop dropdown */}
+        <AnimatePresence>
+          {open && !isMobile && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.15 }}
+              className="absolute z-50 mt-1 w-full max-h-64 overflow-y-auto bg-indigo-950 border border-white/15 rounded-xl shadow-2xl"
+            >
+              {GroupList}
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {/* Mobile bottom sheet */}
+        <AnimatePresence>
+          {open && isMobile && (
+            <>
+              <motion.div key="backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
+              <motion.div key="sheet" initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }}
+                transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                className="fixed bottom-0 left-0 right-0 z-50 bg-indigo-950 border-t border-white/10 rounded-t-2xl flex flex-col"
+                style={{ maxHeight: '80vh' }}>
+                <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 shrink-0">
+                  <span className="text-sm font-semibold text-white">Select Category</span>
+                  <button type="button" onClick={() => setOpen(false)}
+                    className="px-4 py-1.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-semibold">Done</button>
+                </div>
+                <div className="overflow-y-auto flex-1">{GroupList}</div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Sub Category tiles — shown after a group is picked */}
+      <AnimatePresence>
+        {activeGroup && (
+          <motion.div
+            key={activeGroup.group}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2 }}
+            className="mt-3"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                Sub Category
+                <span className="ml-2 text-cyan-400 normal-case font-normal">— {activeGroup.group}</span>
+              </span>
+              {selected && activeGroup.items.some(i => i.value === selected) && (
+                <button type="button" onClick={() => onChange('')}
+                  className="text-[11px] text-slate-500 hover:text-red-400 transition-colors">
+                  Clear
+                </button>
+              )}
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {activeGroup.items.map(item => {
+                const isSel = selected === item.value;
+                return (
+                  <button
+                    key={item.value}
+                    type="button"
+                    disabled={disabled}
+                    onClick={() => onChange(isSel ? '' : item.value)}
+                    className={`flex flex-col items-start px-3 py-2.5 rounded-xl text-xs text-left transition-all border
+                      ${isSel
+                        ? 'bg-cyan-500/20 border-cyan-500/50 text-cyan-300'
+                        : 'bg-indigo-950/60 border-white/[0.08] text-slate-400 hover:bg-indigo-950/80 hover:border-cyan-500/30 hover:text-slate-200'}`}
+                  >
+                    <span className="font-mono text-[10px] mb-0.5 opacity-60">{item.value}</span>
+                    <span className="font-medium leading-tight">{item.label}</span>
+                    {isSel && <span className="mt-1 text-[9px] text-cyan-400 font-semibold">✓ Selected</span>}
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }
 
 function MultiSelect({ placeholder, options, selected, onChange, max = 99, disabled, searchable }: MultiSelectProps) {
@@ -375,7 +742,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     percentile: '',
     year: '2025',
     capRound: 'I',
-    categories: [] as string[],
+    category: '',
     branchPreferences: [] as string[],
     locations: [] as string[],
   });
@@ -387,7 +754,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
   const progress = (() => {
     let c = 0;
     if (formData.percentile !== '') c++;
-    if (formData.categories.length > 0) c++;
+    if (formData.category !== '') c++;
     if (formData.branchPreferences.length > 0) c++;
     if (formData.locations.length > 0) c++;
     return (c / 4) * 100;
@@ -400,7 +767,7 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
     e.preventDefault();
     if (formData.branchPreferences.length === 0) { setError('Please select at least one branch.'); return; }
     if (formData.locations.length === 0) { setError('Please select at least one location.'); return; }
-    if (formData.categories.length === 0) { setError('Please select at least one category.'); return; }
+    if (formData.category === '') { setError('Please select a category.'); return; }
     setIsLoading(true); setError(null);
     // Show warm-up banner if server takes > 5s (Render free tier cold start)
     const warmupTimer = setTimeout(() => setShowWarmupBanner(true), 3000);
@@ -408,24 +775,30 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
       const allResults: CollegeRecommendation[] = [];
       const locationStr = formData.locations.includes('ALL') ? '' : formData.locations.join(',');
       let anyFallback = false;
-      for (const category of formData.categories) {
-        for (const branch of formData.branchPreferences) {
+      for (const branch of formData.branchPreferences) {
           const resp = await api.getRecommendations({
             percentile: parseFloat(formData.percentile),
             year: `${formData.year}-${String(parseInt(formData.year) + 1).slice(-2)}`,
             capRound: formData.capRound,
-            category, branchPreference: branch, location: locationStr,
+            category: formData.category, branchPreference: branch, location: locationStr,
           });
           if (resp.success && resp.data) { allResults.push(...resp.data); if (resp.metadata?.location_fallback) anyFallback = true; }
-        }
       }
       const seen = new Set<string>();
       const unique = allResults.filter(r => { if (seen.has(r.id)) return false; seen.add(r.id); return true; });
+      // Build a readable category label for the results page
+      const categoryLabel = (() => {
+        for (const g of CATEGORY_GROUPS) {
+          const item = g.items.find(i => i.value === formData.category);
+          if (item) return `${formData.category} — ${item.label}`;
+        }
+        return formData.category;
+      })();
       onRecommendationsReady(unique, {
         percentile: parseFloat(formData.percentile),
         year: `${formData.year}-${String(parseInt(formData.year) + 1).slice(-2)}`,
         capRound: formData.capRound,
-        category: formData.categories.join(', '),
+        category: categoryLabel,
         branchPreference: formData.branchPreferences.join(', '),
         location: locationStr, locationFallback: anyFallback,
       });
@@ -522,10 +895,15 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
                   <BookOpen className="w-4 h-4 text-slate-400" /> Category
-                  <span className="text-slate-500 text-xs ml-auto font-normal">{formData.categories.length} selected</span>
+                  {formData.category && (
+                    <span className="ml-auto text-[10px] px-2 py-0.5 bg-cyan-500/20 text-cyan-300 rounded-full font-mono">{formData.category}</span>
+                  )}
                 </label>
-                <MultiSelect placeholder="Select category" options={CATEGORIES} selected={formData.categories}
-                  onChange={vals => setFormData(p => ({ ...p, categories: vals }))} max={CATEGORIES.length} disabled={isLoading} />
+                <CategorySelector
+                  selected={formData.category}
+                  onChange={val => setFormData(p => ({ ...p, category: val }))}
+                  disabled={isLoading}
+                />
               </div>
             </div>
 
