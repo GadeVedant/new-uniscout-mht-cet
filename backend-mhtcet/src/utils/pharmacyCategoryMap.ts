@@ -1,64 +1,57 @@
 /**
- * Pharmacy Category Map — CROSS-SUFFIX MATCHING
+ * Pharmacy Category Map
  *
- * B Pharmacy uses H/O/S suffixed codes (GOPENH, GOPENO, GOPENS).
- * D Pharmacy uses only S-suffixed codes (GOPENS, GOBCS, etc.).
+ * B Pharmacy has H / O / S suffix variants (GOPENH, GOPENO, GOPENS).
+ * D Pharmacy has ONLY S-suffix codes (GOPENS, GOBCS, etc.) — no H or O.
  *
- * When a user selects any suffix variant (H, O, or S) we match ALL
- * three variants so both B Pharmacy and D Pharmacy data is included.
+ * Matching rules:
+ *  1. Exact match always wins (GOPENS matches GOPENS).
+ *  2. D Pharmacy fallback: if the user selects GOPENH or GOPENO and a CSV
+ *     row has the S-variant of the same base (GOPENS), it also matches —
+ *     but ONLY in that direction (H/O → S). This means D Pharmacy always
+ *     shows up regardless of suffix chosen.
+ *  3. GOPENS does NOT match GOPENH or GOPENO rows in B Pharmacy — each
+ *     seat type has its own distinct cutoff there.
  */
 
-// Map from any suffixed code → all its sibling suffixed codes
-// e.g. GOPENH → [GOPENH, GOPENO, GOPENS]
-const SUFFIX_SIBLINGS: Record<string, string[]> = {};
-
-const BASES = [
-  'GOPEN','LOPEN',
-  'GOBC','LOBC',
-  'GSEBC','LSEBC',
-  'GSC','LSC',
-  'GST','LST',
-  'GVJ','LVJ','LVJ',
-  'GSTS','LSTS',
-  'GNT1','LNT1',
-  'GNT2','LNT2',
-  'GNT3','LNT3',
-];
-const SUFFIXES = ['S','H','O'];
-
-for (const base of BASES) {
-  const siblings = SUFFIXES.map(s => base + s);
-  for (const code of siblings) {
-    SUFFIX_SIBLINGS[code] = siblings;
+// For a given H or O code, return its S-variant fallback
+// e.g. GOPENH → GOPENS,  GOBCH → GOBCS,  GNT1H → GNT1S
+function toSVariant(code: string): string | null {
+  if (code.endsWith('H') || code.endsWith('O')) {
+    return code.slice(0, -1) + 'S';
   }
-}
-
-/**
- * Returns the exact set of CSV category codes that should match
- * a user-selected category code.
- *
- * GOPENH → [GOPENH, GOPENS, GOPENO]  (all suffix variants)
- * GOPENS → [GOPENS, GOPENH, GOPENO]  (all suffix variants)
- */
-export function expandPharmacyCategory(category: string): string[] {
-  const upper = category.trim().toUpperCase();
-  const codes = new Set<string>([upper]);
-
-  // Add all sibling suffix variants (covers H↔S↔O cross-matching for D Pharmacy)
-  if (SUFFIX_SIBLINGS[upper]) {
-    SUFFIX_SIBLINGS[upper].forEach(c => codes.add(c));
-  }
-
-  return [...codes];
+  return null;
 }
 
 /**
  * Returns true if a CSV row's category matches the user-selected category.
- * GOPENS will NOT match GOPENH or GOPENO rows.
+ *
+ * - Exact match: always true.
+ * - D Pharmacy fallback: GOPENH / GOPENO also match GOPENS rows
+ *   (because D Pharmacy only has State Level seats).
+ * - GOPENS does NOT match GOPENH / GOPENO rows (those are B Pharmacy only).
  */
 export function pharmacyCategoryMatches(csvCategory: string, userCategory: string): boolean {
-  return expandPharmacyCategory(userCategory)
-    .includes(csvCategory.trim().toUpperCase());
+  const csv  = csvCategory.trim().toUpperCase();
+  const user = userCategory.trim().toUpperCase();
+
+  // 1. Exact match
+  if (csv === user) return true;
+
+  // 2. D Pharmacy fallback: user selected H or O variant → also match S variant in CSV
+  //    e.g. user=GOPENH, csv=GOPENS → match (D Pharmacy has no H rows)
+  const sVariant = toSVariant(user);
+  if (sVariant && csv === sVariant) return true;
+
+  return false;
+}
+
+export function expandPharmacyCategory(category: string): string[] {
+  const upper = category.trim().toUpperCase();
+  const codes = new Set<string>([upper]);
+  const sv = toSVariant(upper);
+  if (sv) codes.add(sv);
+  return [...codes];
 }
 
 /** Estimated percentile discount for reserved vs Open category. */
