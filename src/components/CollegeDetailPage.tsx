@@ -229,7 +229,7 @@ function ChancesSection({
 // Cutoff History Section — multi-round view (TASK-22)
 // ---------------------------------------------------------------------------
 
-const CAP_ROUNDS_LIST = ['I', 'II', 'III'] as const;
+const CAP_ROUNDS_LIST = ['I', 'II', 'III', 'IV'] as const;
 type CapRound = typeof CAP_ROUNDS_LIST[number];
 
 function CutoffHistorySection({
@@ -248,13 +248,13 @@ function CutoffHistorySection({
     (CAP_ROUNDS_LIST.includes(activeRound as CapRound) ? activeRound : 'I') as CapRound,
   );
   const [roundData, setRoundData] = useState<Record<CapRound, CutoffHistoryEntry[] | null>>({
-    I: null, II: null, III: null,
+    I: null, II: null, III: null, IV: null,
   });
   const [roundLoading, setRoundLoading] = useState<Record<CapRound, boolean>>({
-    I: false, II: false, III: false,
+    I: false, II: false, III: false, IV: false,
   });
   const [roundError, setRoundError] = useState<Record<CapRound, string | null>>({
-    I: null, II: null, III: null,
+    I: null, II: null, III: null, IV: null,
   });
   const fetchedRef = useRef<Set<CapRound>>(new Set());
 

@@ -207,6 +207,7 @@ const CAP_ROUNDS = [
   { label: 'Round I',   value: 'I'   },
   { label: 'Round II',  value: 'II'  },
   { label: 'Round III', value: 'III' },
+  { label: 'Round IV',  value: 'IV'  },
 ];
 
 // Exact 32 districts present in engineering CSV Location column

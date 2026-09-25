@@ -191,6 +191,7 @@ const CAP_ROUNDS = [
   { label: 'Round I',   value: 'I'   },
   { label: 'Round II',  value: 'II'  },
   { label: 'Round III', value: 'III' },
+  { label: 'Round IV',  value: 'IV'  },
 ];
 
 // Districts from B Pharmacy CSV data
