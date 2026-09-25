@@ -877,33 +877,19 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-5">
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                  <BookMarked className="w-4 h-4 text-slate-400" /> CAP Round Number
-                </label>
-                <div className="flex gap-2">
-                  {CAP_ROUNDS.map(r => (
-                    <button key={r.value} type="button" disabled={isLoading}
-                      onClick={() => setFormData(p => ({ ...p, capRound: r.value }))}
-                      className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border ${formData.capRound === r.value ? 'bg-cyan-500 border-cyan-400 text-white shadow-lg shadow-cyan-900/40' : 'bg-indigo-950/80 border-white/10 text-slate-400 hover:border-white/25 hover:text-slate-200'}`}>
-                      {r.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                  <BookOpen className="w-4 h-4 text-slate-400" /> Category
-                  {formData.category && (
-                    <span className="ml-auto text-[10px] px-2 py-0.5 bg-cyan-500/20 text-cyan-300 rounded-full font-mono">{formData.category}</span>
-                  )}
-                </label>
-                <CategorySelector
-                  selected={formData.category}
-                  onChange={val => setFormData(p => ({ ...p, category: val }))}
-                  disabled={isLoading}
-                />
+            {/* CAP Round — full width, matching PCB structure */}
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                <BookMarked className="w-4 h-4 text-slate-400" /> CAP Round Number
+              </label>
+              <div className="flex gap-2">
+                {CAP_ROUNDS.map(r => (
+                  <button key={r.value} type="button" disabled={isLoading}
+                    onClick={() => setFormData(p => ({ ...p, capRound: r.value }))}
+                    className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border ${formData.capRound === r.value ? 'bg-cyan-500 border-cyan-400 text-white shadow-lg shadow-cyan-900/40' : 'bg-indigo-950/80 border-white/10 text-slate-400 hover:border-white/25 hover:text-slate-200'}`}>
+                    {r.label}
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -915,6 +901,21 @@ export function MhtCetPortal({ onRecommendationsReady }: MhtCetPortalProps) {
               </label>
               <MultiSelect placeholder="Select your preferred branch" options={branchOptions} selected={formData.branchPreferences}
                 onChange={vals => setFormData(p => ({ ...p, branchPreferences: vals }))} max={5} disabled={isLoading} searchable />
+            </div>
+
+            {/* Category — full width, matching PCB structure */}
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                <BookOpen className="w-4 h-4 text-slate-400" /> Category
+                {formData.category && (
+                  <span className="ml-auto text-[10px] px-2 py-0.5 bg-cyan-500/20 text-cyan-300 rounded-full font-mono">{formData.category}</span>
+                )}
+              </label>
+              <CategorySelector
+                selected={formData.category}
+                onChange={val => setFormData(p => ({ ...p, category: val }))}
+                disabled={isLoading}
+              />
             </div>
 
             {/* Preferred Location */}
