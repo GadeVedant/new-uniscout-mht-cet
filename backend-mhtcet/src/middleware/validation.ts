@@ -5,7 +5,7 @@ import logger from '../utils/logger.js';
 export const recommendationValidation = [
   body('percentile').notEmpty().isFloat({ min: 0, max: 100 }).withMessage('Percentile must be 0–100'),
   body('year').notEmpty().isString(),
-  body('capRound').notEmpty().isIn(['I', 'II', 'III', '1', '2', '3']).withMessage('Invalid CAP Round'),
+  body('capRound').notEmpty().isIn(['I', 'II', 'III', 'IV', '1', '2', '3', '4']).withMessage('Invalid CAP Round'),
   body('category').notEmpty().isString(),
   body('branchPreference').notEmpty().isString(),
   body('location').optional({ checkFalsy: true }).isString(), // optional — empty string = no location filter
