@@ -2761,7 +2761,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,03230,"NCRD's Sterling Institute of Pharmacy, Navi Mumbai",Mumbai,Unaided,DEFOPENS,State Level,Any,12298,80.2182054
 2025-26,B Pharmacy,CAP Round I,03230,"NCRD's Sterling Institute of Pharmacy, Navi Mumbai",Mumbai,Unaided,TFWS,Special,Any,3572,92.5630136
 2025-26,B Pharmacy,CAP Round I,03230,"NCRD's Sterling Institute of Pharmacy, Navi Mumbai",Mumbai,Unaided,DEFROBCS,State Level,Any,39824,40.2286531
-2025-26,B Pharmacy,CAP Round I,03230,"NCRD's Sterling Institute of Pharmacy, Navi Mumbai",Mumbai,Unaided,DEFRSEBCS,State Level,Any,41217,37.8377139
+2025-26,B Pharmacy,CAP Round I,03230,"NCRD's Sterling Institute of Pharmacy, Navi Mumbai",Mumbai,Unaided,DEFRSEBC,State Level,Any,41217,37.8377139
 2025-26,B Pharmacy,CAP Round I,03230,"NCRD's Sterling Institute of Pharmacy, Navi Mumbai",Mumbai,Unaided,EWS,Special,Any,50886,8.5408926
 2025-26,B Pharmacy,CAP Round I,03231,"Oriental College of Pharmacy , Navi Mumbai",Mumbai,Unaided,GOPENH,Home University,Any,4013,91.7202572
 2025-26,B Pharmacy,CAP Round I,03231,"Oriental College of Pharmacy , Navi Mumbai",Mumbai,Unaided,LOPENH,Home University,Ladies,2697,94.0713203
@@ -6408,7 +6408,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06256,"Bharati Vidyapeeth's College of Pharmacy, Kolhapur",Kolhapur,Unaided,LOBCO,Other than Home University,Ladies,4169,91.5291529
 2025-26,B Pharmacy,CAP Round I,06256,"Bharati Vidyapeeth's College of Pharmacy, Kolhapur",Kolhapur,Unaided,DEFOPENS,State Level,Any,20708,69.8498837
 2025-26,B Pharmacy,CAP Round I,06256,"Bharati Vidyapeeth's College of Pharmacy, Kolhapur",Kolhapur,Unaided,TFWS,Special,Any,1687,95.8869239
-2025-26,B Pharmacy,CAP Round I,06256,"Bharati Vidyapeeth's College of Pharmacy, Kolhapur",Kolhapur,Unaided,DEFRSEBCS,State Level,Any,31207,54.7510694
+2025-26,B Pharmacy,CAP Round I,06256,"Bharati Vidyapeeth's College of Pharmacy, Kolhapur",Kolhapur,Unaided,DEFRSEBC,State Level,Any,31207,54.7510694
 2025-26,B Pharmacy,CAP Round I,06256,"Bharati Vidyapeeth's College of Pharmacy, Kolhapur",Kolhapur,Unaided,EWS,Special,Any,10173,82.8815192
 2025-26,B Pharmacy,CAP Round I,06257,"Rajgad Dnyanpeeth's College of Pharmacy, Bhor",Pune,Unaided,GOPENH,Home University,Any,20596,70.0246042
 2025-26,B Pharmacy,CAP Round I,06257,"Rajgad Dnyanpeeth's College of Pharmacy, Bhor",Pune,Unaided,GSCH,Home University,Any,35342,48.6959628
@@ -6493,7 +6493,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,DEFOPENS,State Level,Any,6611,87.8767029
 2025-26,B Pharmacy,CAP Round I,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,TFWS,Special,Any,2244,94.8263419
 2025-26,B Pharmacy,CAP Round I,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,DEFROBCS,State Level,Any,19235,71.7088376
-2025-26,B Pharmacy,CAP Round I,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,8143,85.5921744
+2025-26,B Pharmacy,CAP Round I,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,DEFRSEBC,State Level,Any,8143,85.5921744
 2025-26,B Pharmacy,CAP Round I,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,EWS,Special,Any,20815,69.7148882
 2025-26,B Pharmacy,CAP Round I,06361,"Vishal Institute of Pharmaceutical Education & Research, Ale, (Alephata), Dist. Pune",Pune,Unaided,GOPENH,Home University,Any,17386,74.0094972
 2025-26,B Pharmacy,CAP Round I,06361,"Vishal Institute of Pharmaceutical Education & Research, Ale, (Alephata), Dist. Pune",Pune,Unaided,GSCH,Home University,Any,48476,18.1100586
@@ -6631,7 +6631,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06364,"Progressive Education Society's Modern College of Pharmacy, Moshi, Pune",Pune,Unaided,DEFOPENS,State Level,Any,6180,88.465628
 2025-26,B Pharmacy,CAP Round I,06364,"Progressive Education Society's Modern College of Pharmacy, Moshi, Pune",Pune,Unaided,TFWS,Special,Any,5166,89.9671889
 2025-26,B Pharmacy,CAP Round I,06364,"Progressive Education Society's Modern College of Pharmacy, Moshi, Pune",Pune,Unaided,DEFROBCS,State Level,Any,28155,60.159031
-2025-26,B Pharmacy,CAP Round I,06364,"Progressive Education Society's Modern College of Pharmacy, Moshi, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,18759,72.3729832
+2025-26,B Pharmacy,CAP Round I,06364,"Progressive Education Society's Modern College of Pharmacy, Moshi, Pune",Pune,Unaided,DEFRSEBC,State Level,Any,18759,72.3729832
 2025-26,B Pharmacy,CAP Round I,06364,"Progressive Education Society's Modern College of Pharmacy, Moshi, Pune",Pune,Unaided,EWS,Special,Any,48536,18.0646056
 2025-26,B Pharmacy,CAP Round I,06365,"Shree Gajanan Maharaj Shikshan Prasarak Mandal Sharadchandra Pawar College of Pharmacy, At Dumbaarwadi (Otur)",Pune,Unaided,GOPENH,Home University,Any,29737,57.5692865
 2025-26,B Pharmacy,CAP Round I,06365,"Shree Gajanan Maharaj Shikshan Prasarak Mandal Sharadchandra Pawar College of Pharmacy, At Dumbaarwadi (Otur)",Pune,Unaided,GSCH,Home University,Any,42883,33.7257555
@@ -6688,7 +6688,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06367,"Rajarshi Shahu College of Pharmacy & Research, Tathawade, Pune",Pune,Unaided,DEFOPENS,State Level,Any,11493,81.1959887
 2025-26,B Pharmacy,CAP Round I,06367,"Rajarshi Shahu College of Pharmacy & Research, Tathawade, Pune",Pune,Unaided,TFWS,Special,Any,4934,90.385776
 2025-26,B Pharmacy,CAP Round I,06367,"Rajarshi Shahu College of Pharmacy & Research, Tathawade, Pune",Pune,Unaided,DEFROBCS,State Level,Any,14793,77.1267479
-2025-26,B Pharmacy,CAP Round I,06367,"Rajarshi Shahu College of Pharmacy & Research, Tathawade, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,21697,68.4839812
+2025-26,B Pharmacy,CAP Round I,06367,"Rajarshi Shahu College of Pharmacy & Research, Tathawade, Pune",Pune,Unaided,DEFRSEBC,State Level,Any,21697,68.4839812
 2025-26,B Pharmacy,CAP Round I,06367,"Rajarshi Shahu College of Pharmacy & Research, Tathawade, Pune",Pune,Unaided,EWS,Special,Any,33454,51.5172351
 2025-26,B Pharmacy,CAP Round I,06368,"Shri Chatrapati Sambhaji Shikshan Sanstha's Sitabai Thite College of Pharmarcy, Shirur, (Ghodnadi). Pune",Pune,Unaided,GOPENH,Home University,Any,14897,77.1213451
 2025-26,B Pharmacy,CAP Round I,06368,"Shri Chatrapati Sambhaji Shikshan Sanstha's Sitabai Thite College of Pharmarcy, Shirur, (Ghodnadi). Pune",Pune,Unaided,GSCH,Home University,Any,20995,69.5274609
@@ -6815,7 +6815,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06371,"Dr. D.Y. Patil College of Pharmacy , Akurdi, Pune",Pune,Unaided,DEFOPENS,State Level,Any,4590,90.8437244
 2025-26,B Pharmacy,CAP Round I,06371,"Dr. D.Y. Patil College of Pharmacy , Akurdi, Pune",Pune,Unaided,TFWS,Special,Any,1564,96.1181396
 2025-26,B Pharmacy,CAP Round I,06371,"Dr. D.Y. Patil College of Pharmacy , Akurdi, Pune",Pune,Unaided,DEFROBCS,State Level,Any,10880,81.9756428
-2025-26,B Pharmacy,CAP Round I,06371,"Dr. D.Y. Patil College of Pharmacy , Akurdi, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,7725,86.1887385
+2025-26,B Pharmacy,CAP Round I,06371,"Dr. D.Y. Patil College of Pharmacy , Akurdi, Pune",Pune,Unaided,DEFRSEBC,State Level,Any,7725,86.1887385
 2025-26,B Pharmacy,CAP Round I,06371,"Dr. D.Y. Patil College of Pharmacy , Akurdi, Pune",Pune,Unaided,EWS,Special,Any,6572,87.898058
 2025-26,B Pharmacy,CAP Round I,06371,"Dr. D.Y. Patil College of Pharmacy , Akurdi, Pune",Pune,Unaided,ORPHAN,Special,Any,45419,27.3265221
 2025-26,B Pharmacy,CAP Round I,06372,"Poona District Education Association's Seth Govind Raghunath Sable College of Pharmacy , Saswad, Pune",Pune,Unaided,GOPENH,Home University,Any,7149,87.114321
@@ -6869,7 +6869,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,DEFOPENS,State Level,Any,3236,93.077885
 2025-26,B Pharmacy,CAP Round I,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,TFWS,Special,Any,1283,96.6394365
 2025-26,B Pharmacy,CAP Round I,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,DEFRSCS,State Level,Any,4185,91.5291529
-2025-26,B Pharmacy,CAP Round I,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,6496,87.9858014
+2025-26,B Pharmacy,CAP Round I,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,DEFRSEBC,State Level,Any,6496,87.9858014
 2025-26,B Pharmacy,CAP Round I,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,EWS,Special,Any,6191,88.465628
 2025-26,B Pharmacy,CAP Round I,06377,"SVPM'S College of Pharmacy, Malegaon(BK) Baramati, Pune",Pune,Unaided,GOPENH,Home University,Any,8757,84.8218313
 2025-26,B Pharmacy,CAP Round I,06377,"SVPM'S College of Pharmacy, Malegaon(BK) Baramati, Pune",Pune,Unaided,GSCH,Home University,Any,22904,67.3218449
@@ -7168,7 +7168,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06388,"Shri Appasaheb Birnale College of Pharmacy, Sangli",Sangli,Unaided,DEFOPENS,State Level,Any,12600,79.8128526
 2025-26,B Pharmacy,CAP Round I,06388,"Shri Appasaheb Birnale College of Pharmacy, Sangli",Sangli,Unaided,TFWS,Special,Any,3131,93.2483017
 2025-26,B Pharmacy,CAP Round I,06388,"Shri Appasaheb Birnale College of Pharmacy, Sangli",Sangli,Unaided,DEFROBCS,State Level,Any,38364,43.4652257
-2025-26,B Pharmacy,CAP Round I,06388,"Shri Appasaheb Birnale College of Pharmacy, Sangli",Sangli,Unaided,DEFRSEBCS,State Level,Any,27195,60.7838611
+2025-26,B Pharmacy,CAP Round I,06388,"Shri Appasaheb Birnale College of Pharmacy, Sangli",Sangli,Unaided,DEFRSEBC,State Level,Any,27195,60.7838611
 2025-26,B Pharmacy,CAP Round I,06388,"Shri Appasaheb Birnale College of Pharmacy, Sangli",Sangli,Unaided,EWS,Special,Any,10560,82.4155821
 2025-26,B Pharmacy,CAP Round I,06389,"K.E. Socities. Rajarambapu College of Pharmacy, Kasegaon, Sangli",Sangli,Unaided,GOPENH,Home University,Any,8717,84.8514257
 2025-26,B Pharmacy,CAP Round I,06389,"K.E. Socities. Rajarambapu College of Pharmacy, Kasegaon, Sangli",Sangli,Unaided,GSCH,Home University,Any,20807,69.7148882
@@ -7250,7 +7250,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06393,"Samarth Education Trust Arvind Gavali college of Pharmacy, Satara",Satara,Unaided,DEFOPENS,State Level,Any,27649,60.5111142
 2025-26,B Pharmacy,CAP Round I,06393,"Samarth Education Trust Arvind Gavali college of Pharmacy, Satara",Satara,Unaided,TFWS,Special,Any,14841,77.1213451
 2025-26,B Pharmacy,CAP Round I,06393,"Samarth Education Trust Arvind Gavali college of Pharmacy, Satara",Satara,Unaided,DEFROBCS,State Level,Any,34333,50.1132634
-2025-26,B Pharmacy,CAP Round I,06393,"Samarth Education Trust Arvind Gavali college of Pharmacy, Satara",Satara,Unaided,DEFRSEBCS,State Level,Any,46449,24.6987745
+2025-26,B Pharmacy,CAP Round I,06393,"Samarth Education Trust Arvind Gavali college of Pharmacy, Satara",Satara,Unaided,DEFRSEBC,State Level,Any,46449,24.6987745
 2025-26,B Pharmacy,CAP Round I,06393,"Samarth Education Trust Arvind Gavali college of Pharmacy, Satara",Satara,Unaided,EWS,Special,Any,18997,71.937236
 2025-26,B Pharmacy,CAP Round I,06394,"Shree Santkrupa College of Pharmacy, Ghogaon,Satara",Satara,Unaided,GOPENH,Home University,Any,17774,73.6131099
 2025-26,B Pharmacy,CAP Round I,06394,"Shree Santkrupa College of Pharmacy, Ghogaon,Satara",Satara,Unaided,GSCH,Home University,Any,49345,14.8551896
@@ -7902,7 +7902,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,06891,"Eklavya College of Pharmacy, Tasgaon , Sangli",Sangli,Unaided,DEFOPENS,State Level,Any,5806,89.075327
 2025-26,B Pharmacy,CAP Round I,06891,"Eklavya College of Pharmacy, Tasgaon , Sangli",Sangli,Unaided,TFWS,Special,Any,6552,87.9789493
 2025-26,B Pharmacy,CAP Round I,06891,"Eklavya College of Pharmacy, Tasgaon , Sangli",Sangli,Unaided,DEFRSCS,State Level,Any,19075,71.7123193
-2025-26,B Pharmacy,CAP Round I,06891,"Eklavya College of Pharmacy, Tasgaon , Sangli",Sangli,Unaided,DEFRSEBCS,State Level,Any,12141,80.4698018
+2025-26,B Pharmacy,CAP Round I,06891,"Eklavya College of Pharmacy, Tasgaon , Sangli",Sangli,Unaided,DEFRSEBC,State Level,Any,12141,80.4698018
 2025-26,B Pharmacy,CAP Round I,06891,"Eklavya College of Pharmacy, Tasgaon , Sangli",Sangli,Unaided,EWS,Special,Any,14008,77.9830709
 2025-26,B Pharmacy,CAP Round I,06900,"Yashwant Redekar College Of Pharmacy B. Pharm. And D. Pharm., Nesari",Kolhapur,Unaided,GOPENH,Home University,Any,39380,41.3595526
 2025-26,B Pharmacy,CAP Round I,06900,"Yashwant Redekar College Of Pharmacy B. Pharm. And D. Pharm., Nesari",Kolhapur,Unaided,GOBCH,Home University,Any,49904,12.9554081

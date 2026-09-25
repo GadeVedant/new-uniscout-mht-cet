@@ -1564,7 +1564,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round II,03205,"Bharati Vidyapeeth College of Pharmacy, Belapur, Navi Mumbai",Mumbai,Unaided,LSTO,Other than Home University,Ladies,11902,80.7697582
 2025-26,B Pharmacy,CAP Round II,03205,"Bharati Vidyapeeth College of Pharmacy, Belapur, Navi Mumbai",Mumbai,Unaided,LOBCO,Other than Home University,Ladies,4512,90.9926555
 2025-26,B Pharmacy,CAP Round II,03205,"Bharati Vidyapeeth College of Pharmacy, Belapur, Navi Mumbai",Mumbai,Unaided,TFWS,Special,Any,2132,95.060736
-2025-26,B Pharmacy,CAP Round II,03205,"Bharati Vidyapeeth College of Pharmacy, Belapur, Navi Mumbai",Mumbai,Unaided,DEFRSEBCS,State Level,Any,6496,87.9858014
+2025-26,B Pharmacy,CAP Round II,03205,"Bharati Vidyapeeth College of Pharmacy, Belapur, Navi Mumbai",Mumbai,Unaided,DEFRSEBC,State Level,Any,6496,87.9858014
 2025-26,B Pharmacy,CAP Round II,03205,"Bharati Vidyapeeth College of Pharmacy, Belapur, Navi Mumbai",Mumbai,Unaided,EWS,Special,Any,33393,51.7009371
 2025-26,B Pharmacy,CAP Round II,03205,"Bharati Vidyapeeth College of Pharmacy, Belapur, Navi Mumbai",Mumbai,Unaided,ORPHAN,Special,Any,2885,93.7471557
 2025-26,B Pharmacy,CAP Round II,03225,"Saraswathi Vidya Bhavan's College of Pharmacy, Dombivli",Thane,Unaided,GOPENH,Home University,Any,5735,89.1917721
@@ -4182,7 +4182,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round II,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,LOPENO,Other than Home University,Ladies,2890,93.7471557
 2025-26,B Pharmacy,CAP Round II,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,LOBCO,Other than Home University,Ladies,2983,93.5183069
 2025-26,B Pharmacy,CAP Round II,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,TFWS,Special,Any,2967,93.5925292
-2025-26,B Pharmacy,CAP Round II,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,45472,27.0683535
+2025-26,B Pharmacy,CAP Round II,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,DEFRSEBC,State Level,Any,45472,27.0683535
 2025-26,B Pharmacy,CAP Round II,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,EWS,Special,Any,35072,49.1415154
 2025-26,B Pharmacy,CAP Round II,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,ORPHAN,Special,Any,3374,92.8141662
 2025-26,B Pharmacy,CAP Round II,06361,"Vishal Institute of Pharmaceutical Education & Research, Ale, (Alephata), Dist. Pune",Pune,Unaided,GSCH,Home University,Any,22396,67.8236662
@@ -4423,7 +4423,7 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round II,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,GNT3O,Other than Home University,Any,2044,95.1804508
 2025-26,B Pharmacy,CAP Round II,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,GOBCO,Other than Home University,Any,2230,94.8361148
 2025-26,B Pharmacy,CAP Round II,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,LOBCO,Other than Home University,Ladies,2090,95.0999267
-2025-26,B Pharmacy,CAP Round II,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,8143,85.5921744
+2025-26,B Pharmacy,CAP Round II,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,DEFRSEBC,State Level,Any,8143,85.5921744
 2025-26,B Pharmacy,CAP Round II,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,EWS,Special,Any,7905,86.0545007
 2025-26,B Pharmacy,CAP Round II,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,ORPHAN,Special,Any,694,97.8980604
 2025-26,B Pharmacy,CAP Round II,06377,"SVPM'S College of Pharmacy, Malegaon(BK) Baramati, Pune",Pune,Unaided,GOPENH,Home University,Any,8086,85.6743347
