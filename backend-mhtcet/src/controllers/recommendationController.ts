@@ -13,6 +13,7 @@ export const getRecommendations = async (
     const capRound = ['1', 'I', 'i'].includes(body.capRound) ? 'I'
       : ['2', 'II', 'ii'].includes(body.capRound) ? 'II'
       : ['3', 'III', 'iii'].includes(body.capRound) ? 'III'
+      : ['4', 'IV', 'iv'].includes(body.capRound) ? 'IV'
       : body.capRound;
 
     const request: RecommendationRequest = {
