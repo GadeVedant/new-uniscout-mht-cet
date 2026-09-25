@@ -37,7 +37,7 @@ class PharmacyDataService {
       .filter(f =>
         f.endsWith('.csv') &&
         f.startsWith('2025') &&
-        (f.toUpperCase().includes('BPHARMA') || f.toUpperCase().includes('DPHARMACY'))
+        (f.toUpperCase().includes('BPHARMA') || f.toUpperCase().includes('DPHARMACY') || f.toUpperCase().includes('PHARMA'))
       )
       .sort();
 
@@ -190,6 +190,7 @@ class PharmacyDataService {
     if (['1', 'I', 'i', 'Round 1', 'CAP Round 1', 'CAP Round I'].includes(s))   return 'I';
     if (['2', 'II', 'ii', 'Round 2', 'CAP Round 2', 'CAP Round II'].includes(s)) return 'II';
     if (['3', 'III', 'iii', 'Round 3', 'CAP Round 3', 'CAP Round III'].includes(s)) return 'III';
+    if (['4', 'IV', 'iv', 'Round 4', 'CAP Round 4', 'CAP Round IV'].includes(s)) return 'IV';
     return s;
   }
 

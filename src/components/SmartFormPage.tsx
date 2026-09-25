@@ -27,7 +27,7 @@ const CATEGORIES = [
   { label: 'NT3', value: 'GNT3S' },
   { label: 'VJ/DT', value: 'GVJS' },
 ];
-const CAP_ROUNDS = ['I', 'II', 'III'];
+const CAP_ROUNDS = ['I', 'II', 'III', 'IV'];
 const BRANCHES = [
   'artificial intelligence and data science',
   'artificial intelligence and machine learning',

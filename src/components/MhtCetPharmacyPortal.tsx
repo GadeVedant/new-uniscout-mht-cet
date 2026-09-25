@@ -191,6 +191,7 @@ const CAP_ROUNDS = [
   { label: 'Round I',   value: 'I'   },
   { label: 'Round II',  value: 'II'  },
   { label: 'Round III', value: 'III' },
+  { label: 'Round IV',  value: 'IV'  },
 ];
 
 // Districts from B Pharmacy CSV data
@@ -744,25 +745,6 @@ export function MhtCetPharmacyPortal({ onRecommendationsReady }: PharmacyPortalP
                 className="w-full bg-pink-950/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-pink-500/60 transition-colors" />
             </div>
 
-            {/* CAP Round */}
-            <div className="space-y-2">
-              <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                <BookMarked className="w-4 h-4 text-slate-400" /> CAP Round Number
-              </label>
-              <div className="flex gap-2">
-                {CAP_ROUNDS.map(r => (
-                  <button key={r.value} type="button" disabled={isLoading}
-                    onClick={() => setFormData(p => ({ ...p, capRound: r.value }))}
-                    className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border
-                      ${formData.capRound === r.value
-                        ? 'bg-pink-500 border-pink-400 text-white shadow-lg shadow-pink-900/40'
-                        : 'bg-pink-950/40 border-white/10 text-slate-400 hover:border-white/25 hover:text-slate-200'}`}>
-                    {r.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             {/* Branch — toggle buttons, no multiselect */}
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
@@ -771,13 +753,37 @@ export function MhtCetPharmacyPortal({ onRecommendationsReady }: PharmacyPortalP
               <div className="flex gap-3">
                 {PHARMACY_BRANCHES.map(b => (
                   <button key={b.value} type="button" disabled={isLoading}
-                    onClick={() => setFormData(p => ({ ...p, branch: b.value }))}
+                    onClick={() => setFormData(p => ({
+                      ...p,
+                      branch: b.value,
+                      // D Pharmacy only has 3 rounds — reset IV selection if switching to it
+                      capRound: b.value === 'D Pharmacy' && p.capRound === 'IV' ? 'I' : p.capRound,
+                    }))}
                     className={`flex-1 py-3 rounded-xl text-sm font-semibold transition-all border flex items-center justify-center gap-2
                       ${formData.branch === b.value
                         ? 'bg-pink-500 border-pink-400 text-white shadow-lg shadow-pink-900/40'
                         : 'bg-pink-950/40 border-white/10 text-slate-400 hover:border-pink-400/40 hover:text-pink-300'}`}>
                     <FlaskConical className="w-4 h-4" />
                     {b.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* CAP Round — 4 rounds for B Pharmacy, 3 for D Pharmacy */}
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                <BookMarked className="w-4 h-4 text-slate-400" /> CAP Round Number
+              </label>
+              <div className="flex gap-2">
+                {CAP_ROUNDS.filter(r => formData.branch === 'D Pharmacy' ? r.value !== 'IV' : true).map(r => (
+                  <button key={r.value} type="button" disabled={isLoading}
+                    onClick={() => setFormData(p => ({ ...p, capRound: r.value }))}
+                    className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all border
+                      ${formData.capRound === r.value
+                        ? 'bg-pink-500 border-pink-400 text-white shadow-lg shadow-pink-900/40'
+                        : 'bg-pink-950/40 border-white/10 text-slate-400 hover:border-white/25 hover:text-slate-200'}`}>
+                    {r.label}
                   </button>
                 ))}
               </div>
