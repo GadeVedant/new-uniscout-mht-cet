@@ -13,8 +13,17 @@ class DataService {
 
   async loadData(): Promise<void> {
     if (config.dataDir && fs.existsSync(config.dataDir)) {
+      // ── Memory constraint (Render free tier 512 MB) ──────────────────────
+      // Load ONLY 2025 cap files to stay within memory budget.
+      // Pharmacy already does this; engineering must match.
+      // Trends / strategy / cutoff-history use the same 2025 data — still
+      // meaningful since 2025 is the most-recent and most-relevant year.
       let files = fs.readdirSync(config.dataDir)
-        .filter(f => /\.(xlsx|xls|csv)$/i.test(f) && f.startsWith('cap'))
+        .filter(f =>
+          /\.(xlsx|xls|csv)$/i.test(f) &&
+          f.startsWith('cap') &&
+          f.includes('2025')          // ← 2025 only
+        )
         .sort();
 
       if (files.length === 0) throw new Error(`No data files found in DATA_DIR: ${config.dataDir}`);
