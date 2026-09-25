@@ -1,67 +1,52 @@
 /**
- * Pharmacy Category Map — EXACT MATCHING ONLY
+ * Pharmacy Category Map — CROSS-SUFFIX MATCHING
  *
- * Each category code (GOPENS, GOPENH, GOPENO etc.) has completely different
- * cutoff data in the CSV and must be matched EXACTLY.
+ * B Pharmacy uses H/O/S suffixed codes (GOPENH, GOPENO, GOPENS).
+ * D Pharmacy uses only S-suffixed codes (GOPENS, GOBCS, etc.).
  *
- * The ONLY cross-matching done is:
- *   - D Pharmacy CSVs use bare codes like "GOPEN" (no suffix).
- *   - When the user selects "GOPENH", we also match bare "GOPEN" rows
- *     so D Pharmacy data is included.
- *   - We do NOT match siblings: GOPENH never matches GOPENS or GOPENO.
+ * When a user selects any suffix variant (H, O, or S) we match ALL
+ * three variants so both B Pharmacy and D Pharmacy data is included.
  */
 
-// D Pharmacy bare code → the suffixed codes it represents
-// (bare GOPEN rows should appear when any H/S/O variant is selected)
-const D_PHARMA_BARE: Record<string, string> = {
-  GOPENS: 'GOPEN',  GOPENH: 'GOPEN',  GOPENO: 'GOPEN',
-  LOPENS: 'LOPEN',  LOPENH: 'LOPEN',  LOPENO: 'LOPEN',
-  GSCS:   'GSC',    GSCH:   'GSC',    GSCO:   'GSC',
-  LSCS:   'LSC',    LSCH:   'LSC',    LSCO:   'LSC',
-  GSTS:   'GST',    GSTH:   'GST',    GSTO:   'GST',
-  LSTS:   'LST',    LSTH:   'LST',    LSTO:   'LST',
-  GOBCS:  'GOBC',   GOBCH:  'GOBC',   GOBCO:  'GOBC',
-  LOBCS:  'LOBC',   LOBCH:  'LOBC',   LOBCO:  'LOBC',
-  GSEBCS: 'GSEBC',  GSEBCH: 'GSEBC',  GSEBCO: 'GSEBC',
-  LSEBCS: 'LSEBC',  LSEBCH: 'LSEBC',  LSEBCO: 'LSEBC',
-  GVJS:   'GVJ',    GVJH:   'GVJ',    GVJO:   'GVJ',
-  LVJS:   'LVJ',    LVJH:   'LVJ',    LVJO:   'LVJ',
-  GNT1S:  'GNTA',   GNT1H:  'GNTA',   GNT1O:  'GNTA',
-  LNT1S:  'LNTA',   LNT1H:  'LNTA',   LNT1O:  'LNTA',
-  GNT2S:  'GNTB',   GNT2H:  'GNTB',   GNT2O:  'GNTB',
-  LNT2S:  'LNTB',   LNT2H:  'LNTB',   LNT2O:  'LNTB',
-  GNT3S:  'GNTC',   GNT3H:  'GNTC',   GNT3O:  'GNTC',
-  LNT3S:  'LNTC',   LNT3H:  'LNTC',   LNT3O:  'LNTC',
-};
+// Map from any suffixed code → all its sibling suffixed codes
+// e.g. GOPENH → [GOPENH, GOPENO, GOPENS]
+const SUFFIX_SIBLINGS: Record<string, string[]> = {};
 
-// Reverse: bare D Pharmacy code → what suffixed codes map to it
-const BARE_TO_SUFFIXED: Record<string, string[]> = {};
-for (const [suffixed, bare] of Object.entries(D_PHARMA_BARE)) {
-  if (!BARE_TO_SUFFIXED[bare]) BARE_TO_SUFFIXED[bare] = [bare];
-  BARE_TO_SUFFIXED[bare].push(suffixed);
+const BASES = [
+  'GOPEN','LOPEN',
+  'GOBC','LOBC',
+  'GSEBC','LSEBC',
+  'GSC','LSC',
+  'GST','LST',
+  'GVJ','LVJ','LVJ',
+  'GSTS','LSTS',
+  'GNT1','LNT1',
+  'GNT2','LNT2',
+  'GNT3','LNT3',
+];
+const SUFFIXES = ['S','H','O'];
+
+for (const base of BASES) {
+  const siblings = SUFFIXES.map(s => base + s);
+  for (const code of siblings) {
+    SUFFIX_SIBLINGS[code] = siblings;
+  }
 }
 
 /**
  * Returns the exact set of CSV category codes that should match
  * a user-selected category code.
  *
- * GOPENS → ['GOPENS', 'GOPEN']   (exact + bare D Pharmacy code)
- * GOPENH → ['GOPENH', 'GOPEN']   (exact + bare D Pharmacy code)
- * GOPENO → ['GOPENO', 'GOPEN']   (exact + bare D Pharmacy code)
- * GOPEN  → ['GOPEN', 'GOPENS', 'GOPENH', 'GOPENO']  (bare → all its suffixed variants)
+ * GOPENH → [GOPENH, GOPENS, GOPENO]  (all suffix variants)
+ * GOPENS → [GOPENS, GOPENH, GOPENO]  (all suffix variants)
  */
 export function expandPharmacyCategory(category: string): string[] {
   const upper = category.trim().toUpperCase();
   const codes = new Set<string>([upper]);
 
-  // If selecting a suffixed code, also match bare D Pharmacy code
-  if (D_PHARMA_BARE[upper]) {
-    codes.add(D_PHARMA_BARE[upper]);
-  }
-
-  // If selecting a bare code, also match all its suffixed variants
-  if (BARE_TO_SUFFIXED[upper]) {
-    BARE_TO_SUFFIXED[upper].forEach(c => codes.add(c));
+  // Add all sibling suffix variants (covers H↔S↔O cross-matching for D Pharmacy)
+  if (SUFFIX_SIBLINGS[upper]) {
+    SUFFIX_SIBLINGS[upper].forEach(c => codes.add(c));
   }
 
   return [...codes];
