@@ -246,15 +246,24 @@ function useIsMobile() {
 }
 
 // ── Category Selector (group dropdown + sub-category section) ─────────────
+// D Pharmacy only has State Level (S-suffix) — no Home Univ or Other than HU
+const D_PHARMACY_EXCLUDED_SUFFIXES = ['H', 'O'];
+function isDPharmacyExcluded(value: string): boolean {
+  return D_PHARMACY_EXCLUDED_SUFFIXES.some(s => value.endsWith(s));
+}
+
 function CategorySelector({
   selected,
   onChange,
   disabled,
+  branch,
 }: {
   selected: string;
   onChange: (val: string) => void;
   disabled?: boolean;
+  branch?: string;
 }) {
+  const isDPharma = branch === 'D Pharmacy';
   const [open, setOpen] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -275,13 +284,26 @@ function CategorySelector({
     return () => { document.body.style.overflow = ''; };
   }, [isMobile, open]);
 
-  // Active group object
+  // Active group object — filter out H/O items for D Pharmacy
   const activeGroup = CATEGORY_GROUPS.find(g => g.group === selectedGroup) ?? null;
+  const filteredActiveGroup = activeGroup
+    ? {
+        ...activeGroup,
+        items: isDPharma
+          ? activeGroup.items.filter(i => !isDPharmacyExcluded(i.value))
+          : activeGroup.items,
+      }
+    : null;
+
+  // Filter groups: for D Pharmacy, hide groups that have ONLY H/O items (none left after filter)
+  const visibleGroups = isDPharma
+    ? CATEGORY_GROUPS.filter(g => g.items.some(i => !isDPharmacyExcluded(i.value)))
+    : CATEGORY_GROUPS;
 
   // Group dropdown list
   const GroupList = (
     <div className="overflow-y-auto">
-      {CATEGORY_GROUPS.map(group => {
+      {visibleGroups.map(group => {
         const isActive = selectedGroup === group.group;
         const hasSelection = group.items.some(i => i.value === selected);
         return (
@@ -366,9 +388,9 @@ function CategorySelector({
 
       {/* Sub Category — shown after a group is picked */}
       <AnimatePresence>
-        {activeGroup && (
+        {filteredActiveGroup && (
           <motion.div
-            key={activeGroup.group}
+            key={filteredActiveGroup.group}
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
@@ -378,9 +400,9 @@ function CategorySelector({
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                 Sub Category
-                <span className="ml-2 text-pink-400 normal-case font-normal">— {activeGroup.group}</span>
+                <span className="ml-2 text-pink-400 normal-case font-normal">— {filteredActiveGroup.group}</span>
               </span>
-              {selected && activeGroup.items.some(i => i.value === selected) && (
+              {selected && filteredActiveGroup.items.some(i => i.value === selected) && (
                 <button
                   type="button"
                   onClick={() => onChange('')}
@@ -391,7 +413,7 @@ function CategorySelector({
               )}
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {activeGroup.items.map(item => {
+              {filteredActiveGroup.items.map(item => {
                 const isSel = selected === item.value;
                 return (
                   <button
@@ -758,6 +780,8 @@ export function MhtCetPharmacyPortal({ onRecommendationsReady }: PharmacyPortalP
                       branch: b.value,
                       // D Pharmacy only has 3 rounds — reset IV selection if switching to it
                       capRound: b.value === 'D Pharmacy' && p.capRound === 'IV' ? 'I' : p.capRound,
+                      // D Pharmacy has no H/O categories — reset if current selection is H or O suffix
+                      category: b.value === 'D Pharmacy' && (p.category.endsWith('H') || p.category.endsWith('O')) ? '' : p.category,
                     }))}
                     className={`flex-1 py-3 rounded-xl text-sm font-semibold transition-all border flex items-center justify-center gap-2
                       ${formData.branch === b.value
@@ -801,6 +825,7 @@ export function MhtCetPharmacyPortal({ onRecommendationsReady }: PharmacyPortalP
                 selected={formData.category}
                 onChange={val => setFormData(p => ({ ...p, category: val }))}
                 disabled={isLoading}
+                branch={formData.branch}
               />
             </div>
 
