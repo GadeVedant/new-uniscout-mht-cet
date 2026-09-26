@@ -314,6 +314,7 @@ class RecommendationService {
       admissionChance: chance,
       capRound: college.capRound,
       year: college.year,
+      estimatedCutoff: (college as any).estimatedCutoff,
     };
   }
 
