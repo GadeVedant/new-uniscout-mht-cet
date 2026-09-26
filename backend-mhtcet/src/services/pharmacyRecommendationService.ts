@@ -109,10 +109,12 @@ class PharmacyRecommendationService {
     const allRecs = [...filtered, ...supplemental]
       .map(c => this.buildRecommendation(c, percentile));
 
-    // Dedup — keep lowest cutoff per college+branch
+    // Dedup — keep lowest cutoff per college+branch+category
+    // Pharmacy categories are genuinely distinct (each is a different seat pool),
+    // so we keep them separate unlike engineering where H/O/S share the same seats.
     const best = new Map<string, CollegeRecommendation>();
     for (const rec of allRecs) {
-      const key = `${rec.code}|${rec.branch}`;
+      const key = `${rec.code}|${rec.branch}|${rec.category}`;
       const existing = best.get(key);
       if (!existing || rec.cutoffPercentile < existing.cutoffPercentile) {
         best.set(key, rec);
