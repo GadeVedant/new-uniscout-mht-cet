@@ -42,7 +42,6 @@ export function ResultsPage({
   const [sortBy, setSortBy] = useState<SortOption>('chance');
   const [filterBand, setFilterBand] = useState<FilterBand>('all');
   const [showFilters, setShowFilters] = useState(false);
-  const [showActualOnly, setShowActualOnly] = useState(false);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
   const branch = lastQuery?.branchPreference ?? 'Engineering';
@@ -63,7 +62,6 @@ export function ResultsPage({
   // while most colleges still returned legacy band names (High/Medium/Low).
   const mlAvailable = colleges.length > 0 && colleges.every(c => c.admissionBand);
   const bandsAvailable = mlAvailable ? ['Safe', 'Likely', 'Moderate', 'Risky'] : ['High', 'Medium', 'Low'];
-  const hasEstimatedResults = colleges.some(c => c.estimatedCutoff);
 
   // Process and sort colleges
   const processedColleges = useMemo(() => {
@@ -71,10 +69,6 @@ export function ResultsPage({
 
     if (filterBand !== 'all') {
       filtered = colleges.filter(c => getAdmissionBand(c) === filterBand);
-    }
-
-    if (showActualOnly) {
-      filtered = filtered.filter(c => !c.estimatedCutoff);
     }
 
     return [...filtered].sort((a, b) => {
@@ -100,7 +94,7 @@ export function ResultsPage({
           return 0;
       }
     });
-  }, [colleges, sortBy, filterBand, showActualOnly]);
+  }, [colleges, sortBy, filterBand]);
 
   // Statistics — count both ML band names and legacy names so the totals
   // are always correct even when only some colleges got ML enrichment.
@@ -364,7 +358,7 @@ export function ResultsPage({
             </div>
             <TabsContent value="results" className="mt-0 outline-none">
               <ResultsContent 
-                {...{ stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, comparisonSelection, handleCompareToggle, navigate, isPharmacy, showActualOnly, setShowActualOnly, hasEstimatedResults }} 
+                {...{ stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, comparisonSelection, handleCompareToggle, navigate, isPharmacy }} 
               />
             </TabsContent>
             <TabsContent value="strategy" className="mt-0 outline-none">
@@ -378,7 +372,7 @@ export function ResultsPage({
           </Tabs>
         ) : (
           <ResultsContent 
-            {...{ stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, comparisonSelection, handleCompareToggle, navigate, isPharmacy, showActualOnly, setShowActualOnly, hasEstimatedResults }} 
+            {...{ stats, mlAvailable, bandsAvailable, filterBand, setFilterBand, showFilters, setShowFilters, sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, comparisonSelection, handleCompareToggle, navigate, isPharmacy }} 
           />
         )}
       </main>
@@ -396,8 +390,13 @@ function ResultsContent({
   stats, mlAvailable, bandsAvailable, filterBand, setFilterBand,
   sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, navigate,
   comparisonSelection, handleCompareToggle, isPharmacy,
-  showActualOnly, setShowActualOnly, hasEstimatedResults,
 }: any) {
+  const [showActualOnly, setShowActualOnly] = useState(false);
+  const hasEstimatedResults = processedColleges.some((c: any) => c.estimatedCutoff);
+  // Apply actual-only filter locally so state update reliably triggers re-render
+  const displayColleges = showActualOnly
+    ? processedColleges.filter((c: any) => !c.estimatedCutoff)
+    : processedColleges;
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const sortOptions = [
@@ -548,15 +547,15 @@ function ResultsContent({
         </div>
 
         <div className="flex items-center justify-between mb-3">
-          <p className="text-sm text-muted-foreground">{processedColleges.length} colleges found</p>
+          <p className="text-sm text-muted-foreground">{displayColleges.length} colleges found</p>
           {(filterBand !== 'all' || showActualOnly) && (
             <button onClick={() => { setFilterBand('all'); setShowActualOnly(false); }} className="text-xs text-primary hover:underline">Clear filter</button>
           )}
         </div>
 
-        {processedColleges.length > 0 ? (
+        {displayColleges.length > 0 ? (
           <AnimatePresence mode="popLayout">
-            {processedColleges.map((college: any, i: number) => (
+            {displayColleges.map((college: any, i: number) => (
               <CollegeCard
                 key={college.id}
                 college={college}
