@@ -468,7 +468,9 @@ function ResultsContent({
               Actual data only
             </button>
             <p className="text-[11px] text-muted-foreground/50 px-1 mt-1">
-              Hide ~est colleges (no actual category data)
+              {showActualOnly
+                ? `Showing ${displayColleges.length} college${displayColleges.length !== 1 ? 's' : ''} with real data`
+                : `Hide ~est colleges (no actual category data)`}
             </p>
           </div>
         )}
