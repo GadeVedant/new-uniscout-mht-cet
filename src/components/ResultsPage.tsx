@@ -391,10 +391,10 @@ function ResultsContent({
   sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, navigate,
   comparisonSelection, handleCompareToggle, isPharmacy,
 }: any) {
-  const [showActualOnly, setShowActualOnly] = useState(true);
+  const [showActualOnly] = useState(true);
   const hasEstimatedResults = processedColleges.some((c: any) => c.estimatedCutoff);
-  // Apply actual-only filter locally so state update reliably triggers re-render
-  const displayColleges = showActualOnly
+  // Always show actual data only by default — estimated results hidden
+  const displayColleges = hasEstimatedResults
     ? processedColleges.filter((c: any) => !c.estimatedCutoff)
     : processedColleges;
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
@@ -452,28 +452,6 @@ function ResultsContent({
             </button>
           ))}
         </div>
-        {/* Actual Data Only toggle — only shown when estimated results exist */}
-        {hasEstimatedResults && (
-          <div>
-            <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Cutoff Data</div>
-            <button
-              onClick={() => setShowActualOnly(prev => !prev)}
-              className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 ${
-                showActualOnly ? 'bg-primary/12 text-primary border border-primary/20' : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
-              }`}
-            >
-              <span className={`size-3.5 rounded-sm border flex items-center justify-center shrink-0 ${showActualOnly ? 'bg-primary border-primary' : 'border-white/20'}`}>
-                {showActualOnly && <Check className="size-2.5 text-white" />}
-              </span>
-              Actual data only
-            </button>
-            <p className="text-[11px] text-muted-foreground/50 px-1 mt-1">
-              {showActualOnly
-                ? `Showing ${displayColleges.length} college${displayColleges.length !== 1 ? 's' : ''} with real data`
-                : `Hide ~est colleges (no actual category data)`}
-            </p>
-          </div>
-        )}
         <div className="p-3.5 rounded-xl bg-card border border-white/[0.07]">
           <div className="text-[11px] text-muted-foreground font-medium mb-3 uppercase tracking-wider">Probability Guide</div>
           {legend.map(item => (
@@ -527,10 +505,10 @@ function ResultsContent({
         <div className="flex items-center gap-3 mb-4">
           <div className="grid grid-cols-4 gap-2 flex-1">
             {[
-              { label: mlAvailable ? 'Safe' : 'High',     value: stats.b1, dot: 'bg-emerald-500' },
-              { label: mlAvailable ? 'Likely' : 'Medium', value: stats.b2, dot: 'bg-blue-500'    },
-              { label: mlAvailable ? 'Moderate' : 'Med',  value: stats.b3, dot: 'bg-amber-500'   },
-              { label: mlAvailable ? 'Risky' : 'Low',     value: stats.b4, dot: 'bg-red-500'     },
+              { label: mlAvailable ? 'Safe' : 'High',     value: displayColleges.filter((c: any) => { const b = getAdmissionBand(c); return b === 'Safe' || b === 'High'; }).length,     dot: 'bg-emerald-500' },
+              { label: mlAvailable ? 'Likely' : 'Medium', value: displayColleges.filter((c: any) => getAdmissionBand(c) === 'Likely').length,                                             dot: 'bg-blue-500'    },
+              { label: mlAvailable ? 'Moderate' : 'Med',  value: displayColleges.filter((c: any) => { const b = getAdmissionBand(c); return b === 'Moderate' || b === 'Medium'; }).length, dot: 'bg-amber-500'   },
+              { label: mlAvailable ? 'Risky' : 'Low',     value: displayColleges.filter((c: any) => { const b = getAdmissionBand(c); return b === 'Risky' || b === 'Low'; }).length,      dot: 'bg-red-500'     },
             ].map(s => (
               <div key={s.label} className="p-3 rounded-xl bg-card border border-white/[0.07] text-center">
                 <div className={`size-2 rounded-full ${s.dot} mx-auto mb-1.5`} />
@@ -544,14 +522,14 @@ function ResultsContent({
             className="lg:hidden flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-card border border-white/[0.07] text-muted-foreground hover:text-foreground text-xs font-medium transition-colors shrink-0">
             <Filter className="size-3.5" />
             <span className="hidden xs:inline">Filter</span>
-            {(filterBand !== 'all' || showActualOnly) && <span className="size-1.5 rounded-full bg-primary" />}
+            {filterBand !== 'all' && <span className="size-1.5 rounded-full bg-primary" />}
           </button>
         </div>
 
         <div className="flex items-center justify-between mb-3">
           <p className="text-sm text-muted-foreground">{displayColleges.length} colleges found</p>
-          {(filterBand !== 'all' || showActualOnly) && (
-            <button onClick={() => { setFilterBand('all'); setShowActualOnly(false); }} className="text-xs text-primary hover:underline">Clear filter</button>
+          {filterBand !== 'all' && (
+            <button onClick={() => setFilterBand('all')} className="text-xs text-primary hover:underline">Clear filter</button>
           )}
         </div>
 
@@ -587,7 +565,7 @@ function ResultsContent({
                 </ul>
               </div>
             )}
-            <button onClick={() => { setFilterBand('all'); setShowActualOnly(false); }} className="text-xs text-primary hover:underline">Clear filters</button>
+            <button onClick={() => setFilterBand('all')} className="text-xs text-primary hover:underline">Clear filters</button>
           </div>
         )}
       </div>
