@@ -25,11 +25,15 @@ app.use(cors({
       config.corsOrigin + '/',              // with trailing slash
       'https://uniscout-frontend.onrender.com',
       'https://www.uniscout.co.in',
-      'https://www.uniscout.co.in',
+      'https://uniscout.co.in',
+      'https://uniscout.in',
+      'https://www.uniscout.in',
       'http://localhost:3000',
       'http://localhost:3001',
     ];
     if (allowed.includes(origin)) return callback(null, true);
+    // Allow all Vercel preview deployments
+    if (origin.endsWith('.vercel.app')) return callback(null, true);
     return callback(new Error(`CORS: origin ${origin} not allowed`));
   },
   credentials: true,
