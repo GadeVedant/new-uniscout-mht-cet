@@ -391,7 +391,7 @@ function ResultsContent({
   sortBy, setSortBy, processedColleges, expandedCard, setExpandedCard, navigate,
   comparisonSelection, handleCompareToggle, isPharmacy,
 }: any) {
-  const [showActualOnly, setShowActualOnly] = useState(false);
+  const [showActualOnly, setShowActualOnly] = useState(true);
   const hasEstimatedResults = processedColleges.some((c: any) => c.estimatedCutoff);
   // Apply actual-only filter locally so state update reliably triggers re-render
   const displayColleges = showActualOnly
