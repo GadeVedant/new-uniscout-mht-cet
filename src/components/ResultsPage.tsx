@@ -458,7 +458,7 @@ function ResultsContent({
           <div>
             <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-2.5">Cutoff Data</div>
             <button
-              onClick={() => setShowActualOnly(!showActualOnly)}
+              onClick={() => setShowActualOnly(prev => !prev)}
               className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg text-[13px] transition-colors mb-0.5 ${
                 showActualOnly ? 'bg-primary/12 text-primary border border-primary/20' : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
               }`}
@@ -469,7 +469,7 @@ function ResultsContent({
               Actual data only
             </button>
             <p className="text-[11px] text-muted-foreground/50 px-1 mt-1">
-              Hide colleges with estimated cutoffs (~est)
+              Hide ~est colleges (no actual category data)
             </p>
           </div>
         )}
