@@ -108,10 +108,10 @@ export function expandCategory(category: string): string[] {
 }
 
 /**
- * Returns true if a college's category matches the user-selected category
- * (including all related seat types).
+ * Returns true if a college's category exactly matches the user-selected category.
+ * Each seat type (S=State Level, H=Home Univ, O=Other than HU) has its own distinct
+ * cutoff — GOPENH must only match GOPENH rows, not GOPENS or GOPENO.
  */
 export function categoryMatches(collegeCategory: string, userCategory: string): boolean {
-  const expanded = expandCategory(userCategory);
-  return expanded.includes(collegeCategory.trim().toUpperCase());
+  return collegeCategory.trim().toUpperCase() === userCategory.trim().toUpperCase();
 }
