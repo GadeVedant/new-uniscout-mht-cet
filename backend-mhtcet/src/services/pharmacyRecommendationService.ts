@@ -58,13 +58,10 @@ class PharmacyRecommendationService {
       });
 
     let filtered = applyFilters(true);
-    let locationFallback = false;
+    const locationFallback = false;
 
-    if (filtered.length === 0 && location) {
-      logger.info(`Pharmacy: no results for location="${location}", falling back`);
-      filtered = applyFilters(false);
-      locationFallback = true;
-    }
+    // No location fallback — if no colleges found for the selected location,
+    // return empty results so the user sees a clear "no results" message.
 
     const locList = location
       ? location.split(',').map(l => l.trim().toLowerCase()).filter(Boolean)
