@@ -146,11 +146,12 @@ class RecommendationService {
     const allRecs = [...filtered, ...supplemental]
       .map(c => this.buildRecommendation(c, percentile));
 
-    // Dedup: keep one record per college+branch
-    // Keep the record with the lowest cutoff (most achievable for the student)
+    // Dedup: keep one record per college+branch+category
+    // Each category (GOPENH/GOPENO/GOPENS) has its own distinct cutoff — keep all separate.
+    // Within the same category, keep the lowest cutoff (most achievable for the student).
     const bestPerCollegeBranch = new Map<string, typeof allRecs[0]>();
     for (const rec of allRecs) {
-      const key = `${rec.code}|${rec.branch}`;
+      const key = `${rec.code}|${rec.branch}|${rec.category}`;
       const existing = bestPerCollegeBranch.get(key);
       if (!existing || rec.cutoffPercentile < existing.cutoffPercentile) {
         bestPerCollegeBranch.set(key, rec);
