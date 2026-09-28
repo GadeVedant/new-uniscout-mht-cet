@@ -91,15 +91,10 @@ class RecommendationService {
     });
 
     let filtered = applyFilters(true);
-    let locationFallback = false;
+    const locationFallback = false;
 
-    // If location filter yields no results, fall back to all locations
-    // but set locationFallback=true so the frontend can show a clear message
-    if (filtered.length === 0 && location) {
-      logger.info(`No results for location="${location}", falling back to all locations`);
-      filtered = applyFilters(false);
-      locationFallback = true;
-    }
+    // No location fallback — if no colleges found for the selected location,
+    // return empty results so the user sees a clear "no results" message.
 
     const locLower = location?.toLowerCase() ?? '';
     const locList = locLower ? locLower.split(',').map(l => l.trim()).filter(Boolean) : [];
