@@ -10,7 +10,7 @@ import { mlServiceClient, type MLPredictionRequest } from './mlServiceClient.js'
 import { get as cacheGet, set as cacheSet } from './mlPredictionCache.js';
 import { cutoffTrendService } from './cutoffTrendService.js';
 import { placementLoader } from './placementLoader.js';
-import { categoryMatches, getCategoryDiscount } from '../utils/categoryMap.js';
+import { categoryMatches } from '../utils/categoryMap.js';
 import logger from '../utils/logger.js';
 import type { RecommendationRequest, CollegeRecommendation, CollegeData, ApiResponse } from '../types/index.js';
 
@@ -101,44 +101,16 @@ class RecommendationService {
 
     logger.info(`Filtered to ${filtered.length} colleges`);
 
-    // ---- Category fallback: for colleges missing reserved-category data, estimate cutoff from Open ----
-    // Uses category-specific discount based on MHT CET hierarchy:
-    // Open > EWS (~0.5) > OBC (~3) > SEBC (~5) > VJ/NT (~8) > SC (~15) > ST (~20)
-    const OPEN_CATS = new Set(['gopens','gopenh','gopeno','lopens','lopenh','lopeno']);
-    const isReservedCategory = !OPEN_CATS.has(category.toLowerCase());
-    let supplemental: typeof filtered = [];
-    if (isReservedCategory && category) {
-      const discount = getCategoryDiscount(category);
-      const codesWithCategoryData = new Set(filtered.map(c => `${c.collegeCode}|${c.branchName}`));
-      // Get Open-category records for colleges that have NO reserved-category data.
-      // Apply the same location filter so supplemental records honour the selected district.
-      const suppLocs = !locationFallback && location
-        ? location.split(',').map(l => l.trim().toLowerCase()).filter(Boolean)
-        : [];
-      const openRecords = sourceData.filter(c => {
-        if (capRound && c.capRound !== capRound) return false;
-        if (!categoryMatches(c.category, 'GOPENS')) return false;
-        if (branchPreference && !this.branchMatches(branchPreference, c.branchName)) return false;
-        if (suppLocs.length > 0) {
-          const cLoc = c.location.toLowerCase();
-          const cDist = c.district.toLowerCase();
-          if (!suppLocs.some(l => matchesLocTerm(cLoc, l) || matchesLocTerm(cDist, l))) return false;
-        }
-        return !codesWithCategoryData.has(`${c.collegeCode}|${c.branchName}`);
-      });
-      // Apply discount to estimate reserved-category cutoff
-      supplemental = openRecords.map(c => ({
-        ...c,
-        cutoffPercentile: Math.max(0, parseFloat((c.cutoffPercentile - discount).toFixed(2))),
-        category: category, // tag with requested category so it shows correctly
-        estimatedCutoff: true, // flag so frontend can show "estimated" indicator
-      }));
-      if (supplemental.length > 0) {
-        logger.info(`Category fallback: ${supplemental.length} colleges estimated with ${discount}pt discount for ${category}`);
-      }
-    }
-
-    const allRecs = [...filtered, ...supplemental]
+    // NOTE: The category fallback (estimating reserved-category cutoffs from
+    // Open cutoffs with a discount) has been intentionally removed.
+    //
+    // Reason: colleges that don't have a reserved-category row in the CSV
+    // genuinely don't offer those seats — showing fake estimated cutoffs for
+    // GSC / GST / GNT / GOBC / GSEBC / GVJ / DEF* / PWD* / ORPHAN misleads
+    // students into believing they can get admission under a quota that was
+    // never allotted to that college. All real reserved-category data is now
+    // sourced directly from the official government PDFs.
+    const allRecs = [...filtered]
       .map(c => this.buildRecommendation(c, percentile));
 
     // Dedup: keep one record per college+branch+category
