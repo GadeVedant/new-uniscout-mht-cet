@@ -2625,23 +2625,6 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,03017,"C U Shah College of Pharmacy for Women, Mumbai",Mumbai,Aided,TFWS,Special,Any,584,98.201655
 2025-26,B Pharmacy,CAP Round I,03017,"C U Shah College of Pharmacy for Women, Mumbai",Mumbai,Aided,DEFROBCS,State Level,Any,3950,91.8198654
 2025-26,B Pharmacy,CAP Round I,03017,"C U Shah College of Pharmacy for Women, Mumbai",Mumbai,Aided,EWS,Special,Any,1455,96.3245802
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GOPENS,State Level,Any,32,99.8347624
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GSCS,State Level,Any,748,97.8151416
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GSTS,State Level,Any,330,98.9140537
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GVJS,State Level,Any,97,99.6070025
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GNT1S,State Level,Any,448,98.5992326
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GNT2S,State Level,Any,449,98.5926928
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GOBCS,State Level,Any,42,99.802897
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GSEBCS,State Level,Any,160,99.4374603
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,LSCS,State Level,Ladies,308,99.9584526
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,LOBCS,State Level,Ladies,74,98.9882108
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,LSEBCS,State Level,Ladies,136,99.7137845
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,PWDOPENS,State Level,Any,2295,99.4875819
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,DEFOPENS,State Level,Any,119,94.7434062
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,TFWS,Special,Any,36,99.5392746
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,PWDROBCS,State Level,Any,6632,99.8285972
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,DEFROBCS,State Level,Any,529,87.8767029
-2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,EWS,Special,Any,266,98.3716343
 2025-26,B Pharmacy,CAP Round I,03163,"Shri Angarsiddha Shikshan Prasarak Mandal's Diploma In Pharmacy Institute,Sangulwadi,Tal-Vaibhavwadi",Sindhudurg,Unaided,GOPENH,Home University,Any,49223,15.6782149
 2025-26,B Pharmacy,CAP Round I,03163,"Shri Angarsiddha Shikshan Prasarak Mandal's Diploma In Pharmacy Institute,Sangulwadi,Tal-Vaibhavwadi",Sindhudurg,Unaided,LOPENH,Home University,Ladies,22874,67.3218449
 2025-26,B Pharmacy,CAP Round I,03163,"Shri Angarsiddha Shikshan Prasarak Mandal's Diploma In Pharmacy Institute,Sangulwadi,Tal-Vaibhavwadi",Sindhudurg,Unaided,LSCH,Home University,Ladies,39610,40.9382185
@@ -8928,3 +8911,120 @@ Year,Branch_Name,CAP_Round,College_Code,College_Name,Location,College_Type,Categ
 2025-26,B Pharmacy,CAP Round I,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GSCO,Other than Home University,Any,47047,22.5110011
 2025-26,B Pharmacy,CAP Round I,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,GVJO,Other than Home University,Any,42920,33.7257555
 2025-26,B Pharmacy,CAP Round I,16347,Karmayogi Institute of Pharmacy,Solapur,Unaided,EWS,Special,Any,30978,55.8824888
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GOPENS,State Level,Any,32,99.8347624
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GSCS,State Level,Any,748,97.8151416
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GSTS,State Level,Any,330,98.9140537
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GVJS,State Level,Any,97,99.6070025
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GNT1S,State Level,Any,448,98.5992326
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GNT2S,State Level,Any,449,98.5926928
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GOBCS,State Level,Any,42,99.802897
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,GSEBCS,State Level,Any,160,99.4374603
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,LOPENS,State Level,Ladies,5,99.9584526
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,LSCS,State Level,Ladies,308,98.9882108
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,LOBCS,State Level,Ladies,74,99.7137845
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,LSEBCS,State Level,Ladies,136,99.4875819
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,PWDOPENS,State Level,Any,2295,94.7434062
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,DEFOPENS,State Level,Any,119,99.5392746
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,TFWS,Special,Any,36,99.8285972
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,PWDROBCS,State Level,Any,6632,87.8767029
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,DEFROBCS,State Level,Any,529,98.3716343
+2025-26,B Pharmacy,CAP Round I,03036,"Institute of Chemical Technology, Matunga, Mumbai",Mumbai,Government,EWS,Special,Any,266,99.1038847
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GOPENH,Home University,Any,16804,74.5562130
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GSCH,Home University,Any,48039,19.8017149
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GVJH,Home University,Any,31522,54.7167217
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GOBCH,Home University,Any,25389,63.4191092
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GSEBCH,Home University,Any,21518,68.7032705
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,LOPENH,Home University,Ladies,10702,82.1525949
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,LSCH,Home University,Ladies,26079,62.9242587
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,LOBCH,Home University,Ladies,15396,76.4112183
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GOPENO,Home University,Any,26181,62.9184580
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GNT2O,Home University,Any,32545,53.6351544
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,LOPENO,Home University,Ladies,19753,70.9247292
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GSCO,Home University,Any,50119,12.0467945
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GNT3O,Home University,Any,19184,71.7088376
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GOBCO,Home University,Any,23742,65.8092176
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,GSEBCO,Home University,Any,45871,26.0264691
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,LVJO,Home University,Ladies,36325,46.5997873
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,LOBCO,Home University,Ladies,17109,74.2729203
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,TFWS,Special,Any,15470,76.3806091
+2025-26,B Pharmacy,CAP Round I,02251,"Shri Balaji Shikshan Prasarak Mamdal's , B.Pharmacy College, Ambajogai",,,EWS,Special,Any,22537,67.5605061
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GOPENH,Home University,Any,27338,60.6332111
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GSCH,Home University,Any,49834,13.2654932
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GNT1H,Home University,Any,50181,11.9307342
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GNT2H,Home University,Any,33774,51.0514832
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GOBCH,Home University,Any,43408,32.3397569
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GSEBCH,Home University,Any,36119,47.3912843
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,LOPENH,Home University,Ladies,15669,75.8886529
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,LSCH,Home University,Ladies,50828,9.1648764
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,LNT3H,Home University,Ladies,24145,65.5945284
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,LOBCH,Home University,Ladies,19504,71.5830116
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,LSEBCH,Home University,Ladies,24648,64.9677744
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GOPENO,Home University,Any,42458,34.7625360
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,LOPENO,Home University,Ladies,24799,64.8344034
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GNT2O,Home University,Any,37968,43.8930412
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GOBCO,Home University,Any,43334,32.5553935
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,GSEBCO,Home University,Any,51568,5.7122954
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,LVJO,Home University,Ladies,25026,64.1813261
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,TFWS,Special,Any,31095,55.6405756
+2025-26,B Pharmacy,CAP Round I,02656,Jagdamba Shikshan Prasark Mandal's College of B.Pharmacy & Research Centre,,,EWS,Special,Any,39757,40.2286531
+2025-26,B Pharmacy,CAP Round I,03230,"NCRD's Sterling Institute of Pharmacy, Navi Mumbai",Mumbai,Unaided,DEFRSEBCS,State Level,Any,41217,37.8377139
+2025-26,B Pharmacy,CAP Round I,06256,"Bharati Vidyapeeth's College of Pharmacy, Kolhapur",Kolhapur,Unaided,DEFRSEBCS,State Level,Any,31207,54.7510694
+2025-26,B Pharmacy,CAP Round I,06358,"Sinhgad College of Pharmacy, Vadgaon, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,8143,85.5921744
+2025-26,B Pharmacy,CAP Round I,06364,"Progressive Education Society's Modern College of Pharmacy, Moshi, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,18759,72.3729832
+2025-26,B Pharmacy,CAP Round I,06367,"Rajarshi Shahu College of Pharmacy & Research, Tathawade, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,21697,68.4839812
+2025-26,B Pharmacy,CAP Round I,06371,"Dr. D.Y. Patil College of Pharmacy , Akurdi, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,7725,86.1887385
+2025-26,B Pharmacy,CAP Round I,06376,"All India Shri Shivaji Memorial Society's College of Pharmacy, Pune",Pune,Unaided,DEFRSEBCS,State Level,Any,6496,87.9858014
+2025-26,B Pharmacy,CAP Round I,06388,"Shri Appasaheb Birnale College of Pharmacy, Sangli",Sangli,Unaided,DEFRSEBCS,State Level,Any,27195,60.7838611
+2025-26,B Pharmacy,CAP Round I,06393,"Samarth Education Trust Arvind Gavali college of Pharmacy, Satara",Satara,Unaided,DEFRSEBCS,State Level,Any,46449,24.6987745
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GOPENH,Home University,Any,16122,75.5600721
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GSCH,Home University,Any,41311,37.4724972
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GNT1H,Home University,Any,24736,64.9677744
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GNT2H,Home University,Any,18680,72.3760958
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GOBCH,Home University,Any,30687,56.3371325
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GSEBCH,Home University,Any,24954,64.1813261
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LOPENH,Home University,Ladies,9636,83.6713492
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LSCH,Home University,Ladies,22055,68.1568120
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LNT2H,Home University,Ladies,10063,82.9815065
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LNT3H,Home University,Ladies,28504,59.8249375
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LOBCH,Home University,Ladies,18804,72.3719611
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LSEBCH,Home University,Ladies,11011,81.8617620
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GOPENO,Home University,Any,29353,57.8168696
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GNT2O,Home University,Any,31105,55.6405756
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LOPENO,Home University,Ladies,12483,80.0803250
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LOBCO,Home University,Ladies,28938,59.0974179
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GSCO,Home University,Any,48998,16.4389068
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GNT1O,Home University,Any,26196,62.8968351
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GOBCO,Home University,Any,29246,57.8195751
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,GSEBCO,Home University,Any,17470,73.8463670
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,LSCO,Home University,Ladies,26029,62.9242587
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,DEFOPENS,State Level,Any,37258,45.2168691
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,TFWS,Special,Any,10447,82.4696038
+2025-26,B Pharmacy,CAP Round I,06890,"Teerthankar Education Society's Dr. Shivajirao Kadam College of B.Pharmacy, Kasbe Digraj Sangli",,,EWS,Special,Any,30730,56.3371325
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GOPENH,Home University,Any,7392,86.7024202
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GSCH,Home University,Any,18033,73.3952586
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GVJH,Home University,Any,35367,48.6959628
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GNT1H,Home University,Any,12791,79.7474064
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GNT2H,Home University,Any,8243,85.4590925
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GNT3H,Home University,Any,24229,65.5945284
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GOBCH,Home University,Any,14698,77.2685027
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GSEBCH,Home University,Any,8107,85.6743347
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LOPENH,Home University,Ladies,3536,92.6280117
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LSCH,Home University,Ladies,9731,83.5513846
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LSTH,Home University,Ladies,23036,67.0861525
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LVJH,Home University,Ladies,20982,69.5274609
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LOBCH,Home University,Ladies,8787,84.7968186
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LSEBCH,Home University,Ladies,3776,92.1916346
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,PWDOPENH,Home University,Any,51276,7.1444896
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GOPENO,Home University,Any,11156,81.6303793
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GSCO,Home University,Any,16881,74.5562130
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GOBCO,Home University,Any,16085,75.5600721
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,GSEBCO,Home University,Any,17701,73.6131099
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LOPENO,Home University,Ladies,3979,91.8063228
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LSCO,Home University,Ladies,7866,86.0556855
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LNT2O,Home University,Ladies,12318,80.2182054
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,LOBCO,Home University,Ladies,9095,84.3041249
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,DEFOPENS,State Level,Any,5806,89.0753270
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,TFWS,Special,Any,6552,87.9789493
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,DEFRSCS,State Level,Any,19075,71.7123193
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,DEFRSEBCS,State Level,Any,12141,80.4698018
+2025-26,B Pharmacy,CAP Round I,06893,"Sant Dnyaneshwar Shikshan Sanstha, Annasaheb Dange College of B.Pharmacy, Ashta, Sangli",,,EWS,Special,Any,14008,77.9830709

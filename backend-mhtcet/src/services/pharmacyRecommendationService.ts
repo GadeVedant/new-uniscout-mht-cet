@@ -8,7 +8,7 @@
  */
 import { randomUUID } from 'crypto';
 import { pharmacyDataService } from './pharmacyDataService.js';
-import { pharmacyCategoryMatches, getPharmacyCategoryDiscount, PHARMACY_OPEN_CATS } from '../utils/pharmacyCategoryMap.js';
+import { pharmacyCategoryMatches } from '../utils/pharmacyCategoryMap.js';
 import { cutoffTrendService } from './cutoffTrendService.js';
 import logger from '../utils/logger.js';
 import type { RecommendationRequest, CollegeRecommendation, CollegeData } from '../types/index.js';
@@ -67,43 +67,21 @@ class PharmacyRecommendationService {
       ? location.split(',').map(l => l.trim().toLowerCase()).filter(Boolean)
       : [];
 
-    // ── Category fallback (Open → reserved with discount) ───────────────────
-    const isReserved = !PHARMACY_OPEN_CATS.has(category.toLowerCase());
-    let supplemental: CollegeData[] = [];
-
-    if (isReserved && category) {
-      const discount = getPharmacyCategoryDiscount(category);
-      const codesWithData = new Set(filtered.map(c => `${c.collegeCode}|${c.branchName}`));
-      const suppLocs = !locationFallback && location
-        ? location.split(',').map(l => l.trim().toLowerCase()).filter(Boolean)
-        : [];
-
-      const openRecords = sourceData.filter(c => {
-        if (capRound && c.capRound !== capRound) return false;
-        if (!pharmacyCategoryMatches(c.category, 'GOPENS')) return false;
-        if (branchPreference) {
-          const pref   = branchPreference.toLowerCase().trim();
-          const branch = c.branchName.toLowerCase().trim();
-          if (branch !== pref && !branch.includes(pref) && !pref.includes(branch)) return false;
-        }
-        if (suppLocs.length > 0) {
-          const cLoc  = c.location.toLowerCase();
-          const cDist = c.district.toLowerCase();
-          if (!suppLocs.some(l => matchesLocTerm(cLoc, l) || matchesLocTerm(cDist, l))) return false;
-        }
-        return !codesWithData.has(`${c.collegeCode}|${c.branchName}`);
-      });
-
-      supplemental = openRecords.map(c => ({
-        ...c,
-        cutoffPercentile: Math.max(0, parseFloat((c.cutoffPercentile - discount).toFixed(2))),
-        category,
-        estimatedCutoff: true,
-      }));
-    }
-
     // ── Build + filter recommendations ───────────────────────────────────────
-    const allRecs = [...filtered, ...supplemental]
+    // NOTE: The category fallback (estimating reserved-category cutoffs from
+    // Open cutoffs with a discount) has been intentionally removed.
+    //
+    // Reason: colleges that only have GOPENS/LOPENS seats in the official PDF
+    // (e.g. Linguistic/Religious Minority colleges like Vile Parle 03228,
+    // Vivekanand 03237, Aldel 03240, RC Patel 05186, Anjuman 03439) genuinely
+    // do NOT offer GSC / GST / GNT / GOBC / GSEBC / GVJ / DEF* / PWD* / ORPHAN
+    // seats. Showing estimated cutoffs for those non-existent categories
+    // misleads students into believing they can secure admission under a
+    // reserved quota that was never allotted to that college.
+    //
+    // All real reserved-category data is now present in the CSV (sourced
+    // directly from the official government PDF), so no estimation is needed.
+    const allRecs = [...filtered]
       .map(c => this.buildRecommendation(c, percentile));
 
     // Dedup — keep lowest cutoff per college+branch+category
